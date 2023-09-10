@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 
+import { createOrUpdateUser } from "../../functions/auth";
+
+import { useDispatch } from "react-redux";
+
 const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  let dispatch = useDispatch();
 
   useEffect(() => {
     setEmail(window.localStorage.getItem("emailForRegistration"));
@@ -43,6 +49,22 @@ const RegisterComplete = ({ history }) => {
         await user.updatePassword(password);
 
         const idTokenResult = await user.getIdTokenResult();
+
+        createOrUpdateUser(idTokenResult.token) //sending auth token value to this function to post
+          .then((res) => {
+            dispatch({
+              type: "LOGGED_IN_USER", //will dispach all these values to redux state through all login register form .. whenever auth token send in this functions
+
+              payload: {
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            });
+          })
+          .catch((err) => console.log(err));
 
         // redux store
         console.log("user", user, "idTokenResult", idTokenResult);
