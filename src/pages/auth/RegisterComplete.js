@@ -52,6 +52,7 @@ const RegisterComplete = ({ history }) => {
 
         createOrUpdateUser(idTokenResult.token) //sending auth token value to this function to post
           .then((res) => {
+            console.log("response from backemd after verify auth " + res);
             dispatch({
               type: "LOGGED_IN_USER", //will dispach all these values to redux state through all login register form .. whenever auth token send in this functions
 

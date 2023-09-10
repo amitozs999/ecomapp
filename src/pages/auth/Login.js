@@ -41,9 +41,10 @@ const Login = ({ history }) => {
       // console.log(result);
       const { user } = result;
       const idTokenResult = await user.getIdTokenResult();
-
+      console.log("was there");
       createOrUpdateUser(idTokenResult.token) //sending auth token value to this function to post
         .then((res) => {
+          console.log("response from backemd after verify auth " + res);
           dispatch({
             type: "LOGGED_IN_USER", //will dispach all these values to redux state through all login and register complete form .. whenever auth token send in this functions
 
@@ -83,14 +84,24 @@ const Login = ({ history }) => {
         const { user } = result;
         const idTokenResult = await user.getIdTokenResult();
 
-        dispatch({
-          type: "LOGGED_IN_USER", //sent these type and payload values to reducer/redux state
-          payload: {
-            email: user.email,
-            token: idTokenResult.token,
-          },
-        });
-        history.push("/");
+        createOrUpdateUser(idTokenResult.token) //sending auth token value to this function to post
+          .then((res) => {
+            dispatch({
+              type: "LOGGED_IN_USER", //will dispach all these values to redux state through all login and register complete form .. whenever auth token send in this functions
+
+              payload: {
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            });
+            roleBasedRedirect(res); //now redirect based on role
+          })
+          .catch((err) => console.log(err));
+
+        // history.push("/");
       })
       .catch((err) => {
         console.log(err);

@@ -3,6 +3,7 @@ import axios from "axios";
 //3 functions for post api for diff user with authkey
 
 export const createOrUpdateUser = async (authtoken) => {
+  console.log("hitting post api after register complete  " + authtoken);
   return await axios.post(
     `${process.env.REACT_APP_API}/create-or-update-user`,
     {},
