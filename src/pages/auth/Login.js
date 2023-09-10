@@ -5,6 +5,20 @@ import { Button } from "antd";
 import { MailOutlined, GoogleOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+const createOrUpdateUser = async (authtoken) => {
+  //post on this link with authtoken as headers
+  return await axios.post(
+    `${process.env.REACT_APP_API}/create-or-update-user`,
+    {},
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+};
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -32,15 +46,19 @@ const Login = ({ history }) => {
       const { user } = result;
       const idTokenResult = await user.getIdTokenResult();
 
-      dispatch({
-        type: "LOGGED_IN_USER",
-        payload: {
-          email: user.email,
-          token: idTokenResult.token,
-        },
-      });
+      createOrUpdateUser(idTokenResult.token) //sending auth token value to this function to post
+        .then((res) => console.log("CREATE OR UPDATE RES", res))
+        .catch();
 
-      history.push("/");
+      // dispatch({
+      //   type: "LOGGED_IN_USER",
+      //   payload: {
+      //     email: user.email,
+      //     token: idTokenResult.token,
+      //   },
+      // });
+
+      //history.push("/");
     } catch (error) {
       console.log(error);
       toast.error(error.message);
