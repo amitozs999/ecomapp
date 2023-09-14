@@ -84,7 +84,7 @@ const App = () => {
         <AdminRoute
           exact
           path="/admin/category/:slug"
-          component={CategoryUpdate}
+          component={CategoryUpdate} //jahi bhi ye update ke liye hit hoga go to CategoryUpdate comp
         />
       </Switch>
     </>

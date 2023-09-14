@@ -50,7 +50,7 @@ const CategoryCreate = () => {
         if (err.response.status === 400) toast.error(err.response.data);
       });
   };
-
+  //hit remove wali api on click of del this categ
   const handleRemove = async (slug) => {
     // let answer = window.confirm("Delete?");
     // console.log(answer, slug);
@@ -113,7 +113,7 @@ const CategoryCreate = () => {
                   //
                   <DeleteOutlined className="text-danger" />
                 </span>
-
+                {/* //takes to new page for updating categ */}
                 <Link to={`/admin/category/${c.slug}`}>
                   <span className="btn btn-sm float-right">
                     {" "}

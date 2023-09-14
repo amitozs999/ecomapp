@@ -38,7 +38,9 @@ const SubCreate = () => {
     setLoading(true);
     createSub({ name, parent: category }, user.token)
       .then((res) => {
-        // console.log(res)
+        console.log(res);
+        console.log(res.data.name);
+
         setLoading(false);
         setName("");
         toast.success(`"${res.data.name}" is created`);
