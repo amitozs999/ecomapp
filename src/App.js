@@ -32,6 +32,8 @@ import ProductCreate from "./pages/admin/product/ProductCreate";
 import AllProducts from "./pages/admin/product/AllProducts";
 import ProductUpdate from "./pages/admin/product/ProductUpdate";
 
+import Product from "./pages/Product";
+
 import { currentUser } from "./functions/auth";
 
 const App = () => {
@@ -100,6 +102,8 @@ const App = () => {
           path="/admin/product/:slug"
           component={ProductUpdate}
         />
+
+        <Route exact path="/product/:slug" component={Product} />
       </Switch>
     </>
   );
