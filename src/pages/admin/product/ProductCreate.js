@@ -98,7 +98,8 @@ const ProductCreate = () => {
           </div>
           {/* 
           {JSON.stringify(values.subs)} */}
-          {/* //sending props in create form through this page */}
+          {/* //sending props in create form through this page including values handlers*/}
+
           <ProductCreateForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
