@@ -7,10 +7,18 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import asas from "../../images/asas.jpg";
 import ProductListItems from "./ProductListItems";
 
+import StarRating from "react-star-ratings";
+import RatingModal from "../modal/RatingModal";
+import { showAverage } from "../../functions/rating";
+
 const { TabPane } = Tabs;
 
-const SingleProduct = ({ product }) => {
-  const { title, images, description } = product; //fetch this prod details from props
+// const SingleProduct = ({ product }) => {
+//   const { title, images, description } = product; //fetch this prod details from props
+
+// this is childrend component of Product page
+const SingleProduct = ({ product, onStarClick, star }) => {
+  const { title, images, description, _id } = product;
 
   return (
     <>
@@ -36,15 +44,35 @@ const SingleProduct = ({ product }) => {
 
       <div className="col-md-5">
         <h1 className="bg-info p-3">{title}</h1>
+
+        {product && product.ratings && product.ratings.length > 0 ? ( //if product has rating calculate avg of that and show that much star here
+          showAverage(product)
+        ) : (
+          <div className="text-center pt-1 pb-3">No rating yet</div>
+        )}
+
         <Card
           actions={[
             <>
               <ShoppingCartOutlined className="text-success" /> <br />
               Add to Cart
             </>,
+
             <Link to="/">
               <HeartOutlined className="text-info" /> <br /> Add to Wishlist
             </Link>,
+
+            //aother rating popump using parent on star click here pass same to new child starrating do task there
+            <RatingModal>
+              <StarRating
+                name={_id}
+                numberOfStars={5}
+                rating={star}
+                changeRating={onStarClick}
+                isSelectable={true}
+                starRatedColor="red"
+              />
+            </RatingModal>,
           ]}
         >
           {/* //show details of this product */}
