@@ -37,6 +37,8 @@ import SubHome from "./pages/sub/SubHome";
 
 import Product from "./pages/Product";
 
+import Shop from "./pages/Shop";
+
 import { currentUser } from "./functions/auth";
 
 const App = () => {
@@ -110,6 +112,7 @@ const App = () => {
 
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/sub/:slug" component={SubHome} />
+        <Route exact path="/shop" component={Shop} />
       </Switch>
     </>
   );
