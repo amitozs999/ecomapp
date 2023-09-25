@@ -5,6 +5,8 @@ import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
 import Header from "./components/nav/Header";
 
+import SideDrawer from "./components/drawer/SideDrawer";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -38,6 +40,8 @@ import SubHome from "./pages/sub/SubHome";
 import Product from "./pages/Product";
 
 import Shop from "./pages/Shop";
+
+import Cart from "./pages/Cart";
 
 import { currentUser } from "./functions/auth";
 
@@ -75,6 +79,7 @@ const App = () => {
     <>
       {/* //here header is showing for all screens common */}
       <Header />
+      <SideDrawer />
       <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -113,6 +118,7 @@ const App = () => {
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/sub/:slug" component={SubHome} />
         <Route exact path="/shop" component={Shop} />
+        <Route exact path="/cart" component={Cart} />
       </Switch>
     </>
   );
