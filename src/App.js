@@ -43,6 +43,8 @@ import Shop from "./pages/Shop";
 
 import Cart from "./pages/Cart";
 
+import Checkout from "./pages/Checkout";
+
 import { currentUser } from "./functions/auth";
 
 const App = () => {
@@ -119,6 +121,7 @@ const App = () => {
         <Route exact path="/sub/:slug" component={SubHome} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/cart" component={Cart} />
+        <UserRoute exact path="/checkout" component={Checkout} />
       </Switch>
     </>
   );
