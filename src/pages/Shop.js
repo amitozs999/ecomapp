@@ -78,8 +78,10 @@ const Shop = () => {
   useEffect(() => {
     const delayed = setTimeout(() => {
       fetchProducts({ query: text });
+      if (!text) {
+        loadAllProducts();
+      }
     }, 300);
-
     return () => clearTimeout(delayed);
   }, [text]); //run on change of text in real time with wait of 3 msec
 
