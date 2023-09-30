@@ -1,0 +1,44 @@
+.header-item{
+    color: rgb(120, 142, 234) !important;
+    /* background-color: aqua !important; */
+    height: 60px;
+    
+    
+}
+
+.badge-pad{
+    padding-bottom: 15px !important;
+    padding-right: 5px !important;
+}
+
+.pad-search{
+    padding-left: 10px;
+   
+}
+
+.search-div{
+    width: 50%; 
+    background-color: rgba(235, 238, 243, 0.991);
+border-radius: 12px;
+ padding-top: 1px;
+ padding-left: 10px;
+    /* //height: 150px; */
+
+}
+.search{
+
+  width: 50%; 
+   /* height: 80%;   */
+
+}
+
+.inputnounderline{
+    text-decoration: none !important;
+    outline: none !important;
+    border: none !important;
+    background-color: rgba(235, 238, 243, 0.991);
+    /* border-bottom: none !important;
+    border-style: none !important; */
+  
+    
+}

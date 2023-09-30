@@ -83,7 +83,11 @@ const App = () => {
   return (
     <>
       {/* //here header is showing for all screens common */}
-      <Header />
+
+      <div className="flex flex-col min-h-[100vh]">
+        <Header />
+      </div>
+
       <SideDrawer />
       <ToastContainer />
       <Switch>
