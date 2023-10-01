@@ -29,7 +29,7 @@ margin-top: 8px;
       //padding-bottom: 10px;
         /* //height: 150px; */
         //margin-top: auto;
-        
+        display:block;
         height: 84%;
         //     border-radius: 6px;
         //     width: 98%; 
@@ -47,19 +47,25 @@ margin-top: 8px;
         .pad-search{
           
           // width: 20% !important;
-          margin-left: 7px;
-          margin-bottom: 30px !important;
+         // margin-left: 7px;
+        // margin-bottom: 30px !important;
          // margin-right: 2%;
          color: black;
+        //position: absolute;
+       margin-right: 5px;
+         transform: translateY(-100%);
+        // padding-right: 10px;
+        background-color: rgba(235, 238, 243, 0.991);
+         float: right;
       
         //  padding: 2px;
          
-           //padding-bottom: 10px;
+        padding: 4px;
           
           //text-align: center;
           // background-color: chartreuse !important;
            // padding-bottom: 25px;
-          // display: inline;
+         // display: inline;
             //display: inline-block; 
  // display: flex;
   //flex-direction: row;
@@ -71,22 +77,27 @@ margin-top: 8px;
             .inputnounderline{
 
                padding-top: 10px;
+               margin-left: 5px;
                color: black;
+            display:block;
+             // display:inline-block;
+               //float:none !important;
+             
 
                margin-left: 4px;
-            //margin-bottom: 15px;
+            //margin-bottom: 25px;
              //padding-bottom: 20px;
-              background-color: rgba(235, 238, 243, 0.991);
+             background-color: rgba(235, 238, 243, 0.991);
               
                 // text-decoration: none !important;
                 outline: none !important;
               border: none !important;
               //  background-color: rgba(248, 250, 253, 0.991);
-               width: 86%;
+               width: 72%;
                height: 80%;
               // padding-right: 30px;
           
-              // display: inline-block;
+               //display: inline-block;
              
                 
                 /* border-bottom: none !important;

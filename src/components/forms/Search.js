@@ -29,22 +29,24 @@ const Search = () => {
       className="formlay"
       onSubmit={handleSubmit}
     >
-      <input
-        // className="px-4 py-2 md:py-3 bg-transparent outline-none w-full "
-        onChange={handleChange} //on change update search value in redux state
-        type="search"
-        value={text}
-        //className="px-4 py-2 md:py-3 "
-        className="inputnounderline"
-        placeholder="Search Product"
-      />
+      <div>
+        <input
+          // className="px-4 py-2 md:py-3 bg-transparent outline-none w-full "
+          onChange={handleChange} //on change update search value in redux state
+          type="search"
+          value={text}
+          //className="px-4 py-2 md:py-3 "
+          className="inputnounderline"
+          placeholder="Search Product"
+        />
 
-      <SearchOutlined
-        //  style={{ fontSize: "150%" }}
-        onClick={handleSubmit}
-        style={{ cursor: "pointer", fontSize: "110%" }}
-        className="pad-search"
-      />
+        <SearchOutlined
+          //  style={{ fontSize: "150%" }}
+          onClick={handleSubmit}
+          style={{ cursor: "pointer", fontSize: "100%" }}
+          className="pad-search"
+        />
+      </div>
     </form>
   );
 };
