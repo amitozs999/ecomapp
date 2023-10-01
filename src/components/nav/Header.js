@@ -11,6 +11,8 @@ import {
   ShopTwoTone,
 } from "@ant-design/icons";
 
+import asas from "./234.png";
+
 import "./header.scss";
 
 import { Link } from "react-router-dom";
@@ -23,7 +25,7 @@ import Search from "../forms/Search";
 const { SubMenu, Item } = Menu;
 
 const Header = () => {
-  const [current, setCurrent] = useState("home");
+  const [current, setCurrent] = useState("");
 
   let dispatch = useDispatch();
 
@@ -46,74 +48,106 @@ const Header = () => {
     setCurrent(e.key);
   };
 
+  const logoclick = (e) => {
+    // console.log(e.key);
+
+    setCurrent();
+    history.push("/");
+  };
+  const imageStyle = {
+    width: "25%",
+    height: "25px",
+    objectFit: "cover",
+  };
   return (
     <header className="bg-slate-500">
-      <Menu
-        onClick={handleClick}
-        selectedKeys={[current]}
-        mode="horizontal"
-        className="header-item"
-      >
-        <Item key="home" icon={<ShopTwoTone />}>
-          <Link to="/">Home</Link>
-        </Item>
+      <div class="flex-container">
+        <div>
+          <a>
+            <img
+              className="logo"
+              src={asas}
+              onClick={logoclick}
+              style={imageStyle}
+            />
+          </a>
+          <p className="logotext"> Amaz Shop</p>
 
-        <Item key="shop" icon={<ShoppingOutlined />}>
-          {/* //<Link to="/shop" className="header-item"> */}
-          <Link to="/shop">Shop</Link>
-        </Item>
+          {/* <Link to="/" onClick={logoclick}>
+            AZ Store
+          </Link> */}
+        </div>
 
-        <Item key="cart" icon={<ShoppingCartOutlined />}>
-          <Link to="/cart">
-            Cart
-            <Badge
-              className="badge-pad"
-              count={cart.length}
-              offset={[9, 0]}
-            ></Badge>
-          </Link>
-        </Item>
-
-        {user && (
-          <SubMenu
-            icon={<SettingOutlined />}
-            title={user.email && user.email.split("@")[0]}
-            style={{ marginRight: "auto" }}
+        <div>
+          <Menu
+            onClick={handleClick}
+            selectedKeys={[current]}
+            mode="horizontal"
+            className="header-item"
           >
-            {user && user.role === "subscriber" && (
-              <Item>
-                <Link to="/user/history">Dashboard</Link>
-              </Item>
-            )}
+            {/* <Item icon={<ShopTwoTone />}>AZ Store</Item> */}
+            {/* <Item key="home" icon={<ShopTwoTone />}>
+              <Link to="/">AZ Store</Link>
+            </Item> */}
 
-            {user && user.role === "admin" && (
-              <Item>
-                <Link to="/admin/dashboard">Dashboard</Link>
-              </Item>
-            )}
-
-            <Item icon={<LogoutOutlined />} onClick={logout}>
-              Logout
+            <Item key="shop" icon={<ShoppingOutlined />}>
+              {/* //<Link to="/shop" className="header-item"> */}
+              <Link to="/shop">What's New</Link>
             </Item>
-          </SubMenu>
-        )}
-        {!user && (
-          <Item key="register" icon={<UserAddOutlined />}>
-            <Link to="/register">Register</Link>
-          </Item>
-        )}
 
-        {!user && (
-          <Item key="login" icon={<UserOutlined />}>
-            <Link to="/login">Login</Link>
-          </Item>
-        )}
-        {/* <div className="flex-grow bg-slate-1900"> */}
+            <Item key="cart" icon={<ShoppingCartOutlined />}>
+              <Link to="/cart">
+                Cart
+                <Badge
+                  className="badge-pad"
+                  count={cart.length}
+                  offset={[9, 0]}
+                ></Badge>
+              </Link>
+            </Item>
 
-        {/* <div className="search-div"> */}
-        <Search />
-        {/* </div> */}
-      </Menu>
+            {user && (
+              <SubMenu
+                icon={<SettingOutlined />}
+                title={user.email && user.email.split("@")[0]}
+                style={{ marginRight: "auto" }}
+              >
+                {user && user.role === "subscriber" && (
+                  <Item>
+                    <Link to="/user/history">Dashboard</Link>
+                  </Item>
+                )}
+
+                {user && user.role === "admin" && (
+                  <Item>
+                    <Link to="/admin/dashboard">Dashboard</Link>
+                  </Item>
+                )}
+
+                <Item icon={<LogoutOutlined />} onClick={logout}>
+                  Logout
+                </Item>
+              </SubMenu>
+            )}
+            {!user && (
+              <Item key="register" icon={<UserAddOutlined />}>
+                <Link to="/register">Register</Link>
+              </Item>
+            )}
+
+            {!user && (
+              <Item key="login" icon={<UserOutlined />}>
+                <Link to="/login">Login</Link>
+              </Item>
+            )}
+            {/* <div className="flex-grow bg-slate-1900"> */}
+
+            {/* <div className="search-div"> */}
+            <Search />
+            {/* </div> */}
+          </Menu>
+        </div>
+      </div>
     </header>
   );
 };

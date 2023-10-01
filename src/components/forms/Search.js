@@ -43,7 +43,7 @@ const Search = () => {
         <SearchOutlined
           //  style={{ fontSize: "150%" }}
           onClick={handleSubmit}
-          style={{ cursor: "pointer", fontSize: "100%" }}
+          style={{ cursor: "pointer", fontSize: "110%" }}
           className="pad-search"
         />
       </div>
