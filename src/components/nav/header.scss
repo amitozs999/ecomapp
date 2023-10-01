@@ -1,26 +1,14 @@
+
 .header-item{
-    color: rgb(120, 142, 234) !important;
+     color: rgb(120, 142, 234) !important;
+     background-color: rgb(246, 147, 27) !important;
     /* background-color: aqua !important; */
-    margin-left: 80px !important;
+   // margin-left: 80px !important;
     height: 60px;
-    //flex-direction: row;
+ 
+       .formlay{
     
-
-
-    // .search-div{
-    //     width: 23%; 
-    //     background-color: rgba(235, 238, 243, 0.991);
-    // border-radius: 12px;
-     
-    //  padding-left: 5px;
-    //     /* //height: 150px; */
-    //     margin-top: auto;
-        
-    //     height: 80%;
-        
-          .formlay{
-    
-margin-top: 8px;
+         margin-top: 8px;
                  width: 53%; 
         background-color: rgba(235, 238, 243, 0.991);
     border-radius: 10px;
@@ -68,8 +56,8 @@ margin-top: 8px;
            // padding-bottom: 25px;
          // display: inline;
             //display: inline-block; 
- // display: flex;
-  //flex-direction: row;
+        // display: flex;
+        //flex-direction: row;
            
         }
         
@@ -107,12 +95,16 @@ margin-top: 8px;
               
                 
             }
+
+
         
           }
-         
-    }
+        
     
     
+  
+  }
+
 
 
 .badge-pad{
@@ -122,34 +114,50 @@ margin-top: 8px;
 
 
 
-.flex-container {
+
+
+.flex-container {        //1.logodiv  10perc ,  2.mainmenudix 90perc
   display: flex;
-  //background-color: DodgerBlue;
+   background-color: DodgerBlue;
   height: 60px;
   padding-left: 30px;
 
+  .logodiv{
+    margin-right: 60px;
+    width: 10%;
+    .logo{
+      color: black;
+      margin-top: 10px;
+      margin-left: 45px;
+     // height: 20px;
+     
+    }
 
-  
-  .logo{
-    color: black;
-    margin-top: 10px;
-    margin-left: 45px;
-   // height: 20px;
-   
-  }
-  
-   
-  .logotext{
+
+   .logotext{
     //margin-right: 60px;
     //padding-right: 40px;
    // text-align: center;
    margin-left: 25px;
     font-weight: 550;
-  }
-  .logodiv{
-    margin-right: 60px;
-    background-color: antiquewhite;
-   }
+      }
+
+    }
+
+      .mainmenudiv{
+        width: 90%;
+        color: rgb(246, 163, 39);
+        background-color: chartreuse;
+        //display: flex;
+      
+      }
+
+ }
   
-}
+
+  
+  
+  
+  
+
 

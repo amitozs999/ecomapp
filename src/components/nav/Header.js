@@ -62,7 +62,7 @@ const Header = () => {
   return (
     <header className="bg-slate-500">
       <div class="flex-container">
-        <div>
+        <div className="logodiv">
           <a>
             <img
               className="logo"
@@ -78,7 +78,7 @@ const Header = () => {
           </Link> */}
         </div>
 
-        <div>
+        <div className="mainmenudiv">
           <Menu
             onClick={handleClick}
             selectedKeys={[current]}
@@ -95,22 +95,18 @@ const Header = () => {
               <Link to="/shop">What's New</Link>
             </Item>
 
-            <Item key="cart" icon={<ShoppingCartOutlined />}>
-              <Link to="/cart">
-                Cart
-                <Badge
-                  className="badge-pad"
-                  count={cart.length}
-                  offset={[9, 0]}
-                ></Badge>
-              </Link>
-            </Item>
+            <Search style={{ marginRight: "auto" }} />
+            {/* <div className="flex-grow bg-slate-1900"> */}
+
+            {/* <div className="search-div"> */}
+
+            {/* </div> */}
 
             {user && (
               <SubMenu
                 icon={<SettingOutlined />}
                 title={user.email && user.email.split("@")[0]}
-                style={{ marginRight: "auto" }}
+                //  style={{ marginRight: "auto" }}
               >
                 {user && user.role === "subscriber" && (
                   <Item>
@@ -140,11 +136,21 @@ const Header = () => {
                 <Link to="/login">Login</Link>
               </Item>
             )}
-            {/* <div className="flex-grow bg-slate-1900"> */}
 
-            {/* <div className="search-div"> */}
-            <Search />
-            {/* </div> */}
+            <Item
+              key="cart"
+              icon={<ShoppingCartOutlined />}
+              //  style={{ marginLeft: "auto" }}
+            >
+              <Link to="/cart">
+                Cart
+                <Badge
+                  className="badge-pad"
+                  count={cart.length}
+                  offset={[9, 0]}
+                ></Badge>
+              </Link>
+            </Item>
           </Menu>
         </div>
       </div>
