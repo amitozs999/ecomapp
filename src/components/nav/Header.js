@@ -11,7 +11,7 @@ import {
   ShopTwoTone,
 } from "@ant-design/icons";
 
-import "./header.css";
+import "./header.scss";
 
 import { Link } from "react-router-dom";
 import firebase from "firebase";
@@ -110,9 +110,9 @@ const Header = () => {
         )}
         {/* <div className="flex-grow bg-slate-1900"> */}
 
-        <div className="search-div">
-          <Search />
-        </div>
+        {/* <div className="search-div"> */}
+        <Search />
+        {/* </div> */}
       </Menu>
     </header>
   );
