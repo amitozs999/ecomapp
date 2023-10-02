@@ -90,7 +90,11 @@ const Header = () => {
               <Link to="/">AZ Store</Link>
             </Item> */}
 
-            <Item key="shop" icon={<ShoppingOutlined />}>
+            <Item
+              key="shop"
+              icon={<ShoppingOutlined />}
+              style={{ marginRight: "145px", marginLeft: "40px" }}
+            >
               {/* //<Link to="/shop" className="header-item"> */}
               <Link to="/shop">What's New</Link>
             </Item>
@@ -126,7 +130,11 @@ const Header = () => {
               </SubMenu>
             )}
             {!user && (
-              <Item key="register" icon={<UserAddOutlined />}>
+              <Item
+                key="register"
+                icon={<UserAddOutlined />}
+                style={{ marginLeft: "20px" }}
+              >
                 <Link to="/register">Register</Link>
               </Item>
             )}

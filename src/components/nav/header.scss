@@ -1,5 +1,6 @@
 
 .header-item{
+  overflow-y: hidden;; 
      color: rgb(120, 142, 234) !important;
      background-color: rgb(246, 147, 27) !important;
     /* background-color: aqua !important; */
@@ -9,17 +10,17 @@
        .formlay{
     
          margin-top: 8px;
-                 width: 53%; 
+                 width: 33%; 
         background-color: rgba(235, 238, 243, 0.991);
     border-radius: 10px;
-     margin-bottom: 10px;
-     padding-left: 5px;
+     margin-bottom: 10px !important;
+     padding-left: 10px;
      //padding-bottom: 18px;
       //padding-bottom: 10px;
         /* //height: 150px; */
         //margin-top: auto;
         display:block;
-        height: 84%;
+        height: 81%;
         //     border-radius: 6px;
         //     width: 98%; 
        
@@ -117,18 +118,22 @@
 
 
 .flex-container {        //1.logodiv  10perc ,  2.mainmenudix 90perc
+  overflow-x: hidden;; 
   display: flex;
-   background-color: DodgerBlue;
+   //background-color: DodgerBlue;
   height: 60px;
-  padding-left: 30px;
+  // padding-left: 30px;
 
   .logodiv{
-    margin-right: 60px;
-    width: 10%;
+    //margin-right: 60px;
+    //width: 140px;
+    padding-left: 5%;
+    width: 18%;
+
     .logo{
       color: black;
       margin-top: 10px;
-      margin-left: 45px;
+      margin-left: 40px;
      // height: 20px;
      
     }
@@ -145,9 +150,9 @@
     }
 
       .mainmenudiv{
-        width: 90%;
-        color: rgb(246, 163, 39);
-        background-color: chartreuse;
+        width: 82%;
+       // color: rgb(246, 163, 39);
+       // background-color: chartreuse;
         //display: flex;
       
       }
