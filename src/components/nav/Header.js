@@ -8,6 +8,8 @@ import {
   LogoutOutlined,
   ShoppingOutlined,
   ShoppingCartOutlined,
+  LoginOutlined,
+  DashboardOutlined,
   ShopTwoTone,
 } from "@ant-design/icons";
 
@@ -108,18 +110,18 @@ const Header = () => {
 
             {user && (
               <SubMenu
-                icon={<SettingOutlined />}
+                icon={<UserOutlined />}
                 title={user.email && user.email.split("@")[0]}
-                //  style={{ marginRight: "auto" }}
+                style={{ marginLeft: "60px" }}
               >
                 {user && user.role === "subscriber" && (
-                  <Item>
+                  <Item icon={<DashboardOutlined />}>
                     <Link to="/user/history">Dashboard</Link>
                   </Item>
                 )}
 
                 {user && user.role === "admin" && (
-                  <Item>
+                  <Item icon={<DashboardOutlined />}>
                     <Link to="/admin/dashboard">Dashboard</Link>
                   </Item>
                 )}
@@ -140,7 +142,7 @@ const Header = () => {
             )}
 
             {!user && (
-              <Item key="login" icon={<UserOutlined />}>
+              <Item key="login" icon={<LoginOutlined />}>
                 <Link to="/login">Login</Link>
               </Item>
             )}
