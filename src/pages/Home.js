@@ -3,6 +3,7 @@ import Jumbotron from "../components/cards/Jumbotron";
 import NewArrivals from "../components/home/NewArrivals";
 import BestSellers from "../components/home/BestSellers";
 import Carousel from "../components/Carousel/index";
+import Category from "../components/category/index";
 
 const Home = () => {
   return (
@@ -12,9 +13,10 @@ const Home = () => {
       </div> */}
 
       <Carousel />
+      <Category />
       {/* <Benefits />
       <Offers />
-      <Category />
+     
       <Newest />
       <Banners />
       <Brands /> */}

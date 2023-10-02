@@ -1,0 +1,22 @@
+.containercateg{
+    display: flex;
+    flex-direction: row;
+    padding-left: 150px;
+    padding-right: 150px;
+    background-color: aqua;
+    align-items: center;
+    .items{
+        background-color: beige !important;
+      box-shadow: 7px 7px 5px lightblue;
+        border-radius: 8px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+}
