@@ -1,12 +1,20 @@
+.categdivhead{
+
+    margin-top: 50px;
+}
+
 .containercateg{
     display: flex;
     flex-direction: row;
-    padding-left: 150px;
-    padding-right: 150px;
-    background-color: aqua;
+    padding-left: 110px;
+    padding-right: 110px;
+   // background-color: aqua;
     align-items: center;
     .items{
-        background-color: beige !important;
+     //   background-color: beige !important;
+     border-color: black;
+     border-left-width: 130px;
+     
       box-shadow: 7px 7px 5px lightblue;
         border-radius: 8px;
         margin-left: auto;
@@ -19,4 +27,39 @@
         padding-bottom: 10px;
     }
 
+}
+
+.txtcenter{
+    
+       // text-align: center;
+        font-weight: 630;
+       font-size: medium;
+       margin-top: 5px;
+       margin-bottom: 7px;
+       margin-left: auto;
+       margin-right: auto;
+}
+.txtcateg{
+//text-align: center;
+
+font-size: large;
+font-weight: 610;
+//font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    margin-left:150px;
+}
+
+.txtcategbottom{
+    font-size: large;
+// font-weight: 610;
+//font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+text-align: center;
+
+font-weight: 630;
+font-size: medium;
+  //  margin-left:50px;
+//   margin-left: auto;
+//   margin-right: auto;
 }
