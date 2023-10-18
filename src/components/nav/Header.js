@@ -62,7 +62,7 @@ const Header = () => {
     objectFit: "cover",
   };
   return (
-    <header className="bg-slate-500">
+    <header>
       <div class="flex-container">
         <div className="logodiv">
           <a>

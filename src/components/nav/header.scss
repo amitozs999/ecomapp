@@ -1,4 +1,13 @@
 
+
+.headercs{
+  position: fixed;
+  background-color: white;
+  top: 0;
+ left: 0;
+ width: 100%;
+ margin-bottom: 200px;
+}
 .header-item{
   overflow-y: hidden;; 
      color: rgb(120, 142, 234) !important;
@@ -119,6 +128,7 @@
 
 .flex-container {        //1.logodiv  10perc ,  2.mainmenudix 90perc
   overflow-x: hidden;; 
+  
   display: flex;
    //background-color: DodgerBlue;
   height: 60px;
