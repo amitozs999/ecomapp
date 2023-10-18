@@ -52,13 +52,13 @@ const Shop = () => {
   let { search } = useSelector((state) => ({ ...state })); // new search reducer to hold state of curr search text
   const { text } = search;
 
-  useEffect(() => {
-    loadAllProducts();
-    // fetch categories
-    getCategories().then((res) => setCategories(res.data)); //fetach and store in arr
-    // fetch subcategories
-    getSubs().then((res) => setSubs(res.data)); //fetch and store in arr one time only for use in future
-  }, []);
+  // useEffect(() => {
+  //   loadAllProducts();
+  //   // fetch categories
+  //   getCategories().then((res) => setCategories(res.data)); //fetach and store in arr
+  //   // fetch subcategories
+  //   getSubs().then((res) => setSubs(res.data)); //fetch and store in arr one time only for use in future
+  // }, []);
 
   const fetchProducts = (arg) => {
     fetchProductsByFilter(arg).then((res) => {
