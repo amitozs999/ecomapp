@@ -64,7 +64,7 @@ const Shop = () => {
   const fetchProducts = (arg) => {
     console.log("hit prod api2");
     fetchProductsByFilter(arg).then((res) => {
-      //setProducts(res.data);
+      setProducts(res.data);
     });
   };
 
@@ -85,7 +85,8 @@ const Shop = () => {
   useEffect(() => {
     console.log("hit prod api5");
     const delayed = setTimeout(() => {
-      //fetchProducts({ query: text });
+      console.log("yy9");
+      fetchProducts({ query: text });
       if (!text) {
         // loadAllProducts();
       }
@@ -97,6 +98,7 @@ const Shop = () => {
   useEffect(() => {
     console.log("hit prod api6");
     console.log("ok to request");
+    console.log("yy8");
     fetchProducts({ price });
   }, [ok]); //run again when ok change
 
@@ -168,6 +170,7 @@ const Shop = () => {
 
     setCategoryIds(inTheState); //update stored catid array in state
     // console.log(inTheState);
+    console.log("yy7");
     fetchProducts({ category: inTheState }); //now fetch products based on these new checked categ
   };
 
@@ -185,6 +188,7 @@ const Shop = () => {
     setBrand("");
     setColor("");
     setShipping("");
+    console.log("yy6");
     fetchProducts({ stars: num }); //detch based on this star
   };
   const handleSub = (sub) => {
@@ -200,6 +204,7 @@ const Shop = () => {
     setBrand("");
     setColor("");
     setShipping("");
+    console.log("yy4");
     fetchProducts({ sub });
   };
   const handleBrand = (e) => {
@@ -214,6 +219,7 @@ const Shop = () => {
     setColor("");
     setBrand(e.target.value);
     setShipping("");
+    console.log("yy3");
     fetchProducts({ brand: e.target.value });
   };
 
@@ -229,6 +235,7 @@ const Shop = () => {
     setBrand("");
     setColor(e.target.value);
     setShipping("");
+    console.log("yy2");
     fetchProducts({ color: e.target.value });
   };
 
@@ -320,6 +327,7 @@ const Shop = () => {
     setBrand("");
     setColor("");
     setShipping(e.target.value);
+    console.log("yy1");
     fetchProducts({ shipping: e.target.value });
   };
 
