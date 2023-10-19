@@ -88,7 +88,7 @@ const Shop = () => {
     console.log("hit prod api5");
     const delayed = setTimeout(() => {
       console.log("yy9");
-      fetchProducts({ query: text });
+      // fetchProducts({ query: text });
       if (!text) {
         // loadAllProducts();
       }
