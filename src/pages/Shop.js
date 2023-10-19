@@ -88,7 +88,7 @@ const Shop = () => {
     console.log("hit prod api5");
     const delayed = setTimeout(() => {
       console.log("yy9");
-      // fetchProducts({ query: text });
+      fetchProducts({ query: text });
       if (!text) {
         // loadAllProducts();
       }
@@ -101,7 +101,7 @@ const Shop = () => {
     console.log("hit prod api6");
     console.log("ok to request");
     console.log("yy8");
-    fetchProducts({ price });
+    //fetchProducts({ price });
   }, [ok]); //run again when ok change
 
   const handleSlider = (value) => {
