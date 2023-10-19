@@ -90,7 +90,7 @@ const Shop = () => {
       console.log("yy9");
       fetchProducts({ query: text });
       if (!text) {
-        // loadAllProducts();
+        loadAllProducts();
       }
     }, 100);
     return () => clearTimeout(delayed);
