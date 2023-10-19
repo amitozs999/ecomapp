@@ -53,6 +53,7 @@ const Shop = () => {
   const { text } = search;
 
   useEffect(() => {
+    console.log("hit prod api1");
     loadAllProducts();
     // fetch categories
     getCategories().then((res) => setCategories(res.data)); //fetach and store in arr
@@ -61,6 +62,7 @@ const Shop = () => {
   }, []);
 
   const fetchProducts = (arg) => {
+    console.log("hit prod api2");
     fetchProductsByFilter(arg).then((res) => {
       setProducts(res.data);
     });
@@ -68,9 +70,9 @@ const Shop = () => {
 
   // 1. load products by default on page load
   const loadAllProducts = () => {
-    console.log("hit prod api");
+    console.log("hit prod api3");
     getProductsByCount(12).then((p) => {
-      console.log("inside hit prod api");
+      console.log("inside hit prod api4");
       setProducts(p.data);
       setLoading(false);
     });
@@ -78,6 +80,7 @@ const Shop = () => {
 
   // 2. load products on user search input
   useEffect(() => {
+    console.log("hit prod api5");
     const delayed = setTimeout(() => {
       fetchProducts({ query: text });
       if (!text) {
@@ -89,11 +92,13 @@ const Shop = () => {
 
   // 3. load products based on price range
   useEffect(() => {
+    console.log("hit prod api6");
     console.log("ok to request");
     fetchProducts({ price });
   }, [ok]); //run again when ok change
 
   const handleSlider = (value) => {
+    console.log("hit prod api7");
     dispatch({
       type: "SEARCH_QUERY",
       payload: { text: "" }, //search wala filter diable now by resetting search value
