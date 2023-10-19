@@ -53,7 +53,7 @@ const Shop = () => {
   const { text } = search;
 
   useEffect(() => {
-    // loadAllProducts();
+    loadAllProducts();
     // fetch categories
     getCategories().then((res) => setCategories(res.data)); //fetach and store in arr
     // fetch subcategories
@@ -68,7 +68,9 @@ const Shop = () => {
 
   // 1. load products by default on page load
   const loadAllProducts = () => {
+    console.log("hit prod api");
     getProductsByCount(12).then((p) => {
+      console.log("inside hit prod api");
       setProducts(p.data);
       setLoading(false);
     });
