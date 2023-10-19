@@ -64,7 +64,7 @@ const Shop = () => {
   const fetchProducts = (arg) => {
     console.log("hit prod api2");
     fetchProductsByFilter(arg).then((res) => {
-      setProducts(res.data);
+      //setProducts(res.data);
     });
   };
 
@@ -73,7 +73,7 @@ const Shop = () => {
     console.log("hit prod api3");
     getProductsByCount(12).then((p) => {
       console.log("ss", p);
-      console.log("sss", p, data);
+      console.log("sss", p.data);
 
       console.log("inside hit prod api4");
       setProducts(p.data);
