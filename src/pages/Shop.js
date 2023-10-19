@@ -72,6 +72,9 @@ const Shop = () => {
   const loadAllProducts = () => {
     console.log("hit prod api3");
     getProductsByCount(12).then((p) => {
+      console.log("ss", p);
+      console.log("sss", p, data);
+
       console.log("inside hit prod api4");
       setProducts(p.data);
       setLoading(false);
@@ -82,7 +85,7 @@ const Shop = () => {
   useEffect(() => {
     console.log("hit prod api5");
     const delayed = setTimeout(() => {
-      fetchProducts({ query: text });
+      //fetchProducts({ query: text });
       if (!text) {
         // loadAllProducts();
       }
