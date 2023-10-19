@@ -25,8 +25,8 @@ const SubUpdate = ({ match, history }) => {
 
   const loadSub = () =>
     getSub(match.params.slug).then((s) => {
-      setName(s.data.name);
-      setParent(s.data.parent);
+      setName(s.data.sub.name);
+      setParent(s.data.sub.parent);
     });
 
   //update sub with new entered parent

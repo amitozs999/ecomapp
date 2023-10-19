@@ -100,7 +100,7 @@ const Shop = () => {
   useEffect(() => {
     console.log("hit prod api6");
     console.log("ok to request");
-    console.log("yy8");
+    console.log("yy8"); ///error here
     //fetchProducts({ price });
   }, [ok]); //run again when ok change
 
