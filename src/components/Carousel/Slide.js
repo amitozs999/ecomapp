@@ -3,10 +3,11 @@ import React from "react";
 //import { useLanguage } from "../../hooks/useLanguage";
 
 import asas from "./beauty.jpg";
+import { useHistory } from "react-router-dom";
 
 const Slide = ({ title, description, bgImg, url }) => {
   //const { t } = useLanguage();
-
+  const history = useHistory();
   return (
     <>
       {/* <div>
@@ -20,6 +21,7 @@ const Slide = ({ title, description, bgImg, url }) => {
           src={bgImg}
           height={"274px"}
           width={"610px"}
+          onClick={() => history.push("/category/clothing")}
           //  class="align-middle"
           style={{
             marginLeft: "auto",

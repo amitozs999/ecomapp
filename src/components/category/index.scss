@@ -15,7 +15,7 @@
      border-color: black;
      border-left-width: 130px;
      
-      box-shadow: 7px 7px 5px lightblue;
+      box-shadow: 7px 7px 9px lightblue;
         border-radius: 8px;
         margin-left: auto;
         margin-right: auto;
@@ -63,3 +63,18 @@ font-size: medium;
 //   margin-left: auto;
 //   margin-right: auto;
 }
+
+.zoomm {
+   // padding: 50px;
+   // background-color: green;
+    transition: transform .2s; /* Animation */
+   // width: 200px;
+    //height: 200px;
+    margin: 0 auto;
+  }
+  
+  .zoomm:hover {
+    cursor:pointer;
+    box-shadow: 7px 7px 5px lightblue;
+    transform: scale(1.16); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
