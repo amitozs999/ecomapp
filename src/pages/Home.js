@@ -5,6 +5,8 @@ import BestSellers from "../components/home/BestSellers";
 import Carousel from "../components/Carousel/index";
 import Category from "../components/category/index";
 
+import Banners from "../components/banner/index";
+
 const Home = () => {
   return (
     <>
@@ -14,11 +16,13 @@ const Home = () => {
 
       <Carousel />
       <Category />
+      <Banners />
+
       {/* <Benefits />
       <Offers />
      
       <Newest />
-      <Banners />
+     
       <Brands /> */}
 
       <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
