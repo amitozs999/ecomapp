@@ -11,7 +11,7 @@ const DateTimeDisplay = ({ value, type, isDanger }) => {
         isDanger ? "text-rose-600" : ""
       }`}
     >
-      <p className="text-xs">{dateTime}</p>
+      <p className="text-xs font-bold">{dateTime}</p>
       <span className="text-xs">{type}</span>
     </div>
   );

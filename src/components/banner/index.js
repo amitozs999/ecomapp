@@ -1,32 +1,38 @@
 import React from "react";
 import BannerBox from "./BannerBox";
 
-import laptop from "./asasas.jpg";
+//mport laptop from "./asasas.jpg";
 import "./../../index.css";
 
 const Banner = () => {
   const bannerContent = [
     {
+      id: "1",
       title: "larisaTitle",
       description: "larisaDescription",
-      buttonText: "Heelo oye ji",
+      buttonText: "SHOP-NOW",
       imgSrc: "laptop",
       imgWidth: 980,
       imgHeight: 590,
+      codee: "SHP40",
       numberOfDiscountDate: 9,
       href: "/",
+      discount: "40",
     },
 
     {
+      id: "2",
       title: "romanoTitle",
       description: "romanoDescription",
-      buttonText: "see",
-      // imgSrc: "/images/banners-img/home2.webp",
+      buttonText: "SHOP-NOW",
+      //imgSrc: "/images/banners-img/home2.webp",
       imgSrc: "laptop",
       imgWidth: 980,
       imgHeight: 500,
+      codee: "SHP25",
       numberOfDiscountDate: 7,
       href: "/",
+      discount: "25",
     },
   ];
 
@@ -57,26 +63,33 @@ const Banner = () => {
         {/* grid gap-4 grid-cols-6 lg:grid-cols-12 */}
         {bannerContent.map(
           ({
+            id,
             title,
+
             description,
             numberOfDiscountDate,
             href,
             imgHeight,
+            codee,
             imgSrc,
             imgWidth,
             buttonText,
+            discount,
           }) => {
             return (
               <BannerBox
                 title={title}
+                id={id}
                 description={description}
                 numberOfDiscountDate={numberOfDiscountDate}
                 href={href}
                 imgSrc={imgSrc}
                 imgWidth={imgWidth}
                 imgHeight={imgHeight}
+                codee={codee}
                 buttonText={buttonText}
                 key={title}
+                discount={discount}
               />
             );
           }

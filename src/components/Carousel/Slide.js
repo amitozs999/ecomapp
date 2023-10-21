@@ -19,6 +19,7 @@ const Slide = ({ title, description, bgImg, url }) => {
       >
         <img
           src={bgImg}
+          className="rounded-lg"
           height={"274px"}
           width={"610px"}
           onClick={() => history.push("/category/clothing")}

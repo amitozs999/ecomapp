@@ -111,7 +111,7 @@ font-size: medium;
   }
   
   .zoomm:hover {
-    //cursor:pointer;
+     cursor:pointer;
    // box-shadow: 7px 7px 5px lightblue;
     transform: scale(1.16); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }

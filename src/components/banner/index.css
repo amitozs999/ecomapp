@@ -1,0 +1,35 @@
+.wrapper {
+	 
+	top: 50%; left: 50%;
+}
+
+.zoommm {
+	
+	transition: transform .2s;
+	margin: 0 auto;
+	
+   }
+   
+   .zoommm:hover {
+ 
+	 box-shadow: 7px 7px 5px lightblue;
+	 background-color: rgb(223, 204, 204);
+	 transform: scale(1.16); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+   }
+ 
+   .zoommm2 {
+	background-color: white;
+	transition: transform .2s;
+	margin: 0 auto;
+	
+   }
+   
+   .zoommm2:hover {
+cursor:pointer;
+	/* box-shadow: 7px 7px 5px rgb(14, 15, 15); */
+	 /* background-color: rgb(226, 203, 203); */
+	 background-color: rgb(231, 218, 218);
+	 /* transform: scale(1.06);  */
+	 /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+   }
+ 
