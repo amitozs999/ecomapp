@@ -4,16 +4,35 @@
 }
 
 .containercateg{
+  //background-color: rgb(40, 230, 166);
     display: flex;
     flex-direction: row;
     padding-left: 110px;
     padding-right: 110px;
    // background-color: aqua;
     align-items: center;
+
+    
+  .yy{
+    //background-color: beige !important;
+   // background-color: blueviolet;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 7px 7px 9px lightblue;
+    border-radius: 8px;
+    border-color: black;
+   
+  }
     .items{
      //   background-color: beige !important;
-     border-color: black;
-     border-left-width: 130px;
+    border-color: black;
+    
      
       box-shadow: 7px 7px 9px lightblue;
         border-radius: 8px;
@@ -21,10 +40,28 @@
         margin-right: auto;
         margin-top: 20px;
         margin-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+       // padding-left: 20px;
+       // padding-right: 20px;
+       // padding-top: 10px;
+       // padding-bottom: 10px;
+        height: 160px;
+        width: 120px;
+   //     background-color: chocolate;
+        //align-items: center;
+        
+
+        .imz{
+          margin-top: 5px;
+          padding: 5px;
+          height: 120px;
+          width: 100px;
+          margin-left: auto;
+          margin-right: auto;
+        
+          display: block;
+        //  margin-bottom: 490px;
+   //       background-color: chartreuse  !important;
+        }
     }
 
 }
@@ -74,7 +111,7 @@ font-size: medium;
   }
   
   .zoomm:hover {
-    cursor:pointer;
-    box-shadow: 7px 7px 5px lightblue;
+    //cursor:pointer;
+   // box-shadow: 7px 7px 5px lightblue;
     transform: scale(1.16); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }

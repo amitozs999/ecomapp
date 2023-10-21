@@ -50,6 +50,7 @@ import { currentUser } from "./functions/auth";
 import CreateCouponPage from "./pages/admin/coupon/CreateCouponPage";
 import Payment from "./pages/Payment";
 
+import "./index.css";
 const App = () => {
   const dispatch = useDispatch();
 

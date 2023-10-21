@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   overflow-x: hidden;
   margin: 0;
@@ -51,3 +50,7 @@ code {
   
 }
 
+.xx{
+  background-color: blue;
+  /* //margin-left: 100px; */
+}

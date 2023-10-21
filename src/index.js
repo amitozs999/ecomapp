@@ -11,6 +11,8 @@ import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers";
 
+import "./index.css";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // store
