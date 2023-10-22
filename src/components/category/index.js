@@ -6,15 +6,7 @@ import React, { useEffect } from "react";
 // import SectionTitle from "../UI/SectionTitle";
 import { Link } from "react-router-dom";
 import "./index.scss";
-import prod01 from "./prod01.jpg";
-import prod1 from "./prod1.jpg";
-import prod2 from "./prod2.jpg";
-import prod3 from "./prod3.jpg";
-import prod4 from "./prod4.jpg";
-import prod5 from "./prod5.jpg";
-import cloth from "./cloth.jpg";
-import pen from "./pen.jpg";
-import kidss from "./kidss.jpg";
+
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
@@ -37,8 +29,10 @@ const Category = () => {
 
   )} */}
 
-        {categoryContent.map(({ id, slug, bottomText }) => {
-          return <CategBox id={id} bottomText={bottomText} slug={slug} />;
+        {categoryContent.map(({ id, slug, bottomText, imgg }) => {
+          return (
+            <CategBox id={id} bottomText={bottomText} slug={slug} imgg={imgg} />
+          );
         })}
       </div>
     </div>

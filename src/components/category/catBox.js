@@ -1,12 +1,12 @@
 import React from "react";
 
 import "./index.scss";
-import prod01 from "./prod01.jpg";
+//import prod01 from "./prod01.jpg";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const CategBox = ({ id, slug, bottomText }) => {
+const CategBox = ({ id, slug, bottomText, imgg }) => {
   const history = useHistory();
 
   const [isHovered, setIsHovered] = useState(null);
@@ -44,8 +44,8 @@ const CategBox = ({ id, slug, bottomText }) => {
         height={"110px"}
         width={"100px"}
         className="mb-2 py-2 imz"
-        //src={prod01}
-        src="images/prod01.jpg"
+        src={imgg}
+        // src="images/prod01.jpg" to refer from public/images/prod01    images/+{prod01.jpg}
       >
         {/* <Link to={`/product/`}></Link> */}
       </img>
