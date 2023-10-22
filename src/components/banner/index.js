@@ -15,9 +15,10 @@ const Banner = () => {
       imgWidth: 980,
       imgHeight: 590,
       codee: "SHP40",
-      numberOfDiscountDate: 9,
+      numberOfDiscountDate: 3,
       href: "/",
       discount: "40",
+      slug: "/product/jbl-tune-720bt-headphones",
     },
 
     {
@@ -33,6 +34,7 @@ const Banner = () => {
       numberOfDiscountDate: 7,
       href: "/",
       discount: "25",
+      slug: "/product/nike-mens-nike-air-max",
     },
   ];
 
@@ -75,6 +77,7 @@ const Banner = () => {
             imgWidth,
             buttonText,
             discount,
+            slug,
           }) => {
             return (
               <BannerBox
@@ -90,6 +93,7 @@ const Banner = () => {
                 buttonText={buttonText}
                 key={title}
                 discount={discount}
+                slug={slug}
               />
             );
           }

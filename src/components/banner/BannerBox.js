@@ -8,7 +8,7 @@ import DiscountCountdown from "../../components/discountCountdown/DiscountCountd
 import laptop2 from "./xx1.jpg";
 import laptop from "./axax.png";
 import "./index.css";
-
+import { useHistory } from "react-router-dom";
 const BannerBox = ({
   title,
   id,
@@ -21,12 +21,14 @@ const BannerBox = ({
   buttonText,
   href,
   discount,
+  slug,
 }) => {
   //const { width } = useWindowDimensions();
   //let imageWidth = width >= 2000 ? 1300 : imgWidth;
   // let imageWidth = 1300;
   console.log("kk" + id);
   console.log("k1k" + codee);
+  const history = useHistory();
 
   let x = id === "1" ? laptop : laptop2;
 
@@ -87,10 +89,13 @@ const BannerBox = ({
         </p> */}
 
         <a
+          onClick={() => history.push(slug)}
+          //product/nike-mens-nike-air-max
           className="  py-2 px-3 sm:py-3 lg:py-2 xl:py-2 sm:px-4 rounded   float-right mr-3
           transition-all duration-300 shadow-lg 2xl:mt-4  w-1/2  
         
          text-center zoommm2
+
             inline-block  text-yellow-300 text-[12px] rtl:sm:text-sm font-semibold"
         >
           {buttonText}
