@@ -11,6 +11,7 @@ const BestSellers = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    console.log("bb1");
     loadAllProducts();
   }, [page]);
 
@@ -22,6 +23,7 @@ const BestSellers = () => {
     setLoading(true);
     // sort, order, limit
     getProducts("sold", "desc", page).then((res) => {
+      console.log("bb" + page, res.data);
       setProducts(res.data);
       setLoading(false);
     });
@@ -31,7 +33,7 @@ const BestSellers = () => {
     <>
       <div className="container">
         {loading ? (
-          <LoadingCard count={3} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
+          <LoadingCard count={4} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (
           <div className="row">
             {products.map((product) => (
@@ -46,8 +48,17 @@ const BestSellers = () => {
       <div className="row">
         <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
+            // showQuickJumper
+            // hideOnSinglePage
+            // simple
+            showTotal={(total, range) =>
+              `${range[0]}-${range[1]} of ${total} items`
+            }
+            showSizeChanger={false}
             current={page}
-            total={Math.round((productsCount / 3) * 10)}
+            //total={Math.round((productsCount / 10) * 10)}
+            total={Math.round(productsCount / 10) * 10}
+            // total={productsCount}
             onChange={(value) => setPage(value)}
           />
         </nav>
