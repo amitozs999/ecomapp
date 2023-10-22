@@ -1,0 +1,107 @@
+
+.imzprod{
+    margin-top: 5px;
+    padding: 5px;
+    height: 120px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  
+    display: block;
+ 
+
+  }
+
+  .product-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    margin: 10px;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-card h2 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.product-card p {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.price {
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.add-to-cart {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #e55a00;
+}
+
+
+.itemsprod{
+ 
+    border-color: black;
+    background-color: chartreuse;
+   
+    
+    // box-shadow: 7px 7px 9px lightblue;
+       border-radius: 2px;
+      // margin-left: auto;
+      // margin-right: auto;
+       //margin-top: 20px;
+       margin-bottom: 10px;
+    //height: max-content;
+      // height: 160px;
+       //width: 120px;
+       width: auto;
+
+    
+       
+
+       .imzprod{
+        background-color: blueviolet;
+          margin-top: 1px;
+        //  padding: 5px;
+         height: 225px;
+         width: 200px;
+        //  margin-left: auto;
+        //  margin-right: auto;
+        // height: auto;
+        // width: auto;
+       
+        border-radius: 12px;
+        //  display: block;
+       
+ 
+       }
+   }
+
+   .txtcategbottom{
+    font-size: large;
+// font-weight: 610;
+//font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//text-align: center;
+text-align: left;
+font-weight: 630;
+font-size: medium;
+  //  margin-left:50px;
+//   margin-left: auto;
+//   margin-right: auto;
+}
