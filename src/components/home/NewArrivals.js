@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getProducts, getProductsCount } from "../../functions/product";
 import ProductCard from "../cards/ProductCard";
+import ProductCardNew from "../cards/ProductCardnew";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
 
@@ -34,26 +35,35 @@ const NewArrivals = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container mt-20">
+        <h2 className="my-4 md:my-8 lg:mt-10 ml-8  text-2xl">New Arrivals</h2>
         {loading ? (
-          <LoadingCard count={3} />
+          <LoadingCard count={4} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (
-          <div className="row">
+          <div className=" bg-slate-400  h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
             {products.map((product) => (
-              <div key={product._id} className="col-md-4">
-                <ProductCard product={product} />
+              <div key={product._id} className="    h-80 w-52">
+                <ProductCardNew product={product} />
               </div>
             ))}
           </div>
         )}
       </div>
 
-      {/* //bottom pagination page numbers */}
       <div className="row">
         <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
+            // showQuickJumper
+            // hideOnSinglePage
+            // simple
+            // showTotal={(total, range) =>
+            //   `${range[0]}-${range[1]} of ${total} items`
+            // }
+            showSizeChanger={false}
             current={page}
-            total={Math.round((productsCount / 3) * 10)}
+            //total={Math.round((productsCount / 10) * 10)}
+            total={Math.round(productsCount / 4) * 10}
+            // total={productsCount}
             onChange={(value) => setPage(value)}
           />
         </nav>

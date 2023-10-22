@@ -23,7 +23,7 @@ const ProductCardNew = ({ product }) => {
   const dispatch = useDispatch();
 
   // destructure
-  const { images, title, description, slug } = product;
+  const { images, title, description, slug, price, color, ratings } = product;
 
   const handleAddToCart = () => {
     // create cart array
@@ -79,9 +79,9 @@ const ProductCardNew = ({ product }) => {
       >
         {/* <Link to={`/product/`}></Link> */}
       </img>
-      <h5 class="txtcategbottom"> </h5>
-      <p className="txtcategbottom">{title}</p>
-      <span class="price">$19.99</span>
+      <h5 class="txtcategbottomm"> {title}</h5>
+      <p className="txtcategbottomm2">₹ {price}</p>
+      {/* <span class="price">$19.99</span> */}
       <button class="add-to-cart">Add to Cart</button>
 
       {/* <h2>Product Name</h2> */}

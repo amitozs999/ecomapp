@@ -45,61 +45,61 @@ const Banner = () => {
     //main banner div
 
     //flex-col vertical banner inside this
+    <>
+      <div className="container">
+        <div className=" flex items-center flex-col w-full my-4 md:my-8 mx-auto xl:max-w-[2100px]">
+          {/* //flex items-center flex-col w-full xl:max-w-[2100px] my-4 md:my-8 mx-auto */}
+          <h2 className="mt-16 mb-12 mx-auto text-2xl"> Discount Offers </h2>
+          {/* <SectionTitle title={"specialSale"} /> */}
 
-    <div className=" flex items-center flex-col w-full my-4 md:my-8 mx-auto xl:max-w-[2100px]">
-      {/* //flex items-center flex-col w-full xl:max-w-[2100px] my-4 md:my-8 mx-auto */}
-      <h2 className="my-4 md:my-8 lg:mt-10 mx-auto text-3xl">
-        {" "}
-        Discount Offers{" "}
-      </h2>
-      {/* <SectionTitle title={"specialSale"} /> */}
+          {/* //contains banner box inside this div */}
 
-      {/* //contains banner box inside this div */}
-
-      {/* //grid-cols-6           6 box verticallly   then again 6 box verticalll   
+          {/* //grid-cols-6           6 box verticallly   then again 6 box verticalll   
     //grid-template-columns: repeat(6, minmax(min-content, max-content));
 
     //lg:grid-cols-12        12 box verticallly   then again 12 box verticalll  when with?1024  */}
 
-      <div className="bg-cyan-700 grid gap-4 grid-cols-6 lg:grid-cols-12 pl-10 pr-10">
-        {/* grid gap-4 grid-cols-6 lg:grid-cols-12 */}
-        {bannerContent.map(
-          ({
-            id,
-            title,
+          <div className="bg-cyan-700 grid gap-4 grid-cols-6 lg:grid-cols-12 pl-9 pr-9 ">
+            {/* grid gap-4 grid-cols-6 lg:grid-cols-12 */}
+            {bannerContent.map(
+              ({
+                id,
+                title,
 
-            description,
-            numberOfDiscountDate,
-            href,
-            imgHeight,
-            codee,
-            imgSrc,
-            imgWidth,
-            buttonText,
-            discount,
-            slug,
-          }) => {
-            return (
-              <BannerBox
-                title={title}
-                id={id}
-                description={description}
-                numberOfDiscountDate={numberOfDiscountDate}
-                href={href}
-                imgSrc={imgSrc}
-                imgWidth={imgWidth}
-                imgHeight={imgHeight}
-                codee={codee}
-                buttonText={buttonText}
-                key={title}
-                discount={discount}
-                slug={slug}
-              />
-            );
-          }
-        )}
+                description,
+                numberOfDiscountDate,
+                href,
+                imgHeight,
+                codee,
+                imgSrc,
+                imgWidth,
+                buttonText,
+                discount,
+                slug,
+              }) => {
+                return (
+                  <BannerBox
+                    title={title}
+                    id={id}
+                    description={description}
+                    numberOfDiscountDate={numberOfDiscountDate}
+                    href={href}
+                    imgSrc={imgSrc}
+                    imgWidth={imgWidth}
+                    imgHeight={imgHeight}
+                    codee={codee}
+                    buttonText={buttonText}
+                    key={title}
+                    discount={discount}
+                    slug={slug}
+                  />
+                );
+              }
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
