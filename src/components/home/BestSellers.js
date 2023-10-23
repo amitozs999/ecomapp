@@ -32,8 +32,8 @@ const BestSellers = () => {
 
   return (
     <>
-      <div className="container mt-32">
-        <h2 className="my-4 md:my-8 lg:mt-10 ml-8  text-2xl">
+      <div className="container ">
+        <h2 className="my-4 md:my-8 lg:mt-10 ml-10 text-2xl">
           Popular Products
         </h2>
         {loading ? (

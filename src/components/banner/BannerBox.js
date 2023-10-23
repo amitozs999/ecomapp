@@ -71,16 +71,16 @@ const BannerBox = ({
         className="flex justify-between items-center sm:block absolute 
         ml-auto  
        right-0
-        top-20
+        top-16
      
         // FLAT 40% OFF 
        
        sm:left-6      sm:w-[55%]  md:w-1/2       lg:w-[55%] xl:w-1/2"
       >
-        <h3 className="float-right mr-6 font-mono text-white text-xl font-bold sm:text-2xl sm:font-normal md:text-3xl ltr:mr-4  sm:pt-8 lg:pt-2 xl:pt-8">
+        <h3 className="float-right mr-6 font-mono text-white text-xl font-bold sm:text-2xl sm:font-normal md:text-2xl ltr:mr-4  sm:pt-8 lg:pt-2 xl:pt-8">
           FLAT {discount}% OFF
         </h3>
-        <h3 className="float-right mr-6 font-serif text-white text-xl font-bold sm:text-2xl sm:font-normal md:text-2xl 2xl:text-3xl ltr:mr-4  sm:pt-8 lg:pt-1 xl:pt-1">
+        <h3 className="float-right mr-6 font-serif text-white text-xl font-bold sm:text-2xl sm:font-normal md:text-xl ltr:mr-4   ">
           Use Code : {codee}
         </h3>
 
@@ -91,12 +91,13 @@ const BannerBox = ({
         <a
           onClick={() => history.push(slug)}
           //product/nike-mens-nike-air-max
-          className="  py-2 px-3 sm:py-3 lg:py-2 xl:py-2 sm:px-4 rounded   float-right mr-3
-          transition-all duration-300 shadow-lg 2xl:mt-4  w-1/2  
+          className="  py-2 px-3 sm:py-3 lg:py-2 xl:py-4 sm:px-4 rounded   float-right mr-3
+          transition-all duration-300 shadow-lg 2xl:mt-2
+          
         
          text-center zoommm2
 
-            inline-block  text-yellow-300 text-[12px] rtl:sm:text-sm font-semibold"
+            inline-block  text-yellow-300 text-[12px] rtl:sm:text-xs   font-semibold"
         >
           {buttonText}
         </a>

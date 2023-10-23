@@ -46,7 +46,7 @@ const Banner = () => {
 
     //flex-col vertical banner inside this
     <>
-      <div className="container">
+      <div className="container -mt-10 mb-20">
         <div className=" flex items-center flex-col w-full my-4 md:my-8 mx-auto xl:max-w-[2100px]">
           {/* //flex items-center flex-col w-full xl:max-w-[2100px] my-4 md:my-8 mx-auto */}
           <h2 className="mt-16 mb-12 mx-auto text-2xl"> Discount Offers </h2>

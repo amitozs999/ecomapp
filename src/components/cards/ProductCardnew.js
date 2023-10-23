@@ -25,6 +25,9 @@ const ProductCardNew = ({ product }) => {
   // destructure
   const { images, title, description, slug, price, color, ratings } = product;
 
+  var xx = title;
+  if (title.length > 21) xx = title.substring(0, 21) + "..";
+
   const handleAddToCart = () => {
     // create cart array
     let cart = [];
@@ -79,7 +82,7 @@ const ProductCardNew = ({ product }) => {
       >
         {/* <Link to={`/product/`}></Link> */}
       </img>
-      <h5 class="txtcategbottomm"> {title}</h5>
+      <h5 class="txtcategbottomm"> {xx}</h5>
       <p className="txtcategbottomm2">₹ {price}</p>
       {/* <span class="price">$19.99</span> */}
       <button class="add-to-cart">Add to Cart</button>

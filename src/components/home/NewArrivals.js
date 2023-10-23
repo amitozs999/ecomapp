@@ -36,7 +36,7 @@ const NewArrivals = () => {
   return (
     <>
       <div className="container mt-20">
-        <h2 className="my-4 md:my-8 lg:mt-10 ml-8  text-2xl">New Arrivals</h2>
+        <h2 className="my-4 md:my-8 lg:mt-10 ml-10  text-2xl">New Arrivals</h2>
         {loading ? (
           <LoadingCard count={4} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (
