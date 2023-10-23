@@ -13,7 +13,10 @@ import {
   DownSquareOutlined,
   StarOutlined,
 } from "@ant-design/icons";
+import "../../src/index.css";
 import Star from "../components/forms/Star";
+import ProductCardNew from "../../src/components/cards/ProductCardnew";
+import ProductCardNewHoriz from "../components/cards/ProductCardNewHoriz";
 
 const { SubMenu, ItemGroup } = Menu;
 
@@ -335,6 +338,10 @@ const Shop = () => {
 
   return (
     <div className="container-fluid">
+      {/* 1 row me 2 col      <div className="row">   
+  col1 side bar        <div className="col-md-3  >      col2 all products      <div className="col-md-9"> 
+   */}
+
       <div className="row">
         <div className="col-md-3 pt-2">
           <h4>Search/Filter</h4>
@@ -448,6 +455,7 @@ const Shop = () => {
         </div>
 
         {/* // show all prodcuts store in setstate */}
+
         <div className="col-md-9 pt-2">
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
@@ -457,10 +465,23 @@ const Shop = () => {
 
           {products.length < 1 && <p>No products found</p>}
 
-          <div className="row pb-5">
+          {/* <div className="row pb-5 bg-gray-500 ">
             {products.map((p) => (
-              <div key={p._id} className="col-md-4 mt-3">
-                <ProductCard product={p} />
+              // <div key={p._id} className="col-md-2 mt-3 ">
+              <div key={p._id} className="bg-red-300 mb-40 mt-3">
+                <ProductCardNew product={p} />
+              </div>
+            ))}
+          </div> */}
+
+          <div className="col bg-gray-500 py-3 ">
+            {products.map((p) => (
+              // <div key={p._id} className="col-md-2 mt-3 ">
+              <div
+                key={p._id}
+                className="bg-red-300  mb-5 mt-3 flex flex-col vvb"
+              >
+                <ProductCardNewHoriz product={p} />
               </div>
             ))}
           </div>

@@ -54,3 +54,9 @@ code {
   background-color: blue;
   /* //margin-left: 100px; */
 }
+
+.vvb{
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
