@@ -46,27 +46,27 @@ const Header = () => {
         );
         // console.log(res.data.products.length + "lll");
         // setProducts(res.data.products);
-        //setTotal(res.data.products.length);
+        setTotal(res.data.products.length);
 
         let cart = [];
         // let cart = res.data.products;
         // console.log(cart[0].product.title + "lllp");
 
         if (res.data) {
-          // let x = res.data.products;
-          // x.forEach((prod) => {
-          //   // if (item.name === itemToCheck.name) {
-          //   //   addCountToItem({ ...itemToCheck, count: itemToCheck.count + 1 });
-          //   // } else if (item.name !== itemToCheck.name) {
-          //   //   addToCart({ ...item, count: 1 });
-          //   // }
+          let x = res.data.products;
+          x.forEach((prod) => {
+            // if (item.name === itemToCheck.name) {
+            //   addCountToItem({ ...itemToCheck, count: itemToCheck.count + 1 });
+            // } else if (item.name !== itemToCheck.name) {
+            //   addToCart({ ...item, count: 1 });
+            // }
 
-          //   console.log(prod.data + "mm");
-          //   cart.push({
-          //     ...prod, //prod
-          //     count: 1, //with count variable 1
-          //   });
-          // });
+            console.log("vv", prod);
+            cart.push({
+              ...prod, //prod
+              count: 1, //with count variable 1
+            });
+          });
 
           dispatch({
             type: "ADD_TO_CART",
@@ -85,6 +85,7 @@ const Header = () => {
       type: "LOGOUT",
       payload: null,
     });
+    setTotal(0);
 
     dispatch({
       type: "ADD_TO_CART",
@@ -205,8 +206,8 @@ const Header = () => {
                 Cart
                 <Badge
                   className="badge-pad"
-                  // count={total}
-                  count={cart.length}
+                  count={total}
+                  // count={cart.products.length}
                   offset={[9, 0]}
                 ></Badge>
               </Link>

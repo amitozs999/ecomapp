@@ -9,6 +9,8 @@ import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useHistory } from "react-router-dom";
+
+import { userCart2 } from "../../functions/user";
 import "./index.scss";
 const { Meta } = Card;
 //for non admins only can view it noedit/update
@@ -27,6 +29,18 @@ const ProductCardNew = ({ product }) => {
 
   var xx = title;
   if (title.length > 21) xx = title.substring(0, 21) + "..";
+
+  const handleAddToCart2 = () => {
+    console.log("ggprod", product);
+    userCart2(product, user.token)
+      .then((res) => {
+        console.log("CART POST RES", res);
+        // console.log("POST RES", uniquecart);
+        if (res.data.ok) console.log("CART POST RES success");
+        //history.push("/checkout");
+      })
+      .catch((err) => console.log("cart save err", err));
+  };
 
   const handleAddToCart = () => {
     // create cart array
@@ -87,7 +101,7 @@ const ProductCardNew = ({ product }) => {
       <h5 class="txtcategbottomm"> {xx}</h5>
       <p className="txtcategbottomm2">₹ {price}</p>
       {/* <span class="price">$19.99</span> */}
-      <button class="add-to-cart" onClick={handleAddToCart}>
+      <button class="add-to-cart" onClick={handleAddToCart2}>
         Add to Cart
       </button>
 
