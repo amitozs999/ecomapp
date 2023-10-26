@@ -111,15 +111,18 @@ const ProductCardInCheckout = ({ p }) => {
         {/* //image */}
         <td>
           <div style={{ width: "100px", height: "auto" }}>
-            {p.images.length ? (
-              <ModalImage small={p.images[0].url} large={p.images[0].url} />
+            {p.product.images.length ? (
+              <ModalImage
+                small={p.product.images[0].url}
+                large={p.product.images[0].url}
+              />
             ) : (
               <ModalImage small={asas} large={asas} />
             )}
           </div>
         </td>
 
-        <td>{p.title}</td>
+        <td>{p.product.title}</td>
 
         <td>${p.price}</td>
 

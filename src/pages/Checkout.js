@@ -10,6 +10,7 @@ import {
 } from "../functions/user";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { configConsumerProps } from "antd/lib/config-provider";
 
 const Checkout = ({ history }) => {
   const [products, setProducts] = useState([]);
@@ -29,7 +30,8 @@ const Checkout = ({ history }) => {
 
   useEffect(() => {
     getUserCart(user.token).then((res) => {
-      console.log("user cart res", JSON.stringify(res.data, null, 4));
+      console.log("user cart res yy", JSON.stringify(res.data, null, 4));
+      //console.log(res.data);
       setProducts(res.data.products);
       setTotal(res.data.cartTotal);
     });

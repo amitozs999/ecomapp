@@ -66,7 +66,8 @@ const Login = ({ history }) => {
               _id: res.data._id,
             },
           });
-          roleBasedRedirect(res); //now redirect based on role
+          //roleBasedRedirect(res); //now redirect based on role
+          history.push("/");
         })
         .catch((err) => console.log(err));
 
@@ -107,7 +108,9 @@ const Login = ({ history }) => {
                 _id: res.data._id,
               },
             });
-            roleBasedRedirect(res); //now redirect based on role
+            // roleBasedRedirect(res); //now redirect based on role
+
+            history.push("/");
           })
           .catch((err) => console.log(err));
 

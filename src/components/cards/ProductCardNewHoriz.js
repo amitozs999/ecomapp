@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Descriptions, Tooltip } from "antd";
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import asas from "../../images/asas.jpg";
@@ -8,8 +8,15 @@ import { showAverage } from "../../functions/rating";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 
+import { addToWishlist } from "../../functions/user";
+import { getWishlist, removeWishlist } from "../../functions/user";
+
 import { useHistory } from "react-router-dom";
 import "./index.scss";
+
+import { HeartFilled } from "@ant-design/icons";
+import { HeartOutlined } from "@ant-design/icons";
+import { toast } from "react-toastify";
 const { Meta } = Card;
 //for non admins only can view it noedit/update
 
@@ -18,9 +25,40 @@ const ProductCardNewHoriz = ({ product }) => {
   const history = useHistory();
   const [tooltip, setTooltip] = useState("Click to add");
 
+  const [iconColor, setIconColor] = useState(false);
+
+  useEffect(() => {}, [iconColor]);
   // redux
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
+
+  const [wishlist, setWishlist] = useState([]);
+
+  useEffect(() => {
+    loadWishlist();
+  }, []);
+
+  const loadWishlist = () =>
+    getWishlist(user.token).then((res) => {
+      console.log("gg");
+      console.log(res.data.wishlist);
+      setWishlist(res.data.wishlist);
+    });
+
+  const handleRemove = (productId) =>
+    removeWishlist(productId, user.token).then((res) => {
+      toast.success("Removed from wishlist");
+      loadWishlist();
+    });
+
+  const handleAddToWishlist = (productId) => {
+    //  e.preventDefault();
+    addToWishlist(productId, user.token).then((res) => {
+      console.log("ADDED TO WISHLIST", res.data);
+      toast.success("Added to wishlist");
+      // history.push("/user/wishlist");
+    });
+  };
 
   // destructure
   const { images, title, description, slug, price, color, ratings } = product;
@@ -105,7 +143,26 @@ const ProductCardNewHoriz = ({ product }) => {
 
           {/* <div className=" w-full bg-neutral-400 h-32"></div> */}
 
-          <div className="w-28 bg-green-400 h-12 ml-5 mr-4  "> bibh</div>
+          <div className="w-28 bg-green-400 h-12 ml-5 mr-4  ">
+            {iconColor ? ( //show if this prod has rating avg wali
+              <HeartFilled
+                style={{ color: "red", fontSize: "25px" }}
+                onClick={() => {
+                  setIconColor(false);
+                  handleRemove(product._id);
+                }}
+              />
+            ) : (
+              <HeartOutlined
+                style={{ color: "gray", fontSize: "25px" }}
+                onClick={() => {
+                  setIconColor(true);
+                  addToWishlist(product._id);
+                  //  handleRemove(product._id);
+                }}
+              />
+            )}
+          </div>
 
           {/* </div> */}
         </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import { Card, Tabs, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 import { HeartOutlined, ShoppingCartOutlined } from "@ant-design/icons";
@@ -18,6 +19,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import { getUserCart, emptyUserCart } from "../../functions/user";
+import { userCart } from "../../functions/user";
+
+import { userCart2 } from "../../functions/user";
 
 const { TabPane } = Tabs;
 
@@ -31,19 +36,47 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
-
+  const [productsx, setProducts] = useState([]);
   let history = useHistory();
 
   const { title, images, description, _id } = product;
 
+  useEffect(() => {
+    if (user && user.token) {
+      getUserCart(user.token).then((res) => {
+        console.log("user cart res", JSON.stringify(res.data, null, 4));
+        //setProducts(res.data.products);
+        // setTotal(res.data.cartTotal);
+      });
+
+      console.log(productsx);
+    }
+  }, []);
+
+  const handleAddToCart2 = () => {
+    console.log("ggprod", product);
+    userCart2(product, user.token)
+      .then((res) => {
+        console.log("CART POST RES", res);
+        // console.log("POST RES", uniquecart);
+        if (res.data.ok) console.log("CART POST RES success");
+        //history.push("/checkout");
+      })
+      .catch((err) => console.log("cart save err", err));
+  };
+
   const handleAddToCart = () => {
     // create cart array
-    let cart = [];
+    //let cart = [];
 
     if (typeof window !== "undefined") {
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
-      }
+      // if (localStorage.getItem("cart")) {
+      //   cart = JSON.parse(localStorage.getItem("cart"));
+      // }
+      console.log("llmf", product);
+
+      // let x={};
+      // x.
 
       // push new product to cart
       cart.push({
@@ -55,10 +88,20 @@ const SingleProduct = ({ product, onStarClick, star }) => {
       let uniquecart = _.uniqWith(cart, _.isEqual);
 
       // console.log('unique', unique)
-      localStorage.setItem("cart", JSON.stringify(uniquecart));
+      // localStorage.setItem("cart", JSON.stringify(uniquecart));
       setTooltip("Added");
 
       // add to reeux state
+
+      userCart(uniquecart, user.token)
+        .then((res) => {
+          console.log("CART POST RES", res);
+          console.log("POST RES", uniquecart);
+          if (res.data.ok) console.log("CART POST RES success");
+          //history.push("/checkout");
+        })
+        .catch((err) => console.log("cart save err", err));
+
       dispatch({
         type: "ADD_TO_CART",
         payload: uniquecart,
@@ -114,7 +157,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         <Card
           actions={[
             <Tooltip title={tooltip}>
-              <a onClick={handleAddToCart}>
+              <a onClick={handleAddToCart2}>
                 <ShoppingCartOutlined className="text-danger" /> <br /> Add to
                 Cart
               </a>

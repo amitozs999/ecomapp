@@ -8,6 +8,8 @@ const Cart = ({ history }) => {
   //checking if anything present in cart redux state
   const { cart, user } = useSelector((state) => ({ ...state }));
 
+  console.log("crt", cart);
+
   const dispatch = useDispatch();
 
   const getTotal = () => {
@@ -88,9 +90,9 @@ const Cart = ({ history }) => {
           <p>Products</p>
           {cart.map((c, i) => (
             <div key={i}>
-              <p>
-                {c.title} x {c.count} = ${c.price * c.count}
-              </p>
+              {/* <p>
+                {c.product.title} x {c.count} = ${c.price * c.count}
+              </p> */}
             </div>
           ))}
           <hr />
