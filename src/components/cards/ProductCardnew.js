@@ -35,8 +35,15 @@ const ProductCardNew = ({ product }) => {
     userCart2(product, user.token)
       .then((res) => {
         console.log("CART POST RES", res);
+        localStorage.setItem("cart", JSON.stringify(res));
+
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: res,
+        });
+
         // console.log("POST RES", uniquecart);
-        if (res.data.ok) console.log("CART POST RES success");
+        // if (res.data.ok) console.log("CART POST RES success");
         //history.push("/checkout");
       })
       .catch((err) => console.log("cart save err", err));

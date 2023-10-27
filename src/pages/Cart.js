@@ -40,13 +40,15 @@ const Cart = ({ history }) => {
 
   const saveOrderToDb = () => {
     // console.log("cart", JSON.stringify(cart, null, 4));
+    console.log("CART page ke baad", cart);
+    // userCart(cart, user.token)
+    //   .then((res) => {
+    //     console.log("CART page ke baad", res);
+    //     if (res.data.ok) history.push("/checkout");
+    //   })
+    //   .catch((err) => console.log("cart save err", err));
 
-    userCart(cart, user.token)
-      .then((res) => {
-        console.log("CART POST RES", res);
-        if (res.data.ok) history.push("/checkout");
-      })
-      .catch((err) => console.log("cart save err", err));
+    history.push("/checkout");
   };
 
   const saveCashOrderToDb = () => {
@@ -55,12 +57,14 @@ const Cart = ({ history }) => {
       type: "COD",
       payload: true,
     });
-    userCart(cart, user.token)
-      .then((res) => {
-        console.log("CART POST RES", res);
-        if (res.data.ok) history.push("/checkout");
-      })
-      .catch((err) => console.log("cart save err", err));
+    // userCart(cart, user.token)
+    //   .then((res) => {
+    //     console.log("CART POST RES", res);
+    //     if (res.data.ok) history.push("/checkout");
+    //   })
+    //   .catch((err) => console.log("cart save err", err));
+
+    history.push("/checkout");
   };
 
   const showCartItems3 = () => {
@@ -116,9 +120,13 @@ const Cart = ({ history }) => {
     <div className="container-fluid pt-2">
       <div className="row">
         <div className="col-md-8">
-          <h4>Cart / {cart.length} Product</h4>
+          {cart.data == undefined || !cart.data.products ? (
+            <p>Cart / 0 Product</p>
+          ) : (
+            <h4> Cart / {cart.data.products.length} Product</h4>
+          )}
 
-          {!cart.data.products ? (
+          {cart.data == undefined || !cart.data.products ? (
             <p>
               No products in cart. <Link to="/shop">Continue Shopping.</Link>
             </p>
@@ -134,7 +142,11 @@ const Cart = ({ history }) => {
           <hr />
           <p>Products</p>
 
-          {!cart.data.products ? <p>No products in cart.</p> : showCartItems2()}
+          {cart.data == undefined || !cart.data.products ? (
+            <p>No products in cart.</p>
+          ) : (
+            showCartItems2()
+          )}
 
           <hr />
           {/* Total: <b>${getTotal()}</b> */}
@@ -144,15 +156,17 @@ const Cart = ({ history }) => {
               <button
                 onClick={saveOrderToDb}
                 className="btn btn-sm btn-primary mt-2"
-                disabled={!cart.length}
+                //   disabled={!cart.data.products}
+                disabled={cart.data == undefined}
               >
                 Proceed to Checkout
               </button>
+
               <br />
               <button
                 onClick={saveCashOrderToDb}
                 className="btn btn-sm btn-warning mt-2"
-                disabled={!cart.length}
+                disabled={cart.data == undefined}
               >
                 Pay Cash on Delivery
               </button>

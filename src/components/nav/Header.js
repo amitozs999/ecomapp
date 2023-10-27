@@ -77,6 +77,8 @@ const Header = () => {
             type: "ADD_TO_CART",
             payload: res,
           });
+
+          localStorage.setItem("cart", JSON.stringify(res));
         }
       });
 
@@ -96,6 +98,8 @@ const Header = () => {
       type: "ADD_TO_CART",
       payload: [],
     });
+
+    localStorage.removeItem("cart");
     history.push("/login");
   };
 
@@ -211,8 +215,8 @@ const Header = () => {
                 Cart
                 <Badge
                   className="badge-pad"
-                  count={total}
-                  // count={cart.products.length}
+                  // count={total}
+                  count={cart.data.products.length}
                   offset={[9, 0]}
                 ></Badge>
               </Link>

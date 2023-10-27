@@ -58,9 +58,12 @@ const SingleProduct = ({ product, onStarClick, star }) => {
     userCart2(product, user.token)
       .then((res) => {
         console.log("CART POST RES", res);
-        // console.log("POST RES", uniquecart);
-        if (res.data.ok) console.log("CART POST RES success");
-        //history.push("/checkout");
+        localStorage.setItem("cart", JSON.stringify(res));
+
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: res,
+        });
       })
       .catch((err) => console.log("cart save err", err));
   };
