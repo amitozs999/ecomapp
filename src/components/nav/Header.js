@@ -38,17 +38,22 @@ const Header = () => {
   let history = useHistory();
 
   useEffect(() => {
+    console.log("crat in head2", cart);
+
     if (user && user.token) {
       getUserCart(user.token).then((res) => {
+        // console.log("crat in head api 1", cart);
         console.log(
           "get user cart res from back",
           JSON.stringify(res.data, null, 4)
         );
         // console.log(res.data.products.length + "lll");
         // setProducts(res.data.products);
-        setTotal(res.data.products.length);
+        if (res.data) {
+          setTotal(res.data.products.length);
+        }
 
-        let cart = [];
+        let cart1 = [];
         // let cart = res.data.products;
         // console.log(cart[0].product.title + "lllp");
 
@@ -62,9 +67,9 @@ const Header = () => {
             // }
 
             console.log("vv", prod);
-            cart.push({
+            cart1.push({
               ...prod, //prod
-              count: 1, //with count variable 1
+              count: res.data.products.count, //with count variable 1
             });
           });
 

@@ -126,7 +126,7 @@ const ProductCardInCheckout = ({ p }) => {
 
         <td>${p.price}</td>
 
-        <td>{p.brand}</td>
+        <td>{p.product.brand}</td>
         <td>{p.color}</td>
 
         {/* //color dropdown */}
@@ -142,7 +142,7 @@ const ProductCardInCheckout = ({ p }) => {
         </td>
 
         <td className="text-center">
-          {p.shipping === "Yes" ? (
+          {p.product.shipping === "Yes" ? (
             <CheckCircleOutlined className="text-success" />
           ) : (
             <CloseCircleOutlined className="text-danger" />

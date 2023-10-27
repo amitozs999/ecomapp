@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
@@ -6,9 +8,27 @@ import { userCart } from "../functions/user";
 
 const Cart = ({ history }) => {
   //checking if anything present in cart redux state
-  const { cart, user } = useSelector((state) => ({ ...state }));
+  const { user, cart } = useSelector((state) => ({ ...state }));
+  const [total, setTotal] = useState(0);
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // if (user && user.token) {
+    //   setTotal(1);
+    //   // console.log(productsx);
+    // }
+    // if (!cart.length) {
+    //   console.log("prods after ref no len");
+    // } else {
+    //   setProducts(cart.data.products);
+    //   console.log("prods after ref yes len");
+    // }
+    // console.log("prods after ref", products);
+  }, [cart]);
 
   console.log("crt", cart);
+  console.log("usr", user);
 
   const dispatch = useDispatch();
 
@@ -43,6 +63,31 @@ const Cart = ({ history }) => {
       .catch((err) => console.log("cart save err", err));
   };
 
+  const showCartItems3 = () => {
+    //  console.log("ss", cart.data.products);
+    //if (products) {
+    //cart.data.products;
+
+    cart.data.products.map((prod) => (
+      <div>
+        <p>
+          htn
+          {/* {prod.title} x {prod.count} = ${prod.price * prod.count} */}
+        </p>
+      </div>
+    ));
+    //  }
+  };
+
+  const showCartItems2 = () =>
+    cart.data.products.map((prod) => (
+      <div>
+        <p>
+          {prod.title} x {prod.count} = ${prod.price * prod.count}
+        </p>
+      </div>
+    ));
+
   //creating a table to show cart items
   const showCartItems = () => (
     <table className="table table-bordered">
@@ -61,7 +106,7 @@ const Cart = ({ history }) => {
 
       {/* //each row me har cart ke details */}
 
-      {cart.map((p) => (
+      {cart.data.products.map((p) => (
         <ProductCardInCheckout key={p._id} p={p} />
       ))}
     </table>
@@ -73,7 +118,7 @@ const Cart = ({ history }) => {
         <div className="col-md-8">
           <h4>Cart / {cart.length} Product</h4>
 
-          {!cart.length ? (
+          {!cart.data.products ? (
             <p>
               No products in cart. <Link to="/shop">Continue Shopping.</Link>
             </p>
@@ -88,15 +133,11 @@ const Cart = ({ history }) => {
           <h4>Order Summary</h4>
           <hr />
           <p>Products</p>
-          {cart.map((c, i) => (
-            <div key={i}>
-              {/* <p>
-                {c.product.title} x {c.count} = ${c.price * c.count}
-              </p> */}
-            </div>
-          ))}
+
+          {!cart.data.products ? <p>No products in cart.</p> : showCartItems2()}
+
           <hr />
-          Total: <b>${getTotal()}</b>
+          {/* Total: <b>${getTotal()}</b> */}
           <hr />
           {user ? (
             <>
