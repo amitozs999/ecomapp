@@ -95,23 +95,31 @@ const ProductCardInCheckout = (props) => {
   //remove
   const handleRemove = () => {
     // console.log(p._id, "to remove");
-    let cart = [];
+
+    props.changecartset();
+    let cart1 = [];
 
     if (typeof window !== "undefined") {
       if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
+        cart1 = JSON.parse(localStorage.getItem("cart"));
       }
       // [1,2,3,4,5]
-      cart.map((product, i) => {
+      cart1.data.products.map((product, i) => {
         if (product._id === p._id) {
-          cart.splice(i, 1); //will remove that prod obj from cart
+          cart1.data.products.splice(i, 1); //will remove that prod obj from cart
         }
       });
+      cart1.data.cartTotal = cart1.data.products.reduce(
+        (currentValue, nextValue) => {
+          return currentValue + nextValue.count * nextValue.price;
+        },
+        0
+      );
 
-      localStorage.setItem("cart", JSON.stringify(cart));
+      localStorage.setItem("cart", JSON.stringify(cart1));
       dispatch({
         type: "ADD_TO_CART",
-        payload: cart,
+        payload: cart1,
       });
     }
   };

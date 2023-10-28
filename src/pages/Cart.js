@@ -104,19 +104,19 @@ const Cart = ({ history }) => {
 
   const saveCashOrderToDb = () => {
     // console.log("cart", JSON.stringify(cart, null, 4));
-    let cartt = [];
-    cartt = JSON.parse(localStorage.getItem("cart"));
-    console.log("CART page ke baad", cartt);
-    userCart2(cartt, user.token)
-      .then((res) => {
-        // localStorage.setItem("cart", JSON.stringify(res));
-        // dispatch({
-        //   type: "ADD_TO_CART",
-        //   payload: res,
-        // });
-        //  if (res.data.ok) history.push("/checkout");
-      })
-      .catch((err) => console.log("cart save err", err));
+    // let cartt = [];
+    // cartt = JSON.parse(localStorage.getItem("cart"));
+    // console.log("CART page ke baad", cartt);
+    // userCart2(cartt, user.token)
+    //   .then((res) => {
+    //     // localStorage.setItem("cart", JSON.stringify(res));
+    //     // dispatch({
+    //     //   type: "ADD_TO_CART",
+    //     //   payload: res,
+    //     // });
+    //     //  if (res.data.ok) history.push("/checkout");
+    //   })
+    //   .catch((err) => console.log("cart save err", err));
     dispatch({
       type: "COD",
       payload: true,
@@ -127,7 +127,7 @@ const Cart = ({ history }) => {
     //     if (res.data.ok) history.push("/checkout");
     //   })
     //   .catch((err) => console.log("cart save err", err));
-    setIsFormIncomplete(false);
+    // setIsFormIncomplete(false);
     history.push("/checkout");
   };
 
