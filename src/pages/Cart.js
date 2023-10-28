@@ -5,13 +5,50 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
 import { userCart } from "../functions/user";
+import { Prompt } from "react-router-dom";
+
+import { userCart2 } from "../functions/user";
+
+import { withRouter } from "react-router-dom";
+import { userCart3 } from "../functions/user";
 
 const Cart = ({ history }) => {
   //checking if anything present in cart redux state
   const { user, cart } = useSelector((state) => ({ ...state }));
   const [total, setTotal] = useState(0);
 
+  const [isFormIncomplete, setIsFormIncomplete] = useState(true);
+
   const [products, setProducts] = useState([]);
+
+  useEffect(() =>
+    history.listen(() => {
+      console.log("page changed22", cart);
+
+      userCart3(cart, user.token)
+        .then((res) => {
+          // console.log("CART POST RES", res);
+          // localStorage.setItem("cart", JSON.stringify(res));
+          // dispatch({
+          //   type: "ADD_TO_CART",
+          //   payload: res,
+          // });
+        })
+        .catch((err) => console.log("cart save err", err));
+
+      // userCart2(product, user.token)
+      // .then((res) => {
+      //   console.log("CART POST RES", res);
+      //   localStorage.setItem("cart", JSON.stringify(res));
+
+      //   dispatch({
+      //     type: "ADD_TO_CART",
+      //     payload: res,
+      //   });
+      // })
+      // .catch((err) => console.log("cart save err", err));
+    })
+  );
 
   useEffect(() => {
     // if (user && user.token) {
@@ -33,26 +70,45 @@ const Cart = ({ history }) => {
   const dispatch = useDispatch();
 
   const getTotal = () => {
-    return cart.reduce((currentValue, nextValue) => {
+    return cart.data.products.reduce((currentValue, nextValue) => {
       return currentValue + nextValue.count * nextValue.price;
     }, 0);
   };
 
   const saveOrderToDb = () => {
     // console.log("cart", JSON.stringify(cart, null, 4));
-    console.log("CART page ke baad", cart);
-    // userCart(cart, user.token)
+    // let cartt = [];
+    // cartt = JSON.parse(localStorage.getItem("cart"));
+    // console.log("CART page ke baad", cartt);
+    // userCart2(cartt, user.token)
     //   .then((res) => {
-    //     console.log("CART page ke baad", res);
-    //     if (res.data.ok) history.push("/checkout");
+    //     // localStorage.setItem("cart", JSON.stringify(res));
+    //     // dispatch({
+    //     //   type: "ADD_TO_CART",
+    //     //   payload: res,
+    //     // });
+    //     //  if (res.data.ok) history.push("/checkout");
     //   })
     //   .catch((err) => console.log("cart save err", err));
-
+    setIsFormIncomplete(false);
     history.push("/checkout");
   };
 
   const saveCashOrderToDb = () => {
     // console.log("cart", JSON.stringify(cart, null, 4));
+    let cartt = [];
+    cartt = JSON.parse(localStorage.getItem("cart"));
+    console.log("CART page ke baad", cartt);
+    userCart2(cartt, user.token)
+      .then((res) => {
+        // localStorage.setItem("cart", JSON.stringify(res));
+        // dispatch({
+        //   type: "ADD_TO_CART",
+        //   payload: res,
+        // });
+        //  if (res.data.ok) history.push("/checkout");
+      })
+      .catch((err) => console.log("cart save err", err));
     dispatch({
       type: "COD",
       payload: true,
@@ -63,7 +119,7 @@ const Cart = ({ history }) => {
     //     if (res.data.ok) history.push("/checkout");
     //   })
     //   .catch((err) => console.log("cart save err", err));
-
+    setIsFormIncomplete(false);
     history.push("/checkout");
   };
 
@@ -141,15 +197,18 @@ const Cart = ({ history }) => {
           <h4>Order Summary</h4>
           <hr />
           <p>Products</p>
-
           {cart.data == undefined || !cart.data.products ? (
             <p>No products in cart.</p>
           ) : (
             showCartItems2()
           )}
-
           <hr />
-          {/* Total: <b>${getTotal()}</b> */}
+          {cart.data == undefined || !cart.data.products ? (
+            <b> Total: $0</b>
+          ) : (
+            <b> Total ${getTotal()}</b>
+          )}
+
           <hr />
           {user ? (
             <>
@@ -185,6 +244,12 @@ const Cart = ({ history }) => {
           )}
         </div>
       </div>
+      {/* {user && (
+        <Prompt
+          when={isFormIncomplete}
+          message="Are you sure you want to leave without Checkout?"
+        />
+      )} */}
     </div>
   );
 };

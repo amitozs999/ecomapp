@@ -11,10 +11,12 @@ import {
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { configConsumerProps } from "antd/lib/config-provider";
+//import cart from "../../../server/models/cart";
 
 const Checkout = ({ history }) => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
+  //const { user, cart } = useSelector((state) => ({ ...state }));
 
   const [address, setAddress] = useState("");
   const [addressSaved, setAddressSaved] = useState(false);
@@ -25,16 +27,16 @@ const Checkout = ({ history }) => {
   const [discountError, setDiscountError] = useState("");
 
   const dispatch = useDispatch();
-  const { user, COD } = useSelector((state) => ({ ...state }));
+  const { user, COD, cart } = useSelector((state) => ({ ...state }));
   const couponTrueOrFalse = useSelector((state) => state.coupon);
 
   useEffect(() => {
-    getUserCart(user.token).then((res) => {
-      console.log("user cart res yy", JSON.stringify(res.data, null, 4));
-      //console.log(res.data);
-      setProducts(res.data.products);
-      setTotal(res.data.cartTotal);
-    });
+    // getUserCart(user.token).then((res) => {
+    //   console.log("user cart res yy", JSON.stringify(res.data, null, 4));
+    //   //console.log(res.data);
+    setProducts(cart.data.products);
+    setTotal(cart.data.cartTotal);
+    // });
   }, []);
 
   //send coupon to backend and verify then applied

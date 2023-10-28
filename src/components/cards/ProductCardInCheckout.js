@@ -54,26 +54,37 @@ const ProductCardInCheckout = ({ p }) => {
       return;
     }
 
-    let cart = [];
+    let cart1 = [];
 
     if (typeof window !== "undefined") {
       if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
+        cart1 = JSON.parse(localStorage.getItem("cart"));
       }
 
-      cart.map((product, i) => {
+      cart1.data.products.map((product, i) => {
         //update count in local storage
         if (product._id == p._id) {
-          cart[i].count = count;
+          cart1.data.products[i].count = count;
         }
       });
 
-      localStorage.setItem("cart", JSON.stringify(cart)); //update cart in local storage
+      // var x=cart1.data.products.reduce((currentValue, nextValue) => {
+      //   return currentValue + nextValue.count * nextValue.price;
+      // }, 0);
+
+      cart1.data.cartTotal = cart1.data.products.reduce(
+        (currentValue, nextValue) => {
+          return currentValue + nextValue.count * nextValue.price;
+        },
+        0
+      );
+
+      localStorage.setItem("cart", JSON.stringify(cart1)); //update cart in local storage
 
       //update cart in redux state
       dispatch({
         type: "ADD_TO_CART",
-        payload: cart,
+        payload: cart1,
       });
     }
   };

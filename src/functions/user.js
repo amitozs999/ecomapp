@@ -11,6 +11,17 @@ export const userCart = async (cart, authtoken) =>
     }
   );
 
+export const userCart3 = async (cart, authtoken) =>
+  await axios.post(
+    `${process.env.REACT_APP_API}/user/cart3`,
+    { cart },
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+
 export const userCart2 = async (product, authtoken) =>
   await axios.post(
     `${process.env.REACT_APP_API}/user/cart2`,

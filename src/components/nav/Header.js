@@ -40,49 +40,53 @@ const Header = () => {
   useEffect(() => {
     console.log("crat in head2", cart);
 
-    if (user && user.token) {
-      getUserCart(user.token).then((res) => {
-        // console.log("crat in head api 1", cart);
-        console.log(
-          "get user cart res from back",
-          JSON.stringify(res.data, null, 4)
-        );
-        // console.log(res.data.products.length + "lll");
-        // setProducts(res.data.products);
-        if (res.data) {
-          setTotal(res.data.products.length);
-        }
+    if (typeof window !== "undefined") {
+      if (!localStorage.getItem("cart")) {
+        if (user && user.token) {
+          getUserCart(user.token).then((res) => {
+            // console.log("crat in head api 1", cart);
+            console.log(
+              "get user cart res from back",
+              JSON.stringify(res.data, null, 4)
+            );
+            // console.log(res.data.products.length + "lll");
+            // setProducts(res.data.products);
+            if (res.data) {
+              setTotal(res.data.products.length);
+            }
 
-        let cart1 = [];
-        // let cart = res.data.products;
-        // console.log(cart[0].product.title + "lllp");
+            let cart1 = [];
+            // let cart = res.data.products;
+            // console.log(cart[0].product.title + "lllp");
 
-        if (res.data) {
-          let x = res.data.products;
-          x.forEach((prod) => {
-            // if (item.name === itemToCheck.name) {
-            //   addCountToItem({ ...itemToCheck, count: itemToCheck.count + 1 });
-            // } else if (item.name !== itemToCheck.name) {
-            //   addToCart({ ...item, count: 1 });
-            // }
+            if (res.data) {
+              let x = res.data.products;
+              x.forEach((prod) => {
+                // if (item.name === itemToCheck.name) {
+                //   addCountToItem({ ...itemToCheck, count: itemToCheck.count + 1 });
+                // } else if (item.name !== itemToCheck.name) {
+                //   addToCart({ ...item, count: 1 });
+                // }
 
-            console.log("vv", prod);
-            cart1.push({
-              ...prod, //prod
-              count: res.data.products.count, //with count variable 1
-            });
+                console.log("vv", prod);
+                cart1.push({
+                  ...prod, //prod
+                  count: res.data.products.count, //with count variable 1
+                });
+              });
+
+              dispatch({
+                type: "ADD_TO_CART",
+                payload: res,
+              });
+
+              localStorage.setItem("cart", JSON.stringify(res));
+            }
           });
 
-          dispatch({
-            type: "ADD_TO_CART",
-            payload: res,
-          });
-
-          localStorage.setItem("cart", JSON.stringify(res));
+          // console.log(productsx);
         }
-      });
-
-      // console.log(productsx);
+      }
     }
   }, [user]);
 
@@ -216,7 +220,12 @@ const Header = () => {
                 <Badge
                   className="badge-pad"
                   // count={total}
-                  count={cart.data.products.length}
+                  //count={cart.data.products.length}
+                  count={
+                    cart.data == undefined || !cart.data.products
+                      ? ""
+                      : cart.data.products.length
+                  }
                   offset={[9, 0]}
                 ></Badge>
               </Link>
