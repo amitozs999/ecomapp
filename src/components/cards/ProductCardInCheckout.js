@@ -12,7 +12,9 @@ import {
 //each prod cart row
 //image(clickable) - titile- brand -price - colors(changable) - count (editable)- shiping  -remove
 
-const ProductCardInCheckout = ({ p }) => {
+const ProductCardInCheckout = (props) => {
+  const p = props.p;
+
   const colors = ["Black", "Brown", "Silver", "White", "Blue"];
   let dispatch = useDispatch();
 
@@ -46,6 +48,7 @@ const ProductCardInCheckout = ({ p }) => {
 
   //quantity
   const handleQuantityChange = (e) => {
+    props.changecartset();
     // console.log("available quantity", p.quantity);
     let count = e.target.value < 1 ? 1 : e.target.value;
 

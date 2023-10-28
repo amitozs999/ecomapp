@@ -17,6 +17,8 @@ const Cart = ({ history }) => {
   const { user, cart } = useSelector((state) => ({ ...state }));
   const [total, setTotal] = useState(0);
 
+  const [iscartchange, setiscartchange] = useState(false);
+
   const [isFormIncomplete, setIsFormIncomplete] = useState(true);
 
   const [products, setProducts] = useState([]);
@@ -25,16 +27,22 @@ const Cart = ({ history }) => {
     history.listen(() => {
       console.log("page changed22", cart);
 
-      userCart3(cart, user.token)
-        .then((res) => {
-          // console.log("CART POST RES", res);
-          // localStorage.setItem("cart", JSON.stringify(res));
-          // dispatch({
-          //   type: "ADD_TO_CART",
-          //   payload: res,
-          // });
-        })
-        .catch((err) => console.log("cart save err", err));
+      console.log("xxx", iscartchange);
+      if (iscartchange) {
+        if (cart.data !== undefined && cart.data.products) {
+          userCart3(cart, user.token)
+            .then((res) => {
+              console.log("apicart3 done");
+              // console.log("CART POST RES", res);
+              // localStorage.setItem("cart", JSON.stringify(res));
+              // dispatch({
+              //   type: "ADD_TO_CART",
+              //   payload: res,
+              // });
+            })
+            .catch((err) => console.log("cart save err", err));
+        }
+      }
 
       // userCart2(product, user.token)
       // .then((res) => {
@@ -138,7 +146,11 @@ const Cart = ({ history }) => {
     ));
     //  }
   };
-
+  const hello = () => {
+    if (!iscartchange) {
+      setiscartchange(true);
+    }
+  };
   const showCartItems2 = () =>
     cart.data.products.map((prod) => (
       <div>
@@ -167,7 +179,12 @@ const Cart = ({ history }) => {
       {/* //each row me har cart ke details */}
 
       {cart.data.products.map((p) => (
-        <ProductCardInCheckout key={p._id} p={p} />
+        <ProductCardInCheckout
+          key={p._id}
+          p={p}
+          iscartchange={iscartchange}
+          changecartset={hello}
+        />
       ))}
     </table>
   );
