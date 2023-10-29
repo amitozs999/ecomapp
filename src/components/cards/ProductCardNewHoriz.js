@@ -28,27 +28,32 @@ const ProductCardNewHoriz = (props) => {
   const history = useHistory();
   const [tooltip, setTooltip] = useState("Click to add");
 
-  const [iconColor, setIconColor] = useState(false);
-
   const [ispres, setispres] = useState(false);
 
-  console.log("listt passed", listt);
+  // let {   user  = useSelector((state) => ({ ...state }));
+  //console.log("listt passed", listt);
 
   // let x = listt.data.wishlist.map(
   //   (w) => w._id.toString() === product._id.toString()
   // );
 
-  let ssr = listt.data.wishlist.some((w) => {
-    if (w._id.toString() === product._id.toString()) return true;
-  });
+  let ssr =
+    listt.data !== undefined &&
+    listt.data.wishlist.some((w) => {
+      if (w._id.toString() === product._id.toString()) return true;
+    });
+
+  const [iconColor, setIconColor] = useState(ssr);
 
   //console.log("ddd", x);
-  console.log("ttt", ssr);
+  //console.log("ttt", ssr);
 
   //console.log("ff", x[0]);
   //setispres(x);
   //console.log("ff", ispres);
-  useEffect(() => {}, [iconColor]);
+  useEffect(() => {
+    console.log("col fill change" + product._id, iconColor);
+  }, [iconColor]);
   // redux
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
@@ -66,15 +71,20 @@ const ProductCardNewHoriz = (props) => {
   //     setWishlist(res.data.wishlist);
   //   });
 
-  // const handleRemove = (productId) =>
-  //   removeWishlist(productId, user.token).then((res) => {
-  //     toast.success("Removed from wishlist");
-  //     loadWishlist();
-  //   });
+  const handleRemove = (productId) => {
+    props.changewishset();
+
+    removeWishlist(productId, user.token).then((res) => {
+      console.log("REMOVED FROM WISHLIST", res.data);
+      //e.preventDefault();
+      toast.success("Removed from wishlist");
+      //  loadWishlist();
+    });
+  };
 
   const handleAddToWishlist = (productId) => {
     props.changewishset();
-    //  e.preventDefault();
+    //e.preventDefault();
     addToWishlist(productId, user.token).then((res) => {
       console.log("ADDED TO WISHLIST", res.data);
       toast.success("Added to wishlist");
@@ -166,22 +176,31 @@ const ProductCardNewHoriz = (props) => {
           {/* <div className=" w-full bg-neutral-400 h-32"></div> */}
 
           <div className="w-28 bg-green-400 h-12 ml-5 mr-4  ">
-            {ssr === true || iconColor ? ( //show if this prod has rating avg wali
+            {iconColor ? ( //show if this prod has rating avg wali
               <HeartFilled
                 style={{ color: "red", fontSize: "25px" }}
                 onClick={() => {
-                  setIconColor(false);
-                  // handleRemove(product._id);
+                  console.log("filled tha and icon col was", iconColor);
+                  setIconColor(!iconColor);
+
+                  ssr = !ssr;
+                  handleRemove(product._id);
                 }}
               />
             ) : (
               <HeartOutlined
                 style={{ color: "gray", fontSize: "25px" }}
                 onClick={() => {
-                  setIconColor(true);
-                  //addToWishlist(product._id, user.token);
-                  handleAddToWishlist(product._id);
-                  //  handleRemove(product._id);
+                  if (user) {
+                    setIconColor(!iconColor);
+                    //addToWishlist(product._id, user.token);
+                    console.log("unfilled");
+                    ssr = !ssr;
+                    handleAddToWishlist(product._id);
+                    //  handleRemove(product._id);
+                  } else {
+                    toast.success("Please login to wishlist a product");
+                  }
                 }}
               />
             )}

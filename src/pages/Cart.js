@@ -29,6 +29,8 @@ const Cart = ({ history }) => {
 
       console.log("xxx", iscartchange);
       if (iscartchange) {
+        console.log("hitting api after cart change", iscartchange);
+
         if (cart.data !== undefined && cart.data.products) {
           userCart3(cart, user.token)
             .then((res) => {
@@ -43,18 +45,6 @@ const Cart = ({ history }) => {
             .catch((err) => console.log("cart save err", err));
         }
       }
-
-      // userCart2(product, user.token)
-      // .then((res) => {
-      //   console.log("CART POST RES", res);
-      //   localStorage.setItem("cart", JSON.stringify(res));
-
-      //   dispatch({
-      //     type: "ADD_TO_CART",
-      //     payload: res,
-      //   });
-      // })
-      // .catch((err) => console.log("cart save err", err));
     })
   );
 
@@ -147,8 +137,10 @@ const Cart = ({ history }) => {
     //  }
   };
   const hello = () => {
+    console.log("setting cartchange", iscartchange);
     if (!iscartchange) {
       setiscartchange(true);
+      console.log("setted cartchange ko true", iscartchange);
     }
   };
   const showCartItems2 = () =>

@@ -24,7 +24,7 @@ const { SubMenu, ItemGroup } = Menu;
 
 //after typing any product in search comes to shop page
 
-const Shop = () => {
+const Shop = ({ history }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState([0, 0]);
@@ -53,7 +53,7 @@ const Shop = () => {
   const [shipping, setShipping] = useState("");
 
   const [wishlistt, setWishlist] = useState([]);
-  const [iswishchange, setiswishchange] = useState(false);
+  const [iswishchange, setiswishchange] = useState(0);
 
   let dispatch = useDispatch();
 
@@ -64,18 +64,43 @@ const Shop = () => {
   console.log("userwishlist ", userwishlist);
 
   useEffect(() => {
+    console.log("change hua kya", iswishchange);
+    // history.listen(() => {
+    //   console.log("away from shop is wisshchan2", iswishchange);
+    //   if (iswishchange) {
+    //     loadWishlist();
+    //   }
+    // });
+  }, [iswishchange]);
+
+  useEffect(() => {
+    console.log("change hua kya", iswishchange);
+    history.listen(() => {
+      console.log("away from shop is wisshchan13", iswishchange);
+      if (iswishchange) {
+        console.log(
+          "away from shop is wisshchan13 api hit ready",
+          iswishchange
+        );
+        loadWishlist();
+      }
+    });
+  });
+
+  useEffect(() => {
     if (
-      userwishlist.data === undefined ||
-      !localStorage.getItem("wishlist") ||
-      iswishchange
+      (userwishlist.data.wishlist !== undefined &&
+        !userwishlist.data.wishlist.length) ||
+      !localStorage.getItem("wishlist")
     ) {
+      console.log("loading wishlist again2");
       loadWishlist();
     }
     // console.log("ll", userwishlist);
     // setWishlist(userwishlist.data.wishlist);
     //
     console.log("lll", wishlistt);
-  }, [user, iswishchange]);
+  }, [user]);
 
   const loadWishlist = () => {
     console.log("ZZZ", wishlistt);
@@ -115,8 +140,13 @@ const Shop = () => {
   }, []);
 
   const hello = () => {
+    console.log("setting wishchange", iswishchange);
     if (!iswishchange) {
-      setiswishchange(true);
+      let cc = iswishchange;
+      console.log("cc", cc);
+      setiswishchange(1);
+
+      console.log("setted wishchange ko true", iswishchange);
     }
   };
 
