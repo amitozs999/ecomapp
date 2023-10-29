@@ -21,12 +21,33 @@ const { Meta } = Card;
 //for non admins only can view it noedit/update
 
 //shown on home page
-const ProductCardNewHoriz = ({ product }) => {
+const ProductCardNewHoriz = (props) => {
+  const product = props.product;
+  const listt = props.listt;
+
   const history = useHistory();
   const [tooltip, setTooltip] = useState("Click to add");
 
   const [iconColor, setIconColor] = useState(false);
 
+  const [ispres, setispres] = useState(false);
+
+  console.log("listt passed", listt);
+
+  // let x = listt.data.wishlist.map(
+  //   (w) => w._id.toString() === product._id.toString()
+  // );
+
+  let ssr = listt.data.wishlist.some((w) => {
+    if (w._id.toString() === product._id.toString()) return true;
+  });
+
+  //console.log("ddd", x);
+  console.log("ttt", ssr);
+
+  //console.log("ff", x[0]);
+  //setispres(x);
+  //console.log("ff", ispres);
   useEffect(() => {}, [iconColor]);
   // redux
   const { user, cart } = useSelector((state) => ({ ...state }));
@@ -35,23 +56,24 @@ const ProductCardNewHoriz = ({ product }) => {
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
-    loadWishlist();
+    //loadWishlist();
   }, []);
 
-  const loadWishlist = () =>
-    getWishlist(user.token).then((res) => {
-      console.log("gg");
-      console.log(res.data.wishlist);
-      setWishlist(res.data.wishlist);
-    });
+  // const loadWishlist = () =>
+  //   getWishlist(user.token).then((res) => {
+  //     console.log("gg");
+  //     console.log(res.data.wishlist);
+  //     setWishlist(res.data.wishlist);
+  //   });
 
-  const handleRemove = (productId) =>
-    removeWishlist(productId, user.token).then((res) => {
-      toast.success("Removed from wishlist");
-      loadWishlist();
-    });
+  // const handleRemove = (productId) =>
+  //   removeWishlist(productId, user.token).then((res) => {
+  //     toast.success("Removed from wishlist");
+  //     loadWishlist();
+  //   });
 
   const handleAddToWishlist = (productId) => {
+    props.changewishset();
     //  e.preventDefault();
     addToWishlist(productId, user.token).then((res) => {
       console.log("ADDED TO WISHLIST", res.data);
@@ -144,12 +166,12 @@ const ProductCardNewHoriz = ({ product }) => {
           {/* <div className=" w-full bg-neutral-400 h-32"></div> */}
 
           <div className="w-28 bg-green-400 h-12 ml-5 mr-4  ">
-            {iconColor ? ( //show if this prod has rating avg wali
+            {ssr === true || iconColor ? ( //show if this prod has rating avg wali
               <HeartFilled
                 style={{ color: "red", fontSize: "25px" }}
                 onClick={() => {
                   setIconColor(false);
-                  handleRemove(product._id);
+                  // handleRemove(product._id);
                 }}
               />
             ) : (
@@ -157,7 +179,8 @@ const ProductCardNewHoriz = ({ product }) => {
                 style={{ color: "gray", fontSize: "25px" }}
                 onClick={() => {
                   setIconColor(true);
-                  addToWishlist(product._id);
+                  //addToWishlist(product._id, user.token);
+                  handleAddToWishlist(product._id);
                   //  handleRemove(product._id);
                 }}
               />

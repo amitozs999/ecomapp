@@ -18,6 +18,8 @@ import Star from "../components/forms/Star";
 import ProductCardNew from "../../src/components/cards/ProductCardnew";
 import ProductCardNewHoriz from "../components/cards/ProductCardNewHoriz";
 
+import { getWishlist } from "../functions/user";
+
 const { SubMenu, ItemGroup } = Menu;
 
 //after typing any product in search comes to shop page
@@ -50,19 +52,73 @@ const Shop = () => {
   const [color, setColor] = useState("");
   const [shipping, setShipping] = useState("");
 
+  const [wishlistt, setWishlist] = useState([]);
+  const [iswishchange, setiswishchange] = useState(false);
+
   let dispatch = useDispatch();
 
-  let { search } = useSelector((state) => ({ ...state })); // new search reducer to hold state of curr search text
+  let { search, user, userwishlist } = useSelector((state) => ({ ...state })); // new search reducer to hold state of curr search text
   const { text } = search;
+
+  console.log("wishlistt set value", wishlistt);
+  console.log("userwishlist ", userwishlist);
+
+  useEffect(() => {
+    if (
+      userwishlist.data === undefined ||
+      !localStorage.getItem("wishlist") ||
+      iswishchange
+    ) {
+      loadWishlist();
+    }
+    // console.log("ll", userwishlist);
+    // setWishlist(userwishlist.data.wishlist);
+    //
+    console.log("lll", wishlistt);
+  }, [user, iswishchange]);
+
+  const loadWishlist = () => {
+    console.log("ZZZ", wishlistt);
+    if (user && user.token) {
+      getWishlist(user.token).then((res) => {
+        console.log("gg wishlis", res);
+        console.log("gg wishlisvv", res.data.wishlist);
+        setWishlist(res.data.wishlist);
+        console.log("ZZZ", wishlistt);
+        console.log("ZZZuser", userwishlist);
+
+        if (typeof window !== "undefined") {
+          localStorage.setItem("wishlist", JSON.stringify(res));
+        }
+        console.log("ZZZ", JSON.parse(localStorage.getItem("wishlist")));
+
+        dispatch({
+          type: "ADD_TO_WISHLIST",
+          payload: res,
+        });
+
+        // if (localStorage.getItem("wishlist")) {
+        //   cart = JSON.parse(localStorage.getItem("cart")); //local storage se cart nikal liya
+        // }
+      });
+    }
+  };
 
   useEffect(() => {
     console.log("hit prod api1");
     loadAllProducts();
+
     // fetch categories
     getCategories().then((res) => setCategories(res.data)); //fetach and store in arr
     // fetch subcategories
     getSubs().then((res) => setSubs(res.data)); //fetch and store in arr one time only for use in future
   }, []);
+
+  const hello = () => {
+    if (!iswishchange) {
+      setiswishchange(true);
+    }
+  };
 
   const fetchProducts = (arg) => {
     console.log("hit prod api2");
@@ -481,7 +537,13 @@ const Shop = () => {
                 key={p._id}
                 className="bg-red-300  mb-5 mt-3 flex flex-col vvb"
               >
-                <ProductCardNewHoriz product={p} />
+                {/* //ispresentinwish={ wishlistt.map((w) => ())} */}
+                <ProductCardNewHoriz
+                  product={p}
+                  listt={userwishlist}
+                  iswishchange={iswishchange}
+                  changewishset={hello}
+                />
               </div>
             ))}
           </div>
