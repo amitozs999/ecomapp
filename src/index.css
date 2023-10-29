@@ -73,6 +73,15 @@ code {
  // border-radius: 16px !important;
   color: white; */
   color: white;
-  background: #FF6161FF !important;
+  background: #C4C2C4FF!important;
   /* font-size: medium; */
 }
+
+.Toastify__toast--error{
+  /* // border: 1px solid #3A9EA5 !important;
+  // border-radius: 16px !important;
+   color: white; */
+   color: white;
+   background: #FF6161FF !important;
+   /* font-size: medium; */
+ }

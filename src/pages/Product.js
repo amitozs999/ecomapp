@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 import { getRelated } from "../functions/product";
 import ProductCard from "../components/cards/ProductCard";
+import ProductCardNew from "../components/cards/ProductCardnew";
 
 //single prod page for its details
 const Product = ({ match }) => {
@@ -65,16 +66,27 @@ const Product = ({ match }) => {
         </div>
       </div>
 
-      <div className="row pb-5">
-        {related.length ? (
-          related.map((r) => (
-            <div key={r._id} className="col-md-4">
-              <ProductCard product={r} />
-            </div>
-          ))
-        ) : (
-          <div className="text-center col">No Products Found</div>
-        )}
+      {/* //<div className="row pb-5"> */}
+      <div className="container ">
+        {
+          <div className="  h-96 p-3 flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
+            {related.map((r) => (
+              <div key={r._id} className="    h-80 w-52">
+                <ProductCardNew product={r} />
+              </div>
+            ))}
+          </div>
+          // related.length ? (
+          //   related.map((r) => (
+          //     <div key={r._id} className="  h-80 w-52">
+          //       <ProductCardNew product={r} />
+          //     </div>
+          //   ))
+          // )
+          // : (
+          //   <div className="text-center col">No Products Found</div>
+          // )
+        }
       </div>
     </div>
   );

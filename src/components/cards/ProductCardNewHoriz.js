@@ -18,6 +18,8 @@ import { HeartFilled } from "@ant-design/icons";
 import { HeartOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
 
+import { userCart2 } from "../../functions/user";
+
 import { ToastContainer } from "react-toastify";
 
 //for non admins only can view it noedit/update
@@ -79,7 +81,7 @@ const ProductCardNewHoriz = (props) => {
     removeWishlist(productId, user.token).then((res) => {
       console.log("REMOVED FROM WISHLIST", res.data);
       //e.preventDefault();
-      toast.success("Removed from wishlist");
+      toast.info("Removed from wishlist");
       //  loadWishlist();
     });
   };
@@ -92,6 +94,26 @@ const ProductCardNewHoriz = (props) => {
       toast.success("Added to wishlist");
       // history.push("/user/wishlist");
     });
+  };
+
+  const handleAddToCart2 = () => {
+    console.log("ggprod", product);
+    toast.success("Product Added to card");
+    userCart2(product, user.token)
+      .then((res) => {
+        console.log("CART POST RES", res);
+        localStorage.setItem("cart", JSON.stringify(res));
+
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: res,
+        });
+
+        // console.log("POST RES", uniquecart);
+        // if (res.data.ok) console.log("CART POST RES success");
+        //history.push("/checkout");
+      })
+      .catch((err) => console.log("cart save err", err));
   };
 
   // destructure
@@ -189,7 +211,15 @@ const ProductCardNewHoriz = (props) => {
               {description}{" "}
             </h5>
             <a
-              onClick={() => history.push(slug)}
+              //onClick={handleAddToCart2}
+
+              onClick={() => {
+                if (user) {
+                  handleAddToCart2();
+                } else {
+                  toast.error("Please login to Add product to cart !");
+                }
+              }}
               style={{
                 backgroundColor: "#5199DBFF",
                 color: "white",
@@ -212,7 +242,7 @@ const ProductCardNewHoriz = (props) => {
           <div className="w-28    h-12 ml-10 mr-4 mt-1 text-right">
             {iconColor ? ( //show if this prod has rating avg wali
               <HeartFilled
-                style={{ color: "blue", fontSize: "25px" }}
+                style={{ color: "#FF6161FF", fontSize: "25px" }}
                 onClick={() => {
                   console.log("filled tha and icon col was", iconColor);
                   setIconColor(!iconColor);
@@ -223,7 +253,7 @@ const ProductCardNewHoriz = (props) => {
               />
             ) : (
               <HeartOutlined
-                style={{ color: "blue", fontSize: "25px" }}
+                style={{ color: "#A8A7A8FF", fontSize: "25px" }}
                 onClick={() => {
                   if (user) {
                     setIconColor(!iconColor);

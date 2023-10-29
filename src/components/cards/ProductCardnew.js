@@ -9,6 +9,7 @@ import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { userCart2 } from "../../functions/user";
 import "./index.scss";
@@ -32,6 +33,7 @@ const ProductCardNew = ({ product }) => {
 
   const handleAddToCart2 = () => {
     console.log("ggprod", product);
+    toast.success("Product Added to card");
     userCart2(product, user.token)
       .then((res) => {
         console.log("CART POST RES", res);
@@ -108,7 +110,16 @@ const ProductCardNew = ({ product }) => {
       <h5 class="txtcategbottomm"> {xx}</h5>
       <p className="txtcategbottomm2">₹ {price}</p>
       {/* <span class="price">$19.99</span> */}
-      <button class="add-to-cart" onClick={handleAddToCart2}>
+      <button
+        class="add-to-cart"
+        onClick={() => {
+          if (user) {
+            handleAddToCart2();
+          } else {
+            toast.error("Please login to Add product to cart !");
+          }
+        }}
+      >
         Add to Cart
       </button>
 
