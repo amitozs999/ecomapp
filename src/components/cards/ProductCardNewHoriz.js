@@ -17,9 +17,11 @@ import "./index.scss";
 import { HeartFilled } from "@ant-design/icons";
 import { HeartOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
-const { Meta } = Card;
-//for non admins only can view it noedit/update
 
+import { ToastContainer } from "react-toastify";
+
+//for non admins only can view it noedit/update
+const { Meta } = Card;
 //shown on home page
 const ProductCardNewHoriz = (props) => {
   const product = props.product;
@@ -137,13 +139,16 @@ const ProductCardNewHoriz = (props) => {
     <div
       //height="600px"
       id={"u"}
-      className=" bg-blue-600 h-72 my-1 mx-1 flex "
+      className="    my-1 mx-1 flex "
+      style={{
+        height: "215px",
+      }}
     >
-      <div className="w-60 bg-red-500 my-2 mx-2 flex: 1 ">
+      <div className="w-44 h-52  mx-1 my-1 px-1 py-1 flex: 1 ">
         <img
-          width={"240px"}
+          width={"160px"}
           //height={"17rem"}
-          className="h-64   my-2 "
+          className="h-48  addcart "
           //className="mb-2 py-2 imzprod zom "
           src={images && images.length ? images[0].url : noimage}
           onClick={() => history.push(`/product/${slug}`)}
@@ -158,27 +163,56 @@ const ProductCardNewHoriz = (props) => {
         </div>
       </div> */}
 
-      <div className=" cc   bg-red-800 my-3 mx-3">
-        <div className="flex justify-between w-full h-full p-3">
+      <div
+        className=" cc  h-52  mx-1 my-1 px-1 py-1 "
+        //style={{ backgroundColor: " " }}
+      >
+        <div className="flex justify-between w-full h-full  ">
           {/* <div className="flex   bg-gray-700 py-5 px-5 h-full"> */}
 
           <div className=" flex flex-col     w-full h-full">
-            <h1 className="bg-white text-red-700 ">{title}</h1>
-            <h1 className="bg-white text-red-700 ">₹{price}.00</h1>
-            <h5 className="bg-white text-red-700 ">{description} </h5>
+            <h1
+              className="bg-white  ml-1 mt-2 txtcategbottommhoriztitle"
+              onClick={() => history.push(`/product/${slug}`)}
+            >
+              {title}
+            </h1>
             {product && product.ratings && product.ratings.length > 0 ? ( //show if this prod has rating avg wali
               showAverage(product)
             ) : (
-              <div className="text-center pt-1 pb-3">No rating yet</div>
+              <div className=" ml-2 pt-1 pb-3">No rating yet</div>
             )}
+            <h1 className="bg-white txtcategbottommhorizprice ml-2">
+              ₹{price}.00
+            </h1>
+            <h5 className="bg-white txtcategbottommhorizdesc ml-2">
+              {description}{" "}
+            </h5>
+            <a
+              onClick={() => history.push(slug)}
+              style={{
+                backgroundColor: "#5199DBFF",
+                color: "white",
+                width: "120px",
+                borderRadius: "4px",
+                textAlign: "center",
+              }}
+              //product/nike-mens-nike-air-max
+
+              // transition-all duration-300 shadow-lg 2xl:mt-2
+              className="  py-2        mb-2 ml-2 mt-2
+          text-[12px] rtl:sm:text-xs   font-semibold cartbutton"
+            >
+              Add to cart
+            </a>
           </div>
 
           {/* <div className=" w-full bg-neutral-400 h-32"></div> */}
 
-          <div className="w-28 bg-green-400 h-12 ml-5 mr-4  ">
+          <div className="w-28    h-12 ml-10 mr-4 mt-1 text-right">
             {iconColor ? ( //show if this prod has rating avg wali
               <HeartFilled
-                style={{ color: "red", fontSize: "25px" }}
+                style={{ color: "blue", fontSize: "25px" }}
                 onClick={() => {
                   console.log("filled tha and icon col was", iconColor);
                   setIconColor(!iconColor);
@@ -189,7 +223,7 @@ const ProductCardNewHoriz = (props) => {
               />
             ) : (
               <HeartOutlined
-                style={{ color: "gray", fontSize: "25px" }}
+                style={{ color: "blue", fontSize: "25px" }}
                 onClick={() => {
                   if (user) {
                     setIconColor(!iconColor);
@@ -199,7 +233,7 @@ const ProductCardNewHoriz = (props) => {
                     handleAddToWishlist(product._id);
                     //  handleRemove(product._id);
                   } else {
-                    toast.success("Please login to wishlist a product");
+                    toast.info("Please login to wishlist a product !");
                   }
                 }}
               />

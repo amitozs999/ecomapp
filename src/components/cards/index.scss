@@ -144,9 +144,99 @@ margin-bottom: 10px;
      transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
    }
  
+
+   .addcart{
+    // padding: 50px;
+    // background-color: green;
+     //transition: transform .2s; /* Animation */
+    // width: 200px;
+     //height: 200px;
+     margin: 0 auto;
+   }
+   
+   .addcart:hover {
+      cursor:pointer;
+    // box-shadow: 7px 7px 5px lightblue;
+     //transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+   }
    .bb{
     flex: 2;
    }
    .cc{
     flex:1;
    }
+
+
+   .txtcategbottommhoriztitle{
+    font-size: 20px;
+// font-weight: 610;
+//font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//text-align: center;
+text-align: left;
+font-weight: 640;
+//font-size: medium;
+margin-left: 4px;
+  //  margin-left:50px;
+//   margin-left: auto;
+//   margin-right: auto;
+
+}
+
+.txtcategbottommhoriztitle:hover{
+  cursor:pointer;
+ color: #5199DBFF!important;
+}
+
+.cartbutton:hover{
+  box-shadow: 4px 4px 9px lightblue;
+}
+
+
+.txtcategbottommhorizprice{
+  font-size: 16px;
+// font-weight: 610;
+//font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//text-align: center;
+text-align: left;
+font-weight: 640;
+//font-size: medium;
+margin-left: 4px;
+//  margin-left:50px;
+//   margin-left: auto;
+//   margin-right: auto;
+
+}
+
+.txtcategbottommhorizdesc{
+  font-size: 13px;
+// font-weight: 610;
+//font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//text-align: center;
+text-align: left;
+font-weight: 400;
+//font-size: medium;
+margin-left: 4px;
+color: #6E7070FF;
+//  margin-left:50px;
+//   margin-left: auto;
+//   margin-right: auto;
+
+}
+.txtcategbottomm2horiz{
+    font-size: large;
+// font-weight: 610;
+//font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//text-align: center;
+text-align: left;
+font-weight: 680;
+font-size: medium;
+margin-left: 4px;
+margin-bottom: 10px;
+  //  margin-left:50px;
+//   margin-left: auto;
+//   margin-right: auto;
+}

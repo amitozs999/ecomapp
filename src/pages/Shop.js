@@ -89,8 +89,7 @@ const Shop = ({ history }) => {
 
   useEffect(() => {
     if (
-      (userwishlist.data.wishlist !== undefined &&
-        !userwishlist.data.wishlist.length) ||
+      (userwishlist.data !== undefined && !userwishlist.data.wishlist.length) ||
       !localStorage.getItem("wishlist")
     ) {
       console.log("loading wishlist again2");
@@ -542,14 +541,17 @@ const Shop = ({ history }) => {
 
         {/* // show all prodcuts store in setstate */}
 
-        <div className="col-md-9 pt-2">
+        <div
+          className="col-md-9 pt-2 "
+          style={{ backgroundColor: "#F0F9FAFF" }}
+        >
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
-            <h4 className="text-danger">Products</h4>
+            <h4 className=" "> </h4>
           )}
 
-          {products.length < 1 && <p>No products found</p>}
+          {products.length < 1 && <p>Finding products for you.. </p>}
 
           {/* <div className="row pb-5 bg-gray-500 ">
             {products.map((p) => (
@@ -560,13 +562,13 @@ const Shop = ({ history }) => {
             ))}
           </div> */}
 
-          <div className="col bg-gray-500 py-3 ">
+          <div
+            className="col   py-1  "
+            // style={{ backgroundColor: "#F0F9FAFF" }}
+          >
             {products.map((p) => (
               // <div key={p._id} className="col-md-2 mt-3 ">
-              <div
-                key={p._id}
-                className="bg-red-300  mb-5 mt-3 flex flex-col vvb"
-              >
+              <div key={p._id} className="   mb-3 flex flex-col vvb bg-white">
                 {/* //ispresentinwish={ wishlistt.map((w) => ())} */}
                 <ProductCardNewHoriz
                   product={p}

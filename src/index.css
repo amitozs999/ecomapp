@@ -60,3 +60,19 @@ code {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+.Toastify__toast--success {
+  /* border: 1px solid #3A9EA5 !important;
+  border-radius: 20px !important; */
+  color: white;
+  background: #5199DBFF!important;
+  /* font-size: medium; */
+}
+
+.Toastify__toast--info{
+ /* // border: 1px solid #3A9EA5 !important;
+ // border-radius: 16px !important;
+  color: white; */
+  color: white;
+  background: #FF6161FF !important;
+  /* font-size: medium; */
+}
