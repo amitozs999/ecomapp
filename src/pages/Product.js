@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { getRelated } from "../functions/product";
 import ProductCard from "../components/cards/ProductCard";
 import ProductCardNew from "../components/cards/ProductCardnew";
+import LoadingCard from "../components/cards/LoadingCard";
 
 //single prod page for its details
 const Product = ({ match }) => {
@@ -15,7 +16,7 @@ const Product = ({ match }) => {
   const [star, setStar] = useState(0);
   const { user } = useSelector((state) => ({ ...state }));
   const [related, setRelated] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     loadSingleProduct();
   }, [slug]); //slug change load prod again
@@ -23,7 +24,11 @@ const Product = ({ match }) => {
   const loadSingleProduct = () =>
     getProduct(slug).then((res) => {
       setProduct(res.data); //get currprod
-      getRelated(res.data._id).then((res) => setRelated(res.data)); //get related prod for currprod
+      setLoading(true);
+      getRelated(res.data._id).then((res) => {
+        setRelated(res.data); //get related prod for currprod
+        setLoading(false);
+      });
     });
 
   useEffect(() => {
@@ -69,13 +74,17 @@ const Product = ({ match }) => {
       {/* //<div className="row pb-5"> */}
       <div className="container ">
         {
-          <div className="  h-96 p-3 flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
-            {related.map((r) => (
-              <div key={r._id} className="    h-80 w-52">
-                <ProductCardNew product={r} />
-              </div>
-            ))}
-          </div>
+          loading ? (
+            <LoadingCard count={3} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
+          ) : (
+            <div className="  h-96 p-3 flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
+              {related.map((r) => (
+                <div key={r._id} className="    h-80 w-52">
+                  <ProductCardNew product={r} />
+                </div>
+              ))}
+            </div>
+          )
           // related.length ? (
           //   related.map((r) => (
           //     <div key={r._id} className="  h-80 w-52">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   getProductsByCount,
   fetchProductsByFilter,
+  getProductssort,
 } from "../functions/product";
 import { getCategories } from "../functions/category";
 import { getSubs } from "../functions/sub";
@@ -20,10 +21,14 @@ import ProductCardNewHoriz from "../components/cards/ProductCardNewHoriz";
 
 import { getWishlist } from "../functions/user";
 
-const { SubMenu, ItemGroup } = Menu;
+import { getProducts, getProductsCount } from "../functions/product";
 
+import { Pagination } from "antd";
+
+import { Link } from "react-router-dom";
 //after typing any product in search comes to shop page
-
+const { SubMenu, ItemGroup } = Menu;
+const { Item } = Menu;
 const Shop = ({ history }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -34,6 +39,8 @@ const Shop = ({ history }) => {
   const [star, setStar] = useState("");
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
+  const [current, setCurrent] = useState("Latest");
+  const [page, setPage] = useState(1);
   const [brands, setBrands] = useState([
     "Apple",
     "Samsung",
@@ -54,6 +61,7 @@ const Shop = ({ history }) => {
 
   const [wishlistt, setWishlist] = useState([]);
   const [iswishchange, setiswishchange] = useState(0);
+  const [productsCount, setProductsCount] = useState(0);
 
   let dispatch = useDispatch();
 
@@ -72,6 +80,10 @@ const Shop = ({ history }) => {
     //   }
     // });
   }, [iswishchange]);
+
+  useEffect(() => {
+    getProductsCount().then((res) => setProductsCount(res.data));
+  }, []);
 
   useEffect(() => {
     console.log("change hua kya", iswishchange);
@@ -101,6 +113,94 @@ const Shop = ({ history }) => {
     console.log("lll", wishlistt);
   }, [user]);
 
+  const loadAllProducts = () => {
+    console.log("hit prod api333");
+
+    setProducts([]);
+    // getProductssort("sold", "desc", page).then((res) => {
+    //   //page change fetch prod again for this page
+    //   console.log("bb" + page, res.data);
+    //   setProducts(res.data);
+    //   setLoading(false);
+    // });
+  };
+
+  // useEffect(() => {
+  //   console.log("hit prod api1");
+
+  //   getProductsCount().then((res) => setProductsCount(res.data));
+
+  //   switch (current) {
+  //     case "HighRated":
+  //       return loadAllProductssort("sold", "desc", page);
+  //     case "Latest":
+  //       return loadAllProductssort("createdAt", "desc", page);
+  //     case "PriceHigh":
+  //       return loadAllProductssort("price", "desc", page);
+  //     case "PriceLow":
+  //       return loadAllProductssort("price", "asc", page);
+
+  //     default:
+  //       break;
+  //   }
+  // }, [current]);
+
+  useEffect(() => {
+    console.log("hit prod api1");
+
+    getProductsCount().then((res) => setProductsCount(res.data));
+
+    setPage(1);
+
+    switch (current) {
+      case "HighRated":
+        return loadAllProductssort("sold", "desc", 1);
+      case "Latest":
+        return loadAllProductssort("createdAt", "desc", 1);
+      case "PriceHigh":
+        return loadAllProductssort("price", "desc", 1);
+      case "PriceLow":
+        return loadAllProductssort("price", "asc", 1);
+
+      default:
+        break;
+    }
+  }, [current]);
+
+  useEffect(() => {
+    console.log("hit prod api1");
+
+    getProductsCount().then((res) => setProductsCount(res.data));
+
+    switch (current) {
+      case "HighRated":
+        return loadAllProductssort("sold", "desc", page);
+      case "Latest":
+        return loadAllProductssort("createdAt", "desc", page);
+      case "PriceHigh":
+        return loadAllProductssort("price", "desc", page);
+      case "PriceLow":
+        return loadAllProductssort("price", "asc", page);
+
+      default:
+        break;
+    }
+  }, [page]);
+
+  const loadAllProductssort = (sort, order, page) => {
+    console.log("hit prod api3", sort);
+    console.log("hit prod api3", order);
+    console.log("hit prod api3", page);
+    //setProducts([]);
+    getProductssort(sort, order, page).then((res) => {
+      //page change fetch prod again for this page
+      console.log("bb" + page, res.data);
+      //setProducts([]);
+      setProducts(res.data);
+      //setLoading(false);
+    });
+  };
+
   const loadWishlist = () => {
     console.log("ZZZ", wishlistt);
     if (user && user.token) {
@@ -129,9 +229,6 @@ const Shop = ({ history }) => {
   };
 
   useEffect(() => {
-    console.log("hit prod api1");
-    loadAllProducts();
-
     // fetch categories
     getCategories().then((res) => setCategories(res.data)); //fetach and store in arr
     // fetch subcategories
@@ -148,6 +245,11 @@ const Shop = ({ history }) => {
       console.log("setted wishchange ko true", iswishchange);
     }
   };
+  const handleClick = (e) => {
+    // console.log(e.key);
+    //e.preventDefault();
+    setCurrent(e.key);
+  };
 
   const fetchProducts = (arg) => {
     console.log("hit prod api2");
@@ -155,19 +257,6 @@ const Shop = ({ history }) => {
       console.log("d1", res.data);
       console.log("d2", res);
       setProducts(res.data);
-    });
-  };
-
-  // 1. load products by default on page load
-  const loadAllProducts = () => {
-    console.log("hit prod api3");
-    getProductsByCount(12).then((p) => {
-      console.log("ss", p);
-      console.log("sss", p.data);
-
-      console.log("inside hit prod api4");
-      setProducts(p.data);
-      setLoading(false);
     });
   };
 
@@ -545,6 +634,47 @@ const Shop = ({ history }) => {
           className="col-md-9 pt-2 "
           style={{ backgroundColor: "#F0F9FAFF" }}
         >
+          <Menu
+            onClick={handleClick}
+            //    selectedKeys={ }
+            mode="horizontal"
+            selectedKeys={[current]}
+            className="header-item ml-3 mr-3 "
+          >
+            <Item key="SortBy" style={{ pointerEvents: "none" }}>
+              {/* //<Link to="/shop" className="header-item"> */}
+              <Link to="/shop">Sort By</Link>
+            </Item>
+
+            <Item
+              key="HighRated"
+
+              // style={{ marginRight: "145px", marginLeft: "40px" }}
+            >
+              {/* //<Link to="/shop" className="header-item"> */}
+              <Link to="/shop">Most Selling</Link>
+            </Item>
+
+            <Item
+              key="Latest"
+              //</Menu>onClick={console.log("latest hit ")
+              //loadAllProductssort("createdAt", "desc", 1)
+              // }
+            >
+              {/* //<Link to="/shop" className="header-item"> */}
+              <Link to="/shop">Latest</Link>
+            </Item>
+
+            <Item key="PriceHigh">
+              {/* //<Link to="/shop" className="header-item"> */}
+              <Link to="/shop">Price- High to Low</Link>
+            </Item>
+            <Item key="PriceLow">
+              {/* //<Link to="/shop" className="header-item"> */}
+              <Link to="/shop">Price- Low to High</Link>
+            </Item>
+          </Menu>
+
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
@@ -578,6 +708,25 @@ const Shop = ({ history }) => {
                 />
               </div>
             ))}
+          </div>
+
+          <div className="row mb-5">
+            <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
+              <Pagination
+                // showQuickJumper
+                // hideOnSinglePage
+                // simple
+                // showTotal={(total, range) =>
+                //   `${range[0]}-${range[1]} of ${total} items`
+                // }
+                showSizeChanger={false}
+                current={page}
+                //total={Math.round((productsCount / 10) * 10)}
+                total={Math.round(productsCount / 15) * 10}
+                // total={productsCount}
+                onChange={(value) => setPage(value)}
+              />
+            </nav>
           </div>
         </div>
       </div>

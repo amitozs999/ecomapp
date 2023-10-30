@@ -217,7 +217,7 @@ const ProductCardNewHoriz = (props) => {
                 if (user) {
                   handleAddToCart2();
                 } else {
-                  toast.error("Please login to Add product to cart !");
+                  toast.info("Please login to Add product to cart !");
                 }
               }}
               style={{

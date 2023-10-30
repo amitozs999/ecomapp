@@ -36,6 +36,14 @@ export const getProducts = async (sort, order, page) =>
     page,
   });
 
+export const getProductssort = async (sort, order, page) =>
+  await axios.post(`${process.env.REACT_APP_API}/productssort`, {
+    //post bcoz passing sope body params based on which fetch data
+    sort,
+    order,
+    page,
+  });
+
 export const getProductsCount = async () =>
   await axios.get(`${process.env.REACT_APP_API}/products/total`);
 
