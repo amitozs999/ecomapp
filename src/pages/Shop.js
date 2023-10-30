@@ -26,7 +26,11 @@ import { getProducts, getProductsCount } from "../functions/product";
 import { Pagination } from "antd";
 
 import { Link } from "react-router-dom";
+
+import "./index.css";
+
 //after typing any product in search comes to shop page
+
 const { SubMenu, ItemGroup } = Menu;
 const { Item } = Menu;
 const Shop = ({ history }) => {
@@ -39,7 +43,7 @@ const Shop = ({ history }) => {
   const [star, setStar] = useState("");
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
-  const [current, setCurrent] = useState("Latest");
+  const [current, setCurrent] = useState("HighRated");
   const [page, setPage] = useState(1);
   const [brands, setBrands] = useState([
     "Apple",
@@ -518,7 +522,7 @@ const Shop = ({ history }) => {
 
       <div className="row">
         <div className="col-md-3 pt-2">
-          <h4>Search/Filter</h4>
+          {/* <h4>Search/Filter</h4> */}
           <hr />
 
           <Menu
@@ -558,18 +562,6 @@ const Shop = ({ history }) => {
               <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
             </SubMenu>
 
-            {/* stars */}
-            <SubMenu
-              key="3"
-              title={
-                <span className="h6">
-                  <StarOutlined /> Rating
-                </span>
-              }
-            >
-              <div style={{ maringTop: "-10px" }}>{showStars()}</div>
-            </SubMenu>
-
             {/* sub category */}
             <SubMenu
               key="4"
@@ -582,6 +574,18 @@ const Shop = ({ history }) => {
               <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
                 {showSubs()}
               </div>
+            </SubMenu>
+
+            {/* stars */}
+            <SubMenu
+              key="3"
+              title={
+                <span className="h6">
+                  <StarOutlined /> Rating
+                </span>
+              }
+            >
+              <div style={{ maringTop: "-10px" }}>{showStars()}</div>
             </SubMenu>
 
             {/* brands */}
@@ -639,7 +643,8 @@ const Shop = ({ history }) => {
             //    selectedKeys={ }
             mode="horizontal"
             selectedKeys={[current]}
-            className="header-item ml-3 mr-3 "
+            //colorFillContent="black"
+            className=" ml-3 mr-3  mymenu"
           >
             <Item key="SortBy" style={{ pointerEvents: "none" }}>
               {/* //<Link to="/shop" className="header-item"> */}
@@ -722,7 +727,7 @@ const Shop = ({ history }) => {
                 showSizeChanger={false}
                 current={page}
                 //total={Math.round((productsCount / 10) * 10)}
-                total={Math.round(productsCount / 15) * 10}
+                total={Math.round(productsCount / 8) * 10}
                 // total={productsCount}
                 onChange={(value) => setPage(value)}
               />

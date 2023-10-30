@@ -168,7 +168,7 @@ margin-bottom: 10px;
 
 
    .txtcategbottommhoriztitle{
-    font-size: 20px;
+    font-size: 15px;
 // font-weight: 610;
 //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -176,7 +176,7 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 text-align: left;
 font-weight: 640;
 //font-size: medium;
-margin-left: 4px;
+margin-left: 6px !important;
   //  margin-left:50px;
 //   margin-left: auto;
 //   margin-right: auto;
@@ -194,7 +194,7 @@ margin-left: 4px;
 
 
 .txtcategbottommhorizprice{
-  font-size: 16px;
+  font-size: 14px;
 // font-weight: 610;
 //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -210,7 +210,7 @@ margin-left: 4px;
 }
 
 .txtcategbottommhorizdesc{
-  font-size: 13px;
+  font-size: 12px;
 // font-weight: 610;
 //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -225,6 +225,33 @@ color: #6E7070FF;
 //   margin-right: auto;
 
 }
+
+
+.txtcategbottommhorizrate{
+  font-size: 13px;
+// font-weight: 610;
+//font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//text-align: center;
+text-align: left;
+font-weight: 400;
+//font-size: medium;
+margin-left: 4px;
+margin-bottom: 4px !important;
+margin-top: 2px !important;
+color: #6E7070FF;
+//  margin-left:50px;
+//   margin-left: auto;
+//   margin-right: auto;
+
+}
+
+
+
+
+
+
+
 .txtcategbottomm2horiz{
     font-size: large;
 // font-weight: 610;

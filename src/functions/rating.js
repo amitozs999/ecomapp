@@ -19,11 +19,11 @@ export const showAverage = (p) => {
     // console.log("result", result);
 
     return (
-      <div className="  ml-1 pt-1 pb-1 mb-2">
+      <div className="  ml-1   pb-1 mb-1">
         <span>
           <StarRating //show that much stars
-            starDimension="18px"
-            starSpacing="2px"
+            starDimension="14px"
+            starSpacing="1px"
             starRatedColor="#FAE898FF"
             rating={result}
             editing={false}

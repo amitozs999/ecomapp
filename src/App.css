@@ -1,7 +1,7 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
-
+@import '~antd/dist/antd.css'
 .App {
   text-align: center;
 }

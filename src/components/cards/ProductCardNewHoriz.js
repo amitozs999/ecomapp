@@ -163,14 +163,14 @@ const ProductCardNewHoriz = (props) => {
       id={"u"}
       className="    my-1 mx-1 flex "
       style={{
-        height: "215px",
+        height: "178px",
       }}
     >
       <div className="w-44 h-52  mx-1 my-1 px-1 py-1 flex: 1 ">
         <img
-          width={"160px"}
+          width={"150px"}
           //height={"17rem"}
-          className="h-48  addcart "
+          className="h-40 addcart "
           //className="mb-2 py-2 imzprod zom "
           src={images && images.length ? images[0].url : noimage}
           onClick={() => history.push(`/product/${slug}`)}
@@ -202,12 +202,14 @@ const ProductCardNewHoriz = (props) => {
             {product && product.ratings && product.ratings.length > 0 ? ( //show if this prod has rating avg wali
               showAverage(product)
             ) : (
-              <div className=" ml-2 pt-1 pb-3">No rating yet</div>
+              <p className=" ml-2  txtcategbottommhorizrate">
+                First one to rate
+              </p>
             )}
             <h1 className="bg-white txtcategbottommhorizprice ml-2">
               ₹{price}.00
             </h1>
-            <h5 className="bg-white txtcategbottommhorizdesc ml-2">
+            <h5 className="bg-white txtcategbottommhorizdesc mb-1 ml-2">
               {description}{" "}
             </h5>
             <a
@@ -223,15 +225,16 @@ const ProductCardNewHoriz = (props) => {
               style={{
                 backgroundColor: "#5199DBFF",
                 color: "white",
-                width: "120px",
+                width: "105px",
                 borderRadius: "4px",
+                fontSize: "12px",
                 textAlign: "center",
               }}
               //product/nike-mens-nike-air-max
 
               // transition-all duration-300 shadow-lg 2xl:mt-2
               className="  py-2        mb-2 ml-2 mt-2
-          text-[12px] rtl:sm:text-xs   font-semibold cartbutton"
+            font-semibold cartbutton"
             >
               Add to cart
             </a>
@@ -242,7 +245,7 @@ const ProductCardNewHoriz = (props) => {
           <div className="w-28    h-12 ml-10 mr-4 mt-1 text-right">
             {iconColor ? ( //show if this prod has rating avg wali
               <HeartFilled
-                style={{ color: "#FF6161FF", fontSize: "25px" }}
+                style={{ color: "#FF6161FF", fontSize: "20px" }}
                 onClick={() => {
                   console.log("filled tha and icon col was", iconColor);
                   setIconColor(!iconColor);
@@ -253,7 +256,7 @@ const ProductCardNewHoriz = (props) => {
               />
             ) : (
               <HeartOutlined
-                style={{ color: "#A8A7A8FF", fontSize: "25px" }}
+                style={{ color: "#A8A7A8FF", fontSize: "20px" }}
                 onClick={() => {
                   if (user) {
                     setIconColor(!iconColor);
