@@ -240,7 +240,7 @@ const Shop = ({ history }) => {
 
     setPage(1);
 
-    let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
+    let inTheState = categoryIds;
 
     switch (current) {
       case "HighRated":
@@ -261,7 +261,10 @@ const Shop = ({ history }) => {
     console.log("hit prod api1");
 
     getProductsCount().then((res) => setProductsCount(res.data));
-    let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
+    //let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
+    let inTheState = categoryIds;
+
+    console.log("catiddd", categoryIds);
 
     switch (current) {
       case "HighRated":
@@ -281,7 +284,7 @@ const Shop = ({ history }) => {
       default:
         break;
     }
-  }, [page]);
+  }, [page, categoryIds]);
 
   const loadAllProductssortandfilter = (sort, order, page, catlist) => {
     console.log("hit prod api3", sort);
@@ -405,7 +408,7 @@ const Shop = ({ history }) => {
     categories.map((c) => (
       <div key={c._id}>
         <Checkbox
-          onChange={handleCheck}
+          onChange={handleCheck2}
           className="pb-2 pl-4 pr-4"
           value={c._id}
           name="category"
@@ -447,9 +450,34 @@ const Shop = ({ history }) => {
     setCategoryIds(inTheState); //update stored catid array in state
     // console.log(inTheState);
     console.log("yy7");
-    fetchProducts({
-      category: ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"],
-    }); //now fetch products based on these new checked categ
+    // fetchProducts({
+    //   category: ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"],
+    // }); //now fetch products based on these new checked categ
+  };
+
+  const handleCheck2 = (e) => {
+    // reset
+
+    // console.log(e.target.value);
+    let inTheState = [...categoryIds]; //curr catgid in list
+    let justChecked = e.target.value; //just chrckrg esli id
+    let foundInTheState = inTheState.indexOf(justChecked); // index or -1   check if was already there
+
+    // indexOf method ?? if not found returns -1 else return index [1,2,3,4,5]
+    if (foundInTheState === -1) {
+      //if no add it
+      inTheState.push(justChecked);
+    } else {
+      // if found pull out one item from index
+      inTheState.splice(foundInTheState, 1); //if yes remove it
+    }
+
+    setCategoryIds(inTheState); //update stored catid array in state
+    // console.log(inTheState);
+    console.log("yy7");
+    // fetchProducts({
+    //   category: ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"],
+    // }); //now fetch products based on these new checked categ
   };
 
   // 5. show products by star rating
