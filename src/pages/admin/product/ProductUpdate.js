@@ -17,7 +17,16 @@ const initialState = {
   shipping: "",
   quantity: "",
   images: [],
-  colors: ["Black", "Brown", "Silver", "White", "Blue"],
+  colors: [
+    "Black",
+    "Brown",
+    "Silver",
+    "White",
+    "Blue",
+    "Orange",
+    "Grey",
+    "Green",
+  ],
   brands: [
     "Acer",
     "Adidas",

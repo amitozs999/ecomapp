@@ -40,7 +40,9 @@ const Shop = ({ history }) => {
   const [price, setPrice] = useState([0, 0]);
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
+
   const [categoryIds, setCategoryIds] = useState([]);
+
   const [star, setStar] = useState("");
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
@@ -107,6 +109,9 @@ const Shop = ({ history }) => {
     "Silver",
     "White",
     "Blue",
+    "Orange",
+    "Grey",
+    "Green",
   ]);
   const [color, setColor] = useState("");
   const [shipping, setShipping] = useState("");
@@ -241,16 +246,51 @@ const Shop = ({ history }) => {
     setPage(1);
 
     let inTheState = categoryIds;
+    let mycolor = color;
 
+    let myshipping = shipping;
+    let mybrand = brand;
     switch (current) {
       case "HighRated":
-        return loadAllProductssortandfilter("sold", "desc", 1, inTheState);
+        return loadAllProductssortandfilter(
+          "sold",
+          "desc",
+          1,
+          inTheState,
+          mycolor,
+          mybrand,
+          myshipping
+        );
       case "Latest":
-        return loadAllProductssortandfilter("createdAt", "desc", 1, inTheState);
+        return loadAllProductssortandfilter(
+          "createdAt",
+          "desc",
+          1,
+          inTheState,
+          mycolor,
+          mybrand,
+          myshipping
+        );
       case "PriceHigh":
-        return loadAllProductssortandfilter("price", "desc", 1, inTheState);
+        return loadAllProductssortandfilter(
+          "price",
+          "desc",
+          1,
+          inTheState,
+          mycolor,
+          mybrand,
+          myshipping
+        );
       case "PriceLow":
-        return loadAllProductssortandfilter("price", "asc", 1, inTheState);
+        return loadAllProductssortandfilter(
+          "price",
+          "asc",
+          1,
+          inTheState,
+          mycolor,
+          mybrand,
+          myshipping
+        );
 
       default:
         break;
@@ -263,36 +303,85 @@ const Shop = ({ history }) => {
     getProductsCount().then((res) => setProductsCount(res.data));
     //let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
     let inTheState = categoryIds;
+    let mycolor = color;
+    let myshipping = shipping;
+    let mybrand = brand;
 
     console.log("catiddd", categoryIds);
 
     switch (current) {
       case "HighRated":
-        return loadAllProductssortandfilter("sold", "desc", page, inTheState);
+        return loadAllProductssortandfilter(
+          "sold",
+          "desc",
+          page,
+          inTheState,
+          mycolor,
+          mybrand,
+          myshipping
+        );
       case "Latest":
         return loadAllProductssortandfilter(
           "createdAt",
           "desc",
           page,
-          inTheState
+          inTheState,
+          mycolor,
+          mybrand,
+          myshipping
         );
       case "PriceHigh":
-        return loadAllProductssortandfilter("price", "desc", page, inTheState);
+        return loadAllProductssortandfilter(
+          "price",
+          "desc",
+          page,
+          inTheState,
+          mycolor,
+          mybrand,
+          myshipping
+        );
       case "PriceLow":
-        return loadAllProductssortandfilter("price", "asc", page, inTheState);
+        return loadAllProductssortandfilter(
+          "price",
+          "asc",
+          page,
+          inTheState,
+          mycolor,
+          mybrand,
+          myshipping
+        );
 
       default:
         break;
     }
-  }, [page, categoryIds]);
+  }, [page, categoryIds, color, brand, shipping]);
 
-  const loadAllProductssortandfilter = (sort, order, page, catlist) => {
+  const loadAllProductssortandfilter = (
+    sort,
+    order,
+    page,
+    catlist,
+    color,
+    brand,
+    shipping
+  ) => {
     console.log("hit prod api3", sort);
     console.log("hit prod api3", order);
     console.log("hit prod api3", page);
     console.log("hit prod api3", catlist);
+    console.log("hit prod api3", color);
+    console.log("hit prod api3", brand);
+    console.log("hit prod api3", shipping);
     //setProducts([]);
-    getProductssortandfilter(sort, order, page, catlist).then((res) => {
+    getProductssortandfilter(
+      sort,
+      order,
+      page,
+      catlist,
+      color,
+      brand,
+      shipping
+    ).then((res) => {
       //page change fetch prod again for this page
       console.log("bb" + page, res.data);
       //setProducts([]);
@@ -529,6 +618,11 @@ const Shop = ({ history }) => {
     fetchProducts({ brand: e.target.value });
   };
 
+  const handleBrand2 = (e) => {
+    setBrand(e.target.value);
+
+    console.log("yy3");
+  };
   const handleColor = (e) => {
     setSub("");
     dispatch({
@@ -543,6 +637,19 @@ const Shop = ({ history }) => {
     setShipping("");
     console.log("yy2");
     fetchProducts({ color: e.target.value });
+  };
+
+  const handleColor2 = (e) => {
+    //setColor(e.target.value);
+
+    if (e.target.value === color) {
+      setColor("");
+    } else {
+      setColor(e.target.value);
+    }
+
+    console.log("yy2");
+    //fetchProducts({ color: e.target.value });
   };
 
   // 7. show
@@ -577,7 +684,7 @@ const Shop = ({ history }) => {
         value={b}
         name={b}
         checked={b === brand}
-        onChange={handleBrand}
+        onChange={handleBrand2}
         className="pb-1 pl-4 pr-4"
       >
         {b}
@@ -591,7 +698,7 @@ const Shop = ({ history }) => {
         value={c}
         name={c}
         checked={c === color}
-        onChange={handleColor}
+        onChange={handleColor2}
         className="pb-1 pl-4 pr-4"
       >
         {c}
@@ -603,7 +710,7 @@ const Shop = ({ history }) => {
     <>
       <Checkbox
         className="pb-2 pl-4 pr-4"
-        onChange={handleShippingchange}
+        onChange={handleShippingchange2}
         value="Yes"
         checked={shipping === "Yes"}
       >
@@ -612,7 +719,7 @@ const Shop = ({ history }) => {
 
       <Checkbox
         className="pb-2 pl-4 pr-4"
-        onChange={handleShippingchange}
+        onChange={handleShippingchange2}
         value="No"
         checked={shipping === "No"}
       >
@@ -635,6 +742,11 @@ const Shop = ({ history }) => {
     setShipping(e.target.value);
     console.log("yy1");
     fetchProducts({ shipping: e.target.value });
+  };
+
+  const handleShippingchange2 = (e) => {
+    setShipping(e.target.value);
+    console.log("yy1");
   };
 
   return (
@@ -686,18 +798,18 @@ const Shop = ({ history }) => {
             </SubMenu>
 
             {/* sub category */}
-            <SubMenu
+            {/* <SubMenu
               key="4"
               title={
                 <span className="h6">
                   <DownSquareOutlined /> Sub Categories
                 </span>
               }
-            >
-              <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
-                {showSubs()}
-              </div>
-            </SubMenu>
+            > */}
+            {/* <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
+              {showSubs()}
+            </div> */}
+            {/* </SubMenu> */}
 
             {/* stars */}
             <SubMenu
@@ -711,20 +823,6 @@ const Shop = ({ history }) => {
               <div style={{ maringTop: "-10px" }}>{showStars()}</div>
             </SubMenu>
 
-            {/* brands */}
-            <SubMenu
-              key="5"
-              title={
-                <span className="h6">
-                  <DownSquareOutlined /> Brands
-                </span>
-              }
-            >
-              <div style={{ maringTop: "-10px" }} className="pr-5">
-                {showBrands()}
-              </div>
-            </SubMenu>
-
             {/* colors */}
             <SubMenu
               key="6"
@@ -736,6 +834,20 @@ const Shop = ({ history }) => {
             >
               <div style={{ maringTop: "-10px" }} className="pr-5">
                 {showColors()}
+              </div>
+            </SubMenu>
+
+            {/* brands */}
+            <SubMenu
+              key="5"
+              title={
+                <span className="h6">
+                  <DownSquareOutlined /> Brands
+                </span>
+              }
+            >
+              <div style={{ maringTop: "-10px" }} className="pr-5">
+                {showBrands()}
               </div>
             </SubMenu>
 

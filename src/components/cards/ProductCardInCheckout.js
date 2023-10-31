@@ -15,7 +15,16 @@ import {
 const ProductCardInCheckout = (props) => {
   const p = props.p;
 
-  const colors = ["Black", "Brown", "Silver", "White", "Blue"];
+  const colors = [
+    "Black",
+    "Brown",
+    "Silver",
+    "White",
+    "Blue",
+    "Orange",
+    "Grey",
+    "Green",
+  ];
   let dispatch = useDispatch();
 
   //color
