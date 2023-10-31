@@ -3,6 +3,7 @@ import {
   getProductsByCount,
   fetchProductsByFilter,
   getProductssort,
+  getProductssortandfilter,
 } from "../functions/product";
 import { getCategories } from "../functions/category";
 import { getSubs } from "../functions/sub";
@@ -43,14 +44,61 @@ const Shop = ({ history }) => {
   const [star, setStar] = useState("");
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
-  const [current, setCurrent] = useState("HighRated");
+  const [current, setCurrent] = useState("PriceHigh");
   const [page, setPage] = useState(1);
   const [brands, setBrands] = useState([
+    "Acer",
+    "Adidas",
+    "Allen Solly",
+    "American Tourister",
     "Apple",
-    "Samsung",
-    "Microsoft",
+    "Apsara",
+    "Arrow",
+    "Bajaj",
+    "BoAt",
+    "Boniry",
+    "Campus",
+    "Casio",
+    "Cello",
+    "Classmate",
+    "Dove",
+    "Engage",
+    "FACTOR",
+    "Fastrack",
+    "Fogg",
+    "GRAPHENE",
+    "HIRNAYA",
+    "HP",
+    "JBL",
+    "John Jacobs",
+    "L'Oreal Paris",
     "Lenovo",
-    "ASUS",
+    "Levi's",
+    "Luxor",
+    "Mamaearth",
+    "Minimalist",
+    "Nataraj",
+    "Neutrogena",
+    "Nike",
+    "OnePlus",
+    "Peter England",
+    "Puma",
+    "Realme",
+    "Red Tape",
+    "Reynolds",
+    "ROZEN 47",
+    "Safari",
+    "Samsung",
+    "Skullcandy",
+    "Sony",
+    "Sparx",
+    "Storio",
+    "The Derma",
+    "TIMEX",
+    "Villain",
+    "Vincent",
+    "Wild Stone",
+    "worison",
   ]);
   const [brand, setBrand] = useState("");
   const [colors, setColors] = useState([
@@ -134,6 +182,28 @@ const Shop = ({ history }) => {
 
   //   getProductsCount().then((res) => setProductsCount(res.data));
 
+  //   setPage(1);
+
+  //   switch (current) {
+  //     case "HighRated":
+  //       return loadAllProductssort("sold", "desc", 1);
+  //     case "Latest":
+  //       return loadAllProductssort("createdAt", "desc", 1);
+  //     case "PriceHigh":
+  //       return loadAllProductssort("price", "desc", 1);
+  //     case "PriceLow":
+  //       return loadAllProductssort("price", "asc", 1);
+
+  //     default:
+  //       break;
+  //   }
+  // }, [current]);
+
+  // useEffect(() => {
+  //   console.log("hit prod api1");
+
+  //   getProductsCount().then((res) => setProductsCount(res.data));
+
   //   switch (current) {
   //     case "HighRated":
   //       return loadAllProductssort("sold", "desc", page);
@@ -147,7 +217,21 @@ const Shop = ({ history }) => {
   //     default:
   //       break;
   //   }
-  // }, [current]);
+  // }, [page]);
+
+  // const loadAllProductssort = (sort, order, page) => {
+  //   console.log("hit prod api3", sort);
+  //   console.log("hit prod api3", order);
+  //   console.log("hit prod api3", page);
+  //   //setProducts([]);
+  //   getProductssort(sort, order, page).then((res) => {
+  //     //page change fetch prod again for this page
+  //     console.log("bb" + page, res.data);
+  //     //setProducts([]);
+  //     setProducts(res.data);
+  //     //setLoading(false);
+  //   });
+  // };
 
   useEffect(() => {
     console.log("hit prod api1");
@@ -156,15 +240,17 @@ const Shop = ({ history }) => {
 
     setPage(1);
 
+    let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
+
     switch (current) {
       case "HighRated":
-        return loadAllProductssort("sold", "desc", 1);
+        return loadAllProductssortandfilter("sold", "desc", 1, inTheState);
       case "Latest":
-        return loadAllProductssort("createdAt", "desc", 1);
+        return loadAllProductssortandfilter("createdAt", "desc", 1, inTheState);
       case "PriceHigh":
-        return loadAllProductssort("price", "desc", 1);
+        return loadAllProductssortandfilter("price", "desc", 1, inTheState);
       case "PriceLow":
-        return loadAllProductssort("price", "asc", 1);
+        return loadAllProductssortandfilter("price", "asc", 1, inTheState);
 
       default:
         break;
@@ -175,28 +261,35 @@ const Shop = ({ history }) => {
     console.log("hit prod api1");
 
     getProductsCount().then((res) => setProductsCount(res.data));
+    let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
 
     switch (current) {
       case "HighRated":
-        return loadAllProductssort("sold", "desc", page);
+        return loadAllProductssortandfilter("sold", "desc", page, inTheState);
       case "Latest":
-        return loadAllProductssort("createdAt", "desc", page);
+        return loadAllProductssortandfilter(
+          "createdAt",
+          "desc",
+          page,
+          inTheState
+        );
       case "PriceHigh":
-        return loadAllProductssort("price", "desc", page);
+        return loadAllProductssortandfilter("price", "desc", page, inTheState);
       case "PriceLow":
-        return loadAllProductssort("price", "asc", page);
+        return loadAllProductssortandfilter("price", "asc", page, inTheState);
 
       default:
         break;
     }
   }, [page]);
 
-  const loadAllProductssort = (sort, order, page) => {
+  const loadAllProductssortandfilter = (sort, order, page, catlist) => {
     console.log("hit prod api3", sort);
     console.log("hit prod api3", order);
     console.log("hit prod api3", page);
+    console.log("hit prod api3", catlist);
     //setProducts([]);
-    getProductssort(sort, order, page).then((res) => {
+    getProductssortandfilter(sort, order, page, catlist).then((res) => {
       //page change fetch prod again for this page
       console.log("bb" + page, res.data);
       //setProducts([]);
@@ -256,7 +349,7 @@ const Shop = ({ history }) => {
   };
 
   const fetchProducts = (arg) => {
-    console.log("hit prod api2");
+    console.log("hit prod api2 argument", arg);
     fetchProductsByFilter(arg).then((res) => {
       console.log("d1", res.data);
       console.log("d2", res);
@@ -354,7 +447,9 @@ const Shop = ({ history }) => {
     setCategoryIds(inTheState); //update stored catid array in state
     // console.log(inTheState);
     console.log("yy7");
-    fetchProducts({ category: inTheState }); //now fetch products based on these new checked categ
+    fetchProducts({
+      category: ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"],
+    }); //now fetch products based on these new checked categ
   };
 
   // 5. show products by star rating
