@@ -22,6 +22,8 @@ import ProductCardNewHoriz from "../components/cards/ProductCardNewHoriz";
 
 import { getWishlist } from "../functions/user";
 
+import { Fragment } from "react";
+
 import { getProducts, getProductsCount } from "../functions/product";
 
 import { Pagination } from "antd";
@@ -47,6 +49,33 @@ const Shop = ({ history }) => {
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
   const [current, setCurrent] = useState("PriceHigh");
+
+  const [starNumbers, setStarNumbes] = useState([]);
+  const [nums, setNums] = useState([
+    { id: 1, starNum: 5 },
+    { id: 2, starNum: 4 },
+    { id: 3, starNum: 3 },
+    { id: 4, starNum: 2 },
+    { id: 5, starNum: 1 },
+  ]);
+
+  useEffect(() => {
+    console.log("ccc", starNumbers);
+  }, [starNumbers]);
+
+  const handleStarClick2 = (num) => {
+    let inTheState = [...starNumbers];
+    let foundInState = inTheState.indexOf(num);
+    if (foundInState === -1) {
+      inTheState.push(num);
+    } else {
+      inTheState.splice(foundInState, 1); //if already pres this no remove it/uncheck it
+    }
+
+    setStarNumbes(inTheState);
+    fetchProducts({ stars: inTheState }); //detch based on this star
+  };
+
   const [page, setPage] = useState(1);
   const [brands, setBrands] = useState([
     "Acer",
@@ -250,6 +279,9 @@ const Shop = ({ history }) => {
 
     let myshipping = shipping;
     let mybrand = brand;
+
+    let mystarNumbers = starNumbers;
+
     switch (current) {
       case "HighRated":
         return loadAllProductssortandfilter(
@@ -259,7 +291,8 @@ const Shop = ({ history }) => {
           inTheState,
           mycolor,
           mybrand,
-          myshipping
+          myshipping,
+          mystarNumbers
         );
       case "Latest":
         return loadAllProductssortandfilter(
@@ -269,7 +302,8 @@ const Shop = ({ history }) => {
           inTheState,
           mycolor,
           mybrand,
-          myshipping
+          myshipping,
+          mystarNumbers
         );
       case "PriceHigh":
         return loadAllProductssortandfilter(
@@ -279,7 +313,8 @@ const Shop = ({ history }) => {
           inTheState,
           mycolor,
           mybrand,
-          myshipping
+          myshipping,
+          mystarNumbers
         );
       case "PriceLow":
         return loadAllProductssortandfilter(
@@ -289,7 +324,8 @@ const Shop = ({ history }) => {
           inTheState,
           mycolor,
           mybrand,
-          myshipping
+          myshipping,
+          mystarNumbers
         );
 
       default:
@@ -306,6 +342,7 @@ const Shop = ({ history }) => {
     let mycolor = color;
     let myshipping = shipping;
     let mybrand = brand;
+    let mystarNumbers = starNumbers;
 
     console.log("catiddd", categoryIds);
 
@@ -318,7 +355,8 @@ const Shop = ({ history }) => {
           inTheState,
           mycolor,
           mybrand,
-          myshipping
+          myshipping,
+          mystarNumbers
         );
       case "Latest":
         return loadAllProductssortandfilter(
@@ -328,7 +366,8 @@ const Shop = ({ history }) => {
           inTheState,
           mycolor,
           mybrand,
-          myshipping
+          myshipping,
+          mystarNumbers
         );
       case "PriceHigh":
         return loadAllProductssortandfilter(
@@ -338,7 +377,8 @@ const Shop = ({ history }) => {
           inTheState,
           mycolor,
           mybrand,
-          myshipping
+          myshipping,
+          mystarNumbers
         );
       case "PriceLow":
         return loadAllProductssortandfilter(
@@ -348,13 +388,14 @@ const Shop = ({ history }) => {
           inTheState,
           mycolor,
           mybrand,
-          myshipping
+          myshipping,
+          mystarNumbers
         );
 
       default:
         break;
     }
-  }, [page, categoryIds, color, brand, shipping]);
+  }, [page, categoryIds, color, brand, shipping, starNumbers]);
 
   const loadAllProductssortandfilter = (
     sort,
@@ -363,7 +404,8 @@ const Shop = ({ history }) => {
     catlist,
     color,
     brand,
-    shipping
+    shipping,
+    starNumbers
   ) => {
     console.log("hit prod api3", sort);
     console.log("hit prod api3", order);
@@ -372,6 +414,7 @@ const Shop = ({ history }) => {
     console.log("hit prod api3", color);
     console.log("hit prod api3", brand);
     console.log("hit prod api3", shipping);
+    console.log("hit prod api3", starNumbers);
     //setProducts([]);
     getProductssortandfilter(
       sort,
@@ -380,7 +423,8 @@ const Shop = ({ history }) => {
       catlist,
       color,
       brand,
-      shipping
+      shipping,
+      starNumbers
     ).then((res) => {
       //page change fetch prod again for this page
       console.log("bb" + page, res.data);
@@ -655,12 +699,28 @@ const Shop = ({ history }) => {
   // 7. show
 
   const showStars = () => (
+    // <div className="pr-4 pl-4 pb-2">
+    //   <Star    starClick={handleStarClick} numberOfStars={5} />
+    //   <Star starClick={handleStarClick} numberOfStars={4} />
+    //   <Star starClick={handleStarClick} numberOfStars={3} />
+    //   <Star starClick={handleStarClick} numberOfStars={2} />
+    //   <Star starClick={handleStarClick} numberOfStars={1} />
+    // </div>
+
     <div className="pr-4 pl-4 pb-2">
-      <Star starClick={handleStarClick} numberOfStars={5} />
-      <Star starClick={handleStarClick} numberOfStars={4} />
-      <Star starClick={handleStarClick} numberOfStars={3} />
-      <Star starClick={handleStarClick} numberOfStars={2} />
-      <Star starClick={handleStarClick} numberOfStars={1} />
+      {nums.map((num) => (
+        <Fragment key={num.id}>
+          <Star
+            starClick={() => handleStarClick2(num.starNum)}
+            num={num}
+            starEmptyColor={
+              starNumbers.includes(num.starNum) ? "red" : "lightgrey"
+            }
+            editing={false}
+          />
+          <br />
+        </Fragment>
+      ))}
     </div>
   );
 

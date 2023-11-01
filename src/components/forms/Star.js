@@ -1,20 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 import StarRating from "react-star-ratings";
 
-const Star = (
-  { starClick, numberOfStars } //pass value to parrent though this when star filter updated on click
-) => (
-  <>
+const Star = ({ starClick, num, starEmptyColor = "orange" }) => (
+  <Fragment>
     <StarRating
-      changeRating={() => starClick(numberOfStars)}
-      numberOfStars={numberOfStars}
+      changeRating={() => starClick(num.starNum)}
+      numberOfStars={num.starNum}
       starDimension="20px"
       starSpacing="2px"
-      starHoverColor="red"
-      starEmptyColor="red"
+      starEmptyColor={starEmptyColor}
+      starHoverColor={starEmptyColor}
+      editing={false}
     />
-    <br />
-  </>
+  </Fragment>
 );
 
 export default Star;
