@@ -40,6 +40,8 @@ const Shop = ({ history }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState([0, 0]);
+  const [pricechanged, setPricechanged] = useState(false);
+
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
 
@@ -282,6 +284,9 @@ const Shop = ({ history }) => {
 
     let mystarNumbers = starNumbers;
 
+    let mypricechanged = pricechanged;
+
+    let myprice = price;
     switch (current) {
       case "HighRated":
         return loadAllProductssortandfilter(
@@ -292,7 +297,9 @@ const Shop = ({ history }) => {
           mycolor,
           mybrand,
           myshipping,
-          mystarNumbers
+          mystarNumbers,
+          mypricechanged,
+          myprice
         );
       case "Latest":
         return loadAllProductssortandfilter(
@@ -303,7 +310,9 @@ const Shop = ({ history }) => {
           mycolor,
           mybrand,
           myshipping,
-          mystarNumbers
+          mystarNumbers,
+          mypricechanged,
+          myprice
         );
       case "PriceHigh":
         return loadAllProductssortandfilter(
@@ -314,7 +323,9 @@ const Shop = ({ history }) => {
           mycolor,
           mybrand,
           myshipping,
-          mystarNumbers
+          mystarNumbers,
+          mypricechanged,
+          myprice
         );
       case "PriceLow":
         return loadAllProductssortandfilter(
@@ -325,7 +336,9 @@ const Shop = ({ history }) => {
           mycolor,
           mybrand,
           myshipping,
-          mystarNumbers
+          mystarNumbers,
+          mypricechanged,
+          myprice
         );
 
       default:
@@ -343,7 +356,8 @@ const Shop = ({ history }) => {
     let myshipping = shipping;
     let mybrand = brand;
     let mystarNumbers = starNumbers;
-
+    let mypricechanged = pricechanged;
+    let myprice = price;
     console.log("catiddd", categoryIds);
 
     switch (current) {
@@ -356,7 +370,9 @@ const Shop = ({ history }) => {
           mycolor,
           mybrand,
           myshipping,
-          mystarNumbers
+          mystarNumbers,
+          mypricechanged,
+          myprice
         );
       case "Latest":
         return loadAllProductssortandfilter(
@@ -367,7 +383,9 @@ const Shop = ({ history }) => {
           mycolor,
           mybrand,
           myshipping,
-          mystarNumbers
+          mystarNumbers,
+          mypricechanged,
+          myprice
         );
       case "PriceHigh":
         return loadAllProductssortandfilter(
@@ -378,7 +396,9 @@ const Shop = ({ history }) => {
           mycolor,
           mybrand,
           myshipping,
-          mystarNumbers
+          mystarNumbers,
+          mypricechanged,
+          myprice
         );
       case "PriceLow":
         return loadAllProductssortandfilter(
@@ -389,13 +409,15 @@ const Shop = ({ history }) => {
           mycolor,
           mybrand,
           myshipping,
-          mystarNumbers
+          mystarNumbers,
+          mypricechanged,
+          myprice
         );
 
       default:
         break;
     }
-  }, [page, categoryIds, color, brand, shipping, starNumbers]);
+  }, [page, categoryIds, color, brand, shipping, starNumbers, price]);
 
   const loadAllProductssortandfilter = (
     sort,
@@ -405,7 +427,9 @@ const Shop = ({ history }) => {
     color,
     brand,
     shipping,
-    starNumbers
+    starNumbers,
+    mypricechanged,
+    myprice
   ) => {
     console.log("hit prod api3", sort);
     console.log("hit prod api3", order);
@@ -415,6 +439,8 @@ const Shop = ({ history }) => {
     console.log("hit prod api3", brand);
     console.log("hit prod api3", shipping);
     console.log("hit prod api3", starNumbers);
+    console.log("hit prod api3", mypricechanged);
+    console.log("hit prod api3", myprice);
     //setProducts([]);
     getProductssortandfilter(
       sort,
@@ -424,7 +450,9 @@ const Shop = ({ history }) => {
       color,
       brand,
       shipping,
-      starNumbers
+      starNumbers,
+      mypricechanged,
+      myprice
     ).then((res) => {
       //page change fetch prod again for this page
       console.log("bb" + page, res.data);
@@ -467,6 +495,10 @@ const Shop = ({ history }) => {
     // fetch subcategories
     getSubs().then((res) => setSubs(res.data)); //fetch and store in arr one time only for use in future
   }, []);
+
+  useEffect(() => {
+    console.log("mera price", price);
+  }, [price]);
 
   const hello = () => {
     console.log("setting wishchange", iswishchange);
@@ -532,6 +564,16 @@ const Shop = ({ history }) => {
 
     setTimeout(() => {
       setOk(!ok); //on/off price filter
+    }, 300);
+  };
+
+  const handleSlider2 = (value) => {
+    setPrice(value);
+
+    console.log("mera price", price);
+
+    setTimeout(() => {
+      setPricechanged(true);
     }, 300);
   };
 
@@ -836,11 +878,11 @@ const Shop = ({ history }) => {
               <div>
                 <Slider
                   className="ml-4 mr-4"
-                  tipFormatter={(v) => `$${v}`}
+                  tipFormatter={(v) => `Rs ${v}`}
                   range
                   value={price}
-                  onChange={handleSlider} //for price based on range change
-                  max="4999"
+                  onChange={handleSlider2} //for price based on range change
+                  max="80000"
                 />
               </div>
             </SubMenu>
