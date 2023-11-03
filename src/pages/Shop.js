@@ -726,6 +726,23 @@ const Shop = ({ history }) => {
     fetchProducts({ color: e.target.value });
   };
 
+  const clearfilters = () => {
+    setSub("");
+    // dispatch({
+    //   type: "SEARCH_QUERY",
+    //   payload: { text: "" },
+    // });
+    setPrice([0, 0]);
+    setCategoryIds([]);
+    setStar("");
+    setBrand("");
+    setColor("");
+    setShipping("");
+    setStarNumbes([]);
+    // console.log("yy2");
+    // fetchProducts({ color: e.target.value });
+  };
+
   const handleColor2 = (e) => {
     //setColor(e.target.value);
 
@@ -860,9 +877,37 @@ const Shop = ({ history }) => {
 
       <div className="row">
         <div className="col-md-3 pt-2">
-          {/* <h4>Search/Filter</h4> */}
-          <hr />
+          <div className="row px-5 mt-2 -mb-4">
+            <div className="float-left w-3/4">
+              <p
+                className="float-left "
+                style={{ color: "black", fontSize: "16px" }}
+              >
+                Filters
+              </p>
+            </div>
+            <div
+              className="float-right w-1/4"
+              style={{
+                overflow: "hidden",
+                // whiteSpace: "nowrap",
+              }}
+            >
+              <p
+                className="font-semibold   "
+                style={{
+                  color: "#5199DBFF",
+                  fontSize: "14px",
+                  cursor: "pointer",
+                }}
+                onClick={clearfilters}
+              >
+                Clear All
+              </p>
+            </div>
+          </div>
 
+          <hr />
           <Menu
             defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]} //be default open rakhega menu
             mode="inline"
