@@ -75,7 +75,7 @@ const Shop = ({ history }) => {
     }
 
     setStarNumbes(inTheState);
-    fetchProducts({ stars: inTheState }); //detch based on this star
+    // fetchProducts({ stars: inTheState }); //detch based on this star
   };
 
   const [page, setPage] = useState(1);
@@ -285,6 +285,7 @@ const Shop = ({ history }) => {
     let mystarNumbers = starNumbers;
 
     let mypricechanged = pricechanged;
+    //let mystarNumbers=starNumbers
 
     let myprice = price;
     switch (current) {
