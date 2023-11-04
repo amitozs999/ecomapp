@@ -54,7 +54,8 @@ export const getProductssortandfilter = async (
   shipping,
   starNumbers,
   mypricechanged,
-  myprice
+  myprice,
+  mytext
 ) =>
   await axios.post(`${process.env.REACT_APP_API}/productssortandfilter`, {
     //post bcoz passing sope body params based on which fetch data
@@ -68,6 +69,7 @@ export const getProductssortandfilter = async (
     starNumbers,
     mypricechanged,
     myprice,
+    mytext,
   });
 
 export const getProductsCount = async () =>

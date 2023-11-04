@@ -169,9 +169,9 @@ const Shop = ({ history }) => {
     // });
   }, [iswishchange]);
 
-  useEffect(() => {
-    getProductsCount().then((res) => setProductsCount(res.data));
-  }, []);
+  // useEffect(() => {
+  //   getProductsCount().then((res) => setProductsCount(res.data));
+  // }, []);
 
   useEffect(() => {
     console.log("change hua kya", iswishchange);
@@ -272,7 +272,7 @@ const Shop = ({ history }) => {
   useEffect(() => {
     console.log("hit prod api1");
 
-    getProductsCount().then((res) => setProductsCount(res.data));
+    //getProductsCount().then((res) => setProductsCount(res.data.total));
 
     setPage(1);
 
@@ -285,6 +285,7 @@ const Shop = ({ history }) => {
     let mystarNumbers = starNumbers;
 
     let mypricechanged = pricechanged;
+    let mytext = text;
     //let mystarNumbers=starNumbers
 
     let myprice = price;
@@ -300,7 +301,8 @@ const Shop = ({ history }) => {
           myshipping,
           mystarNumbers,
           mypricechanged,
-          myprice
+          myprice,
+          mytext
         );
       case "Latest":
         return loadAllProductssortandfilter(
@@ -313,7 +315,8 @@ const Shop = ({ history }) => {
           myshipping,
           mystarNumbers,
           mypricechanged,
-          myprice
+          myprice,
+          mytext
         );
       case "PriceHigh":
         return loadAllProductssortandfilter(
@@ -326,7 +329,8 @@ const Shop = ({ history }) => {
           myshipping,
           mystarNumbers,
           mypricechanged,
-          myprice
+          myprice,
+          mytext
         );
       case "PriceLow":
         return loadAllProductssortandfilter(
@@ -339,7 +343,8 @@ const Shop = ({ history }) => {
           myshipping,
           mystarNumbers,
           mypricechanged,
-          myprice
+          myprice,
+          mytext
         );
 
       default:
@@ -350,7 +355,7 @@ const Shop = ({ history }) => {
   useEffect(() => {
     console.log("hit prod api1");
 
-    getProductsCount().then((res) => setProductsCount(res.data));
+    //getProductsCount().then((res) => setProductsCount(res.data.total));
     //let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
     let inTheState = categoryIds;
     let mycolor = color;
@@ -359,6 +364,7 @@ const Shop = ({ history }) => {
     let mystarNumbers = starNumbers;
     let mypricechanged = pricechanged;
     let myprice = price;
+    let mytext = text;
     console.log("catiddd", categoryIds);
 
     switch (current) {
@@ -373,7 +379,8 @@ const Shop = ({ history }) => {
           myshipping,
           mystarNumbers,
           mypricechanged,
-          myprice
+          myprice,
+          mytext
         );
       case "Latest":
         return loadAllProductssortandfilter(
@@ -386,7 +393,8 @@ const Shop = ({ history }) => {
           myshipping,
           mystarNumbers,
           mypricechanged,
-          myprice
+          myprice,
+          mytext
         );
       case "PriceHigh":
         return loadAllProductssortandfilter(
@@ -399,7 +407,8 @@ const Shop = ({ history }) => {
           myshipping,
           mystarNumbers,
           mypricechanged,
-          myprice
+          myprice,
+          mytext
         );
       case "PriceLow":
         return loadAllProductssortandfilter(
@@ -412,13 +421,14 @@ const Shop = ({ history }) => {
           myshipping,
           mystarNumbers,
           mypricechanged,
-          myprice
+          myprice,
+          mytext
         );
 
       default:
         break;
     }
-  }, [page, categoryIds, color, brand, shipping, starNumbers, price]);
+  }, [page, categoryIds, color, brand, shipping, starNumbers, price, text]);
 
   const loadAllProductssortandfilter = (
     sort,
@@ -430,7 +440,8 @@ const Shop = ({ history }) => {
     shipping,
     starNumbers,
     mypricechanged,
-    myprice
+    myprice,
+    mytext
   ) => {
     console.log("hit prod api3", sort);
     console.log("hit prod api3", order);
@@ -442,6 +453,7 @@ const Shop = ({ history }) => {
     console.log("hit prod api3", starNumbers);
     console.log("hit prod api3", mypricechanged);
     console.log("hit prod api3", myprice);
+    console.log("hit prod api3", mytext);
     //setProducts([]);
     getProductssortandfilter(
       sort,
@@ -453,12 +465,16 @@ const Shop = ({ history }) => {
       shipping,
       starNumbers,
       mypricechanged,
-      myprice
+      myprice,
+      mytext
     ).then((res) => {
       //page change fetch prod again for this page
-      console.log("bb" + page, res.data);
+      console.log("bbbbbbbbb" + page, res.data);
+      console.log("bbbbbbbbb" + page, res);
+      console.log("bbbbbbbbb" + page, res.data.total);
       //setProducts([]);
-      setProducts(res.data);
+      setProductsCount(res.data.total);
+      setProducts(res.data.products);
       //setLoading(false);
     });
   };
@@ -527,17 +543,15 @@ const Shop = ({ history }) => {
   };
 
   // 2. load products on user search input
-  useEffect(() => {
-    console.log("hit prod api5");
-    const delayed = setTimeout(() => {
-      console.log("yy9");
-      fetchProducts({ query: text });
-      if (!text) {
-        loadAllProducts();
-      }
-    }, 100);
-    return () => clearTimeout(delayed);
-  }, [text]); //run on change of text in real time with wait of 3 msec
+  // useEffect(() => {
+  //   console.log("hit prod api5");
+  //   const delayed = setTimeout(() => {
+  //     console.log("yy9");
+  //     //fetchProducts({ query: text });
+
+  //   }, 700);
+  //   return () => clearTimeout(delayed);
+  // }, [text]); //run on change of text in real time with wait of 3 msec
 
   // 3. load products based on price range
   useEffect(() => {
@@ -728,10 +742,10 @@ const Shop = ({ history }) => {
 
   const clearfilters = () => {
     setSub("");
-    // dispatch({
-    //   type: "SEARCH_QUERY",
-    //   payload: { text: "" },
-    // });
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
     setPrice([0, 0]);
     setCategoryIds([]);
     setStar("");
@@ -1105,7 +1119,7 @@ const Shop = ({ history }) => {
                 // hideOnSinglePage
                 // simple
                 // showTotal={(total, range) =>
-                //   `${range[0]}-${range[1]} of ${total} items`
+                //   `${range[0]}-${range[1]} of ${productsCount} items`
                 // }
                 showSizeChanger={false}
                 current={page}
