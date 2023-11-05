@@ -430,7 +430,7 @@ const Shop = ({ history }) => {
     }
 
     history.push(window.location.pathname + "?" + currentUrlParams.toString());
-  }, [starNumbers]);
+  }, [starNumbers, current]);
 
   useEffect(() => {
     // fetch categories
@@ -778,6 +778,10 @@ const Shop = ({ history }) => {
       //setProducts([]);
       setProductsCount(res.data.total);
       setProducts(res.data.products);
+      const cv = Math.round(productsCount / 8) * 10;
+      console.log("bbbbbbbbbcv" + page, cv);
+      const cv2 = Math.round(res.data.total / 8) * 10;
+      console.log("bbbbbbbbbcv2" + page, cv2);
       //setLoading(false);
     });
   };
