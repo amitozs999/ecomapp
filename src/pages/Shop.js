@@ -932,6 +932,14 @@ const Shop = ({ history }) => {
     setColor("");
     setShipping("");
     setStarNumbes([]);
+
+    let currentUrlParams = new URLSearchParams(window.location.search);
+    currentUrlParams.delete("cat");
+    currentUrlParams.delete("color");
+    currentUrlParams.delete("brand");
+    currentUrlParams.delete("shipping");
+    history.push(window.location.pathname + "?" + currentUrlParams.toString());
+
     // console.log("yy2");
     // fetchProducts({ color: e.target.value });
   };
