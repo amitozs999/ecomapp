@@ -41,8 +41,9 @@ const { Item } = Menu;
 const Shop = ({ history }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [price, setPrice] = useState([0, 0]);
+
   const [pricechanged, setPricechanged] = useState(false);
+  const [pricechangedstopped, setPricechangedstopped] = useState(false);
 
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -184,6 +185,10 @@ const Shop = ({ history }) => {
   const as = searchParams.get("shipping");
   const si = [...searchParams.getAll("cat")];
   const si2 = [...searchParams.getAll("star")];
+
+  const pf = searchParams.get("pricefrom");
+  const pt = searchParams.get("priceto");
+
   console.log("siiiiiiiiiii", si);
   console.log("siiiiiiiiiii", si2);
   console.log("siiiiiiiiiiimp1", catmap1);
@@ -195,6 +200,8 @@ const Shop = ({ history }) => {
   console.log(as);
   console.log(si);
   console.log(si2);
+  console.log(pf);
+  console.log(pt);
 
   // let sinew = [];
   // si.length &&
@@ -209,6 +216,8 @@ const Shop = ({ history }) => {
   let xn = [1, 2, 3];
 
   const [categoryIds, setCategoryIds] = useState([]);
+
+  const [price, setPrice] = useState(pf || pt ? [pf, pt] : [0, 0]);
 
   console.log("catids", categoryIds);
   console.log("starids", starNumbers);
@@ -226,6 +235,60 @@ const Shop = ({ history }) => {
   // console.log("url paaaiui", searchParams.get("page"));
   searchParams.set("sort", current);
   searchParams.set("page", page);
+
+  useEffect(() => {
+    console.log("priceccc", price);
+
+    let currentUrlParams = new URLSearchParams(window.location.search);
+
+    if (!isMount) {
+      const pricefrom = searchParams.get("pricefrom");
+      const priceto = searchParams.get("priceto");
+
+      console.log("siinow", pricefrom);
+      console.log("siinow", priceto);
+
+      console.log("siinowcat", price);
+
+      if (price[1] != 0) {
+        // console.log("mycate len mp1", catmap1);
+        // console.log("mycate len mp2", catmap2);
+
+        // for (let i = 0; i < si.length; i++) {
+        //   let sid = si[i];
+        //   if (!starNumbers.includes(sid)) {
+        //     currentUrlParams.delete("star", si[i]);
+        //   }
+        // }
+
+        // if (pricefrom != price[0]) {
+        currentUrlParams.delete("pricefrom");
+        // }
+        // if (priceto != price[1]) {
+        currentUrlParams.delete("priceto");
+        // }
+
+        currentUrlParams.append("pricefrom", price[0]);
+        currentUrlParams.append("priceto", price[1]);
+        // for (let i = 0; i < starNumbers.length; i++) {
+        //   let str = starNumbers[i];
+
+        //   if (!si.includes(str)) {
+        //     currentUrlParams.append("star", str);
+        //     // console.log("mycat", categoryIds[i]);
+        //     // console.log("mycat", catmap1.get(categoryIds[i]));
+        //   }
+        // }
+      }
+
+      //  const intervalId = setInterval(() => {
+      history.push(
+        window.location.pathname + "?" + currentUrlParams.toString()
+      );
+      //  }, 1000);
+      //  return () => clearInterval(intervalId);
+    }
+  }, [price]);
 
   useEffect(() => {
     console.log("useffect126");
@@ -582,10 +645,7 @@ const Shop = ({ history }) => {
   }, [current]);
 
   useEffect(() => {
-    console.log(
-      "hit prod api12222222222222222 with update catids",
-      categoryIds
-    );
+    console.log("price change hit prod api12222222222222222 hit ", categoryIds);
 
     //getProductsCount().then((res) => setProductsCount(res.data.total));
     //let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
@@ -662,7 +722,16 @@ const Shop = ({ history }) => {
       default:
         break;
     }
-  }, [page, categoryIds, color, brand, shipping, starNumbers, price, text]);
+  }, [
+    page,
+    categoryIds,
+    color,
+    brand,
+    shipping,
+    starNumbers,
+    pricechangedstopped,
+    text,
+  ]);
 
   const loadAllProductssortandfilter = (
     sort,
@@ -810,15 +879,27 @@ const Shop = ({ history }) => {
   };
 
   const handleSlider2 = (value) => {
-    setPrice(value);
-
     console.log("mera price", price);
-
-    setTimeout(() => {
+    setPrice(value);
+    const timeoutId = setTimeout(() => {
       setPricechanged(true);
 
       //setSearchParams({ price });
-    }, 300);
+    }, 1000);
+    return () => clearTimeout(timeoutId);
+  };
+
+  const handleSlider3 = (value) => {
+    console.log("price change onafter stopped", price);
+
+    setPricechangedstopped(!pricechangedstopped);
+    // setPrice(value);
+    // const timeoutId = setTimeout(() => {
+    //   setPricechanged(true);
+
+    //   //setSearchParams({ price });
+    // }, 1000);
+    // return () => clearTimeout(timeoutId);
   };
 
   // 4. load products based on category
@@ -987,12 +1068,17 @@ const Shop = ({ history }) => {
     setColor("");
     setShipping("");
     setStarNumbes([]);
+    setPrice([0, 0]);
 
     let currentUrlParams = new URLSearchParams(window.location.search);
     currentUrlParams.delete("cat");
     currentUrlParams.delete("color");
     currentUrlParams.delete("brand");
     currentUrlParams.delete("shipping");
+    currentUrlParams.delete("star");
+    currentUrlParams.delete("pricefrom");
+    currentUrlParams.delete("priceto");
+
     history.push(window.location.pathname + "?" + currentUrlParams.toString());
 
     // console.log("yy2");
@@ -1186,7 +1272,8 @@ const Shop = ({ history }) => {
                   range
                   value={price}
                   onChange={handleSlider2} //for price based on range change
-                  max="80000"
+                  onAfterChange={handleSlider3}
+                  max="60000"
                 />
               </div>
             </SubMenu>
