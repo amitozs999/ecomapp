@@ -18,7 +18,7 @@ const Banner = () => {
       numberOfDiscountDate: 3,
       href: "/",
       discount: "40",
-      slug: "/product/jbl-tune-720bt-headphones",
+      slug: "/product/jbl-tune-720b-headphone",
     },
 
     {

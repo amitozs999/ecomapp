@@ -22,7 +22,7 @@
     "react-quill": "^2.0.0",
     "react-redux": "^7.2.1",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "3.4.3",
     "react-slick": "^0.29.0",
     "react-star-rating": "^1.4.2",

@@ -23,12 +23,14 @@ import ProductCardNewHoriz from "../components/cards/ProductCardNewHoriz";
 import { getWishlist } from "../functions/user";
 
 import { Fragment } from "react";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 import { getProducts, getProductsCount } from "../functions/product";
 
 import { Pagination } from "antd";
 
 import { Link } from "react-router-dom";
+import { useIsMount } from "./useIsMount";
 
 import "./index.css";
 
@@ -45,12 +47,14 @@ const Shop = ({ history }) => {
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
 
-  const [categoryIds, setCategoryIds] = useState([]);
-
   const [star, setStar] = useState("");
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
-  const [current, setCurrent] = useState("PriceHigh");
+  const isMount = useIsMount();
+
+  //const [searchParams, setSearchParams] = usesearch;
+
+  //const sterm = searchParams.get("price") || "";
 
   const [starNumbers, setStarNumbes] = useState([]);
   const [nums, setNums] = useState([
@@ -78,7 +82,6 @@ const Shop = ({ history }) => {
     // fetchProducts({ stars: inTheState }); //detch based on this star
   };
 
-  const [page, setPage] = useState(1);
   const [brands, setBrands] = useState([
     "Acer",
     "Adidas",
@@ -133,7 +136,7 @@ const Shop = ({ history }) => {
     "Wild Stone",
     "worison",
   ]);
-  const [brand, setBrand] = useState("");
+
   const [colors, setColors] = useState([
     "Black",
     "Brown",
@@ -144,8 +147,6 @@ const Shop = ({ history }) => {
     "Grey",
     "Green",
   ]);
-  const [color, setColor] = useState("");
-  const [shipping, setShipping] = useState("");
 
   const [wishlistt, setWishlist] = useState([]);
   const [iswishchange, setiswishchange] = useState(0);
@@ -158,6 +159,230 @@ const Shop = ({ history }) => {
 
   console.log("wishlistt set value", wishlistt);
   console.log("userwishlist ", userwishlist);
+
+  //const mysearch = useLocation().search;
+
+  //const catmap = new Map();
+
+  let mp1 = new Map();
+  if (localStorage.myMap1 !== undefined)
+    mp1 = new Map(JSON.parse(localStorage.myMap1));
+
+  const [catmap1, setCatmap1] = useState(mp1);
+
+  let mp2 = new Map();
+  if (localStorage.myMap2 !== undefined)
+    mp2 = new Map(JSON.parse(localStorage.myMap2));
+  const [catmap2, setCatmap2] = useState(mp2);
+
+  const searchParams = new URLSearchParams(useLocation().search);
+  const av = searchParams.get("page");
+  const ap = searchParams.get("sort");
+  const ac = searchParams.get("color");
+  const ab = searchParams.get("brand");
+  const as = searchParams.get("shipping");
+  const si = [...searchParams.getAll("cat")];
+  console.log("siiiiiiiiiii", si);
+  console.log("siiiiiiiiiiimp1", catmap1);
+  console.log("siiiiiiiiiiimp2", catmap2);
+  console.log(av);
+  console.log(ap);
+  console.log(ac);
+  console.log(ab);
+  console.log(as);
+  console.log(si);
+
+  // let sinew = [];
+  // si.length &&
+  //   catmap2.size &&
+  //   si.forEach((c) => {
+  //     sinew.push(catmap2.get(c).toString());
+  //     console.log("ss", c);
+  //     console.log("ss", catmap2.get(c));
+  //   });
+  // console.log("siiiiiiiiiiinew", sinew);
+
+  let xn = [1, 2, 3];
+
+  const [categoryIds, setCategoryIds] = useState([]);
+
+  console.log("catids", categoryIds);
+  const [shipping, setShipping] = useState(as == null ? "" : as);
+  const [color, setColor] = useState(ac == null ? "" : ac);
+  const [brand, setBrand] = useState(ab == null ? "" : ab);
+  const [page, setPage] = useState(av == null ? 1 : av);
+  const [current, setCurrent] = useState(ap == null ? "PriceHigh" : ap); //intially he values null nothing in param so take defalut
+  //after refresh have values in url will take take that
+
+  //now on fresh load curr is price high and page=1
+
+  // console.log("url paaaiui", searchParams);
+  // console.log("url paaaiui", searchParams.get("page"));
+  searchParams.set("sort", current);
+  searchParams.set("page", page);
+
+  useEffect(() => {
+    console.log("useffect126");
+    const si = [...searchParams.getAll("cat")];
+    let sinew = [];
+    si.forEach((c) => {
+      sinew.push(catmap2.get(c));
+    });
+    setCategoryIds(sinew);
+  }, [catmap1, catmap2]);
+
+  // useEffect(() => {
+  //   console.log("ccccccccid changed", categoryIds);
+
+  //   if (categoryIds.length == 0) {
+  //     //setCategoryIds([651a84c21a08f53c58229efe, 65031cc044ec934424da3d7e]);
+  //     console.log("ccccccccid changed inside", categoryIds);
+  //   }
+  // }, [categoryIds]);
+
+  useEffect(() => {
+    let currentUrlParams = new URLSearchParams(window.location.search);
+
+    console.log("mountttttt", isMount); //first time render mount true,  then ater that all rendeer false
+
+    //console.log("mycate len", catmap1.size);
+
+    //console.log("url paaa", currentUrlParams);
+
+    // console.log("cur useffect124", current);
+
+    console.log("renderfirst");
+    console.log("renderfirstc", current + "ff");
+    console.log("renderfirstp", page);
+    console.log("renderfirstrendersec");
+    currentUrlParams.set("sort", current);
+    currentUrlParams.set("page", page);
+
+    if (color != "") currentUrlParams.set("color", color);
+    if (brand != "") currentUrlParams.set("brand", brand);
+    if (shipping != "") currentUrlParams.set("shipping", shipping);
+
+    console.log("abhi cat ids", categoryIds);
+
+    if (!isMount) {
+      //first tim render do nothing
+      // second time se set only in url
+
+      console.log("mountttttt true tha first time then set categ val", isMount);
+
+      const si = [...searchParams.getAll("cat")];
+
+      console.log("siinow", si);
+      console.log("siinowcat", categoryIds);
+
+      if ((categoryIds.length != 0 || si.length != 0) && catmap2.size != 0) {
+        console.log("mycate len mp1", catmap1);
+        console.log("mycate len mp2", catmap2);
+
+        for (let i = 0; i < si.length; i++) {
+          let catid = catmap2.get(si[i]);
+          if (!categoryIds.includes(catid)) {
+            currentUrlParams.delete("cat", si[i]);
+          }
+        }
+
+        for (let i = 0; i < categoryIds.length; i++) {
+          let catstr = catmap1.get(categoryIds[i]);
+
+          if (!si.includes(catstr)) {
+            currentUrlParams.append("cat", catstr);
+            console.log("mycat", categoryIds[i]);
+            console.log("mycat", catmap1.get(categoryIds[i]));
+          }
+        }
+
+        //params.append("foo", "baz");
+      }
+    }
+    //currentUrlParams.set("color", color);
+
+    history.push(window.location.pathname + "?" + currentUrlParams.toString());
+
+    // searchParams.set("sort", current);
+    // searchParams.set("page", page);
+    // console.log("url paaa", currentUrlParams);
+
+    // if (!isMount) {  //first tim render nothing to set on url
+    // // currentUrlParams.set("sort", current);
+    // // currentUrlParams.set("page", page);
+
+    // }
+  }, [page, current, color, brand, shipping, categoryIds]);
+
+  useEffect(() => {
+    // fetch categories
+    //cart1 = JSON.parse(localStorage.getItem("cart"));
+
+    //map = new Map(JSON.parse(localStorage.myMap));
+
+    // if (localStorage.myMap1) {
+    //   // let mycatmap11 = JSON.parse(localStorage.getItem("mycatmap11"));
+    //   setCatmap1(new Map(JSON.parse(localStorage.myMap1)));
+    // }
+    // if (localStorage.myMap2) {
+    //   // let mycatmap22 = JSON.parse(localStorage.getItem("mycatmap22"));
+    //   setCatmap2(new Map(JSON.parse(localStorage.myMap2)));
+    // }
+
+    // if (isMount) {
+    // if (localStorage.myMap1 == undefined && localStorage.myMap2 == undefined) {
+
+    if (isMount) {
+      getCategories().then((res) => {
+        setCategories(res.data);
+        console.log("my categ useffect123", res.data);
+
+        //let mp = res.data;
+
+        const mycatmap1 = new Map();
+        const mycatmap2 = new Map();
+
+        res.data.map((c) => {
+          mycatmap1.set(c._id, c.name);
+          mycatmap2.set(c.name, c._id);
+        });
+        //setCatmap(nextMap)
+
+        setCatmap1(new Map(mycatmap1));
+        setCatmap2(new Map(mycatmap2));
+
+        // localStorage.setItem("mycatmap11", JSON.stringify(mycatmap1));
+        // localStorage.setItem("mycatmap22", JSON.stringify(mycatmap2));
+        localStorage.myMap1 = JSON.stringify(Array.from(mycatmap1));
+        localStorage.myMap2 = JSON.stringify(Array.from(mycatmap2));
+
+        // mp.map(
+        //   (c) => {
+        //     catmap.set(c._id, c.name);
+        //     console.log("kv", c._id);
+        //     console.log("kv", c.name);
+        //   }
+
+        //   // {c.name}
+        // );
+        // console.log("mycate len", catmap1);
+        // console.log("mycate len", catmap1.size);
+
+        // //catmap.get("apples");
+        // for (const x of catmap1.keys()) {
+        //   console.log("cat keys", x);
+        //   console.log("cat keys ki val", catmap1.get(x));
+        // }
+
+        // for (const x of catmap1.values()) {
+        //   console.log("cat val", x);
+        // }
+      }); //fetach and store in arr
+    }
+
+    // fetch subcategories
+    getSubs().then((res) => setSubs(res.data)); //fetch and store in arr one time only for use in future
+  }, []);
 
   useEffect(() => {
     console.log("change hua kya", iswishchange);
@@ -213,68 +438,17 @@ const Shop = ({ history }) => {
     // });
   };
 
-  // useEffect(() => {
-  //   console.log("hit prod api1");
-
-  //   getProductsCount().then((res) => setProductsCount(res.data));
-
-  //   setPage(1);
-
-  //   switch (current) {
-  //     case "HighRated":
-  //       return loadAllProductssort("sold", "desc", 1);
-  //     case "Latest":
-  //       return loadAllProductssort("createdAt", "desc", 1);
-  //     case "PriceHigh":
-  //       return loadAllProductssort("price", "desc", 1);
-  //     case "PriceLow":
-  //       return loadAllProductssort("price", "asc", 1);
-
-  //     default:
-  //       break;
-  //   }
-  // }, [current]);
-
-  // useEffect(() => {
-  //   console.log("hit prod api1");
-
-  //   getProductsCount().then((res) => setProductsCount(res.data));
-
-  //   switch (current) {
-  //     case "HighRated":
-  //       return loadAllProductssort("sold", "desc", page);
-  //     case "Latest":
-  //       return loadAllProductssort("createdAt", "desc", page);
-  //     case "PriceHigh":
-  //       return loadAllProductssort("price", "desc", page);
-  //     case "PriceLow":
-  //       return loadAllProductssort("price", "asc", page);
-
-  //     default:
-  //       break;
-  //   }
-  // }, [page]);
-
-  // const loadAllProductssort = (sort, order, page) => {
-  //   console.log("hit prod api3", sort);
-  //   console.log("hit prod api3", order);
-  //   console.log("hit prod api3", page);
-  //   //setProducts([]);
-  //   getProductssort(sort, order, page).then((res) => {
-  //     //page change fetch prod again for this page
-  //     console.log("bb" + page, res.data);
-  //     //setProducts([]);
-  //     setProducts(res.data);
-  //     //setLoading(false);
-  //   });
-  // };
-
   useEffect(() => {
-    console.log("hit prod api1");
+    console.log("hit prod api1111111111111111");
 
     //getProductsCount().then((res) => setProductsCount(res.data.total));
+    let mypage = page;
+    if (!isMount) {
+      //ismount=true   first time render
+      setPage(1); //ismount=false  not first time render   then only set to 1, else if url me kuch hoga to first time us page no ko lega
 
-    setPage(1);
+      mypage = 1;
+    }
 
     let inTheState = categoryIds;
     let mycolor = color;
@@ -290,11 +464,11 @@ const Shop = ({ history }) => {
 
     let myprice = price;
     switch (current) {
-      case "HighRated":
+      case "MostSold":
         return loadAllProductssortandfilter(
           "sold",
           "desc",
-          1,
+          mypage,
           inTheState,
           mycolor,
           mybrand,
@@ -308,7 +482,7 @@ const Shop = ({ history }) => {
         return loadAllProductssortandfilter(
           "createdAt",
           "desc",
-          1,
+          mypage,
           inTheState,
           mycolor,
           mybrand,
@@ -322,7 +496,7 @@ const Shop = ({ history }) => {
         return loadAllProductssortandfilter(
           "price",
           "desc",
-          1,
+          mypage,
           inTheState,
           mycolor,
           mybrand,
@@ -336,7 +510,7 @@ const Shop = ({ history }) => {
         return loadAllProductssortandfilter(
           "price",
           "asc",
-          1,
+          mypage,
           inTheState,
           mycolor,
           mybrand,
@@ -353,7 +527,10 @@ const Shop = ({ history }) => {
   }, [current]);
 
   useEffect(() => {
-    console.log("hit prod api1");
+    console.log(
+      "hit prod api12222222222222222 with update catids",
+      categoryIds
+    );
 
     //getProductsCount().then((res) => setProductsCount(res.data.total));
     //let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
@@ -367,8 +544,10 @@ const Shop = ({ history }) => {
     let mytext = text;
     console.log("catiddd", categoryIds);
 
+    //history.push("/shop/?colr=blue");
+
     switch (current) {
-      case "HighRated":
+      case "MostSold":
         return loadAllProductssortandfilter(
           "sold",
           "desc",
@@ -507,13 +686,6 @@ const Shop = ({ history }) => {
   };
 
   useEffect(() => {
-    // fetch categories
-    getCategories().then((res) => setCategories(res.data)); //fetach and store in arr
-    // fetch subcategories
-    getSubs().then((res) => setSubs(res.data)); //fetch and store in arr one time only for use in future
-  }, []);
-
-  useEffect(() => {
     console.log("mera price", price);
   }, [price]);
 
@@ -589,12 +761,16 @@ const Shop = ({ history }) => {
 
     setTimeout(() => {
       setPricechanged(true);
+
+      //setSearchParams({ price });
     }, 300);
   };
 
   // 4. load products based on category
   // show categories in a list of checkbox
   const showCategories = () =>
+    // {
+    //   console.log("catids in show cat", categoryIds);
     categories.map((c) => (
       <div key={c._id}>
         <Checkbox
@@ -609,6 +785,7 @@ const Shop = ({ history }) => {
         <br />
       </div>
     ));
+  // };
 
   // handle check for categories
   const handleCheck = (e) => {
@@ -662,6 +839,7 @@ const Shop = ({ history }) => {
       inTheState.splice(foundInTheState, 1); //if yes remove it
     }
 
+    setPage(1);
     setCategoryIds(inTheState); //update stored catid array in state
     // console.log(inTheState);
     console.log("yy7");
@@ -720,6 +898,7 @@ const Shop = ({ history }) => {
   };
 
   const handleBrand2 = (e) => {
+    setPage(1);
     setBrand(e.target.value);
 
     console.log("yy3");
@@ -763,7 +942,9 @@ const Shop = ({ history }) => {
     if (e.target.value === color) {
       setColor("");
     } else {
+      setPage(1);
       setColor(e.target.value);
+      //page=1;
     }
 
     console.log("yy2");
@@ -1048,8 +1229,17 @@ const Shop = ({ history }) => {
               <Link to="/shop">Sort By</Link>
             </Item>
 
+            <Item key="PriceHigh">
+              {/* //<Link to="/shop" className="header-item"> */}
+              <Link to="/shop">Price- High to Low</Link>
+            </Item>
+            <Item key="PriceLow">
+              {/* //<Link to="/shop" className="header-item"> */}
+              <Link to="/shop">Price- Low to High</Link>
+            </Item>
+
             <Item
-              key="HighRated"
+              key="MostSold"
 
               // style={{ marginRight: "145px", marginLeft: "40px" }}
             >
@@ -1065,15 +1255,6 @@ const Shop = ({ history }) => {
             >
               {/* //<Link to="/shop" className="header-item"> */}
               <Link to="/shop">Latest</Link>
-            </Item>
-
-            <Item key="PriceHigh">
-              {/* //<Link to="/shop" className="header-item"> */}
-              <Link to="/shop">Price- High to Low</Link>
-            </Item>
-            <Item key="PriceLow">
-              {/* //<Link to="/shop" className="header-item"> */}
-              <Link to="/shop">Price- Low to High</Link>
             </Item>
           </Menu>
 
