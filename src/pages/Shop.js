@@ -56,7 +56,6 @@ const Shop = ({ history }) => {
 
   //const sterm = searchParams.get("price") || "";
 
-  const [starNumbers, setStarNumbes] = useState([]);
   const [nums, setNums] = useState([
     { id: 1, starNum: 5 },
     { id: 2, starNum: 4 },
@@ -64,6 +63,7 @@ const Shop = ({ history }) => {
     { id: 4, starNum: 2 },
     { id: 5, starNum: 1 },
   ]);
+  const [starNumbers, setStarNumbes] = useState([]);
 
   useEffect(() => {
     console.log("ccc", starNumbers);
@@ -78,6 +78,7 @@ const Shop = ({ history }) => {
       inTheState.splice(foundInState, 1); //if already pres this no remove it/uncheck it
     }
 
+    setPage(1);
     setStarNumbes(inTheState);
     // fetchProducts({ stars: inTheState }); //detch based on this star
   };
@@ -182,7 +183,9 @@ const Shop = ({ history }) => {
   const ab = searchParams.get("brand");
   const as = searchParams.get("shipping");
   const si = [...searchParams.getAll("cat")];
+  const si2 = [...searchParams.getAll("star")];
   console.log("siiiiiiiiiii", si);
+  console.log("siiiiiiiiiii", si2);
   console.log("siiiiiiiiiiimp1", catmap1);
   console.log("siiiiiiiiiiimp2", catmap2);
   console.log(av);
@@ -191,6 +194,7 @@ const Shop = ({ history }) => {
   console.log(ab);
   console.log(as);
   console.log(si);
+  console.log(si2);
 
   // let sinew = [];
   // si.length &&
@@ -207,6 +211,8 @@ const Shop = ({ history }) => {
   const [categoryIds, setCategoryIds] = useState([]);
 
   console.log("catids", categoryIds);
+  console.log("starids", starNumbers);
+
   const [shipping, setShipping] = useState(as == null ? "" : as);
   const [color, setColor] = useState(ac == null ? "" : ac);
   const [brand, setBrand] = useState(ab == null ? "" : ab);
@@ -230,6 +236,20 @@ const Shop = ({ history }) => {
     });
     setCategoryIds(sinew);
   }, [catmap1, catmap2]);
+
+  useEffect(() => {
+    // if (isMount) {
+    console.log("useffect126");
+    const si = [...searchParams.getAll("star")];
+    let sinew = [];
+    si.forEach((c) => {
+      sinew.push(parseInt(c, 10));
+    });
+
+    setStarNumbes(sinew);
+    console.log("after setting star numbers", sinew);
+    // }
+  }, []);
 
   // useEffect(() => {
   //   console.log("ccccccccid changed", categoryIds);
@@ -313,6 +333,41 @@ const Shop = ({ history }) => {
 
     // }
   }, [page, current, color, brand, shipping, categoryIds]);
+
+  useEffect(() => {
+    let currentUrlParams = new URLSearchParams(window.location.search);
+
+    if (!isMount) {
+      const si = [...searchParams.getAll("star")];
+
+      console.log("siinow", si);
+      console.log("siinowcat", starNumbers);
+
+      if (starNumbers.length != 0 || si.length != 0) {
+        // console.log("mycate len mp1", catmap1);
+        // console.log("mycate len mp2", catmap2);
+
+        for (let i = 0; i < si.length; i++) {
+          let sid = si[i];
+          if (!starNumbers.includes(sid)) {
+            currentUrlParams.delete("star", si[i]);
+          }
+        }
+
+        for (let i = 0; i < starNumbers.length; i++) {
+          let str = starNumbers[i];
+
+          if (!si.includes(str)) {
+            currentUrlParams.append("star", str);
+            // console.log("mycat", categoryIds[i]);
+            // console.log("mycat", catmap1.get(categoryIds[i]));
+          }
+        }
+      }
+    }
+
+    history.push(window.location.pathname + "?" + currentUrlParams.toString());
+  }, [starNumbers]);
 
   useEffect(() => {
     // fetch categories
