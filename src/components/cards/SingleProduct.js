@@ -128,15 +128,62 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 
   return (
     <>
-      <div className="col-md-7">
-        {images && images.length ? (
-          //use crousel to show images images if>=1
-          <Carousel showArrows={true} autoPlay infiniteLoop>
-            {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
-          </Carousel>
-        ) : (
-          <Card cover={<img src={asas} className="mb-3 card-image" />}></Card> //else show default image
-        )}
+      <div
+        className="col-md-6"
+        style={{ backgroundColor: "blue", marginTop: "-15px" }}
+      >
+        {/* <p> Hello ji </p> */}
+        <div
+          style={{
+            backgroundColor: "green",
+            height: "680px",
+            marginTop: "15px",
+            padding: "5px",
+            marginBottom: "5px",
+          }}
+          className="carousel-container"
+        >
+          {images && images.length ? (
+            //use crousel to show images images if>=1
+            <Carousel
+              //showArrows={true}
+              autoPlay
+              infiniteLoop
+              // style={{
+              //   //  backgroundColor: "pink",
+              //   //  height: "380px",
+              //   //  marginTop: "15px",
+              //   padding: "115px",
+              //   // marginBottom: "5px",
+              // }}
+            >
+              {images &&
+                images.map((i) => (
+                  <div
+                    style={{
+                      backgroundColor: "orange",
+                      height: "520px",
+                      padding: "16px",
+                      paddingBottom: "20px",
+                      borderRadius: "8px",
+                      // display: "flex",
+                      // alignItems: "center",
+                      // justifyContent: "center",
+                    }}
+                  >
+                    <img
+                      src={i.url}
+                      key={i.public_id}
+                      // className="h-full bg-black "
+                      //style={{ height: "200px", padding: "10px" }}
+                    />
+                  </div>
+                ))}
+            </Carousel>
+          ) : (
+            <Card cover={<img src={asas} className="mb-3 card-image" />}></Card> //else show default image
+          )}
+        </div>
 
         <Tabs type="card">
           <TabPane tab="Description" key="1">
@@ -148,7 +195,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         </Tabs>
       </div>
 
-      <div className="col-md-5">
+      <div className="col-md-6  " style={{ backgroundColor: "black" }}>
         <h1 className="bg-info p-3">{title}</h1>
 
         {product && product.ratings && product.ratings.length > 0 ? ( //if product has rating calculate avg of that and show that much star here

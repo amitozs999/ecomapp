@@ -87,3 +87,20 @@ code {
    background: #FF6161FF !important;
    /* font-size: medium; */
  }
+ .carousel{
+  height: 40% !important;
+}
+.carousel-container {
+  position: relative;
+  max-width: 432px;
+  max-height: 289px;
+
+   .carousel {
+      .slide {
+          img {
+              height: 100%;
+              width: auto;
+          }
+      }
+   }
+}
