@@ -292,25 +292,47 @@ const Shop = ({ history }) => {
 
   useEffect(() => {
     console.log("useffect126");
+    const sii = [...searchParams.getAll("star")];
+    let siinew = [];
+    sii.forEach((c) => {
+      siinew.push(parseInt(c, 10));
+    });
+
+    // setStarNumbes(siinew);
+    //console.log("after setting star numbers", siinew);
+
+    console.log("useffect126");
     const si = [...searchParams.getAll("cat")];
     let sinew = [];
     si.forEach((c) => {
       sinew.push(catmap2.get(c));
     });
-    setCategoryIds(sinew);
+    // setCategoryIds(sinew);
+
+    setTimeout(() => {
+      if (isMount) {
+        console.log("hitting first mount");
+        console.log(sii);
+        console.log(siinew);
+        console.log(sinew);
+        console.log(sinew);
+
+        // setStarNumbes(siinew);
+        // setCategoryIds(sinew);
+      } else {
+        console.log("hitting secmount");
+        console.log(sii);
+        console.log(siinew);
+        console.log(sinew);
+        console.log(sinew);
+        setStarNumbes(siinew);
+        setCategoryIds(sinew);
+      }
+    }, 200);
   }, [catmap1, catmap2]);
 
   useEffect(() => {
     // if (isMount) {
-    console.log("useffect126");
-    const si = [...searchParams.getAll("star")];
-    let sinew = [];
-    si.forEach((c) => {
-      sinew.push(parseInt(c, 10));
-    });
-
-    setStarNumbes(sinew);
-    console.log("after setting star numbers", sinew);
     // }
   }, []);
 
@@ -581,66 +603,69 @@ const Shop = ({ history }) => {
     //let mystarNumbers=starNumbers
 
     let myprice = price;
-    switch (current) {
-      case "MostSold":
-        return loadAllProductssortandfilter(
-          "sold",
-          "desc",
-          mypage,
-          inTheState,
-          mycolor,
-          mybrand,
-          myshipping,
-          mystarNumbers,
-          mypricechanged,
-          myprice,
-          mytext
-        );
-      case "Latest":
-        return loadAllProductssortandfilter(
-          "createdAt",
-          "desc",
-          mypage,
-          inTheState,
-          mycolor,
-          mybrand,
-          myshipping,
-          mystarNumbers,
-          mypricechanged,
-          myprice,
-          mytext
-        );
-      case "PriceHigh":
-        return loadAllProductssortandfilter(
-          "price",
-          "desc",
-          mypage,
-          inTheState,
-          mycolor,
-          mybrand,
-          myshipping,
-          mystarNumbers,
-          mypricechanged,
-          myprice,
-          mytext
-        );
-      case "PriceLow":
-        return loadAllProductssortandfilter(
-          "price",
-          "asc",
-          mypage,
-          inTheState,
-          mycolor,
-          mybrand,
-          myshipping,
-          mystarNumbers,
-          mypricechanged,
-          myprice,
-          mytext
-        );
 
-      default:
-        break;
+    if (!isMount) {
+      switch (current) {
+        case "MostSold":
+          return loadAllProductssortandfilter(
+            "sold",
+            "desc",
+            mypage,
+            inTheState,
+            mycolor,
+            mybrand,
+            myshipping,
+            mystarNumbers,
+            mypricechanged,
+            myprice,
+            mytext
+          );
+        case "Latest":
+          return loadAllProductssortandfilter(
+            "createdAt",
+            "desc",
+            mypage,
+            inTheState,
+            mycolor,
+            mybrand,
+            myshipping,
+            mystarNumbers,
+            mypricechanged,
+            myprice,
+            mytext
+          );
+        case "PriceHigh":
+          return loadAllProductssortandfilter(
+            "price",
+            "desc",
+            mypage,
+            inTheState,
+            mycolor,
+            mybrand,
+            myshipping,
+            mystarNumbers,
+            mypricechanged,
+            myprice,
+            mytext
+          );
+        case "PriceLow":
+          return loadAllProductssortandfilter(
+            "price",
+            "asc",
+            mypage,
+            inTheState,
+            mycolor,
+            mybrand,
+            myshipping,
+            mystarNumbers,
+            mypricechanged,
+            myprice,
+            mytext
+          );
+
+        default:
+          break;
+      }
     }
   }, [current]);
 
