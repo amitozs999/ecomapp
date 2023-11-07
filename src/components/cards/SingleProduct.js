@@ -278,7 +278,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                   style={{
                     marginTop: "20px",
                     marginLeft: "27px",
-                    width: "480px",
+                    width: "450px",
                   }}
                   //onClick={() => history.push(`/product/${slug}`)}
                 >
