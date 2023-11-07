@@ -7,12 +7,13 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import asas from "../../images/asas.jpg";
 import ProductListItems from "./ProductListItems";
-
+import { StarOutlined } from "@ant-design/icons";
 import StarRating from "react-star-ratings";
 import RatingModal from "../modal/RatingModal";
-import { showAverage } from "../../functions/rating";
+import { showAverage } from "../../functions/ratingsinglepage";
 
 import { addToWishlist } from "../../functions/user";
+import { HeartFilled } from "@ant-design/icons";
 
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
@@ -21,6 +22,7 @@ import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import { getUserCart, emptyUserCart } from "../../functions/user";
 import { userCart } from "../../functions/user";
+import noimage from "../../images/no_image.jpg";
 
 import { userCart2 } from "../../functions/user";
 import "./index.scss";
@@ -39,7 +41,25 @@ const SingleProduct = ({ product, onStarClick, star }) => {
   const [productsx, setProducts] = useState([]);
   let history = useHistory();
 
-  const { title, images, description, _id } = product;
+  const {
+    title,
+    images,
+    description,
+    _id,
+    slug,
+    price,
+    category,
+    subs,
+    shipping,
+    color,
+    brand,
+    quantity,
+    sold,
+  } = product;
+
+  let ssr = "";
+
+  const [iconColor, setIconColor] = useState(ssr);
 
   useEffect(() => {
     if (user && user.token) {
@@ -125,25 +145,31 @@ const SingleProduct = ({ product, onStarClick, star }) => {
       history.push("/user/wishlist");
     });
   };
-
+  const handleRemove = (productId) => {
+    // props.changewishset();
+    // removeWishlist(productId, user.token).then((res) => {
+    //   console.log("REMOVED FROM WISHLIST", res.data);
+    //   //e.preventDefault();
+    //   toast.info("Removed from wishlist");
+    //   //  loadWishlist();
+    // });
+  };
   return (
     <>
       <div
         className="col-md-5"
         style={{
-          backgroundColor: "blue",
+          //   backgroundColor: "blue",//
           marginTop: "-15px",
           marginLeft: "50px",
           // alignItems: "center",
           // justifyContent: "center",
         }}
       >
-        {/* <p> Hello ji </p> */}
-
         <div
           style={{
-            backgroundColor: "green",
-            // height: "1680px",
+            //    backgroundColor: "green",//
+            height: " 590px",
             marginTop: "10px",
             marginLeft: "auto",
             marginRight: "auto",
@@ -174,7 +200,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                 images.map((i) => (
                   <div
                     style={{
-                      backgroundColor: "orange",
+                      //     backgroundColor: "orange",//
                       // height: "520px",
                       // padding: "16px",
                       // paddingBottom: "20px",
@@ -197,28 +223,354 @@ const SingleProduct = ({ product, onStarClick, star }) => {
           ) : (
             <Card cover={<img src={asas} className="mb-3 card-image" />}></Card> //else show default image
           )}
+
+          {/* <p> Hello ji </p> */}
         </div>
 
-        {/* <Tabs type="card">
+        {/* <p> Hello ji </p> */}
+
+        <Tabs type="card">
           <TabPane tab="Description" key="1">
             {description && description}
           </TabPane>
           <TabPane tab="More" key="2">
             learn more about this product.
           </TabPane>
-        </Tabs> */}
+        </Tabs>
       </div>
 
-      <div className="col-md-6  " style={{ backgroundColor: "black" }}>
-        <h1 className="bg-info p-3">{title}</h1>
+      <div className="col-md-6  " style={{ backgroundColor: " " }}>
+        {/* <div className="w-44 h-52  mx-1 my-1 px-1 py-1 flex: 1 ">
+          <img
+            width={"150px"}
+            //height={"17rem"}
+            className="h-40 addcart "
+            //className="mb-2 py-2 imzprod zom "
+            src={images && images.length ? images[0].url : noimage}
+            onClick={() => history.push(`/product/${slug}`)}
+          />
+        </div> */}
 
-        {product && product.ratings && product.ratings.length > 0 ? ( //if product has rating calculate avg of that and show that much star here
+        {/* <div className="flex-1 bg-red-800 py-2 px-2">
+        <div className="flex flex-row bg-gray-700 py-5 px-5 h-full">
+          <div className="flex w-60 bg-neutral-400 h-6"></div>
+
+          <div className=" flex w-8 bg-slate-600 h-7"></div>
+        </div>
+      </div> */}
+
+        <div
+          className=" cc    mx-1 my-1 px-1 py-1 "
+          style={{
+            backgroundColor: " ",
+            height: "500px",
+            // marginTop: "50px",
+            //  paddingTop: "30px",
+          }}
+        >
+          <div className="flex justify-between w-full h-full  ">
+            {/* <div className="flex   bg-gray-700 py-5 px-5 h-full"> */}
+
+            <div className=" flex flex-col     w-full h-full">
+              <div className="row" style={{ backgroundColor: " " }}>
+                <h1
+                  className="bg-white    txtcategbottommhoriztitlesingle"
+                  style={{
+                    marginTop: "20px",
+                    marginLeft: "27px",
+                    width: "480px",
+                  }}
+                  //onClick={() => history.push(`/product/${slug}`)}
+                >
+                  {title}
+                </h1>
+                <div
+                  className="w-28    h-12 ml-10 mr-4 mt-1 text-right"
+                  style={{
+                    // backgroundColor: "black",
+                    width: "70px",
+                    paddingTop: "20px",
+                    paddingRight: "20px",
+                  }}
+                >
+                  {iconColor ? ( //show if this prod has rating avg wali
+                    <HeartFilled
+                      style={{ color: "#FF6161FF", fontSize: "25px" }}
+                      onClick={() => {
+                        console.log("filled tha and icon col was", iconColor);
+                        setIconColor(!iconColor);
+
+                        ssr = !ssr;
+                        handleRemove(product._id);
+                      }}
+                      Wishlist
+                    />
+                  ) : (
+                    <HeartOutlined
+                      style={{ color: "#A8A7A8FF", fontSize: "25px" }}
+                      onClick={() => {
+                        if (user) {
+                          setIconColor(!iconColor);
+                          //addToWishlist(product._id, user.token);
+                          console.log("unfilled");
+                          ssr = !ssr;
+                          handleRemove(product._id);
+                          //  handleRemove(product._id);
+                        } else {
+                          toast.info("Please login to wishlist a product !");
+                        }
+                      }}
+                    />
+                  )}
+
+                  {/* {" Wishlist"} */}
+                </div>
+              </div>
+
+              {product && product.ratings && product.ratings.length > 0 ? ( //show if this prod has rating avg wali
+                showAverage(product)
+              ) : (
+                <p className=" ml-3  txtcategbottommhorizratesingle">
+                  First one to rate
+                </p>
+              )}
+              <h1
+                className="bg-white txtcategbottommhorizpricesingle ml-3"
+                style={{ marginBottom: "15px" }}
+              >
+                ₹{price}.00
+              </h1>
+              <h5 className="bg-white txtcategbottommhorizdescsingle mb-1 ml-3 mt-4">
+                {description}{" "}
+              </h5>
+              <div
+                className="row bg-white   mb-1 ml-1  mt-20 w-auto"
+                style={{ marginTop: "40px", width: "300px" }}
+              >
+                <p className="bg-white txtcategbottommhorizdescsingle2  mb-1 ml-2">
+                  {" • Category"}
+                </p>
+
+                <p
+                  className="bg-white txtcategbottommhorizdescsingle  mb-1 ml-2"
+                  style={{ color: "black" }}
+                >
+                  <Link
+                    to={`/category/${category && category.slug}`}
+                    className="label label-default label-pill pull-xs-right"
+                  >
+                    {category && category.name}
+                  </Link>
+                </p>
+              </div>
+              <div
+                className="row bg-white   mb-1 ml-1   w-auto"
+                style={{ width: "300px", height: "30px" }}
+              >
+                <p className="bg-white txtcategbottommhorizdescsingle2  mb-1 ml-2">
+                  {" • Sub Category"}
+                </p>
+                <p
+                  className="bg-white txtcategbottommhorizdescsingle  mb-1 ml-2"
+                  style={{ color: "black" }}
+                >
+                  {subs &&
+                    subs.map((s) => (
+                      <Link
+                        key={s._id}
+                        to={`/sub/${s.slug}`}
+                        className="label label-default label-pill pull-xs-right"
+                      >
+                        {/* <p
+                          className="bg-white txtcategbottommhorizdescsingle    ml-2"
+                          style={{ color: "black" }}
+                        > */}
+                        {s.name}
+                        {/* </p> */}
+                      </Link>
+
+                      // <p>{s.name}</p>
+                    ))}
+                </p>
+              </div>
+              <div
+                className="row bg-white   mb-1 ml-1  w-auto"
+                style={{ width: "300px" }}
+              >
+                <p className="bg-white txtcategbottommhorizdescsingle2  mb-1 ml-2">
+                  {" • Brand"}
+                </p>
+                <p
+                  className="bg-white txtcategbottommhorizdescsingle  mb-1 ml-2"
+                  style={{ color: "black" }}
+                >
+                  {brand}
+                </p>
+              </div>
+              <div
+                className="row bg-white   mb-1 ml-1    w-auto"
+                style={{ width: "300px" }}
+              >
+                <p className="bg-white txtcategbottommhorizdescsingle2  mb-1 ml-2">
+                  {" • Color"}
+                </p>
+                <p
+                  className="bg-white txtcategbottommhorizdescsingle  mb-1 ml-2"
+                  style={{ color: "black" }}
+                >
+                  {color}
+                </p>
+              </div>
+              <div
+                className="row bg-white   mb-1 ml-1    w-auto"
+                style={{ width: "300px", marginBottom: "60px" }}
+              >
+                <p className="bg-white txtcategbottommhorizdescsingle2  mb-1 ml-2">
+                  {" • Shipping"}
+                </p>
+                <p
+                  className="bg-white txtcategbottommhorizdescsingle  mb-1 ml-2"
+                  style={{ color: "black" }}
+                >
+                  {shipping}
+                </p>
+              </div>
+
+              <div className="row  ml-1  " style={{ marginTop: "20px" }}>
+                <a
+                  //onClick={handleAddToCart2}
+
+                  onClick={() => {
+                    if (user) {
+                      handleRemove();
+                    } else {
+                      toast.info("Please login to Add product to cart !");
+                    }
+                  }}
+                  style={{
+                    backgroundColor: "#5199DBFF",
+                    color: "white",
+                    width: "160px",
+                    borderRadius: "4px",
+                    fontSize: "17px",
+                    textAlign: "center",
+                    marginTop: "150px",
+                  }}
+                  //product/nike-mens-nike-air-max
+
+                  // transition-all duration-300 shadow-lg 2xl:mt-2
+                  className="  py-2        mb-2 ml-2 mt-2
+            font-semibold cartbutton"
+                >
+                  <ShoppingCartOutlined /> {"  "} &nbsp; Add to cart
+                </a>
+
+                <a
+                  //onClick={handleAddToCart2}
+
+                  onClick={() => {
+                    if (user) {
+                      handleRemove();
+                    } else {
+                      toast.info("Please login to Add product to cart !");
+                    }
+                  }}
+                  style={{
+                    backgroundColor: "#FFE3E8FF",
+                    color: "#FF644FFF",
+                    width: "160px",
+                    borderRadius: "4px",
+                    fontSize: "17px",
+                    textAlign: "center",
+                    marginTop: "150px",
+                    marginLeft: "20px",
+                  }}
+                  //product/nike-mens-nike-air-max
+
+                  // transition-all duration-300 shadow-lg 2xl:mt-2
+                  className="  py-2        mb-2  mt-2
+            font-semibold cartbutton"
+                >
+                  {/* <HeartOutlined
+                  className="text-info"
+                  style={{ color: "#FF644FFF !important" }}
+                /> */}
+                  <StarOutlined className="text-danger" /> &nbsp; Leave rating
+                </a>
+                {/* // <div className="bg-slate-600" style={{ backgroundColor: "gray" }}> */}
+
+                {/* <a
+                  //onClick={handleAddToCart2}
+
+                  onClick={() => {
+                    if (user) {
+                      handleRemove();
+                    } else {
+                      toast.info("Please login to Add product to cart !");
+                    }
+                  }}
+                  style={{
+                    backgroundColor: "#5199DBFF",
+                    color: "white",
+                    width: "160px",
+                    borderRadius: "4px",
+                    fontSize: "17px",
+                    textAlign: "center",
+                    marginTop: "150px",
+                  }}
+                  //product/nike-mens-nike-air-max
+
+                  // transition-all duration-300 shadow-lg 2xl:mt-2
+                  className="  py-2        mb-2 ml-2 mt-2
+            font-semibold cartbutton"
+                >
+                  <RatingModal>
+                    <StarRating
+                      name={_id}
+                      numberOfStars={5}
+                      rating={star}
+                      changeRating={onStarClick}
+                      isSelectable={true}
+                      starRatedColor="red"
+                    />
+                  </RatingModal>
+                  {/* </div> */}
+                {/* </a> */}
+              </div>
+            </div>
+
+            {/* <div className=" w-full bg-neutral-400 h-32"></div> */}
+
+            {/* </div> */}
+          </div>
+        </div>
+
+        {/* <img
+        height={"210px"}
+        width={"200px"}
+        className="mb-2 py-2 imzprod zom "
+        src={images && images.length ? images[0].url : noimage}
+        onClick={() => history.push(`/product/${slug}`)}
+      > */}
+        {/* <Link to={`/product/`}></Link> */}
+        {/* </img> */}
+        {/* <h5 class="txtcategbottomm"> {xx}</h5>
+      <p className="txtcategbottomm2">₹ {price}</p> */}
+
+        {/* <button class="add-to-cart" onClick={handleAddToCart}>
+        Add to Cart
+      </button> */}
+      </div>
+
+      {/* <h1 className="bg-info p-3">{title}</h1> */}
+
+      {/* {product && product.ratings && product.ratings.length > 0 ? ( //if product has rating calculate avg of that and show that much star here
           showAverage(product)
         ) : (
           <div className="text-center pt-1 pb-3">No rating yet</div>
-        )}
+        )} */}
 
-        <Card
+      {/* <Card
           actions={[
             <Tooltip title={tooltip}>
               <a onClick={handleAddToCart2}>
@@ -243,11 +595,10 @@ const SingleProduct = ({ product, onStarClick, star }) => {
               />
             </RatingModal>,
           ]}
-        >
-          {/* //show details of this product */}
-          <ProductListItems product={product} />
-        </Card>
-      </div>
+        > */}
+      {/* //show details of this product */}
+      {/* <ProductListItems product={product} /> */}
+      {/* </Card> */}
     </>
   );
 };
