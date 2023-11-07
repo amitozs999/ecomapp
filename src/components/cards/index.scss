@@ -272,19 +272,45 @@ margin-bottom: 10px;
 .carousel-container {
  // position: relative;
   ///max-width: 600px;
- // max-height: 289px;
+  max-height: 2289px;
 
    .carousel {
    // height: 189px;
     background-color: #ff6600;
-    padding: 5px;
+  //  padding: 5px;
       .slide {
+        background-color: gray;
+     //   padding: 5px;
         // height: 289px;
+
+        //<div
           img {
-              height: 300px;
+              height:450px;
+             background-color: #ff6600;
+           //  padding: 10px;
+              width:  420px;
+              border-radius: 6px;
               // width: 100%;
-             width: auto;
+           //  width: auto;
           }
       }
    }
+}
+
+
+.carousel .control-arrow, .carousel.carousel-slider .control-arrow{
+  opacity: 1;
+  color: #ff6600 !important;
+  background-color: #ff6600 !important;
+}
+
+.carousel .control-next.control-arrow, .carousel .control-next.control-arrow:hover{
+  background-color: transparent !important;
+  color: #ff6600 !important;
+ // right: -146px;
+}
+
+.carousel .control-prev.control-arrow, .carousel .control-prev.control-arrow:hover {
+  background-color: transparent !important;
+  color: #ff6600 !important;
 }

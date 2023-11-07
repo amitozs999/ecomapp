@@ -23,7 +23,7 @@ import { getUserCart, emptyUserCart } from "../../functions/user";
 import { userCart } from "../../functions/user";
 
 import { userCart2 } from "../../functions/user";
-
+import "./index.scss";
 const { TabPane } = Tabs;
 
 // const SingleProduct = ({ product }) => {
@@ -129,24 +129,37 @@ const SingleProduct = ({ product, onStarClick, star }) => {
   return (
     <>
       <div
-        className="col-md-6"
-        style={{ backgroundColor: "blue", marginTop: "-15px" }}
+        className="col-md-5"
+        style={{
+          backgroundColor: "blue",
+          marginTop: "-15px",
+          marginLeft: "50px",
+          // alignItems: "center",
+          // justifyContent: "center",
+        }}
       >
         {/* <p> Hello ji </p> */}
+
         <div
           style={{
             backgroundColor: "green",
-            height: "680px",
-            marginTop: "15px",
-            padding: "5px",
-            marginBottom: "5px",
+            // height: "1680px",
+            marginTop: "10px",
+            marginLeft: "auto",
+            marginRight: "auto",
+            //  marginLeft: "50px",
+
+            // padding: "5px",
+            //width: "580px",
+            //  marginBottom: "5px",
           }}
           className="carousel-container"
         >
           {images && images.length ? (
             //use crousel to show images images if>=1
             <Carousel
-              //showArrows={true}
+              showArrows={true}
+              // renderIndicator={}
               autoPlay
               infiniteLoop
               // style={{
@@ -162,9 +175,10 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                   <div
                     style={{
                       backgroundColor: "orange",
-                      height: "520px",
-                      padding: "16px",
-                      paddingBottom: "20px",
+                      // height: "520px",
+                      // padding: "16px",
+                      // paddingBottom: "20px",
+                      width: "430px",
                       borderRadius: "8px",
                       // display: "flex",
                       // alignItems: "center",
@@ -185,14 +199,14 @@ const SingleProduct = ({ product, onStarClick, star }) => {
           )}
         </div>
 
-        <Tabs type="card">
+        {/* <Tabs type="card">
           <TabPane tab="Description" key="1">
             {description && description}
           </TabPane>
           <TabPane tab="More" key="2">
             learn more about this product.
           </TabPane>
-        </Tabs>
+        </Tabs> */}
       </div>
 
       <div className="col-md-6  " style={{ backgroundColor: "black" }}>
