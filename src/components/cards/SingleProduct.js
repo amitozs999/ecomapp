@@ -24,6 +24,7 @@ import { getUserCart, emptyUserCart } from "../../functions/user";
 import { userCart } from "../../functions/user";
 import noimage from "../../images/no_image.jpg";
 
+import { getWishlist, removeWishlist } from "../../functions/user";
 import { userCart2 } from "../../functions/user";
 import "./index.scss";
 const { TabPane } = Tabs;
@@ -33,13 +34,49 @@ const { TabPane } = Tabs;
 
 // this is childrend component of Product page
 
-const SingleProduct = ({ product, onStarClick, star }) => {
+const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
   const [tooltip, setTooltip] = useState("Click to add");
 
-  const { user, cart } = useSelector((state) => ({ ...state }));
+  const [wishlistt, setWishlist] = useState([]);
+  const [ssrr, setssrr] = useState(false);
+  const { user, cart, userwishlist } = useSelector((state) => ({ ...state }));
+
   const dispatch = useDispatch();
   const [productsx, setProducts] = useState([]);
   let history = useHistory();
+
+  const [sss, setsss] = useState(isinwish);
+
+  const [iconColor, setIconColor] = useState(isinwish);
+
+  // setIconColor(isinwish);
+
+  // useEffect(() => {
+  //   setIconColor(isinwish);
+  // }, []);
+
+  useEffect(() => {
+    setIconColor(isinwish);
+  }, []);
+  useEffect(() => {
+    console.log("col fill change" + product._id, iconColor);
+  }, [iconColor]);
+
+  // useEffect(() =>
+  // {
+  //   if(iconColor)
+  //   {
+  //     setIconColor(isinwish);
+  //   }
+  //   else
+  //   {
+  //     setCssClass("heart")
+  //   }
+
+  // },[iconColor])
+
+  console.log("isinwish", isinwish);
+  console.log("icn colr", iconColor);
 
   const {
     title,
@@ -57,9 +94,14 @@ const SingleProduct = ({ product, onStarClick, star }) => {
     sold,
   } = product;
 
-  let ssr = "";
+  // console.log("ssssssuserwish", price);
 
-  const [iconColor, setIconColor] = useState(ssr);
+  // console.log("ssssssuserwish", userwishlist);
+  // userwishlist.data.wishlist.some((w) => {
+  //   // if (w._id.toString() === product._id.toString())
+  //   //   console.log("ssssssuserwish true");
+  //   // console.log("ssssssuserwish", _id);
+  // });
 
   useEffect(() => {
     if (user && user.token) {
@@ -73,20 +115,64 @@ const SingleProduct = ({ product, onStarClick, star }) => {
     }
   }, []);
 
-  const handleAddToCart2 = () => {
-    console.log("ggprod", product);
-    userCart2(product, user.token)
-      .then((res) => {
-        console.log("CART POST RES", res);
-        localStorage.setItem("cart", JSON.stringify(res));
+  useEffect(() => {
+    // if (
+    //   (userwishlist.data !== undefined && !userwishlist.data.wishlist.length) ||
+    //   !localStorage.getItem("wishlist")
+    // ) {
+    console.log("loading wishlist again2");
+    loadWishlist();
+    // }
+    // // console.log("ll", userwishlist);
+    // setWishlist(userwishlist.data.wishlist);
+    //
+    // console.log("ssssssuserwish2", wishlistt);
+  }, [user]);
 
-        dispatch({
-          type: "ADD_TO_CART",
-          payload: res,
-        });
-      })
-      .catch((err) => console.log("cart save err", err));
-  };
+  // const loadWishlist = () => {
+  //   console.log("ZZZ", wishlistt);
+  //   if (user && user.token) {
+  //     getWishlist(user.token).then((res) => {
+  //       console.log("gg wishlis", res);
+  //       console.log("gg wishlisvv", res.data.wishlist);
+  //       setWishlist(res.data.wishlist);
+  //       console.log("ZZZ", wishlistt);
+  //       console.log("ZZZuser", userwishlist);
+
+  //       if (typeof window !== "undefined") {
+  //         localStorage.setItem("wishlist", JSON.stringify(res));
+  //       }
+  //       console.log(
+  //         "ssssssuserwish3",
+  //         JSON.parse(localStorage.getItem("wishlist"))
+  //       );
+
+  //       dispatch({
+  //         type: "ADD_TO_WISHLIST",
+  //         payload: res,
+  //       });
+
+  //       // let ssr =
+  //       //   userwishlist.data !== undefined &&
+  //       //   userwishlist.data.wishlist.some((w) => {
+  //       //     if (w._id.toString() === product._id.toString()) return true;
+  //       //   });
+
+  //       // setssrr(ssr);
+  //       // setIconColor(ssr);
+
+  //       // if (localStorage.getItem("wishlist")) {
+  //       //   cart = JSON.parse(localStorage.getItem("cart")); //local storage se cart nikal liya
+  //       // }
+  //     });
+  //   }
+  // };
+
+  // let ssr =
+  //   userwishlist.data !== undefined &&
+  //   userwishlist.data.wishlist.some((w) => {
+  //     if (w._id.toString() === product._id.toString()) return true;
+  //   });
 
   const handleAddToCart = () => {
     // create cart array
@@ -137,22 +223,80 @@ const SingleProduct = ({ product, onStarClick, star }) => {
     }
   };
 
+  const handleAddToCart2 = () => {
+    console.log("ggprod", product);
+    toast.success("Product Added to card");
+    userCart2(product, user.token)
+      .then((res) => {
+        console.log("CART POST RES", res);
+        localStorage.setItem("cart", JSON.stringify(res));
+
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: res,
+        });
+
+        // console.log("POST RES", uniquecart);
+        // if (res.data.ok) console.log("CART POST RES success");
+        //history.push("/checkout");
+      })
+      .catch((err) => console.log("cart save err", err));
+  };
+
   const handleAddToWishlist = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     addToWishlist(product._id, user.token).then((res) => {
       console.log("ADDED TO WISHLIST", res.data);
       toast.success("Added to wishlist");
-      history.push("/user/wishlist");
+      // history.push("/user/wishlist");
+      //  setIconColor(!iconColor);
+      // loadWishlist();
     });
   };
+
   const handleRemove = (productId) => {
     // props.changewishset();
-    // removeWishlist(productId, user.token).then((res) => {
-    //   console.log("REMOVED FROM WISHLIST", res.data);
-    //   //e.preventDefault();
-    //   toast.info("Removed from wishlist");
-    //   //  loadWishlist();
-    // });
+
+    removeWishlist(productId, user.token).then((res) => {
+      console.log("REMOVED FROM WISHLIST", res.data);
+      //e.preventDefault();
+      toast.info("Removed from wishlist");
+      //  setIconColor(!iconColor);
+      // loadWishlist();
+    });
+  };
+
+  const loadWishlist = () => {
+    console.log("ZZZ", wishlistt);
+    if (user && user.token) {
+      getWishlist(user.token).then((res) => {
+        console.log("gg wishlis", res);
+        console.log("gg wishlisvv", res.data.wishlist);
+        setWishlist(res.data.wishlist);
+        console.log("ZZZ", wishlistt);
+        console.log("ZZZuser", userwishlist);
+
+        if (typeof window !== "undefined") {
+          localStorage.setItem("wishlist", JSON.stringify(res));
+        }
+        console.log("ZZZ", JSON.parse(localStorage.getItem("wishlist")));
+
+        dispatch({
+          type: "ADD_TO_WISHLIST",
+          payload: res,
+        });
+
+        let ssr =
+          res.data !== undefined &&
+          res.data.wishlist.some((w) => {
+            if (w._id.toString() === product._id.toString()) setIconColor(true);
+          });
+
+        // if (localStorage.getItem("wishlist")) {
+        //   cart = JSON.parse(localStorage.getItem("cart")); //local storage se cart nikal liya
+        // }
+      });
+    }
   };
   return (
     <>
@@ -293,14 +437,16 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                     paddingRight: "20px",
                   }}
                 >
-                  {iconColor ? ( //show if this prod has rating avg wali
+                  {isinwish || iconColor ? ( //show if this prod has rating avg wali
                     <HeartFilled
                       style={{ color: "#FF6161FF", fontSize: "25px" }}
                       onClick={() => {
                         console.log("filled tha and icon col was", iconColor);
                         setIconColor(!iconColor);
 
-                        ssr = !ssr;
+                        // setssrr(!ssrr);
+                        // ssr = !ssr;
+                        isinwish = false;
                         handleRemove(product._id);
                       }}
                       Wishlist
@@ -313,9 +459,10 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                           setIconColor(!iconColor);
                           //addToWishlist(product._id, user.token);
                           console.log("unfilled");
-                          ssr = !ssr;
-                          handleRemove(product._id);
-                          //  handleRemove(product._id);
+                          //   ssr = !ssr;
+                          //  setssrr(!ssrr);
+                          isinwish = true;
+                          handleAddToWishlist(product._id);
                         } else {
                           toast.info("Please login to wishlist a product !");
                         }
@@ -442,7 +589,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 
                   onClick={() => {
                     if (user) {
-                      handleRemove();
+                      handleAddToCart2();
                     } else {
                       toast.info("Please login to Add product to cart !");
                     }
@@ -472,13 +619,13 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                     if (user) {
                       handleRemove();
                     } else {
-                      toast.info("Please login to Add product to cart !");
+                      toast.info("Please login to Leave rating !");
                     }
                   }}
                   style={{
                     backgroundColor: "#FFE3E8FF",
                     color: "#FF644FFF",
-                    width: "160px",
+                    width: "200px",
                     borderRadius: "4px",
                     fontSize: "17px",
                     textAlign: "center",
@@ -495,8 +642,19 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                   className="text-info"
                   style={{ color: "#FF644FFF !important" }}
                 /> */}
-                  <StarOutlined className="text-danger" /> &nbsp; Leave rating
+                  {/* <StarOutlined className="text-danger" /> &nbsp; Leave rating */}
+                  <RatingModal>
+                    <StarRating
+                      name={_id}
+                      numberOfStars={5}
+                      rating={star}
+                      changeRating={onStarClick}
+                      isSelectable={true}
+                      starRatedColor="red"
+                    />
+                  </RatingModal>
                 </a>
+
                 {/* // <div className="bg-slate-600" style={{ backgroundColor: "gray" }}> */}
 
                 {/* <a

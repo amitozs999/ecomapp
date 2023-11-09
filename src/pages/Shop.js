@@ -46,6 +46,8 @@ const Shop = ({ history }) => {
   const [pricechangedstopped, setPricechangedstopped] = useState(false);
 
   const [ok, setOk] = useState(false);
+  // (true);
+  const [found, setfound] = useState(false);
   const [categories, setCategories] = useState([]);
 
   const [star, setStar] = useState("");
@@ -525,6 +527,13 @@ const Shop = ({ history }) => {
   }, []);
 
   useEffect(() => {
+    if (isMount) {
+      loadWishlist();
+      console.log("called from here 1");
+    }
+  }, []);
+
+  useEffect(() => {
     console.log("change hua kya", iswishchange);
     // history.listen(() => {
     //   console.log("away from shop is wisshchan2", iswishchange);
@@ -532,39 +541,44 @@ const Shop = ({ history }) => {
     //     loadWishlist();
     //   }
     // });
-  }, [iswishchange]);
+    loadWishlist();
+    console.log("called from here 2");
+  }, [iswishchange, user]);
 
   // useEffect(() => {
   //   getProductsCount().then((res) => setProductsCount(res.data));
   // }, []);
 
-  useEffect(() => {
-    console.log("change hua kya", iswishchange);
-    history.listen(() => {
-      console.log("away from shop is wisshchan13", iswishchange);
-      if (iswishchange) {
-        console.log(
-          "away from shop is wisshchan13 api hit ready",
-          iswishchange
-        );
-        loadWishlist();
-      }
-    });
-  });
+  // useEffect(() => {
+  //   console.log("change hua kya", iswishchange);
+  //   history.listen(() => {
+  //     console.log("away from shop is wisshchan13", iswishchange);
 
-  useEffect(() => {
-    if (
-      (userwishlist.data !== undefined && !userwishlist.data.wishlist.length) ||
-      !localStorage.getItem("wishlist")
-    ) {
-      console.log("loading wishlist again2");
-      loadWishlist();
-    }
-    // console.log("ll", userwishlist);
-    // setWishlist(userwishlist.data.wishlist);
-    //
-    console.log("lll", wishlistt);
-  }, [user]);
+  //     if (isMount) {
+  //       loadWishlist();
+  //     } else if (iswishchange) {
+  //       console.log(
+  //         "away from shop is wisshchan13 api hit ready",
+  //         iswishchange
+  //       );
+  //       loadWishlist();
+  //     }
+  //   });
+  // });
+
+  // useEffect(() => {
+  //   if (
+  //     (userwishlist.data !== undefined && !userwishlist.data.wishlist.length) ||
+  //     !localStorage.getItem("wishlist")
+  //   ) {
+  //     console.log("loading wishlist again2");
+  //     loadWishlist();
+  //   }
+  //   // console.log("ll", userwishlist);
+  //   // setWishlist(userwishlist.data.wishlist);
+  //   //
+  //   console.log("lll", wishlistt);
+  // }, [user]);
 
   const loadAllProducts = () => {
     console.log("hit prod api333");
@@ -813,23 +827,36 @@ const Shop = ({ history }) => {
 
   const loadWishlist = () => {
     console.log("ZZZ", wishlistt);
+
+    console.log("called from here 11 login?");
     if (user && user.token) {
+      console.log("called from here 11 login? yes");
       getWishlist(user.token).then((res) => {
         console.log("gg wishlis", res);
         console.log("gg wishlisvv", res.data.wishlist);
-        setWishlist(res.data.wishlist);
+
         console.log("ZZZ", wishlistt);
         console.log("ZZZuser", userwishlist);
+
+        console.log("called from here 11", res.data.wishlist);
+
+        setWishlist(res.data.wishlist);
 
         if (typeof window !== "undefined") {
           localStorage.setItem("wishlist", JSON.stringify(res));
         }
-        console.log("ZZZ", JSON.parse(localStorage.getItem("wishlist")));
 
         dispatch({
           type: "ADD_TO_WISHLIST",
           payload: res,
         });
+
+        console.log(
+          "called from here 11 data in db",
+          JSON.parse(localStorage.getItem("wishlist"))
+        );
+        console.log("called from here 11 data in redux", userwishlist);
+        console.log("called from here 11 data in state", wishlistt);
 
         // if (localStorage.getItem("wishlist")) {
         //   cart = JSON.parse(localStorage.getItem("cart")); //local storage se cart nikal liya
@@ -837,6 +864,19 @@ const Shop = ({ history }) => {
       });
     }
   };
+
+  useEffect(() => {
+    console.log(
+      "called from here 11 data in db ue",
+      JSON.parse(localStorage.getItem("wishlist"))
+    );
+    console.log("called from here 11 data in redux ue", userwishlist);
+    console.log("called from here 11 data in state ue", wishlistt);
+    if (isMount) {
+    } else {
+      setfound(true);
+    }
+  }, [wishlistt, userwishlist]);
 
   useEffect(() => {
     console.log("mera price", price);
@@ -1458,18 +1498,19 @@ const Shop = ({ history }) => {
             className="col   py-1  "
             // style={{ backgroundColor: "#F0F9FAFF" }}
           >
-            {products.map((p) => (
-              // <div key={p._id} className="col-md-2 mt-3 ">
-              <div key={p._id} className="   mb-3 flex flex-col vvb bg-white">
-                {/* //ispresentinwish={ wishlistt.map((w) => ())} */}
-                <ProductCardNewHoriz
-                  product={p}
-                  listt={userwishlist}
-                  iswishchange={iswishchange}
-                  changewishset={hello}
-                />
-              </div>
-            ))}
+            {found &&
+              products.map((p) => (
+                // <div key={p._id} className="col-md-2 mt-3 ">
+                <div key={p._id} className="   mb-3 flex flex-col vvb bg-white">
+                  {/* //ispresentinwish={ wishlistt.map((w) => ())} */}
+                  <ProductCardNewHoriz
+                    product={p}
+                    listt={wishlistt}
+                    iswishchange={iswishchange}
+                    changewishset={hello}
+                  />
+                </div>
+              ))}
           </div>
 
           <div className="row mb-5">

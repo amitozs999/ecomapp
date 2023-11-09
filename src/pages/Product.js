@@ -12,11 +12,15 @@ import LoadingCard from "../components/cards/LoadingCard";
 const Product = ({ match }) => {
   const { slug } = match.params;
   const [product, setProduct] = useState({});
-
+  //const { user, cart, userwishlist } = useSelector((state) => ({ ...state }));
   const [star, setStar] = useState(0);
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user, userwishlist } = useSelector((state) => ({ ...state }));
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const [isinwish, setisinwish] = useState(false);
+
+  // const isinwish=false;
   useEffect(() => {
     loadSingleProduct();
   }, [slug]); //slug change load prod again
@@ -25,6 +29,13 @@ const Product = ({ match }) => {
     getProduct(slug).then((res) => {
       setProduct(res.data); //get currprod
       setLoading(true);
+
+      let ssr =
+        userwishlist.data !== undefined &&
+        userwishlist.data.wishlist.some((w) => {
+          if (w._id.toString() === res.data._id.toString()) setisinwish(true);
+        });
+
       getRelated(res.data._id).then((res) => {
         setRelated(res.data); //get related prod for currprod
         setLoading(false);
@@ -60,6 +71,7 @@ const Product = ({ match }) => {
           product={product} //3 props passing to singleprod component
           onStarClick={onStarClick}
           star={star}
+          isinwish={isinwish}
         />
       </div>
 

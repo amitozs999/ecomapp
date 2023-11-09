@@ -37,19 +37,17 @@ const ProductCardNewHoriz = (props) => {
   // let {   user  = useSelector((state) => ({ ...state }));
   //console.log("listt passed", listt);
 
-  // let x = listt.data.wishlist.map(
-  //   (w) => w._id.toString() === product._id.toString()
-  // );
+  let ssr = listt.some((w) => w._id.toString() === product._id.toString());
 
-  let ssr =
-    listt.data !== undefined &&
-    listt.data.wishlist.some((w) => {
-      if (w._id.toString() === product._id.toString()) return true;
-    });
+  // let ssr =
+  //   listt.data !== undefined &&
+  //   listt.data.wishlist.some((w) => {
+  //     if (w._id.toString() === product._id.toString()) return true;
+  //   });
 
   const [iconColor, setIconColor] = useState(ssr);
 
-  //console.log("ddd", x);
+  console.log("calle ddd", ssr);
   //console.log("ttt", ssr);
 
   //console.log("ff", x[0]);

@@ -122,7 +122,7 @@ const App = () => {
           path="/admin/product/:slug"
           component={ProductUpdate}
         />
-
+        {/* //product/samsung-galaxy-s23-fe */}
         <Route exact path="/product/:slug" component={Product} />
 
         <Route exact path="/category/:slug" component={CategoryHome} />
