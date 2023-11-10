@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { getRelated } from "../functions/product";
 import ProductCard from "../components/cards/ProductCard";
 import ProductCardNew from "../components/cards/ProductCardnew";
-import LoadingCard from "../components/cards/LoadingCard";
+import LoadingCard from "../components/cards/LoadingCardProduct";
 
 //single prod page for its details
 const Product = ({ match }) => {
@@ -79,8 +79,12 @@ const Product = ({ match }) => {
         {/* //comp for single prod */}
 
         {!loadingwish ? (
-          <h1>fg</h1> //show 3 loading cards for products jab tak loading true he he load nhi hue
+          <LoadingCard count={1} /> ///show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (
+          //  <h2>
+          //   ih
+          //  </h2>
+
           <SingleProduct
             product={product} //3 props passing to singleprod component
             onStarClick={onStarClick}
