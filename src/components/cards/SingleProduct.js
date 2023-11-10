@@ -34,7 +34,13 @@ const { TabPane } = Tabs;
 
 // this is childrend component of Product page
 
-const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
+const SingleProduct = ({
+  product,
+  onStarClick,
+  star,
+  isinwish,
+  changeisinwish,
+}) => {
   const [tooltip, setTooltip] = useState("Click to add");
 
   const [wishlistt, setWishlist] = useState([]);
@@ -45,9 +51,13 @@ const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
   const [productsx, setProducts] = useState([]);
   let history = useHistory();
 
-  const [sss, setsss] = useState(isinwish);
+  //const [sss, setsss] = useState(isinwish);
+  console.log("vvvvvv isinwish come in sp", isinwish);
 
   const [iconColor, setIconColor] = useState(isinwish);
+
+  console.log("vvv isinwish in sp page", isinwish);
+  console.log("vvv isinwish ic in sp page", iconColor);
 
   // setIconColor(isinwish);
 
@@ -56,10 +66,14 @@ const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
   // }, []);
 
   useEffect(() => {
-    setIconColor(isinwish);
-  }, []);
+    console.log("vvv CA,E HERE");
+  }, [iconColor]);
+
   useEffect(() => {
-    console.log("col fill change" + product._id, iconColor);
+    //setIconColor(isinwish);
+  });
+  useEffect(() => {
+    console.log("vvvcol fill change" + product._id, iconColor);
   }, [iconColor]);
 
   // useEffect(() =>
@@ -120,8 +134,10 @@ const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
     //   (userwishlist.data !== undefined && !userwishlist.data.wishlist.length) ||
     //   !localStorage.getItem("wishlist")
     // ) {
-    console.log("loading wishlist again2");
+
+    console.log("vvv loading wishlist again2"); //
     loadWishlist();
+
     // }
     // // console.log("ll", userwishlist);
     // setWishlist(userwishlist.data.wishlist);
@@ -249,8 +265,8 @@ const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
       console.log("ADDED TO WISHLIST", res.data);
       toast.success("Added to wishlist");
       // history.push("/user/wishlist");
-      //  setIconColor(!iconColor);
-      // loadWishlist();
+      setIconColor(!iconColor);
+      loadWishlist();
     });
   };
 
@@ -261,8 +277,8 @@ const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
       console.log("REMOVED FROM WISHLIST", res.data);
       //e.preventDefault();
       toast.info("Removed from wishlist");
-      //  setIconColor(!iconColor);
-      // loadWishlist();
+      setIconColor(!iconColor);
+      loadWishlist();
     });
   };
 
@@ -271,7 +287,7 @@ const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
     if (user && user.token) {
       getWishlist(user.token).then((res) => {
         console.log("gg wishlis", res);
-        console.log("gg wishlisvv", res.data.wishlist);
+        console.log("vvv gg wishlisvv", res.data.wishlist);
         setWishlist(res.data.wishlist);
         console.log("ZZZ", wishlistt);
         console.log("ZZZuser", userwishlist);
@@ -286,11 +302,10 @@ const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
           payload: res,
         });
 
-        let ssr =
-          res.data !== undefined &&
-          res.data.wishlist.some((w) => {
-            if (w._id.toString() === product._id.toString()) setIconColor(true);
-          });
+        // res.data !== undefined &&
+        //   res.data.wishlist.some((w) => {
+        //     if (w._id.toString() === product._id.toString()) setIconColor(true);
+        //   });
 
         // if (localStorage.getItem("wishlist")) {
         //   cart = JSON.parse(localStorage.getItem("cart")); //local storage se cart nikal liya
@@ -437,16 +452,20 @@ const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
                     paddingRight: "20px",
                   }}
                 >
-                  {isinwish || iconColor ? ( //show if this prod has rating avg wali
+                  {/* // {isinwish || iconColor ? ( //show if this prod has rating avg wali */}
+                  {iconColor ? (
                     <HeartFilled
                       style={{ color: "#FF6161FF", fontSize: "25px" }}
                       onClick={() => {
-                        console.log("filled tha and icon col was", iconColor);
-                        setIconColor(!iconColor);
+                        console.log(
+                          "vvvvfilled tha and icon col was",
+                          iconColor
+                        );
+                        // setIconColor(false);
 
                         // setssrr(!ssrr);
                         // ssr = !ssr;
-                        isinwish = false;
+                        // isinwish = false;
                         handleRemove(product._id);
                       }}
                       Wishlist
@@ -456,12 +475,12 @@ const SingleProduct = ({ product, onStarClick, star, isinwish }) => {
                       style={{ color: "#A8A7A8FF", fontSize: "25px" }}
                       onClick={() => {
                         if (user) {
-                          setIconColor(!iconColor);
+                          //  setIconColor(!iconColor);
                           //addToWishlist(product._id, user.token);
                           console.log("unfilled");
                           //   ssr = !ssr;
                           //  setssrr(!ssrr);
-                          isinwish = true;
+                          //   isinwish = true;
                           handleAddToWishlist(product._id);
                         } else {
                           toast.info("Please login to wishlist a product !");

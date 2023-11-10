@@ -17,6 +17,7 @@ const Product = ({ match }) => {
   const { user, userwishlist } = useSelector((state) => ({ ...state }));
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingwish, setLoadingwish] = useState(false);
 
   const [isinwish, setisinwish] = useState(false);
 
@@ -30,16 +31,21 @@ const Product = ({ match }) => {
       setProduct(res.data); //get currprod
       setLoading(true);
 
-      let ssr =
-        userwishlist.data !== undefined &&
-        userwishlist.data.wishlist.some((w) => {
-          if (w._id.toString() === res.data._id.toString()) setisinwish(true);
-        });
+      console.log("vvv list after fechinh prod kya he", userwishlist);
 
       getRelated(res.data._id).then((res) => {
         setRelated(res.data); //get related prod for currprod
         setLoading(false);
       });
+
+      userwishlist.data !== undefined &&
+        userwishlist.data.wishlist.some((w) => {
+          if (w._id.toString() === res.data._id.toString()) {
+            setisinwish(true);
+            console.log("vvv isinwish true mared in prod page", isinwish);
+          }
+        });
+      setLoadingwish(true);
     });
 
   useEffect(() => {
@@ -63,16 +69,26 @@ const Product = ({ match }) => {
     });
   };
 
+  const changeisinwish = () => {
+    setisinwish(!isinwish);
+  };
+
   return (
     <div className="container-fluid">
       <div className="row pt-4">
         {/* //comp for single prod */}
-        <SingleProduct
-          product={product} //3 props passing to singleprod component
-          onStarClick={onStarClick}
-          star={star}
-          isinwish={isinwish}
-        />
+
+        {!loadingwish ? (
+          <h1>fg</h1> //show 3 loading cards for products jab tak loading true he he load nhi hue
+        ) : (
+          <SingleProduct
+            product={product} //3 props passing to singleprod component
+            onStarClick={onStarClick}
+            star={star}
+            isinwish={isinwish}
+            changeisinwish={changeisinwish}
+          />
+        )}
       </div>
 
       <div className="row">

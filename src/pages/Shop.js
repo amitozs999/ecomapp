@@ -31,7 +31,7 @@ import { Pagination } from "antd";
 
 import { Link } from "react-router-dom";
 import { useIsMount } from "./useIsMount";
-
+import LoadingCard from "../components/cards/LoadingCardhoriz";
 import "./index.css";
 
 //after typing any product in search comes to shop page
@@ -875,6 +875,10 @@ const Shop = ({ history }) => {
     if (isMount) {
     } else {
       setfound(true);
+      console.log(
+        "called from here 11 data in wislist found now in state finally",
+        wishlistt
+      );
     }
   }, [wishlistt, userwishlist]);
 
@@ -1483,7 +1487,7 @@ const Shop = ({ history }) => {
             <h4 className=" "> </h4>
           )}
 
-          {products.length < 1 && <p>Finding products for you.. </p>}
+          {/* {products.length < 1 && <p>Finding products for you.. </p>} */}
 
           {/* <div className="row pb-5 bg-gray-500 ">
             {products.map((p) => (
@@ -1498,6 +1502,7 @@ const Shop = ({ history }) => {
             className="col   py-1  "
             // style={{ backgroundColor: "#F0F9FAFF" }}
           >
+            {!found && <LoadingCard count={4} />}
             {found &&
               products.map((p) => (
                 // <div key={p._id} className="col-md-2 mt-3 ">
