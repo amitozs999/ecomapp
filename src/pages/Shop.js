@@ -872,6 +872,8 @@ const Shop = ({ history }) => {
     );
     console.log("called from here 11 data in redux ue", userwishlist);
     console.log("called from here 11 data in state ue", wishlistt);
+
+    // if (user) {
     if (isMount) {
     } else {
       setfound(true);
@@ -880,6 +882,9 @@ const Shop = ({ history }) => {
         wishlistt
       );
     }
+    // } else {
+    //   setfound(true);
+    // }
   }, [wishlistt, userwishlist]);
 
   useEffect(() => {
@@ -1502,8 +1507,8 @@ const Shop = ({ history }) => {
             className="col   py-1  "
             // style={{ backgroundColor: "#F0F9FAFF" }}
           >
-            {!found && <LoadingCard count={4} />}
-            {found &&
+            {!found && user && <LoadingCard count={4} />}
+            {(found || !user) &&
               products.map((p) => (
                 // <div key={p._id} className="col-md-2 mt-3 ">
                 <div key={p._id} className="   mb-3 flex flex-col vvb bg-white">
