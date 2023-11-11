@@ -24,9 +24,18 @@ const Search = () => {
 
   return (
     // <div className="max-w-[50rem] w-full md:w-[90%] px-4 md:ltr:ml-4 md:rtl:mr-4 rounded-lg bg-slate-600/10 dark:bg-slate-800 flex items-center flex-grow">
-    <form
+    <div
       //  className="form-inline my-2 inputnounderline"
-      className="formlay"
+      // className="formlay"
+
+      style={{
+        backgroundColor: "rgba(235, 238, 243, 0.991)",
+        width: "33%",
+        height: "34px",
+        borderRadius: "8px",
+        marginTop: "7px",
+        // paddingBottom: "15px",
+      }}
       onSubmit={handleSubmit}
     >
       <div>
@@ -36,18 +45,49 @@ const Search = () => {
           type="search"
           value={text}
           //className="px-4 py-2 md:py-3 "
-          className="inputnounderline"
+          // className="inputnounderline"
+
+          style={{
+            paddingLeft: "10px",
+            width: "85%",
+            height: "21px",
+            //  marginBottom: "15px !important",
+            marginLeft: "5px",
+            marginTop: "7px",
+            paddingTop: "5px",
+            // fontSize: "8px",
+            // display: "block",
+            outline: "none",
+            border: "none",
+            color: "black",
+            backgroundColor: "rgba(235, 238, 243, 0.991)",
+          }}
           placeholder="Search Product"
         />
 
         <SearchOutlined
           //  style={{ fontSize: "150%" }}
           onClick={handleSubmit}
-          style={{ cursor: "pointer", fontSize: "110%" }}
+          style={{
+            height: "23px",
+            cursor: "pointer",
+            fontSize: "110%",
+            marginLeft: "10px",
+            backgroundColor: "rgba(235, 238, 243, 0.991)",
+            //padding: "4px",
+            color: "black",
+            // paddingBottom: "7px",
+            // marginBottom: "5px",
+            marginTop: "9px",
+            marginRight: "5px",
+            float: "right",
+            width: "7%",
+            //transform: "translateY(-100%)",
+          }}
           className="pad-search"
         />
       </div>
-    </form>
+    </div>
   );
 };
 

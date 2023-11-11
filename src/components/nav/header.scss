@@ -9,6 +9,7 @@
  margin-bottom: 200px;
 }
 .header-item{
+  //background-color: brown !important;
   overflow-y: hidden;; 
      color: rgb(120, 142, 234) !important;
    //  background-color: rgb(246, 147, 27) !important;
@@ -18,18 +19,18 @@
  
        .formlay{
     
-         margin-top: 8px;
+        // margin-top: 8px;   //
                  width: 33%; 
         background-color: rgba(235, 238, 243, 0.991);
     border-radius: 10px;
-     margin-bottom: 10px !important;
+     //margin-bottom: 10px !important;  //
      padding-left: 10px;
      //padding-bottom: 18px;
       //padding-bottom: 10px;
         /* //height: 150px; */
         //margin-top: auto;
         display:block;
-        height: 81%;
+        height: 100%;
         //     border-radius: 6px;
         //     width: 98%; 
        
@@ -50,8 +51,9 @@
         // margin-bottom: 30px !important;
          // margin-right: 2%;
          color: black;
+         background-color: rgb(23, 135, 98) !important;
         //position: absolute;
-       margin-right: 5px;
+       margin-right: 15px;
          transform: translateY(-100%);
         // padding-right: 10px;
         background-color: rgba(235, 238, 243, 0.991);
@@ -59,7 +61,7 @@
       
         //  padding: 2px;
          
-        padding: 4px;
+        padding: 6px;
           
           //text-align: center;
           // background-color: chartreuse !important;
@@ -75,8 +77,9 @@
 
             .inputnounderline{
 
-               padding-top: 10px;
+               //padding-top: 10px;
                margin-left: 5px;
+               background-color: rgb(4, 34, 35) !important;
                color: black;
              font-weight: 490;
             display:block;
@@ -84,17 +87,18 @@
                //float:none !important;
              
 
-               margin-left: 4px;
+               margin-left: 14px;
+            //   margin-right: 20px;
             //margin-bottom: 25px;
              //padding-bottom: 20px;
-             background-color: rgba(235, 238, 243, 0.991);
+             background-color: rgba(25, 76, 160, 0.991) !important;
               
                 // text-decoration: none !important;
                 outline: none !important;
               border: none !important;
               //  background-color: rgba(248, 250, 253, 0.991);
                width: 72%;
-               height: 80%;
+               height: 90%;
               // padding-right: 30px;
           
                //display: inline-block;
