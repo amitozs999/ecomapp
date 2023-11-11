@@ -39,7 +39,7 @@ const BestSellers = () => {
         {loading ? (
           <LoadingCard count={4} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (
-          <div className=" bg-slate-400  h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
+          <div className="    h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
             {products.map((product) => (
               <div key={product._id} className="    h-80 w-52">
                 <ProductCardNew product={product} />

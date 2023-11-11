@@ -85,7 +85,7 @@ const App = () => {
     <>
       {/* //here header is showing for all screens common */}
 
-      <div className="flex flex-col min-h-[100vh]">
+      <div className="flex flex-col ">
         <Header />
       </div>
 

@@ -59,7 +59,7 @@ const Banner = () => {
 
     //lg:grid-cols-12        12 box verticallly   then again 12 box verticalll  when with?1024  */}
 
-          <div className="bg-cyan-700 grid gap-4 grid-cols-6 lg:grid-cols-12 pl-9 pr-9 ">
+          <div className="  grid gap-4 grid-cols-6 lg:grid-cols-12 pl-9 pr-9 ">
             {/* grid gap-4 grid-cols-6 lg:grid-cols-12 */}
             {bannerContent.map(
               ({

@@ -104,30 +104,41 @@ const Product = ({ match }) => {
       </div>
 
       {/* //<div className="row pb-5"> */}
-      <div className="container flex ">
-        {
-          loading ? (
+      {/* <div
+        //className=" container"
+        style={{ width: "100%" }}
+      >
+        {loading ? (
+          <LoadingCard count={3} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
+        ) : (
+          <div
+            //className="  h-96 p-3 flex  flex-row justify-between "
+
+            style={{ display: "flex", flexDirection: "row" }}
+          >
+            {related.map((r) => (
+              <div key={r._id} className="    h-80 w-52">
+                <ProductCardNew product={r} />
+              </div>
+            ))}
+          </div>
+        )
+         */}
+
+      <div>
+        <div className="container ">
+          {loading ? (
             <LoadingCard count={3} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
           ) : (
-            <div className="   ">
+            <div className="  h-96 p-3 flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
               {related.map((r) => (
-                <div key={r._id} className="flex-row ">
+                <div key={r._id} className="    h-80 w-52">
                   <ProductCardNew product={r} />
                 </div>
               ))}
             </div>
-          )
-          // related.length ? (
-          //   related.map((r) => (
-          //     <div key={r._id} className="  h-80 w-52">
-          //       <ProductCardNew product={r} />
-          //     </div>
-          //   ))
-          // )
-          // : (
-          //   <div className="text-center col">No Products Found</div>
-          // )
-        }
+          )}
+        </div>
       </div>
     </div>
   );
