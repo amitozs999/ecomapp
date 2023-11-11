@@ -348,6 +348,10 @@ const Shop = ({ history }) => {
   // }, [categoryIds]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [page]);
+
+  useEffect(() => {
     let currentUrlParams = new URLSearchParams(window.location.search);
 
     console.log("mountttttt", isMount); //first time render mount true,  then ater that all rendeer false
@@ -785,6 +789,7 @@ const Shop = ({ history }) => {
     myprice,
     mytext
   ) => {
+    setLoading(true);
     console.log("hit prod api3", sort);
     console.log("hit prod api3", order);
     console.log("hit prod api3", page);
@@ -821,7 +826,7 @@ const Shop = ({ history }) => {
       console.log("bbbbbbbbbcv" + page, cv);
       const cv2 = Math.round(res.data.total / 8) * 10;
       console.log("bbbbbbbbbcv2" + page, cv2);
-      //setLoading(false);
+      setLoading(false);
     });
   };
 
@@ -1486,11 +1491,11 @@ const Shop = ({ history }) => {
             </Item>
           </Menu>
 
-          {loading ? (
+          {/* {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
             <h4 className=" "> </h4>
-          )}
+          )} */}
 
           {/* {products.length < 1 && <p>Finding products for you.. </p>} */}
 
@@ -1507,8 +1512,10 @@ const Shop = ({ history }) => {
             className="col   py-1  "
             // style={{ backgroundColor: "#F0F9FAFF" }}
           >
-            {!found && user && <LoadingCard count={4} />}
+            {(loading || (!found && user)) && <LoadingCard count={8} />}
+
             {(found || !user) &&
+              !loading &&
               products.map((p) => (
                 // <div key={p._id} className="col-md-2 mt-3 ">
                 <div key={p._id} className="   mb-3 flex flex-col vvb bg-white">
@@ -1537,7 +1544,10 @@ const Shop = ({ history }) => {
                 //total={Math.round((productsCount / 10) * 10)}
                 total={Math.round(productsCount / 8) * 10}
                 // total={productsCount}
-                onChange={(value) => setPage(value)}
+                onChange={(value) => {
+                  // setLoading(false);
+                  setPage(value);
+                }}
               />
             </nav>
           </div>

@@ -106,7 +106,10 @@ const SingleProduct = ({
     brand,
     quantity,
     sold,
+    ratings,
   } = product;
+
+  const [ratingtext, setratingtext] = useState(false);
 
   // console.log("ssssssuserwish", price);
 
@@ -116,6 +119,22 @@ const SingleProduct = ({
   //   //   console.log("ssssssuserwish true");
   //   // console.log("ssssssuserwish", _id);
   // });
+
+  useEffect(() => {
+    if (user) {
+      let ssr =
+        user &&
+        ratings !== undefined &&
+        ratings.some((w) => {
+          if (w.postedBy.toString() === user._id.toString()) return true;
+        });
+      setratingtext(ssr);
+
+      console.log("nnn rating", ratings);
+      console.log("nnn is in rating", ssr);
+      console.log("nnn curr user", user);
+    }
+  }, [user]);
 
   useEffect(() => {
     if (user && user.token) {
@@ -500,12 +519,14 @@ const SingleProduct = ({
                   First one to rate
                 </p>
               )}
+
               <h1
                 className="bg-white txtcategbottommhorizpricesingle ml-3"
                 style={{ marginBottom: "15px" }}
               >
                 ₹{price}.00
               </h1>
+
               <h5 className="bg-white txtcategbottommhorizdescsingle mb-1 ml-3 mt-4">
                 {description}{" "}
               </h5>
@@ -632,19 +653,17 @@ const SingleProduct = ({
                 </a>
 
                 <a
-                  //onClick={handleAddToCart2}
+                  // onClick={handleAddToCart2}
 
                   onClick={() => {
-                    if (user) {
-                      handleRemove();
-                    } else {
+                    if (!user) {
                       toast.info("Please login to Leave rating !");
                     }
                   }}
                   style={{
                     backgroundColor: "#FFE3E8FF",
                     color: "#FF644FFF",
-                    width: "200px",
+                    width: "160px",
                     borderRadius: "4px",
                     fontSize: "17px",
                     textAlign: "center",
@@ -662,14 +681,17 @@ const SingleProduct = ({
                   style={{ color: "#FF644FFF !important" }}
                 /> */}
                   {/* <StarOutlined className="text-danger" /> &nbsp; Leave rating */}
-                  <RatingModal>
+                  <RatingModal ratingtext={ratingtext}>
                     <StarRating
+                      // borderRadius="7px"
+                      starDimension="39px"
                       name={_id}
                       numberOfStars={5}
                       rating={star}
                       changeRating={onStarClick}
                       isSelectable={true}
-                      starRatedColor="red"
+                      starRatedColor="#FAE898FF"
+                      starHoverColor="#FAE898FF"
                     />
                   </RatingModal>
                 </a>

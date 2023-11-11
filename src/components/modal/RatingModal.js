@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button } from "antd";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { StarOutlined } from "@ant-design/icons";
 import { useHistory, useParams } from "react-router-dom";
 
-const RatingModal = ({ children }) => {
+const RatingModal = ({ children, ratingtext }) => {
   //
   const { user } = useSelector((state) => ({ ...state })); //cur user from redux state
   const [modalVisible, setModalVisible] = useState(false); //popupvisible state
@@ -31,11 +31,26 @@ const RatingModal = ({ children }) => {
       {/* //show text based on login or not */}
       <div onClick={handleModal}>
         <StarOutlined className="text-danger" />
-        <br /> {user ? "Leave rating" : "Login to leave rating"}
+        {/* <br />{" "} */}
+        {/* {user
+          ? ratingtext
+            ? "Update Rating"
+            : "Leave Rating "
+
+
+          : "Login to leave rating"} */}
+
+        {user && ratingtext ? "  Update Rating" : "  Leave Rating "}
       </div>
 
       <Modal //popup
         title="Leave your rating"
+        style={{
+          top: 20,
+          // border: "20px",
+          // borderTopWidth: "5px",
+        }}
+        okText="Submit"
         centered
         visible={modalVisible} //based on this state value
         onOk={() => {

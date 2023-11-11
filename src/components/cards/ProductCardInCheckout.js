@@ -155,7 +155,7 @@ const ProductCardInCheckout = (props) => {
 
         <td>{p.product.title}</td>
 
-        <td>${p.price}</td>
+        <td>₹{p.price}</td>
 
         <td>{p.product.brand}</td>
         <td>{p.color}</td>

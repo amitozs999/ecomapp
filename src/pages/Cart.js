@@ -147,7 +147,7 @@ const Cart = ({ history }) => {
     cart.data.products.map((prod) => (
       <div>
         <p>
-          {prod.title} x {prod.count} = ${prod.price * prod.count}
+          {prod.title} x {prod.count} = ₹{prod.price * prod.count}
         </p>
       </div>
     ));
@@ -213,9 +213,9 @@ const Cart = ({ history }) => {
           )}
           <hr />
           {cart.data == undefined || !cart.data.products ? (
-            <b> Total: $0</b>
+            <b> Total: ₹0</b>
           ) : (
-            <b> Total ${getTotal()}</b>
+            <b> Total ₹{getTotal()}</b>
           )}
 
           <hr />

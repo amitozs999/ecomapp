@@ -80,7 +80,7 @@ const Checkout = ({ history }) => {
     products.map((p, i) => (
       <div key={i}>
         <p>
-          {p.product.title} ({p.color}) x {p.count} ={" "}
+          {p.product.title} ({p.color}) x {p.count} = ₹
           {p.product.price * p.count}
         </p>
       </div>
@@ -192,11 +192,11 @@ const Checkout = ({ history }) => {
         {showProductSummary()}
         <hr />
 
-        <p>Cart Total: {total}</p>
+        <p>Cart Total: ₹{total}</p>
 
         {totalAfterDiscount > 0 && (
           <p className="bg-success p-2">
-            Discount Applied: Total Payable: ${totalAfterDiscount}
+            Discount Applied: Total Payable: ₹{totalAfterDiscount}
           </p>
         )}
 
