@@ -127,19 +127,19 @@ const Header = () => {
     color: "red",
   };
   return (
-    <header>
-      <div class="flex-container">
+    <header style={{ width: "100vw", overflowX: "hidden" }}>
+      {" "}
+      {/* // flex container( logodiv     mainmenu div( items  ) ) */}{" "}
+      <div class="flex-container md:fixed   ">
         <div className="logodiv" onClick={logoclick}>
           <a>
-            <img className="logo" src={asas2} style={imageStyle} />
-          </a>
-          <p className="logotext"> Shop Now</p>
-
+            <img className="logo" src={asas2} />{" "}
+          </a>{" "}
+          <p className="logotext"> Shop Now </p>{" "}
           {/* <Link to="/" onClick={logoclick}>
-            AZ Store
-          </Link> */}
-        </div>
-
+                                                                                                                                                                                                AZ Store
+                                                                                                                                                                                              </Link> */}{" "}
+        </div>{" "}
         <div className="mainmenudiv">
           <Menu
             onClick={handleClick}
@@ -147,27 +147,20 @@ const Header = () => {
             mode="horizontal"
             className="header-item"
           >
-            {/* <Item icon={<ShopTwoTone />}>AZ Store</Item> */}
+            {/* <Item icon={<ShopTwoTone />}>AZ Store</Item> */}{" "}
             {/* <Item key="home" icon={<ShopTwoTone />}>
-              <Link to="/">AZ Store</Link>
-            </Item> */}
-
+                                                                                                                                                                                                  <Link to="/">AZ Store</Link>
+                                                                                                                                                                                                </Item> */}{" "}
             <Item
               key="shop"
               icon={<ShoppingOutlined />}
               style={{ marginRight: "145px", marginLeft: "40px" }}
             >
-              {/* //<Link to="/shop" className="header-item"> */}
-              <Link to="/shop">What's New</Link>
-            </Item>
-
-            <Search style={{ marginRight: "auto" }} />
-            {/* <div className="flex-grow bg-slate-1900"> */}
-
-            {/* <div className="search-div"> */}
-
-            {/* </div> */}
-
+              {/* //<Link to="/shop" className="header-item"> */}{" "}
+              <Link to="/shop"> What 's New</Link>{" "}
+            </Item>{" "}
+            {/* <div className="flex-grow bg-slate-1900"> */}{" "}
+            {/* <div className="search-div"> */} {/* </div> */}{" "}
             {user && (
               <SubMenu
                 icon={<UserOutlined />}
@@ -176,60 +169,59 @@ const Header = () => {
               >
                 {user && user.role === "subscriber" && (
                   <Item icon={<DashboardOutlined />}>
-                    <Link to="/user/history">Dashboard</Link>
+                    <Link to="/user/history"> Dashboard </Link>{" "}
                   </Item>
-                )}
-
+                )}{" "}
                 {user && user.role === "admin" && (
                   <Item icon={<DashboardOutlined />}>
-                    <Link to="/admin/dashboard">Dashboard</Link>
+                    <Link to="/admin/dashboard"> Dashboard </Link>{" "}
                   </Item>
-                )}
-
+                )}{" "}
                 <Item icon={<LogoutOutlined />} onClick={logout}>
-                  Logout
-                </Item>
+                  Logout{" "}
+                </Item>{" "}
               </SubMenu>
-            )}
+            )}{" "}
             {!user && (
               <Item
                 key="register"
                 icon={<UserAddOutlined />}
                 style={{ marginLeft: "20px" }}
               >
-                <Link to="/register">Register</Link>
+                <Link to="/register"> Register </Link>{" "}
               </Item>
-            )}
-
+            )}{" "}
             {!user && (
               <Item key="login" icon={<LoginOutlined />}>
-                <Link to="/login">Login</Link>
+                <Link to="/login"> Login </Link>{" "}
               </Item>
-            )}
-
-            <Item
-              key="cart"
-              icon={<ShoppingCartOutlined />}
-              //  style={{ marginLeft: "auto" }}
-            >
-              <Link to="/cart">
-                Cart
-                <Badge
-                  className="badge-pad"
-                  // count={total}
-                  //count={cart.data.products.length}
-                  count={
-                    cart.data == undefined || !cart.data.products || !user
-                      ? ""
-                      : cart.data.products.length
-                  }
-                  offset={[9, 0]}
-                ></Badge>
-              </Link>
-            </Item>
-          </Menu>
-        </div>
-      </div>
+            )}{" "}
+            <Search style={{ marginRight: "auto" }} />{" "}
+            {user && (
+              <Item
+                key="cart"
+                icon={<ShoppingCartOutlined />}
+                //  style={{ marginLeft: "auto" }}
+              >
+                <Link to="/cart">
+                  Cart{" "}
+                  <Badge
+                    className="badge-pad"
+                    // count={total}
+                    //count={cart.data.products.length}
+                    count={
+                      cart.data == undefined || !cart.data.products || !user
+                        ? ""
+                        : cart.data.products.length
+                    }
+                    offset={[9, 0]}
+                  ></Badge>{" "}
+                </Link>{" "}
+              </Item>
+            )}{" "}
+          </Menu>{" "}
+        </div>{" "}
+      </div>{" "}
     </header>
   );
 };
