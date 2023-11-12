@@ -14,6 +14,7 @@ import {
 } from "@ant-design/icons";
 
 import asas from "./234.png";
+import asas2 from "./ecomlogo3.png";
 
 import "./header.scss";
 
@@ -120,23 +121,19 @@ const Header = () => {
     history.push("/");
   };
   const imageStyle = {
-    width: "25%",
-    height: "25px",
+    width: "21%",
+    height: "18px",
     objectFit: "cover",
+    color: "red",
   };
   return (
     <header>
       <div class="flex-container">
-        <div className="logodiv">
+        <div className="logodiv" onClick={logoclick}>
           <a>
-            <img
-              className="logo"
-              src={asas}
-              onClick={logoclick}
-              style={imageStyle}
-            />
+            <img className="logo" src={asas2} style={imageStyle} />
           </a>
-          <p className="logotext"> Amaz Shop</p>
+          <p className="logotext"> Shop Now</p>
 
           {/* <Link to="/" onClick={logoclick}>
             AZ Store
