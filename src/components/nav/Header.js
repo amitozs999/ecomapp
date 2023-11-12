@@ -222,7 +222,7 @@ const Header = () => {
                   // count={total}
                   //count={cart.data.products.length}
                   count={
-                    cart.data == undefined || !cart.data.products
+                    cart.data == undefined || !cart.data.products || !user
                       ? ""
                       : cart.data.products.length
                   }

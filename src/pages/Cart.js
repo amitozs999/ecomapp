@@ -185,13 +185,13 @@ const Cart = ({ history }) => {
     <div className="container-fluid pt-2">
       <div className="row">
         <div className="col-md-8">
-          {cart.data == undefined || !cart.data.products ? (
+          {cart.data == undefined || !cart.data.products || !user ? (
             <p>Cart / 0 Product</p>
           ) : (
             <h4> Cart / {cart.data.products.length} Product</h4>
           )}
 
-          {cart.data == undefined || !cart.data.products ? (
+          {cart.data == undefined || !cart.data.products || !user ? (
             <p>
               No products in cart. <Link to="/shop">Continue Shopping.</Link>
             </p>
@@ -206,13 +206,13 @@ const Cart = ({ history }) => {
           <h4>Order Summary</h4>
           <hr />
           <p>Products</p>
-          {cart.data == undefined || !cart.data.products ? (
+          {cart.data == undefined || !cart.data.products || !user ? (
             <p>No products in cart.</p>
           ) : (
             showCartItems2()
           )}
           <hr />
-          {cart.data == undefined || !cart.data.products ? (
+          {cart.data == undefined || !cart.data.products || !user ? (
             <b> Total: ₹0</b>
           ) : (
             <b> Total ₹{getTotal()}</b>
