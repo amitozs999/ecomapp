@@ -5,6 +5,7 @@ import {
   getUserCart,
   emptyUserCart,
   saveUserAddress,
+  getUserAddress,
   applyCoupon,
   createCashOrderForUser,
 } from "../functions/user";
@@ -18,7 +19,6 @@ const Checkout = ({ history }) => {
   const [total, setTotal] = useState(0);
   //const { user, cart } = useSelector((state) => ({ ...state }));
 
-  const [address, setAddress] = useState("");
   const [addressSaved, setAddressSaved] = useState(false);
 
   const [coupon, setCoupon] = useState("");
@@ -29,14 +29,29 @@ const Checkout = ({ history }) => {
   const dispatch = useDispatch();
   const { user, COD, cart } = useSelector((state) => ({ ...state }));
   const couponTrueOrFalse = useSelector((state) => state.coupon);
+  const [address, setAddress] = useState(user.address);
 
   useEffect(() => {
     // getUserCart(user.token).then((res) => {
     //   console.log("user cart res yy", JSON.stringify(res.data, null, 4));
     //   //console.log(res.data);
+
+    setAddress(user.address);
     setProducts(cart.data.products);
     setTotal(cart.data.cartTotal);
     // });
+  }, []);
+
+  useEffect(() => {
+    console.log("rrr user value", user);
+    getUserAddress(user.token).then((res) => {
+      if (res.data.addr) {
+        setAddressSaved(true);
+        setAddress(res.data.addr[0].address);
+        // toast.success("Address saved");
+        console.log("rrr user value address rec", res.data.addr[0].address);
+      }
+    });
   }, []);
 
   //send coupon to backend and verify then applied
