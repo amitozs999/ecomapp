@@ -11,38 +11,8 @@
   overflow-y: hidden;
   overflow-x: hidden;
   color: rgb(120, 142, 234) !important;
-  height: 60px;
+  height: 3.75rem;
   width: 100vw;
-  .formlay {
-    width: 33%;
-    background-color: rgba(235, 238, 243, 0.991);
-    border-radius: 10px;
-    padding-left: 10px;
-    display: block;
-    height: 100%;
-    .inputnounderline {
-      margin-left: 5px;
-      background-color: rgb(4, 34, 35) !important;
-      color: black;
-      font-weight: 490;
-      display: block;
-      margin-left: 14px;
-      background-color: rgba(25, 76, 160, 0.991) !important;
-      outline: none !important;
-      border: none !important;
-      width: 72%;
-      height: 90%;
-    }
-    .pad-search {
-      color: black;
-      background-color: rgb(23, 135, 98) !important;
-      margin-right: 15px;
-      transform: translateY(-100%);
-      background-color: rgba(235, 238, 243, 0.991);
-      float: right;
-      padding: 6px;
-    }
-  }
 }
 
 .badge-pad {
@@ -50,28 +20,66 @@
   padding-right: 5px !important;
 }
 
-.flex-container {
-  //mobby
-  //1.logodiv  10perc ,  2.mainmenudix 90perc
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  background-color: DodgerBlue;
-  height: 30vh;
-  .logodiv {
-    background-color: blanchedalmond;
-    padding-left: 5%;
-    width: 100vw;
-    margin-top: 5px;
-    // height: 10vh;
+// @media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
+// @media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */ }
+// @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+//   @ media (min-width:320px)  {
+//   .flex-container {
+//     //mobby
+//     //1.logodiv  10perc ,  2.mainmenudix 90perc
+//     overflow-x: hidden;
+//     display: flex;
+//     flex-direction: column;
+//     background-color: DodgerBlue;
+//     height: 30vh;
+//   }
+//   //   .logodiv {
+//   //   background-color: blanchedalmond;
+//   //   padding-left: 5%;
+//   //   width: 100vw;
+//   //   margin-top: 5px;
+//   //   // height: 10vh;
+//   //   .logo {
+//   //     color: black;
+//   //     // objectFit: cover;
+//   //     background-color: rgb(114, 218, 123)
+//   //     // color: red;
+//   //     width: 2rem;
+//   //     height: 2rem;
+//   //     //margin-left: auto;
+//   //     // margin-right: auto;
+//   //   }
+//   //   .logotext {
+//   //     margin-left: 1.563rem;
+//   //     font-weight: 520;
+//   //     color: rgb(87, 85, 85);
+//   //     display: none;
+//   //   }
+//   // }
+//  }
+@media (min-width: 320px) {
+  .flex-container {
+    // max-width: 768px;
+    display: flex;
+    flex-direction: column;
+    background-color: DodgerBlue;
+    height: 20vh;
+    .logodiv {
+      background-color: blanchedalmond;
+      width: 100vw;
+      //  margin-top: 5px;
+      align-items: center;
+      // height: 10vh;
+    }
     .logo {
       color: black;
       // objectFit: cover;
+      background-color: rgb(114, 218, 123);
       // color: red;
       width: 2rem;
       height: 2rem;
-      //margin-left: auto;
-      // margin-right: auto;
+      margin-left: auto;
+      margin-right: auto;
     }
     .logotext {
       margin-left: 1.563rem;
@@ -79,20 +87,10 @@
       color: rgb(87, 85, 85);
       display: none;
     }
-    @media (min-width: 1280px) {
-      .logotext {
-        // max-width: 768px;
-        display: block;
-      }
-    }
-  }
-  .mainmenudiv {
-    width: 82%;
   }
 }
 
 @media (min-width: 480px) {
-  //tabby
   .flex-container {
     // max-width: 768px;
     //display: flex;
@@ -110,50 +108,76 @@
       margin-left: auto;
       margin-right: auto;
     }
-  }
-}
-
-@media (min-width: 928px) {
-  //tabby
-  .flex-container {
-    // max-width: 768px;
-    //display: flex;
-    flex-direction: column;
-    height: 20vh;
-    .logodiv {
-      height: auto;
-      align-items: center;
-      width: 100vw;
-    }
-    .logo {
-      background-color: brown;
-      width: 2rem;
-      height: 2rem;
-      margin-left: auto;
-      margin-right: auto;
+    .mainmenudiv {
+      width: 82%;
     }
   }
 }
 
-//@media (min-width: 1280px) {
 @media (min-width: 1056px) {
-  //lappy
   .flex-container {
     // max-width: 768px;
     flex-direction: row;
     display: flex;
-    height: 10vh;
+    height: 11vh;
     .logodiv {
-      height: 10vh;
-      width: 18%;
+      height: 3.75rem;
+      background-color: rgb(244, 162, 55);
+      //  height: 10vh;
+      width: 20%;
     }
     .logo {
       // width: 5rem;
       // height: 5rem;
-      margin-top: 0.25rem;
-      margin-left: 2.688rem;
+      background-color: rgb(190, 131, 109);
+      //  margin-top: 0.25rem;
+      // margin-left: 2.688rem;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1rem;
+      // margin-bottom: auto;
       width: 21%;
-      height: 1.1rem;
+      height: 60%;
+    }
+    .mainmenudiv {
+      width: 32%;
+      height: 3.75rem;
+      background-color: aqua;
+    }
+    .searchbardiv {
+      width: 35%;
+      height: 3.75rem;
+      background-color: rgb(213, 16, 16);
+      .formlay {
+        width: 33%;
+        background-color: rgba(235, 238, 243, 0.991);
+        border-radius: 10px;
+        padding-left: 10px;
+        display: block;
+        height: 100%;
+        .inputnounderline {
+          margin-left: 5px;
+          background-color: rgb(4, 34, 35) !important;
+          color: black;
+          font-weight: 490;
+          display: block;
+          margin-left: 14px;
+          background-color: rgba(25, 76, 160, 0.991) !important;
+          outline: none !important;
+          border: none !important;
+          width: 72%;
+          height: 90%;
+        }
+        .pad-search {
+          color: black;
+          background-color: rgb(23, 135, 98) !important;
+          margin-right: 15px;
+          transform: translateY(-100%);
+          background-color: rgba(235, 238, 243, 0.991);
+          float: right;
+          padding: 6px;
+        }
+      }
     }
   }
 }

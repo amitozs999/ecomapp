@@ -135,10 +135,13 @@ const Header = () => {
           <a>
             <img className="logo" src={asas2} />{" "}
           </a>{" "}
-          <p className="logotext"> Shop Now </p>{" "}
+          {/* <p className="logotext"> Shop Now </p>{" "} */}{" "}
           {/* <Link to="/" onClick={logoclick}>
-                                                                                                                                                                                                AZ Store
-                                                                                                                                                                                              </Link> */}{" "}
+                                                                                                                                                                                                                                                                                                            AZ Store
+                                                                                                                                                                                                                                                                                                          </Link> */}{" "}
+        </div>{" "}
+        <div className="searchbardiv">
+          <Search />{" "}
         </div>{" "}
         <div className="mainmenudiv">
           <Menu
@@ -149,12 +152,12 @@ const Header = () => {
           >
             {/* <Item icon={<ShopTwoTone />}>AZ Store</Item> */}{" "}
             {/* <Item key="home" icon={<ShopTwoTone />}>
-                                                                                                                                                                                                  <Link to="/">AZ Store</Link>
-                                                                                                                                                                                                </Item> */}{" "}
+                                                                                                                                                                                                                                                                                                              <Link to="/">AZ Store</Link>
+                                                                                                                                                                                                                                                                                                            </Item> */}{" "}
             <Item
               key="shop"
               icon={<ShoppingOutlined />}
-              style={{ marginRight: "145px", marginLeft: "40px" }}
+              style={{ marginRight: " 45px", marginLeft: "40px" }}
             >
               {/* //<Link to="/shop" className="header-item"> */}{" "}
               <Link to="/shop"> What 's New</Link>{" "}
@@ -196,7 +199,6 @@ const Header = () => {
                 <Link to="/login"> Login </Link>{" "}
               </Item>
             )}{" "}
-            <Search style={{ marginRight: "auto" }} />{" "}
             {user && (
               <Item
                 key="cart"

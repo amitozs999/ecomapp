@@ -30,10 +30,17 @@ const Search = () => {
 
       style={{
         backgroundColor: "rgba(235, 238, 243, 0.991)",
-        width: "33%",
-        height: "34px",
-        borderRadius: "8px",
-        marginTop: "7px",
+        //  width: "33%",
+        //   height: "34px",
+        marginTop: "0.5rem",
+        //marginBottom: "auto",
+        marginLeft: "auto",
+
+        marginRight: "auto",
+        width: "80%",
+        height: "80%",
+        borderRadius: "0.5em",
+        // marginTop: "7px",
         // paddingBottom: "15px",
       }}
       onSubmit={handleSubmit}
@@ -86,7 +93,7 @@ const Search = () => {
           }}
           className="pad-search"
         />
-      </div>
+      </div>{" "}
     </div>
   );
 };
