@@ -137,8 +137,8 @@ const Header = () => {
           </a>{" "}
           {/* <p className="logotext"> Shop Now </p>{" "} */}{" "}
           {/* <Link to="/" onClick={logoclick}>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        AZ Store
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </Link> */}{" "}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    AZ Store
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </Link> */}{" "}
         </div>{" "}
         <div className="searchbardiv">
           <Search />{" "}
@@ -155,8 +155,8 @@ const Header = () => {
           >
             {/* <Item icon={<ShopTwoTone />}>AZ Store</Item> */}{" "}
             {/* <Item key="home" icon={<ShopTwoTone />}>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <Link to="/">AZ Store</Link>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </Item> */}{" "}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <Link to="/">AZ Store</Link>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </Item> */}{" "}
             <Item
               key="shop"
               className="itemwhatsnew"
@@ -173,7 +173,7 @@ const Header = () => {
               <SubMenu
                 icon={<UserOutlined />}
                 title={user.email && user.email.split("@")[0]}
-                style={{ marginLeft: "60px" }}
+                // style={{ marginLeft: "60px" }}
               >
                 {user && user.role === "subscriber" && (
                   <Item icon={<DashboardOutlined />}>
