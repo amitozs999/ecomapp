@@ -137,27 +137,32 @@ const Header = () => {
           </a>{" "}
           {/* <p className="logotext"> Shop Now </p>{" "} */}{" "}
           {/* <Link to="/" onClick={logoclick}>
-                                                                                                                                                                                                                                                                                                            AZ Store
-                                                                                                                                                                                                                                                                                                          </Link> */}{" "}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            AZ Store
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </Link> */}{" "}
         </div>{" "}
         <div className="searchbardiv">
           <Search />{" "}
         </div>{" "}
         <div className="mainmenudiv">
           <Menu
+            overflowedIndicator={false}
             onClick={handleClick}
             selectedKeys={[current]}
             mode="horizontal"
             className="header-item"
+            width="100%"
+            style={{ backgroundColor: "black" }}
           >
             {/* <Item icon={<ShopTwoTone />}>AZ Store</Item> */}{" "}
             {/* <Item key="home" icon={<ShopTwoTone />}>
-                                                                                                                                                                                                                                                                                                              <Link to="/">AZ Store</Link>
-                                                                                                                                                                                                                                                                                                            </Item> */}{" "}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <Link to="/">AZ Store</Link>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </Item> */}{" "}
             <Item
               key="shop"
+              className="itemwhatsnew"
               icon={<ShoppingOutlined />}
-              style={{ marginRight: " 45px", marginLeft: "40px" }}
+              style={{ backgroundColor: "gray" }}
+              //   style={{ marginRight: " 45px", marginLeft: "40px" }}
             >
               {/* //<Link to="/shop" className="header-item"> */}{" "}
               <Link to="/shop"> What 's New</Link>{" "}
@@ -188,22 +193,31 @@ const Header = () => {
             {!user && (
               <Item
                 key="register"
+                className="itemregister"
                 icon={<UserAddOutlined />}
-                style={{ marginLeft: "20px" }}
+                //  style={{ marginLeft: "20px" }}
+                style={{ backgroundColor: "green" }}
               >
                 <Link to="/register"> Register </Link>{" "}
               </Item>
             )}{" "}
             {!user && (
-              <Item key="login" icon={<LoginOutlined />}>
+              <Item
+                key="login"
+                className="itemlogin"
+                icon={<LoginOutlined />}
+                style={{ backgroundColor: "yellowgreen" }}
+              >
                 <Link to="/login"> Login </Link>{" "}
               </Item>
             )}{" "}
             {user && (
               <Item
                 key="cart"
+                className="itemcart"
                 icon={<ShoppingCartOutlined />}
                 //  style={{ marginLeft: "auto" }}
+                style={{ backgroundColor: "gold" }}
               >
                 <Link to="/cart">
                   Cart{" "}
