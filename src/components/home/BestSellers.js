@@ -5,16 +5,31 @@ import ProductCardNew from "../cards/ProductCardnew";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
 
-import "./index.scss"
+import "./index.scss";
 
 const BestSellers = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
+  const [mqlval, setmqlval] = useState(false);
+
+  let mql = window.matchMedia("(max-width: 762px)");
+
+  const [loadercnt, setloadercnt] = useState(4);
 
   useEffect(() => {
-    console.log("bb1");
+    console.log("mqlvalue", mql);
+    console.log("mqlvalue", mql.matches);
+    console.log("mqlvalue", loadercnt);
+
+    if (mql.matches) {
+      setloadercnt(1);
+      setmqlval(true);
+    } else {
+      setloadercnt(4);
+      setmqlval(false);
+    }
     loadAllProducts();
   }, [page]);
 
@@ -34,30 +49,24 @@ const BestSellers = () => {
 
   return (
     <>
-      <div  className="bestsellcontainer">
-         {/* <h2 className="my-4 md:my-8 lg:mt-10 ml-10 text-2xl">   */}
+      <div className="bestsellcontainer">
+        {/* <h2 className="my-4 md:my-8 lg:mt-10 ml-10 text-2xl">   */}
 
-        <h2 className="headitemtext">
-          Popular Products
-        </h2>
-
+        <h2 className="headitemtext">Popular Products</h2>
 
         {loading ? (
-          <LoadingCard count={4} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
+          <LoadingCard count={loadercnt} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (
-        //<div className="    h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
+          //<div className="    h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
 
-        <div className="bestsellitemdiv">
-          
+          <div className="bestsellitemdiv">
             {products.map((product) => (
-            //   <div key={product._id} className="    h-80 w-52">
-                 <div key={product._id} className="bestsellitem">
+              //   <div key={product._id} className="    h-80 w-52">
+              <div key={product._id} className="bestsellitem">
                 <ProductCardNew product={product} />
               </div>
             ))}
-         </div>
-
-
+          </div>
         )}
       </div>
 
