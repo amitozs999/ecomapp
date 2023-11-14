@@ -2,7 +2,7 @@
   .proditems {
     height: 11.1rem;
     border-color: black;
-    background-color: bisque;
+    // background-color: bisque;
     border-radius: 2px;
     // margin-bottom: 0.625rem;
     width: auto;
@@ -37,6 +37,9 @@
     font-weight: 640;
     font-size: smaller;
     margin-left: 0.25rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis "..";
   }
 
   .txtcategbottomm2prod {
@@ -54,7 +57,7 @@
     color: black;
     border-radius: 25px 25px;
     border-color: rgb(21, 13, 13);
-    padding: 0.225rem 0.425rem;
+    padding: 0.325rem 0.625rem;
     cursor: pointer;
     transition: background-color 0.3s;
     border-width: 1.5px;
