@@ -1,133 +1,108 @@
-.bestsellcontainer{
+.bestsellcontainer {
+  width: 100%;
+  background-color: darkgoldenrod;
 
-    width: 100%;
-    background-color: darkgoldenrod;
-   
-    height: 29rem;
-   // height: 40vh;
+  height: 29rem;
+  // height: 40vh;
 
-   
-   
+  @media (min-width: 320px) {
+    .headitemtext {
+      margin-left: 2.8rem;
 
-   @media (min-width: 320px) {
-
-
-    .headitemtext{
-        margin-left: 2.8rem;
-    
-        margin-top: 3rem;
-        margin-bottom: 2rem;
-          font-size: 1.2rem;
-          line-height: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      line-height: 2rem;
     }
 
+    .bestsellitemdiv {
+      display: flex;
+      flex-direction: row;
+      //  overflow-x: auto;
+      overflow-y: auto;
+      height: 15rem;
+      //width:320px;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      justify-content: space-between;
+      background-color: chartreuse;
 
+      .bestsellitem {
+        background-color: rgb(41, 86, 86);
+        height: 14rem; ///
+        width: 7.5rem;
+        flex-shrink: 0;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+    }
+  }
 
-    .bestsellitemdiv{
-        display: flex;
-        flex-direction: row;
-       //  overflow-x: auto;
-         overflow-y: auto;
-        height: 13rem;
-        //width:320px;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        justify-content: space-between;
-        background-color: chartreuse;
-    
-        .bestsellitem{
-    
-             background-color: rgb(41, 86, 86);
-            height: 22rem;
-            width:200px;
-            flex-shrink: 0;
-            margin-left: 40px;
-            margin-right: 40px;
-        }
-       }
-   }
+  @media (min-width: 480px) {
+    .headitemtext {
+      margin-left: 2.8rem;
 
-
- @media (min-width: 480px) {
-
-
-    .headitemtext{
-        margin-left: 2.8rem;
-    
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-          font-size: 1.5rem;
-          line-height: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      line-height: 2rem;
     }
 
-
-    .bestsellitemdiv{
-        display: flex;
-        flex-direction: row;
-       //  overflow-x: auto;
-         overflow-y: auto;
-        height: 24rem;
-        //width:320px;
-        margin-left: 3.2rem;
-        margin-right: 3.2rem;
-        justify-content: space-between;
+    .bestsellitemdiv {
+      display: flex;
+      flex-direction: row;
+      //  overflow-x: auto;
+      overflow-y: auto;
+      height: 24rem;
+      //width:320px;
+      margin-left: 3.2rem;
+      margin-right: 3.2rem;
+      justify-content: space-between;
       //  background-color: chartreuse;
-    
-        .bestsellitem{
-    
-      //      background-color: rgb(41, 86, 86);
-            height: 22rem;
-            width:200px;
-            flex-shrink: 0;
-            margin-left: 40px;
-            margin-right: 40px;
-        }
-       }
 
-}
-   
-@media (min-width: 1056px) {
+      .bestsellitem {
+        //      background-color: rgb(41, 86, 86);
+        height: 22rem;
+        width: 200px;
+        flex-shrink: 0;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+    }
+  }
 
+  @media (min-width: 1056px) {
+    .headitemtext {
+      margin-left: 5.8rem;
 
-    .headitemtext{
-        margin-left: 5.8rem;
-    
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-          font-size: 1.7rem;
-          line-height: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      font-size: 1.7rem;
+      line-height: 2rem;
     }
 
+    .bestsellitemdiv {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      //  overflow-y: auto;
+      height: 24rem;
+      //width:320px;
+      justify-content: space-between;
+      //   background-color: chartreuse;
 
+      margin-left: 3.2rem;
+      margin-right: 3.2rem;
 
-
-    .bestsellitemdiv{
-        display: flex;
-        flex-direction: row;
-         overflow-x: auto;
-       //  overflow-y: auto;
-        height: 24rem;
-        //width:320px;
-        justify-content: space-between;
-     //   background-color: chartreuse;
-
-        margin-left: 3.2rem;
-        margin-right: 3.2rem;
-
-    
-        .bestsellitem{
-    
-    //        background-color: rgb(41, 86, 86);
-            height: 22rem;
-            width:200px;
-            flex-shrink: 0;
-           // margin-left: 2.8rem;
-           margin-left: auto;
-            margin-right: 2.8rem;
-        }
-       }
-
-}
-
-
+      .bestsellitem {
+        //        background-color: rgb(41, 86, 86);
+        height: 22rem;
+        width: 12.5rem;
+        flex-shrink: 0;
+        // margin-left: 2.8rem;
+        margin-left: auto;
+        margin-right: 2.8rem;
+      }
+    }
+  }
 }
