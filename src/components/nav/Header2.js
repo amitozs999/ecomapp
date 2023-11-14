@@ -137,15 +137,15 @@ const Header = () => {
           </a>{" "}
           {/* <p className="logotext"> Shop Now </p>{" "} */}{" "}
           {/* <Link to="/" onClick={logoclick}>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    AZ Store
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </Link> */}{" "}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    AZ Store
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </Link> */}{" "}
         </div>{" "}
         <div className="searchbardiv">
           <Search />{" "}
         </div>{" "}
         <div className="mainmenudiv">
           <Menu
-            //  overflowedIndicator={false}
+            // overflowedIndicator={false}
             onClick={handleClick}
             selectedKeys={[current]}
             mode="horizontal"
@@ -155,6 +155,7 @@ const Header = () => {
           >
             {user && (
               <SubMenu
+                className="itemuserdash"
                 icon={<UserOutlined />}
                 title={user.email && user.email.split("@")[0]}
                 //style={{ marginLeft: "60px" }}
@@ -178,11 +179,11 @@ const Header = () => {
               key="shop"
               className="itemwhatsnew"
               icon={<ShoppingOutlined />}
-              style={{ backgroundColor: "gray" }}
+              //style={{ backgroundColor: "gray" }}
               //   style={{ marginRight: " 45px", marginLeft: "40px" }}
             >
               {/* //<Link to="/shop" className="header-item"> */}{" "}
-              <Link to="/shop"> What 's New</Link>{" "}
+              <Link to="/shop"> What 's New </Link>{" "}
             </Item>{" "}
             {/* <div className="flex-grow bg-slate-1900"> */}{" "}
             {/* <div className="search-div"> */} {/* </div> */}{" "}
@@ -192,7 +193,7 @@ const Header = () => {
                 className="itemregister"
                 icon={<UserAddOutlined />}
                 //  style={{ marginLeft: "20px" }}
-                style={{ backgroundColor: "green" }}
+                // style={{ backgroundColor: "green" }}
               >
                 <Link to="/register"> Register </Link>{" "}
               </Item>
@@ -200,7 +201,7 @@ const Header = () => {
             {user && (
               <Item
                 key="cart"
-                // className="itemcart"
+                className="itemcart"
                 icon={<ShoppingCartOutlined />}
                 //  style={{ marginLeft: "auto" }}
                 //style={{ backgroundColor: "gold" }}
@@ -226,7 +227,7 @@ const Header = () => {
                 key="login"
                 className="itemlogin"
                 icon={<LoginOutlined />}
-                style={{ backgroundColor: "yellowgreen" }}
+                //  style={{ backgroundColor: "yellowgreen" }}
               >
                 <Link to="/login"> Login </Link>{" "}
               </Item>

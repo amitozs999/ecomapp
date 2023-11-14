@@ -28,6 +28,7 @@ const Search = () => {
       //  className="form-inline my-2 inputnounderline"
       // className="formlay"
 
+      className="searchbarr"
       style={{
         backgroundColor: "rgba(235, 238, 243, 0.991)",
         //  width: "33%",
@@ -37,8 +38,8 @@ const Search = () => {
         marginLeft: "auto",
 
         marginRight: "auto",
-        width: "80%",
-        height: "80%",
+        // width: "80%",
+        // height: "80%",
         borderRadius: "0.5em",
         // marginTop: "7px",
         // paddingBottom: "15px",

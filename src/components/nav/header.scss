@@ -7,14 +7,6 @@
   margin-bottom: 200px;
 }
 
-.header-item {
-  // overflow-y: hidden;
-  // overflow-x: hidden;
-  color: rgb(120, 142, 234) !important;
-  height: 3.75rem;
-  width: 100vw;
-}
-
 .badge-pad {
   padding-bottom: 15px !important;
   padding-right: 5px !important;
@@ -82,10 +74,9 @@
       width: 5%;
       height: 100%;
     }
-    .mainmenudiv {
-      width: 32%;
-      height: 3.75rem;
-      background-color: aqua;
+    .searchbarr {
+      height: 60%;
+      width: 80%;
     }
     .searchbardiv {
       width: 100%;
@@ -119,6 +110,55 @@
           background-color: rgba(235, 238, 243, 0.991);
           float: right;
           padding: 6px;
+        }
+      }
+    }
+    .mainmenudiv {
+      width: 100%;
+      height: 3.75rem;
+      background-color: aqua;
+      .header-item {
+        // overflow-y: hidden;
+        // overflow-x: hidden;
+        color: rgb(120, 142, 234) !important;
+        //     background-color: chartreuse;
+        height: 3.75rem;
+        width: 100%;
+        font-size: 0.6rem;
+        .itemwhatsnew {
+          margin-left: auto;
+          margin-right: auto;
+          width: 30%;
+          //       background-color: brown !important;
+        }
+        // .itemregister {
+        //   width: 10%;
+        // }
+        // .itemlogin {
+        //   background-color: darkblue;
+        //   // width: 10%;
+        // }
+        .itemcart {
+          width: 30%;
+          margin-left: auto;
+          margin-right: auto;
+          //    background-color: darkgray !important;
+        }
+        .itemuserdash {
+          margin-left: auto;
+          margin-right: auto;
+          width: 30%;
+          //       background-color: darkblue !important;
+        }
+        .itemregister {
+          width: 30%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .itemlogin {
+          width: 30%;
+          margin-left: auto;
+          margin-right: auto;
         }
       }
     }
@@ -164,10 +204,14 @@
       width: 5%;
       height: 100%;
     }
-    .mainmenudiv {
-      width: 32%;
-      height: 3.75rem;
-      background-color: aqua;
+    // .mainmenudiv {
+    //   width: 32%;
+    //   height: 3.75rem;
+    //   background-color: aqua;
+    // }
+    .searchbarr {
+      height: 70%;
+      width: 80%;
     }
     .searchbardiv {
       width: 100%;
@@ -201,6 +245,55 @@
           background-color: rgba(235, 238, 243, 0.991);
           float: right;
           padding: 6px;
+        }
+      }
+    }
+    .mainmenudiv {
+      width: 100%;
+      height: 3.75rem;
+      background-color: aqua;
+      .header-item {
+        // overflow-y: hidden;
+        // overflow-x: hidden;
+        color: rgb(120, 142, 234) !important;
+        //     background-color: chartreuse;
+        height: 3.75rem;
+        width: 100%;
+        font-size: 0.8rem;
+        .itemwhatsnew {
+          margin-left: auto;
+          margin-right: auto;
+          width: 30%;
+          //       background-color: brown !important;
+        }
+        // .itemregister {
+        //   width: 10%;
+        // }
+        // .itemlogin {
+        //   background-color: darkblue;
+        //   // width: 10%;
+        // }
+        .itemcart {
+          width: 30%;
+          margin-left: auto;
+          margin-right: auto;
+          //       background-color: darkgray !important;
+        }
+        .itemuserdash {
+          margin-left: auto;
+          margin-right: auto;
+          width: 30%;
+          //      background-color: darkblue !important;
+        }
+        .itemregister {
+          width: 30%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .itemlogin {
+          width: 30%;
+          margin-left: auto;
+          margin-right: auto;
         }
       }
     }
@@ -246,11 +339,6 @@
       width: 21%;
       height: 60%;
     }
-    .mainmenudiv {
-      width: 32%;
-      height: 3.75rem;
-      background-color: aqua;
-    }
     .searchbardiv {
       width: 35%;
       height: 3.75rem;
@@ -286,17 +374,41 @@
         }
       }
     }
+    .mainmenudiv {
+      width: 44%;
+      height: 3.75rem;
+      background-color: aqua;
+      .header-item {
+        // overflow-y: hidden;
+        // overflow-x: hidden;
+        color: rgb(120, 142, 234) !important;
+        //   background-color: chartreuse;
+        height: 3.75rem;
+        font-size: 0.8rem;
+        width: 100%;
+        //font-size: 5px;
+        .itemwhatsnew {
+          width: 30%;
+          //   background-color: brown !important;
+          // .xx {
+          //   font-size: 90px;
+          // }
+        }
+        .itemregister {
+          width: 30%;
+        }
+        .itemlogin {
+          width: 30%;
+        }
+        .itemcart {
+          width: 30%;
+          //   background-color: darkgray !important;
+        }
+        .itemuserdash {
+          width: 30%;
+          //  background-color: darkblue !important;
+        }
+      }
+    }
   }
-  // .itemwhatsnew {
-  //   width: 20%;
-  // }
-  // .itemregister {
-  //   width: 10%;
-  // }
-  // .itemlogin {
-  //   width: 10%;
-  // }
-  // .itemcart {
-  //   width: 10%;
-  // }
 }
