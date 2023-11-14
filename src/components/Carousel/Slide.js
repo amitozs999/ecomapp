@@ -10,18 +10,21 @@ const Slide = ({ title, description, bgImg, url }) => {
   const history = useHistory();
   return (
     <>
+      {" "}
       {/* <div>
-     
-      </div> */}
-
+                                                                             
+                                                                              </div> */}{" "}
       <div
-      //className={`relative w-[100%] h-[50vh] md:h-[70vh] bg-cover bg-center bg-no-repeat`}
+        //className={`relative w-[100%] h-[50vh] md:h-[70vh] bg-cover bg-center bg-no-repeat`}
+        className="sliderdiv"
       >
         <img
           src={bgImg}
           className="rounded-lg"
-          height={"274px"}
-          width={"610px"}
+          // height={"274px"}
+          // width={"610px"}
+          // height={"147px"}
+          // width={"61px"}
           onClick={() => history.push("/category/clothing")}
           //  class="align-middle"
           style={{
@@ -31,12 +34,11 @@ const Slide = ({ title, description, bgImg, url }) => {
             justifyContent: "center",
           }}
           // className={`relative w-[100%] h-[50vh] md:h-[70vh] bg-cover bg-center bg-no-repeat`}
-        />
-      </div>
-
+        />{" "}
+      </div>{" "}
       {/* <div style="background-image: url(asas); height: 400px; width: 400px;">
-        Text here
-      </div> */}
+                                                                                Text here
+                                                                              </div> */}{" "}
     </>
   );
 };

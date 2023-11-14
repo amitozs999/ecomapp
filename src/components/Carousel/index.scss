@@ -1,17 +1,49 @@
-
-.carousdiv{
-
-    padding-left: 350px ;
-    padding-right:350px ;
-    padding-bottom: 50px;
-    padding-top:50px ;
-     //background-color: blue;
-  }
-
-  .slick-prev:before,
+// .carousdiv {
+//   // padding-left: 350px ;
+//   // padding-right:350px ;
+//   // padding-bottom: 50px;
+//   // padding-top:50px ;
+//   // padding-left: 22rem;
+//   // padding-right: 22rem;
+//   // padding-bottom: 3.1rem;
+//   // padding-top: 3.1rem;
+//   background-color: blue;
+//   margin-left: 22rem;
+//   margin-right: 22rem;
+// }
+.slick-prev:before,
 .slick-next:before {
-  color: black!important;
+  color: black !important;
 }
-  
-  
-  
+
+.sliderdiv {
+  // background-color: orange !important;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.carousdiv {
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+@media (min-width: 1056px) {
+  .carousdiv {
+    // padding-left: 350px ;
+    // padding-right:350px ;
+    // padding-bottom: 50px;
+    // padding-top:50px ;
+    // padding-left: 22rem;
+    // padding-right: 22rem;
+    // padding-bottom: 3.1rem;
+    // padding-top: 3.1rem;
+    //  background-color: blue;
+    margin-left: 22vw;
+    margin-right: 22vw;
+    margin-bottom: 3.1rem;
+    margin-top: 3.1rem;
+  }
+}

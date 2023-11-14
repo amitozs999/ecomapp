@@ -71,6 +71,7 @@ const Carousel = () => {
     autoplay: true,
     autoplaySpeed: 5000,
     cssEase: "linear",
+
     nextArrow: <NextArrow to="next" />,
     prevArrow: <PrevArrow to="prev" />,
     // appendDots: (dots) => (
@@ -105,10 +106,11 @@ const Carousel = () => {
     // </div>
     <div className="carousdiv">
       <Slider {...settings}>
+        {" "}
         {sliderContent.map((slideContent) => {
           return <Slide key={slideContent.ID} {...slideContent} />;
-        })}
-      </Slider>
+        })}{" "}
+      </Slider>{" "}
     </div>
   );
 };
