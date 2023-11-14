@@ -16,24 +16,12 @@ import CategBox from "./catBox";
 const Category = () => {
   return (
     <>
-      <div className="container mt-14">
-        {/* <div className="categdivhead"> */}
-        {/* <div>
-        <h2 className="txtcateg">Browse By Category</h2>
-      </div> */}
-        <h2 className="my-4 md:my-8 lg:mt-10  ml-36  text-2xl">
-          Browse By Category
-        </h2>
+      <div className="catcontainer">
+        {/* <h2 className="my-4 md:my-8 lg:mt-10  ml-36  text-2xl"> */}
 
-        <div className="containercateg">
-          {/* {categoryContent.map(
+        <h2 className="cathead">Browse By Category</h2>
 
-          ()=>{
-            
-          }
-
-  )} */}
-
+        <div className="catcontainerdiv">
           {categoryContent.map(({ id, slug, bottomText, imgg }) => {
             return (
               <CategBox
@@ -46,8 +34,17 @@ const Category = () => {
           })}
         </div>
       </div>
-      {/* </div> */}
     </>
   );
 };
 export default Category;
+
+{
+  /* {categoryContent.map(
+
+          ()=>{
+            
+          }
+
+  )} */
+}

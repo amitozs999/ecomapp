@@ -41,9 +41,9 @@ const CategBox = ({ id, slug, bottomText, imgg }) => {
       onMouseOut={() => setIsHovered(null)}
     >
       <img
-        height={"110px"}
-        width={"100px"}
-        className="mb-2 py-2 imz"
+        // height={"110px"}
+        // width={"100px"}
+        className="imz"
         src={imgg}
         // src="images/prod01.jpg" to refer from public/images/prod01    images/+{prod01.jpg}
       >
