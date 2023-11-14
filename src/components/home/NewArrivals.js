@@ -11,7 +11,25 @@ const NewArrivals = () => {
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
 
+  const [mqlval, setmqlval] = useState(false);
+
+  let mql = window.matchMedia("(max-width: 762px)");
+
+  const [loadercnt, setloadercnt] = useState(4);
+
   useEffect(() => {
+    console.log("mqlvalue", mql);
+    console.log("mqlvalue", mql.matches);
+    console.log("mqlvalue", loadercnt);
+
+    if (mql.matches) {
+      setloadercnt(1);
+      setmqlval(true);
+    } else {
+      setloadercnt(4);
+      setmqlval(false);
+    }
+
     loadAllProducts();
   }, [page]); //page change fetch prod again for new page
 
@@ -35,14 +53,20 @@ const NewArrivals = () => {
 
   return (
     <>
-      <div className="container mt-20">
-        <h2 className="my-4 md:my-8 lg:mt-10 ml-10  text-2xl">New Arrivals</h2>
+      <div className="bestsellcontainer">
+        {/* <h2 className="my-4 md:my-8 lg:mt-10 ml-10 text-2xl">   */}
+
+        <h2 className="headitemtext">New Arrivals</h2>
+
         {loading ? (
-          <LoadingCard count={4} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
+          <LoadingCard count={loadercnt} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (
-          <div className="    h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
+          //<div className="    h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
+
+          <div className="bestsellitemdiv">
             {products.map((product) => (
-              <div key={product._id} className="    h-80 w-52">
+              //   <div key={product._id} className="    h-80 w-52">
+              <div key={product._id} className="bestsellitem">
                 <ProductCardNew product={product} />
               </div>
             ))}
@@ -71,5 +95,4 @@ const NewArrivals = () => {
     </>
   );
 };
-
 export default NewArrivals;
