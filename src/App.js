@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
-import Header from "./components/nav/Header";
+import Header2 from "./components/nav/Header2";
 
 import SideDrawer from "./components/drawer/SideDrawer";
 
@@ -83,57 +83,49 @@ const App = () => {
 
   return (
     <>
-      {/* //here header is showing for all screens common */}
-
+      {" "}
+      {/* //here header is showing for all screens common */}{" "}
       <div className="flex flex-col ">
-        <Header />
-      </div>
-
+        <Header2 />
+      </div>{" "}
       <SideDrawer />
       <ToastContainer />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/register/complete" component={RegisterComplete} />
-        <Route exact path="/forgot/password" component={ForgotPassword} />
-
-        <UserRoute exact path="/user/history" component={History} />
-        <UserRoute exact path="/user/password" component={Password} />
-        <UserRoute exact path="/user/wishlist" component={Wishlist} />
-        <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
-
-        <AdminRoute exact path="/admin/sub" component={SubCreate} />
-        <AdminRoute exact path="/admin/sub/:slug" component={SubUpdate} />
-
-        <AdminRoute exact path="/admin/category" component={CategoryCreate} />
-        <AdminRoute exact path="/admin/product" component={ProductCreate} />
+        <Route exact path="/" component={Home} />{" "}
+        <Route exact path="/login" component={Login} />{" "}
+        <Route exact path="/register" component={Register} />{" "}
+        <Route exact path="/register/complete" component={RegisterComplete} />{" "}
+        <Route exact path="/forgot/password" component={ForgotPassword} />{" "}
+        <UserRoute exact path="/user/history" component={History} />{" "}
+        <UserRoute exact path="/user/password" component={Password} />{" "}
+        <UserRoute exact path="/user/wishlist" component={Wishlist} />{" "}
+        <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />{" "}
+        <AdminRoute exact path="/admin/sub" component={SubCreate} />{" "}
+        <AdminRoute exact path="/admin/sub/:slug" component={SubUpdate} />{" "}
+        <AdminRoute exact path="/admin/category" component={CategoryCreate} />{" "}
+        <AdminRoute exact path="/admin/product" component={ProductCreate} />{" "}
         <AdminRoute
           exact
           path="/admin/category/:slug"
           component={CategoryUpdate} //jahi bhi ye update ke liye hit hoga go to CategoryUpdate comp
-        />
-
-        <AdminRoute exact path="/admin/product" component={ProductCreate} />
-
-        <AdminRoute exact path="/admin/products" component={AllProducts} />
+        />{" "}
+        <AdminRoute exact path="/admin/product" component={ProductCreate} />{" "}
+        <AdminRoute exact path="/admin/products" component={AllProducts} />{" "}
         <AdminRoute
           exact
           path="/admin/product/:slug"
           component={ProductUpdate}
-        />
-        {/* //product/samsung-galaxy-s23-fe */}
-        <Route exact path="/product/:slug" component={Product} />
-
-        <Route exact path="/category/:slug" component={CategoryHome} />
-        <Route exact path="/sub/:slug" component={SubHome} />
-        <Route exact path="/shop" component={Shop} />
-        <Route exact path="/cart" component={Cart} />
-        <UserRoute exact path="/checkout" component={Checkout} />
-
-        <AdminRoute exact path="/admin/coupon" component={CreateCouponPage} />
-        <UserRoute exact path="/payment" component={Payment} />
-      </Switch>
+        />{" "}
+        {/* //product/samsung-galaxy-s23-fe */}{" "}
+        <Route exact path="/product/:slug" component={Product} />{" "}
+        <Route exact path="/category/:slug" component={CategoryHome} />{" "}
+        <Route exact path="/sub/:slug" component={SubHome} />{" "}
+        <Route exact path="/shop" component={Shop} />{" "}
+        <Route exact path="/cart" component={Cart} />{" "}
+        <UserRoute exact path="/checkout" component={Checkout} />{" "}
+        <AdminRoute exact path="/admin/coupon" component={CreateCouponPage} />{" "}
+        <UserRoute exact path="/payment" component={Payment} />{" "}
+      </Switch>{" "}
     </>
   );
 };

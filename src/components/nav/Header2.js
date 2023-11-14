@@ -137,8 +137,8 @@ const Header = () => {
           </a>{" "}
           {/* <p className="logotext"> Shop Now </p>{" "} */}{" "}
           {/* <Link to="/" onClick={logoclick}>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    AZ Store
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </Link> */}{" "}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    AZ Store
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </Link> */}{" "}
         </div>{" "}
         <div className="searchbardiv">
           <Search />{" "}
@@ -153,27 +153,11 @@ const Header = () => {
             width="100%"
             //    style={{ backgroundColor: "black" }}
           >
-            {/* <Item icon={<ShopTwoTone />}>AZ Store</Item> */}{" "}
-            {/* <Item key="home" icon={<ShopTwoTone />}>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <Link to="/">AZ Store</Link>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </Item> */}{" "}
-            <Item
-              key="shop"
-              className="itemwhatsnew"
-              icon={<ShoppingOutlined />}
-              style={{ backgroundColor: "gray" }}
-              //   style={{ marginRight: " 45px", marginLeft: "40px" }}
-            >
-              {/* //<Link to="/shop" className="header-item"> */}{" "}
-              <Link to="/shop"> What 's New</Link>{" "}
-            </Item>{" "}
-            {/* <div className="flex-grow bg-slate-1900"> */}{" "}
-            {/* <div className="search-div"> */} {/* </div> */}{" "}
             {user && (
               <SubMenu
                 icon={<UserOutlined />}
                 title={user.email && user.email.split("@")[0]}
-                style={{ marginLeft: "60px" }}
+                //style={{ marginLeft: "60px" }}
               >
                 {user && user.role === "subscriber" && (
                   <Item icon={<DashboardOutlined />}>
@@ -190,6 +174,18 @@ const Header = () => {
                 </Item>{" "}
               </SubMenu>
             )}{" "}
+            <Item
+              key="shop"
+              className="itemwhatsnew"
+              icon={<ShoppingOutlined />}
+              style={{ backgroundColor: "gray" }}
+              //   style={{ marginRight: " 45px", marginLeft: "40px" }}
+            >
+              {/* //<Link to="/shop" className="header-item"> */}{" "}
+              <Link to="/shop"> What 's New</Link>{" "}
+            </Item>{" "}
+            {/* <div className="flex-grow bg-slate-1900"> */}{" "}
+            {/* <div className="search-div"> */} {/* </div> */}{" "}
             {!user && (
               <Item
                 key="register"
@@ -199,6 +195,30 @@ const Header = () => {
                 style={{ backgroundColor: "green" }}
               >
                 <Link to="/register"> Register </Link>{" "}
+              </Item>
+            )}{" "}
+            {user && (
+              <Item
+                key="cart"
+                // className="itemcart"
+                icon={<ShoppingCartOutlined />}
+                //  style={{ marginLeft: "auto" }}
+                //style={{ backgroundColor: "gold" }}
+              >
+                <Link to="/cart">
+                  Cart{" "}
+                  <Badge
+                    className="badge-pad"
+                    // count={total}
+                    //count={cart.data.products.length}
+                    count={
+                      cart.data == undefined || !cart.data.products || !user
+                        ? ""
+                        : cart.data.products.length
+                    }
+                    offset={[9, 0]}
+                  ></Badge>{" "}
+                </Link>{" "}
               </Item>
             )}{" "}
             {!user && (
@@ -211,30 +231,6 @@ const Header = () => {
                 <Link to="/login"> Login </Link>{" "}
               </Item>
             )}{" "}
-            {/* {user && (
-                                                  <Item
-                                                    key="cart"
-                                                    className="itemcart"
-                                                    icon={<ShoppingCartOutlined />}
-                                                    //  style={{ marginLeft: "auto" }}
-                                                    style={{ backgroundColor: "gold" }}
-                                                  >
-                                                    <Link to="/cart">
-                                                      Cart{" "}
-                                                      <Badge
-                                                        className="badge-pad"
-                                                        // count={total}
-                                                        //count={cart.data.products.length}
-                                                        count={
-                                                          cart.data == undefined || !cart.data.products || !user
-                                                            ? ""
-                                                            : cart.data.products.length
-                                                        }
-                                                        offset={[9, 0]}
-                                                      ></Badge>{" "}
-                                                    </Link>{" "}
-                                                  </Item>
-                                                )}{" "} */}{" "}
           </Menu>{" "}
         </div>{" "}
       </div>{" "}
