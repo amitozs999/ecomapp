@@ -35,7 +35,9 @@ const BestSellers = () => {
   return (
     <>
       <div  className="bestsellcontainer">
-        <h2 className="my-4 md:my-8 lg:mt-10 ml-10 text-2xl">
+         {/* <h2 className="my-4 md:my-8 lg:mt-10 ml-10 text-2xl">   */}
+
+        <h2 className="headitemtext">
           Popular Products
         </h2>
 
@@ -46,6 +48,7 @@ const BestSellers = () => {
         //<div className="    h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
 
         <div className="bestsellitemdiv">
+          
             {products.map((product) => (
             //   <div key={product._id} className="    h-80 w-52">
                  <div key={product._id} className="bestsellitem">
