@@ -89,7 +89,9 @@ const ProductCardNew = ({ product }) => {
     <div
       //height="600px"
       id={"u"}
-      className="itemsprod h-56"
+      className="itemsprod h-56"  //
+
+
       // onClick={() => history.push("d")}
       //   onMouseOver={handleMouseOver}
       //   onMouseOut={() => setIsHovered(null)}
@@ -97,7 +99,7 @@ const ProductCardNew = ({ product }) => {
       <img
         height={"210px"}
         width={"200px"}
-        className="mb-2 py-2 imzprod zom "
+         className="mb-2 py-2 imzprod zom "  //
         //src={imgg}
         //src="images/prod01.jpg"
         src={images && images.length ? images[0].url : noimage}

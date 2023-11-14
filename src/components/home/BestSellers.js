@@ -5,6 +5,8 @@ import ProductCardNew from "../cards/ProductCardnew";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
 
+import "./index.scss"
+
 const BestSellers = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,20 +34,27 @@ const BestSellers = () => {
 
   return (
     <>
-      <div className="container ">
+      <div  className="bestsellcontainer">
         <h2 className="my-4 md:my-8 lg:mt-10 ml-10 text-2xl">
           Popular Products
         </h2>
+
+
         {loading ? (
           <LoadingCard count={4} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (
-          <div className="    h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
+        //<div className="    h-96  flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
+
+        <div className="bestsellitemdiv">
             {products.map((product) => (
-              <div key={product._id} className="    h-80 w-52">
+            //   <div key={product._id} className="    h-80 w-52">
+                 <div key={product._id} className="bestsellitem">
                 <ProductCardNew product={product} />
               </div>
             ))}
-          </div>
+         </div>
+
+
         )}
       </div>
 

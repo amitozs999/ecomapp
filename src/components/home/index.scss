@@ -1,0 +1,29 @@
+.bestsellcontainer{
+
+    width: 100%;
+    background-color: darkgoldenrod;
+   
+    height: 29rem;
+   // height: 40vh;
+
+   .bestsellitemdiv{
+    display: flex;
+    flex-direction: row;
+   //  overflow-x: auto;
+     overflow-y: auto;
+    height: 24rem;
+    //width:320px;
+    justify-content: space-between;
+    background-color: chartreuse;
+
+    .bestsellitem{
+
+        background-color: rgb(41, 86, 86);
+        height: 22rem;
+        width:200px;
+        flex-shrink: 0;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+   }
+}
