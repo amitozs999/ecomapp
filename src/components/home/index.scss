@@ -1,7 +1,7 @@
 .bestsellcontainer{
 
     width: 100%;
-    //background-color: darkgoldenrod;
+    background-color: darkgoldenrod;
    
     height: 29rem;
    // height: 40vh;
@@ -15,7 +15,7 @@
     .headitemtext{
         margin-left: 2.8rem;
     
-        margin-top: 2rem;
+        margin-top: 3rem;
         margin-bottom: 2rem;
           font-size: 1.2rem;
           line-height: 2rem;
@@ -28,14 +28,16 @@
         flex-direction: row;
        //  overflow-x: auto;
          overflow-y: auto;
-        height: 24rem;
+        height: 13rem;
         //width:320px;
+        margin-left: 1rem;
+        margin-right: 1rem;
         justify-content: space-between;
-      //  background-color: chartreuse;
+        background-color: chartreuse;
     
         .bestsellitem{
     
-         //   background-color: rgb(41, 86, 86);
+             background-color: rgb(41, 86, 86);
             height: 22rem;
             width:200px;
             flex-shrink: 0;
@@ -66,6 +68,8 @@
          overflow-y: auto;
         height: 24rem;
         //width:320px;
+        margin-left: 3.2rem;
+        margin-right: 3.2rem;
         justify-content: space-between;
       //  background-color: chartreuse;
     
