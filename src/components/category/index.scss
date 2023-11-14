@@ -6,9 +6,16 @@
     //  background-color: rgb(205, 215, 195);
 
     .cathead {
-      font-size: 1.5rem;
-      line-height: 2rem;
-      margin-left: 6rem;
+      //  background-color: chartreuse;
+      font-size: 1.1rem;
+      line-height: 1.7rem;
+      //  margin-left: 6rem;
+      // margin-left: auto;
+      //margin-right: auto;
+      text-align: center;
+      // padding-left: auto;
+      // padding-right: auto;
+      width: 100%;
       margin-top: 2.5rem;
       margin-bottom: 1.5rem;
     }
@@ -190,14 +197,17 @@
     width: 100%;
     margin-top: 3.5rem;
 
-    background-color: rgb(205, 215, 195);
+    //  background-color: rgb(205, 215, 195);
 
     .cathead {
       font-size: 1.5rem;
       line-height: 2rem;
-      margin-left: 9rem;
-      margin-top: 2.5rem;
+      // margin-left: 9rem;
+      // margin-top: 2.5rem;
       margin-bottom: 1.5rem;
+      text-align: center;
+      width: 100%;
+      //    background-color: chartreuse;
     }
 
     .catcontainerdiv {
@@ -285,7 +295,7 @@
     width: 100%;
     margin-top: 3.5rem;
 
-    background-color: rgb(205, 215, 195);
+    // background-color: rgb(205, 215, 195);
 
     .cathead {
       font-size: 1.5rem;
@@ -293,12 +303,14 @@
       margin-left: 9rem;
       margin-top: 2.5rem;
       margin-bottom: 1.5rem;
+      width: 100%;
+      text-align: left;
     }
 
     .catcontainerdiv {
       display: flex;
       flex-direction: row;
-      background-color: brown;
+      //  background-color: brown;
       margin-left: 1rem;
       margin-right: 1rem;
       flex-wrap: nowrap;
@@ -323,7 +335,7 @@
       }
       .items {
         border-color: black;
-        background-color: antiquewhite;
+        //   background-color: antiquewhite;
 
         //flex: 0 0 33.3333%;
 
