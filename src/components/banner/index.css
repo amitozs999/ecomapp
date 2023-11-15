@@ -35,6 +35,51 @@ cursor:pointer;
  
 
 
+.bannerdiv{
+	display: block;
+	align-items: center;
+	position: absolute;
+	margin-left: auto;
+	left: 1.5rem;
+	right: 0px;
+	top: 4rem;
+	 width: 50%;
+	 justify-content: space-between;
+}
+
+.textdiv{
+	background-color: brown;
+    margin-right: 2rem;
+	float: right;
+	padding: 1rem;
+	 
+	
+}
+
+   .flattext{
+
+color: white;
+font-size: 0.5rem;
+
+/* float: right;
+margin-right: 1rem; */
+ 
 
 
+   }
+
+   .codetext{
+
+	color: white;
+	font-size: 0.5rem;
+	/* float: right;
+	line-height: 2rem; */
+ 
+   }
+
+   .shopbutton{
+	background-color: beige;
+	font-size: 0.8rem;
+	
+   }
    

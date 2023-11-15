@@ -46,7 +46,7 @@ const BannerBox = ({
       {/* //absolute  overlap on div */}
       {/* <DiscountCountdown targetDate={numberOfDiscountDate} /> */}
 
-      <div
+      {/* <div
         className=" justify-between items-center  block absolute 
         ml-auto  
        right-0
@@ -55,24 +55,29 @@ const BannerBox = ({
         // FLAT 40% OFF 
        
        sm:left-6         sm:w-[55%]  md:w-1/2       lg:w-[55%] xl:w-1/2"
-      >
+      > */}
+      <div className="bannerdiv">
         {/* <h3 className="float-right mr-6 font-mono text-white text-xl font-bold xxs:text-xs  sm:text-sm   md:text-2xl ltr:mr-4  sm:pt-8 lg:pt-2 xl:pt-8"> */}
 
-        <h3 className="float-right   text-white     md:text-xl">
-          FLAT {discount}% OFF
-        </h3>
-        {/* <h3 className="float-right mr-6 font-serif text-white text-xl font-bold sm:text-xs/3 sm:font-normal md:text-xl   ltr:mr-4   ">
-          Use Code : {codee}
-        </h3> */}
+        {/* <h3 className="float-right   text-white     md:text-xl"> */}
 
-        {/* <a
-          onClick={() => history.push(slug)}
-          //product/nike-mens-nike-air-max
-          className="  py-2 px-3 sm:py-3 lg:py-2 xl:py-4 sm:px-4 rounded   float-right mr-3
-          transition-all duration-300 shadow-lg 2xl:mt-2 text-center zoommm2 inline-block  text-yellow-300 text-[12px] rtl:sm:text-xs   font-semibold"
-        >
-          {buttonText}
-        </a> */}
+        <div className="textdiv">
+          <h3 className="flattext font-mono">FLAT {discount}% OFF</h3>
+          {/* <h3 className="float-right mr-6 font-serif text-white text-xl font-bold sm:text-xs/3 sm:font-normal md:text-xl   ltr:mr-4   ">
+           */}
+          <h3 className="codetext">Use Code : {codee}</h3>
+
+          <a
+            onClick={() => history.push(slug)}
+            //product/nike-mens-nike-air-max
+            // className="  py-2 px-3 sm:py-3 lg:py-2 xl:py-4 sm:px-4 rounded   float-right mr-3
+            //   transition-all duration-300 shadow-lg 2xl:mt-2 text-center zoommm2 inline-block  text-yellow-300 text-[12px] rtl:sm:text-xs   font-semibold"
+
+            className="shopbutton"
+          >
+            {buttonText}
+          </a>
+        </div>
       </div>
     </div>
   );
