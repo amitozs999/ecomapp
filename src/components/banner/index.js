@@ -44,7 +44,7 @@ const Banner = () => {
         <div className=" flex items-center flex-col w-full my-4 md:my-8 mx-auto xl:max-w-[2100px]">
           <h2 className="mt-16 mb-12 mx-auto text-2xl"> Discount Offers </h2>
 
-          <div className="  grid gap-4 grid-cols-6 lg:grid-cols-12 pl-9 pr-9 ">
+          <div className="  grid gap-4 grid-cols-6 lg:grid-cols-12  sm:pl-9 sm:pr-9 pl-4 pr-4 ">
             {bannerContent.map(
               ({
                 id,
