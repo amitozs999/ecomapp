@@ -33,13 +33,6 @@ const BannerBox = ({
   let x = id === "1" ? laptop : laptop2;
 
   return (
-    //banner box ka div  -> img
-    //
-
-    // grid-column: grid-column-start / grid-column-end;
-
-    //relative sto show overlap all div images on each other
-
     <div className="col-span-6 lg:col-span-6 flex  justify-center shadow-2xl relative rounded-lg overflow-hidden dark:bg-gray-500/70 !dark:bg-blend-multiply">
       {/* //col-span-6 lg:col-span-6 flex  justify-center  shadow-2xl relative rounded-lg overflow-hidden dark:bg-gray-500/70 !dark:bg-blend-multiply */}
       <img
@@ -51,9 +44,51 @@ const BannerBox = ({
       />
 
       {/* //absolute  overlap on div */}
-      <DiscountCountdown targetDate={numberOfDiscountDate} />
+      {/* <DiscountCountdown targetDate={numberOfDiscountDate} /> */}
 
-      {/* <div
+      <div
+        className=" justify-between items-center  block absolute 
+        ml-auto  
+       right-0
+        top-16
+     
+        // FLAT 40% OFF 
+       
+       sm:left-6         sm:w-[55%]  md:w-1/2       lg:w-[55%] xl:w-1/2"
+      >
+        {/* <h3 className="float-right mr-6 font-mono text-white text-xl font-bold xxs:text-xs  sm:text-sm   md:text-2xl ltr:mr-4  sm:pt-8 lg:pt-2 xl:pt-8"> */}
+
+        <h3 className="float-right   text-white     md:text-xl">
+          FLAT {discount}% OFF
+        </h3>
+        {/* <h3 className="float-right mr-6 font-serif text-white text-xl font-bold sm:text-xs/3 sm:font-normal md:text-xl   ltr:mr-4   ">
+          Use Code : {codee}
+        </h3> */}
+
+        {/* <a
+          onClick={() => history.push(slug)}
+          //product/nike-mens-nike-air-max
+          className="  py-2 px-3 sm:py-3 lg:py-2 xl:py-4 sm:px-4 rounded   float-right mr-3
+          transition-all duration-300 shadow-lg 2xl:mt-2 text-center zoommm2 inline-block  text-yellow-300 text-[12px] rtl:sm:text-xs   font-semibold"
+        >
+          {buttonText}
+        </a> */}
+      </div>
+    </div>
+  );
+};
+
+export default BannerBox;
+
+//banner box ka div  -> img
+//
+
+// grid-column: grid-column-start / grid-column-end;
+
+//relative sto show overlap all div images on each other
+
+{
+  /* <div
         className="flex justify-between items-center sm:block absolute 
         ml-auto  
        right-0
@@ -65,45 +100,5 @@ const BannerBox = ({
        ltr:lg:top-2   lg:top-2 
        ltr:2xl:top-6  2xl:top-6 
        sm:left-6      sm:w-[55%]  md:w-1/2       lg:w-[55%] xl:w-1/2"
-      > */}
-
-      <div
-        className="flex justify-between items-center sm:block absolute 
-        ml-auto  
-       right-0
-        top-16
-     
-        // FLAT 40% OFF 
-       
-       sm:left-6      sm:w-[55%]  md:w-1/2       lg:w-[55%] xl:w-1/2"
-      >
-        <h3 className="float-right mr-6 font-mono text-white text-xl font-bold sm:text-2xl sm:font-normal md:text-2xl ltr:mr-4  sm:pt-8 lg:pt-2 xl:pt-8">
-          FLAT {discount}% OFF
-        </h3>
-        <h3 className="float-right mr-6 font-serif text-white text-xl font-bold sm:text-2xl sm:font-normal md:text-xl ltr:mr-4   ">
-          Use Code : {codee}
-        </h3>
-
-        {/* <p className=" sm:block   leading-6 lg:text-[12px] xl:text-base my-2 sm:my-4 lg:my-2 2xl:my-4 rtl:2xl:mt-6">
-          {description}
-        </p> */}
-
-        <a
-          onClick={() => history.push(slug)}
-          //product/nike-mens-nike-air-max
-          className="  py-2 px-3 sm:py-3 lg:py-2 xl:py-4 sm:px-4 rounded   float-right mr-3
-          transition-all duration-300 shadow-lg 2xl:mt-2
-          
-        
-         text-center zoommm2
-
-            inline-block  text-yellow-300 text-[12px] rtl:sm:text-xs   font-semibold"
-        >
-          {buttonText}
-        </a>
-      </div>
-    </div>
-  );
-};
-
-export default BannerBox;
+      > */
+}

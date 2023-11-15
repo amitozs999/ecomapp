@@ -1337,7 +1337,10 @@ const Shop = ({ history }) => {
           <hr />
           <Menu
             defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]} //be default open rakhega menu
-            mode="inline"
+            mode="vertical"
+            // inlineCollapsed={true}
+
+            // direction="rtl"
           >
             {/* price */}
             <SubMenu
