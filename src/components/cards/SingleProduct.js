@@ -24,6 +24,7 @@ import { getUserCart, emptyUserCart } from "../../functions/user";
 import { userCart } from "../../functions/user";
 import noimage from "../../images/no_image.jpg";
 
+import useScreenSize from "./useScreenSize";
 import { getWishlist, removeWishlist } from "../../functions/user";
 import { userCart2 } from "../../functions/user";
 import "./index.scss";
@@ -58,6 +59,19 @@ const SingleProduct = ({
 
   console.log("vvv isinwish in sp page", isinwish);
   console.log("vvv isinwish ic in sp page", iconColor);
+  const [mqlval, setmqlval] = useState(false);
+
+  const screenSize = useScreenSize();
+
+  useEffect(() => {
+    let mql = window.matchMedia("(max-width: 762px)");
+    console.log("mqll", mql.matches);
+    if (mql.matches) {
+      setmqlval(false);
+    } else {
+      setmqlval(true);
+    }
+  }, [screenSize.width]);
 
   // setIconColor(isinwish);
 
@@ -363,7 +377,8 @@ const SingleProduct = ({
             //use crousel to show images images if>=1
             <Carousel
               showArrows={true}
-              // renderIndicator={}
+              //renderIndicator={false}
+              showThumbs={mqlval}
               autoPlay
               infiniteLoop
               // style={{
@@ -452,12 +467,12 @@ const SingleProduct = ({
             <div className=" flex flex-col     w-full h-full">
               <div className="row" style={{ backgroundColor: " " }}>
                 <h1
-                  className="bg-white    txtcategbottommhoriztitlesingle"
-                  style={{
-                    marginTop: "20px",
-                    marginLeft: "27px",
-                    width: "450px",
-                  }}
+                  className="bg-white    txtcategbottommhoriztitlesingle  "
+                  // style={{
+                  //   marginTop: "20px",
+                  //   marginLeft: "27px",
+                  //   width: "450px",
+                  // }}
                   //onClick={() => history.push(`/product/${slug}`)}
                 >
                   {title}
@@ -637,9 +652,9 @@ const SingleProduct = ({
                   style={{
                     backgroundColor: "#5199DBFF",
                     color: "white",
-                    width: "160px",
+                    // width: "160px",
                     borderRadius: "4px",
-                    fontSize: "17px",
+                    //  fontSize: "17px",
                     textAlign: "center",
                     marginTop: "150px",
                   }}
@@ -663,9 +678,9 @@ const SingleProduct = ({
                   style={{
                     backgroundColor: "#FFE3E8FF",
                     color: "#FF644FFF",
-                    width: "160px",
+                    //   width: "160px",
                     borderRadius: "4px",
-                    fontSize: "17px",
+                    //   fontSize: "17px",
                     textAlign: "center",
                     marginTop: "150px",
                     marginLeft: "20px",
