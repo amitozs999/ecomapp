@@ -1,0 +1,92 @@
+.wrapper {
+  top: 50%;
+  left: 50%;
+}
+
+.zoommm {
+  transition: transform 0.2s;
+  margin: 0 auto;
+}
+
+.zoommm:hover {
+  box-shadow: 7px 7px 5px lightblue;
+  background-color: rgb(223, 204, 204);
+  transform: scale(
+    1.16
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.zoommm2 {
+  background-color: white;
+  transition: transform 0.2s;
+  margin: 0 auto;
+}
+
+.zoommm2:hover {
+  cursor: pointer;
+  /* box-shadow: 7px 7px 5px rgb(14, 15, 15); */
+  /* background-color: rgb(226, 203, 203); */
+  background-color: rgb(231, 218, 218);
+  /* transform: scale(1.06);  */
+  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+// .bannerdiv {
+//   display: block;
+//   align-items: center;
+//   position: absolute;
+//   margin-left: auto;
+//   left: 1.5rem;
+//   right: 0px;
+//   top: 4rem;
+//   width: 50%;
+//   justify-content: space-between;
+// }
+
+.textdiv {
+  // background-color: brown;
+  // margin-right: 2rem;
+  //margin-left: auto;
+  float: right;
+  width: 50%;
+  // top: 1rem;
+  height: 50%;
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.3rem;
+  .flattext {
+    color: white;
+    font-size: 0.4rem;
+
+    // float: right;
+    text-align: right;
+    // left: 0;
+
+    /* float: right;
+  margin-right: 1rem; */
+  }
+
+  .codetext {
+    color: white;
+    font-size: 0.4rem;
+    text-align: right;
+
+    //right: 0;
+    //margin-right: auto;
+    /* float: right;
+	  line-height: 2rem; */
+  }
+
+  .shopbutton {
+    background-color: beige;
+    //left: 0;
+    font-size: 0.2rem;
+    margin-top: 0.3rem;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    float: right;
+    // width: 2rem;
+    // height: 2rem;
+  }
+}
