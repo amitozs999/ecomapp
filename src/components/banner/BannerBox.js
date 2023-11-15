@@ -46,7 +46,7 @@ const BannerBox = ({
       />
 
       {/* //absolute  overlap on div */}
-      {/* <DiscountCountdown targetDate={numberOfDiscountDate} /> */}
+      <DiscountCountdown targetDate={numberOfDiscountDate} />
 
       {/* <div
         className=" justify-between items-center  block absolute 
