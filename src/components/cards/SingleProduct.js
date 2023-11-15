@@ -335,14 +335,14 @@ const SingleProduct = ({
   return (
     <>
       <div
-        className="col-md-5"
-        style={{
-          //   backgroundColor: "blue",//
-          marginTop: "-15px",
-          marginLeft: "50px",
-          // alignItems: "center",
-          // justifyContent: "center",
-        }}
+        className="col-md-5 leftdivsingleprod"
+        // style={{
+        //   backgroundColor: "blue", //
+        //   marginTop: "-15px",
+        //   marginLeft: "50px",
+        //   // alignItems: "center",
+        //   // justifyContent: "center",
+        // }}
       >
         <div
           style={{
