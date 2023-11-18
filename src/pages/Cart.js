@@ -154,7 +154,7 @@ const Cart = ({ history }) => {
 
   //creating a table to show cart items
   const showCartItems = () => (
-    <table className="table table-bordered">
+    <table className="table table-bordered  ">
       <thead className="thead-light">
         <tr>
           <th scope="col">Image</th>
@@ -163,7 +163,7 @@ const Cart = ({ history }) => {
           <th scope="col">Brand</th>
           <th scope="col">Color</th>
           <th scope="col">Count</th>
-          <th scope="col">Shipping</th>
+          {/* <th scope="col">Shipping</th> */}
           <th scope="col">Remove</th>
         </tr>
       </thead>
@@ -183,7 +183,7 @@ const Cart = ({ history }) => {
 
   return (
     <div className="container-fluid pt-2">
-      <div className="row">
+      <div className="row  ">
         <div className="col-md-8">
           {cart.data == undefined || !cart.data.products || !user ? (
             <p>Cart / 0 Product</p>
@@ -212,6 +212,7 @@ const Cart = ({ history }) => {
             showCartItems2()
           )}
           <hr />
+
           {cart.data == undefined || !cart.data.products || !user ? (
             <b> Total: ₹0</b>
           ) : (

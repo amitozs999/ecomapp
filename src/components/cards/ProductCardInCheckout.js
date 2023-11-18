@@ -172,13 +172,13 @@ const ProductCardInCheckout = (props) => {
           />
         </td>
 
-        <td className="text-center">
+        {/* <td className="text-center">
           {p.product.shipping === "Yes" ? (
             <CheckCircleOutlined className="text-success" />
           ) : (
             <CloseCircleOutlined className="text-danger" />
           )}
-        </td>
+        </td> */}
 
         {/* //delete */}
         <td className="text-center">
