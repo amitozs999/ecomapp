@@ -2,10 +2,10 @@
   height: 11.125rem;
   margin: 0.25rem;
 
-  background-color: aqua;
+  //background-color: aqua;
 
   .imgdiv {
-    background-color: chartreuse;
+    // background-color: chartreuse;
     // width: 6rem;
     width: 20%;
     height: 10rem;
@@ -18,148 +18,22 @@
       width: 4.375rem;
     }
   }
-
   .detailsdiv {
     height: 10.8rem;
     margin: 0.25rem;
     padding: 0.25rem;
-    background-color: black !important;
+    //background-color: black !important;
     //flex: 1 1 0%;
 
     width: 80%;
 
-    .txtcategbottommhoriztitle1 {
-      font-size: 0.738rem;
-      // font-weight: 610;
-      //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      //text-align: center;
-      text-align: left;
-      font-weight: 640;
-      //font-size: medium;
-      margin-left: 0.375rem !important;
-      //  margin-left:50px;
-      //   margin-left: auto;
-      //   margin-right: auto;
-    }
+    .detailstextdiv {
+      // width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
 
-    .txtcategbottommhoriztitle1:hover {
-      cursor: pointer;
-      color: #5199dbff !important;
-    }
-
-    .txtcategbottommhorizrate {
-      font-size: 0.613rem;
-      // font-weight: 610;
-      //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      //text-align: center;
-      text-align: left;
-      font-weight: 400;
-      //font-size: medium;
-      margin-left: 0.25rem;
-      margin-bottom: 0.25rem !important;
-      margin-top: 0.125rem !important;
-      color: #6e7070ff;
-      //  margin-left:50px;
-      //   margin-left: auto;
-      //   margin-right: auto;
-    }
-
-    .txtcategbottommhorizprice {
-      font-size: 0.675rem;
-      // font-weight: 610;
-      //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      //text-align: center;
-      text-align: left;
-      font-weight: 640;
-      //font-size: medium;
-      margin-left: 0.25rem;
-      //  margin-left:50px;
-      //   margin-left: auto;
-      //   margin-right: auto;
-    }
-
-    .txtcategbottommhorizdesc {
-      font-size: 0.55rem;
-      // font-weight: 610;
-      //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      //text-align: center;
-      text-align: left;
-      font-weight: 400;
-      //font-size: medium;
-      margin-left: 0.25rem;
-      //width: 70%;
-      color: #6e7070ff;
-      //  margin-left:50px;
-      //   margin-left: auto;
-      //   margin-right: auto;
-    }
-
-    .cartbuttonn {
-      // width: 125px;
-      // font-size: 0.7rem;
-
-      width: 8rem;
-      font-size: 1rem;
-    }
-
-    .cartbuttonn:hover {
-      box-shadow: 4px 4px 9px lightblue;
-    }
-  }
-
-  .hearticondiv {
-    // width: 7rem;
-    width: 10%;
-    height: 3rem;
-    margin-left: 2.5rem;
-    margin-right: 1rem;
-    margin-top: 0.25rem;
-    text-align: right;
-  }
-
-  .addcartt {
-    // padding: 50px;
-    // background-color: green;
-    //transition: transform .2s; /* Animation */
-    // width: 200px;
-    //height: 200px;
-    margin: 0 auto;
-  }
-
-  .addcartt:hover {
-    cursor: pointer;
-    // box-shadow: 7px 7px 5px lightblue;
-    //transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-  }
-}
-
-@media (min-width: 768px) {
-  .horizcard {
-    height: 11.125rem;
-    margin: 0.25rem;
-
-    .imgdiv {
-      width: 11rem;
-      height: 13rem;
-      margin: 0.25rem;
-      padding: 0.25rem;
-
-      .imgg {
-        height: 10rem;
-        //width: 150px;
-        width: 9.375rem;
-      }
-    }
-
-    .detailsdiv {
-      height: 13rem;
-      margin: 0.25rem;
-      padding: 0.25rem;
-      flex: 1;
+      //background-color: cornflowerblue !important;
 
       .txtcategbottommhoriztitle1 {
         font-size: 0.738rem;
@@ -224,6 +98,7 @@
         font-weight: 400;
         //font-size: medium;
         margin-left: 0.25rem;
+        //width: 70%;
         color: #6e7070ff;
         //  margin-left:50px;
         //   margin-left: auto;
@@ -242,39 +117,41 @@
         box-shadow: 4px 4px 9px lightblue;
       }
     }
+  }
+  .hearticondiv {
+    // width: 7rem;
+    //background-color: coral;
+    width: 10%;
+    height: 3rem;
+    margin-left: 0.25rem;
+    //margin-right: 1rem;
+    margin-top: 0.25rem;
+    text-align: right;
+  }
 
-    .hearticondiv {
-      width: 7rem;
-      height: 3rem;
-      margin-left: 2.5rem;
-      margin-right: 1rem;
-      margin-top: 0.25rem;
-      text-align: right;
-    }
+  .addcartt {
+    // padding: 50px;
+    // background-color: green;
+    //transition: transform .2s; /* Animation */
+    // width: 200px;
+    //height: 200px;
+    margin: 0 auto;
+  }
 
-    .addcartt {
-      // padding: 50px;
-      // background-color: green;
-      //transition: transform .2s; /* Animation */
-      // width: 200px;
-      //height: 200px;
-      margin: 0 auto;
-    }
-
-    .addcartt:hover {
-      cursor: pointer;
-      // box-shadow: 7px 7px 5px lightblue;
-      //transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    }
+  .addcartt:hover {
+    cursor: pointer;
+    // box-shadow: 7px 7px 5px lightblue;
+    //transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 }
 
-@media (min-width: 1056px) {
+@media (min-width: 768px) {
   .horizcard {
     height: 11.125rem;
     margin: 0.25rem;
-
+    // background-color: aqua;
     .imgdiv {
+      // background-color: chartreuse;
       width: 11rem;
       height: 13rem;
       margin: 0.25rem;
@@ -293,88 +170,96 @@
       padding: 0.25rem;
       flex: 1;
 
-      .txtcategbottommhoriztitle1 {
-        font-size: 15px;
-        // font-weight: 610;
-        //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        //text-align: center;
-        text-align: left;
-        font-weight: 640;
-        //font-size: medium;
-        margin-left: 6px !important;
-        //  margin-left:50px;
-        //   margin-left: auto;
-        //   margin-right: auto;
-      }
+      .detailstextdiv {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
 
-      .txtcategbottommhoriztitle1:hover {
-        cursor: pointer;
-        color: #5199dbff !important;
-      }
+        // background-color: cornflowerblue !important;
 
-      .txtcategbottommhorizrate {
-        font-size: 13px;
-        // font-weight: 610;
-        //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        //text-align: center;
-        text-align: left;
-        font-weight: 400;
-        //font-size: medium;
-        margin-left: 4px;
-        margin-bottom: 4px !important;
-        margin-top: 2px !important;
-        color: #6e7070ff;
-        //  margin-left:50px;
-        //   margin-left: auto;
-        //   margin-right: auto;
-      }
+        .txtcategbottommhoriztitle1 {
+          font-size: 13px;
+          // font-weight: 610;
+          //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          //text-align: center;
+          text-align: left;
+          font-weight: 640;
+          //font-size: medium;
+          margin-left: 6px !important;
+          //  margin-left:50px;
+          //   margin-left: auto;
+          //   margin-right: auto;
+        }
 
-      .txtcategbottommhorizprice {
-        font-size: 14px;
-        // font-weight: 610;
-        //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        //text-align: center;
-        text-align: left;
-        font-weight: 640;
-        //font-size: medium;
-        margin-left: 4px;
-        //  margin-left:50px;
-        //   margin-left: auto;
-        //   margin-right: auto;
-      }
+        .txtcategbottommhoriztitle1:hover {
+          cursor: pointer;
+          color: #5199dbff !important;
+        }
 
-      .txtcategbottommhorizdesc {
-        font-size: 12px;
-        // font-weight: 610;
-        //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        //text-align: center;
-        text-align: left;
-        font-weight: 400;
-        //font-size: medium;
-        margin-left: 4px;
-        color: #6e7070ff;
-        //  margin-left:50px;
-        //   margin-left: auto;
-        //   margin-right: auto;
-      }
+        .txtcategbottommhorizrate {
+          font-size: 11px;
+          // font-weight: 610;
+          //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          //text-align: center;
+          text-align: left;
+          font-weight: 400;
+          //font-size: medium;
+          margin-left: 4px;
+          margin-bottom: 4px !important;
+          margin-top: 2px !important;
+          color: #6e7070ff;
+          //  margin-left:50px;
+          //   margin-left: auto;
+          //   margin-right: auto;
+        }
 
-      .cartbuttonn {
-        // width: 125px;
-        // font-size: 0.7rem;
+        .txtcategbottommhorizprice {
+          font-size: 12px;
+          // font-weight: 610;
+          //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          //text-align: center;
+          text-align: left;
+          font-weight: 640;
+          //font-size: medium;
+          margin-left: 4px;
+          //  margin-left:50px;
+          //   margin-left: auto;
+          //   margin-right: auto;
+        }
 
-        width: 160px;
-        font-size: 1rem;
-      }
+        .txtcategbottommhorizdesc {
+          font-size: 9px;
+          // font-weight: 610;
+          //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          //text-align: center;
+          text-align: left;
+          font-weight: 400;
+          //font-size: medium;
+          margin-left: 4px;
+          color: #6e7070ff;
+          //  margin-left:50px;
+          //   margin-left: auto;
+          //   margin-right: auto;
+        }
 
-      .cartbuttonn:hover {
-        box-shadow: 4px 4px 9px lightblue;
+        .cartbuttonn {
+          // width: 125px;
+          // font-size: 0.7rem;
+
+          width: 160px;
+          font-size: 1rem;
+        }
+
+        .cartbuttonn:hover {
+          box-shadow: 4px 4px 9px lightblue;
+        }
       }
     }
-
     .hearticondiv {
       width: 7rem;
       height: 3rem;
@@ -400,3 +285,408 @@
     }
   }
 }
+
+@media (min-width: 992px) {
+  .horizcard {
+    height: 11.125rem;
+    margin: 0.25rem;
+    // background-color: aqua;
+    .imgdiv {
+      //  background-color: chartreuse;
+      width: 11rem;
+      height: 13rem;
+      margin: 0.25rem;
+      padding: 0.25rem;
+
+      .imgg {
+        height: 10rem;
+        //width: 150px;
+        width: 9.375rem;
+      }
+    }
+
+    .detailsdiv {
+      height: 13rem;
+      margin: 0.25rem;
+      padding: 0.25rem;
+      flex: 1;
+
+      .detailstextdiv {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        //background-color: cornflowerblue !important;
+
+        .txtcategbottommhoriztitle1 {
+          font-size: 15px;
+          // font-weight: 610;
+          //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          //text-align: center;
+          text-align: left;
+          font-weight: 640;
+          //font-size: medium;
+          margin-left: 6px !important;
+          //  margin-left:50px;
+          //   margin-left: auto;
+          //   margin-right: auto;
+        }
+
+        .txtcategbottommhoriztitle1:hover {
+          cursor: pointer;
+          color: #5199dbff !important;
+        }
+
+        .txtcategbottommhorizrate {
+          font-size: 13px;
+          // font-weight: 610;
+          //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          //text-align: center;
+          text-align: left;
+          font-weight: 400;
+          //font-size: medium;
+          margin-left: 4px;
+          margin-bottom: 4px !important;
+          margin-top: 2px !important;
+          color: #6e7070ff;
+          //  margin-left:50px;
+          //   margin-left: auto;
+          //   margin-right: auto;
+        }
+
+        .txtcategbottommhorizprice {
+          font-size: 14px;
+          // font-weight: 610;
+          //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          //text-align: center;
+          text-align: left;
+          font-weight: 640;
+          //font-size: medium;
+          margin-left: 4px;
+          //  margin-left:50px;
+          //   margin-left: auto;
+          //   margin-right: auto;
+        }
+
+        .txtcategbottommhorizdesc {
+          font-size: 12px;
+          // font-weight: 610;
+          //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          //text-align: center;
+          text-align: left;
+          font-weight: 400;
+          //font-size: medium;
+          margin-left: 4px;
+          color: #6e7070ff;
+          //  margin-left:50px;
+          //   margin-left: auto;
+          //   margin-right: auto;
+        }
+
+        .cartbuttonn {
+          // width: 125px;
+          // font-size: 0.7rem;
+
+          width: 160px;
+          font-size: 1rem;
+        }
+
+        .cartbuttonn:hover {
+          box-shadow: 4px 4px 9px lightblue;
+        }
+      }
+    }
+    .hearticondiv {
+      width: 7rem;
+      height: 3rem;
+      margin-left: 2.5rem;
+      margin-right: 1rem;
+      margin-top: 0.25rem;
+      text-align: right;
+    }
+
+    .addcartt {
+      // padding: 50px;
+      // background-color: green;
+      //transition: transform .2s; /* Animation */
+      // width: 200px;
+      //height: 200px;
+      margin: 0 auto;
+    }
+
+    .addcartt:hover {
+      cursor: pointer;
+      // box-shadow: 7px 7px 5px lightblue;
+      //transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+  }
+}
+
+// @media (min-width: 768px) {
+//   .horizcard {
+//     height: 11.125rem;
+//     margin: 0.25rem;
+
+//     .imgdiv {
+//       width: 11rem;
+//       height: 13rem;
+//       margin: 0.25rem;
+//       padding: 0.25rem;
+
+//       .imgg {
+//         height: 10rem;
+//         //width: 150px;
+//         width: 9.375rem;
+//       }
+//     }
+
+//     .detailsdiv {
+//       height: 13rem;
+//       margin: 0.25rem;
+//       padding: 0.25rem;
+//       flex: 1;
+
+//       .txtcategbottommhoriztitle1 {
+//         font-size: 0.738rem;
+//         // font-weight: 610;
+//         //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+//         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//         //text-align: center;
+//         text-align: left;
+//         font-weight: 640;
+//         //font-size: medium;
+//         margin-left: 0.375rem !important;
+//         //  margin-left:50px;
+//         //   margin-left: auto;
+//         //   margin-right: auto;
+//       }
+
+//       .txtcategbottommhoriztitle1:hover {
+//         cursor: pointer;
+//         color: #5199dbff !important;
+//       }
+
+//       .txtcategbottommhorizrate {
+//         font-size: 0.613rem;
+//         // font-weight: 610;
+//         //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+//         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//         //text-align: center;
+//         text-align: left;
+//         font-weight: 400;
+//         //font-size: medium;
+//         margin-left: 0.25rem;
+//         margin-bottom: 0.25rem !important;
+//         margin-top: 0.125rem !important;
+//         color: #6e7070ff;
+//         //  margin-left:50px;
+//         //   margin-left: auto;
+//         //   margin-right: auto;
+//       }
+
+//       .txtcategbottommhorizprice {
+//         font-size: 0.675rem;
+//         // font-weight: 610;
+//         //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+//         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//         //text-align: center;
+//         text-align: left;
+//         font-weight: 640;
+//         //font-size: medium;
+//         margin-left: 0.25rem;
+//         //  margin-left:50px;
+//         //   margin-left: auto;
+//         //   margin-right: auto;
+//       }
+
+//       .txtcategbottommhorizdesc {
+//         font-size: 0.55rem;
+//         // font-weight: 610;
+//         //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+//         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//         //text-align: center;
+//         text-align: left;
+//         font-weight: 400;
+//         //font-size: medium;
+//         margin-left: 0.25rem;
+//         color: #6e7070ff;
+//         //  margin-left:50px;
+//         //   margin-left: auto;
+//         //   margin-right: auto;
+//       }
+
+//       .cartbuttonn {
+//         // width: 125px;
+//         // font-size: 0.7rem;
+
+//         width: 8rem;
+//         font-size: 1rem;
+//       }
+
+//       .cartbuttonn:hover {
+//         box-shadow: 4px 4px 9px lightblue;
+//       }
+//     }
+
+//     .hearticondiv {
+//       width: 7rem;
+//       height: 3rem;
+//       margin-left: 2.5rem;
+//       margin-right: 1rem;
+//       margin-top: 0.25rem;
+//       text-align: right;
+//     }
+
+//     .addcartt {
+//       // padding: 50px;
+//       // background-color: green;
+//       //transition: transform .2s; /* Animation */
+//       // width: 200px;
+//       //height: 200px;
+//       margin: 0 auto;
+//     }
+
+//     .addcartt:hover {
+//       cursor: pointer;
+//       // box-shadow: 7px 7px 5px lightblue;
+//       //transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+//     }
+//   }
+// }
+
+// @media (min-width: 1056px) {
+//   .horizcard {
+//     height: 11.125rem;
+//     margin: 0.25rem;
+
+//     .imgdiv {
+//       width: 11rem;
+//       height: 13rem;
+//       margin: 0.25rem;
+//       padding: 0.25rem;
+
+//       .imgg {
+//         height: 10rem;
+//         //width: 150px;
+//         width: 9.375rem;
+//       }
+//     }
+
+//     .detailsdiv {
+//       height: 13rem;
+//       margin: 0.25rem;
+//       padding: 0.25rem;
+//       flex: 1;
+
+//       .txtcategbottommhoriztitle1 {
+//         font-size: 15px;
+//         // font-weight: 610;
+//         //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+//         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//         //text-align: center;
+//         text-align: left;
+//         font-weight: 640;
+//         //font-size: medium;
+//         margin-left: 6px !important;
+//         //  margin-left:50px;
+//         //   margin-left: auto;
+//         //   margin-right: auto;
+//       }
+
+//       .txtcategbottommhoriztitle1:hover {
+//         cursor: pointer;
+//         color: #5199dbff !important;
+//       }
+
+//       .txtcategbottommhorizrate {
+//         font-size: 13px;
+//         // font-weight: 610;
+//         //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+//         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//         //text-align: center;
+//         text-align: left;
+//         font-weight: 400;
+//         //font-size: medium;
+//         margin-left: 4px;
+//         margin-bottom: 4px !important;
+//         margin-top: 2px !important;
+//         color: #6e7070ff;
+//         //  margin-left:50px;
+//         //   margin-left: auto;
+//         //   margin-right: auto;
+//       }
+
+//       .txtcategbottommhorizprice {
+//         font-size: 14px;
+//         // font-weight: 610;
+//         //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+//         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//         //text-align: center;
+//         text-align: left;
+//         font-weight: 640;
+//         //font-size: medium;
+//         margin-left: 4px;
+//         //  margin-left:50px;
+//         //   margin-left: auto;
+//         //   margin-right: auto;
+//       }
+
+//       .txtcategbottommhorizdesc {
+//         font-size: 12px;
+//         // font-weight: 610;
+//         //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+//         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//         //text-align: center;
+//         text-align: left;
+//         font-weight: 400;
+//         //font-size: medium;
+//         margin-left: 4px;
+//         color: #6e7070ff;
+//         //  margin-left:50px;
+//         //   margin-left: auto;
+//         //   margin-right: auto;
+//       }
+
+//       .cartbuttonn {
+//         // width: 125px;
+//         // font-size: 0.7rem;
+
+//         width: 160px;
+//         font-size: 1rem;
+//       }
+
+//       .cartbuttonn:hover {
+//         box-shadow: 4px 4px 9px lightblue;
+//       }
+//     }
+
+//     .hearticondiv {
+//       width: 7rem;
+//       height: 3rem;
+//       margin-left: 2.5rem;
+//       margin-right: 1rem;
+//       margin-top: 0.25rem;
+//       text-align: right;
+//     }
+
+//     .addcartt {
+//       // padding: 50px;
+//       // background-color: green;
+//       //transition: transform .2s; /* Animation */
+//       // width: 200px;
+//       //height: 200px;
+//       margin: 0 auto;
+//     }
+
+//     .addcartt:hover {
+//       cursor: pointer;
+//       // box-shadow: 7px 7px 5px lightblue;
+//       //transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+//     }
+//   }
+// }

@@ -120,6 +120,9 @@ const ProductCardNewHoriz = (props) => {
   var xx = title;
   if (title.length > 21) xx = title.substring(0, 21) + "..";
 
+  var xxdesc = description;
+
+  if (description.length > 113) xxdesc = description.substring(0, 113) + "..";
   const handleAddToCart = () => {
     // create cart array
     let cart = [];
@@ -190,7 +193,8 @@ const ProductCardNewHoriz = (props) => {
         <div className="flex justify-between w-full h-full  ">
           {/* <div className="flex   bg-gray-700 py-5 px-5 h-full"> */}
 
-          <div className=" flex flex-col     w-full h-full">
+          {/* <div className=" flex flex-col     w-full h-full  "> */}
+          <div className=" detailstextdiv">
             <h1
               className="bg-white  ml-1 mt-2 txtcategbottommhoriztitle1"
               onClick={() => history.push(`/product/${slug}`)}
@@ -208,7 +212,7 @@ const ProductCardNewHoriz = (props) => {
               ₹{price}.00
             </h1>
             <h5 className="bg-white txtcategbottommhorizdesc mb-1 ml-2">
-              {description}{" "}
+              {xxdesc}{" "}
             </h5>
             <a
               //onClick={handleAddToCart2}
