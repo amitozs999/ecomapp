@@ -96,7 +96,7 @@ const Product = ({ match }) => {
       </div>
 
       <div className="row">
-        <div className="col text-center pt-5 pb-5">
+        <div className="col text-center pt-5 lg:pb-5">
           <hr />
           <h4>Related Products</h4>
           <hr />
@@ -130,9 +130,9 @@ const Product = ({ match }) => {
           {loading ? (
             <LoadingCard count={3} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
           ) : (
-            <div className="  h-96 p-3 flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
+            <div className="  h-96 p-3 flex flex-col lg:flex-row justify-between ml-10 mr-10  lg:my-0">
               {related.map((r) => (
-                <div key={r._id} className="  h-52 w-32  lg:h-80 lg:w-52">
+                <div key={r._id} className="  h-60 w-32  lg:h-80 lg:w-52">
                   <ProductCardNew product={r} type="related" />
                 </div>
               ))}
