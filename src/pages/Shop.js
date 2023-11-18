@@ -55,6 +55,17 @@ const Shop = ({ history }) => {
   const [sub, setSub] = useState("");
   const isMount = useIsMount();
 
+  const [matches, setMatches] = useState(
+    window.matchMedia("(min-width: 480px)").matches
+  );
+
+  useEffect(() => {
+    window.matchMedia("(min-width: 480px)").addEventListener("change", (e) => {
+      console.log("matches size changes", e.matches);
+      setMatches(e.matches);
+    });
+  }, []);
+
   //const [searchParams, setSearchParams] = usesearch;
 
   //const sterm = searchParams.get("price") || "";
@@ -1340,7 +1351,12 @@ const Shop = ({ history }) => {
           <Menu
             // defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]} //be default open rakhega menu
             // mode="vertical"
-            // inlineCollapsed={true}
+            //inlineCollapsed={true}
+
+            // defaultOpenKeys={
+            //   matches ? ["1", "2", "3", "4", "5", "6", "7"] : ["1"]
+            // }
+            defaultOpenKeys={matches && ["1", "2", "3", "6"]}
             mode="inline"
             // direction="rtl"
           >
@@ -1455,10 +1471,12 @@ const Shop = ({ history }) => {
           style={{ backgroundColor: "#F0F9FAFF" }}
         >
           <Menu
+            //  inlineCollapsed="true"
             onClick={handleClick}
             //    selectedKeys={ }
             mode="horizontal"
             selectedKeys={[current]}
+            //  disabledOverflow="true"
             //colorFillContent="black"
             className=" ml-3 mr-3  mymenu"
           >
