@@ -74,7 +74,7 @@ const CategoryHome = ({ match }) => {
                   marginRight: "auto",
                 }}
               >
-                <ProductCardNew product={product} />
+                <ProductCardNew product={product} type="categ" />
               </div>
             ))}
           </div>

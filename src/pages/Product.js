@@ -132,8 +132,8 @@ const Product = ({ match }) => {
           ) : (
             <div className="  h-96 p-3 flex flex-col lg:flex-row justify-between ml-10 mr-10 my-10 lg:my-0">
               {related.map((r) => (
-                <div key={r._id} className="    h-80 w-52">
-                  <ProductCardNew product={r} />
+                <div key={r._id} className="  h-52 w-32  lg:h-80 lg:w-52">
+                  <ProductCardNew product={r} type="related" />
                 </div>
               ))}
             </div>

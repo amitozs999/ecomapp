@@ -62,8 +62,12 @@ const BestSellers = () => {
           <div className="bestsellitemdiv">
             {products.map((product) => (
               //   <div key={product._id} className="    h-80 w-52">
-              <div key={product._id} className="bestsellitem">
-                <ProductCardNew product={product} />
+              <div
+                key={product._id}
+                className="bestsellitem"
+                type={"bestseller"}
+              >
+                <ProductCardNew product={product} type="bestsell" />
               </div>
             ))}
           </div>

@@ -17,14 +17,14 @@ const { Meta } = Card;
 //for non admins only can view it noedit/update
 
 //shown on home page
-const ProductCardNew = ({ product }) => {
+const ProductCardNew = ({ product, type }) => {
   const history = useHistory();
   const [tooltip, setTooltip] = useState("Click to add");
 
   // redux
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
-
+  let mql = window.matchMedia("(max-width: 480px)");
   // destructure
   const { images, title, description, slug, price, color, ratings } = product;
 
@@ -86,26 +86,24 @@ const ProductCardNew = ({ product }) => {
     }
   };
   return (
-    <div  id={"u"}  className="proditems"  >
-
-
+    <div
+      id={"u"}
+      className={type == "related" ? "proditems my-10" : "proditems"}
+    >
       <img
-       
-         className=" imzprod prodzom "  //
+        className=" imzprod prodzom " //
         //src={imgg}
         //src="images/prod01.jpg"
         src={images && images.length ? images[0].url : noimage}
         onClick={() => history.push(`/product/${slug}`)}
         // onClick={handleAddToCart}
         // src="images/prod01.jpg" to refer from public/images/prod01    images/+{prod01.jpg}
-      >
-    
-      </img>
+      ></img>
 
       <h5 class="txtcategbottommprod"> {xx}</h5>
 
       <p className="txtcategbottomm2prod">₹ {price}</p>
-     
+
       <button
         class="add-to-cart-prod"
         onClick={() => {
@@ -118,10 +116,7 @@ const ProductCardNew = ({ product }) => {
       >
         Add to Cart
       </button>
-
-    
     </div>
-   
   );
 };
 
