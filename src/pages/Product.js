@@ -24,13 +24,15 @@ const Product = ({ match }) => {
   // const isinwish=false;
   useEffect(() => {
     loadSingleProduct();
+
+    //window.scrollTo(0, 0);
   }, [slug]); //slug change load prod again
 
   const loadSingleProduct = () =>
     getProduct(slug).then((res) => {
       setProduct(res.data); //get currprod
       setLoading(true);
-
+      document.body.scrollTo({ top: 0 });
       console.log("vvv list after fechinh prod kya he", userwishlist);
 
       getRelated(res.data._id).then((res) => {

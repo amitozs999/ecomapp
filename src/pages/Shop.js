@@ -348,7 +348,9 @@ const Shop = ({ history }) => {
   // }, [categoryIds]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0 });
+    //window.scrollTo({ top: 0 });
+
+    document.body.scrollTo({ top: 0 });
   }, [page]);
 
   useEffect(() => {
@@ -1336,10 +1338,10 @@ const Shop = ({ history }) => {
 
           <hr />
           <Menu
-            defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]} //be default open rakhega menu
-            mode="vertical"
+            // defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]} //be default open rakhega menu
+            // mode="vertical"
             // inlineCollapsed={true}
-
+            mode="inline"
             // direction="rtl"
           >
             {/* price */}

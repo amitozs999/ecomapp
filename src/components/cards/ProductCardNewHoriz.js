@@ -12,7 +12,7 @@ import { addToWishlist } from "../../functions/user";
 import { getWishlist, removeWishlist } from "../../functions/user";
 
 import { useHistory } from "react-router-dom";
-import "./index.scss";
+import "./indexhoriz.scss";
 
 import { HeartFilled } from "@ant-design/icons";
 import { HeartOutlined } from "@ant-design/icons";
@@ -159,17 +159,17 @@ const ProductCardNewHoriz = (props) => {
     <div
       //height="600px"
       id={"u"}
-      className="    my-1 mx-1 flex "
-      style={{
-        height: "178px",
-      }}
+      className=" horizcard  flex "
+      // style={{
+      //   height: "178px",
+      // }}
     >
-      <div className="w-44 h-52  mx-1 my-1 px-1 py-1 flex: 1 ">
+      <div className=" imgdiv  ">
         <img
-          width={"150px"}
+          //  width={"150px"}
           //height={"17rem"}
-          className="h-40 addcart "
-          //className="mb-2 py-2 imzprod zom "
+          //  className=" imgg    addcartt "
+          className=" imgg   "
           src={images && images.length ? images[0].url : noimage}
           onClick={() => history.push(`/product/${slug}`)}
         />
@@ -184,7 +184,7 @@ const ProductCardNewHoriz = (props) => {
       </div> */}
 
       <div
-        className=" cc  h-52  mx-1 my-1 px-1 py-1 "
+        className=" detailsdiv"
         //style={{ backgroundColor: " " }}
       >
         <div className="flex justify-between w-full h-full  ">
@@ -192,7 +192,7 @@ const ProductCardNewHoriz = (props) => {
 
           <div className=" flex flex-col     w-full h-full">
             <h1
-              className="bg-white  ml-1 mt-2 txtcategbottommhoriztitle"
+              className="bg-white  ml-1 mt-2 txtcategbottommhoriztitle1"
               onClick={() => history.push(`/product/${slug}`)}
             >
               {title}
@@ -232,7 +232,7 @@ const ProductCardNewHoriz = (props) => {
 
               // transition-all duration-300 shadow-lg 2xl:mt-2
               className="  py-2        mb-2 ml-2 mt-2
-            font-semibold cartbutton"
+            font-semibold cartbuttonn"
             >
               Add to cart
             </a>
@@ -240,10 +240,11 @@ const ProductCardNewHoriz = (props) => {
 
           {/* <div className=" w-full bg-neutral-400 h-32"></div> */}
 
-          <div className="w-28    h-12 ml-10 mr-4 mt-1 text-right">
+          {/* <div className="w-28    h-12 ml-10 mr-4 mt-1 text-right"> */}
+          <div className="hearticondiv">
             {iconColor ? ( //show if this prod has rating avg wali
               <HeartFilled
-                style={{ color: "#FF6161FF", fontSize: "20px" }}
+                style={{ color: "#FF6161FF", fontSize: "1.25rem" }}
                 onClick={() => {
                   console.log("filled tha and icon col was", iconColor);
                   setIconColor(!iconColor);
@@ -254,7 +255,7 @@ const ProductCardNewHoriz = (props) => {
               />
             ) : (
               <HeartOutlined
-                style={{ color: "#A8A7A8FF", fontSize: "20px" }}
+                style={{ color: "#A8A7A8FF", fontSize: "1.25rem" }}
                 onClick={() => {
                   if (user) {
                     setIconColor(!iconColor);
