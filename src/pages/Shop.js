@@ -636,6 +636,7 @@ const Shop = ({ history }) => {
     let myprice = price;
 
     if (!isMount) {
+      console.log("hit prod api11111111111111113719");
       switch (current) {
         case "MostSold":
           return loadAllProductssortandfilter(
@@ -714,6 +715,33 @@ const Shop = ({ history }) => {
     let myprice = price;
     let mytext = text;
     console.log("catiddd", categoryIds);
+    console.log("catiddd", color);
+    console.log("catiddd", shipping);
+    console.log("catiddd", brand);
+    console.log("catiddd", starNumbers);
+    console.log("catiddd", pricechanged);
+    console.log("catiddd", price);
+    console.log("catiddd", text);
+
+    console.log("catidddfwrbk");
+
+    console.log("catiddd", page);
+    console.log("catiddd", color);
+    console.log("catiddd", color);
+    console.log("catiddd", brand);
+    console.log("catiddd", shipping);
+    console.log("catiddd", starNumbers);
+    console.log("catiddd", pricechangedstopped);
+    console.log("catiddd", text);
+
+    // page,
+    // categoryIds,
+    // color,
+    // brand,
+    // shipping,
+    // starNumbers,
+    // pricechangedstopped,
+    // text,
 
     //history.push("/shop/?colr=blue");
 
