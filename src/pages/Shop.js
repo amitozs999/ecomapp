@@ -810,16 +810,7 @@ const Shop = ({ history }) => {
       default:
         break;
     }
-  }, [
-    page,
-    categoryIds,
-    color,
-    brand,
-    shipping,
-    starNumbers,
-    pricechangedstopped,
-    text,
-  ]);
+  }, []);
 
   const loadAllProductssortandfilter = (
     sort,
