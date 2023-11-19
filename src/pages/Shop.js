@@ -753,7 +753,8 @@ const Shop = ({ history }) => {
     console.log("bbbb is si .length", si.length);
     console.log("bbbb is si2.length", si2.length);
 
-    if (isMount && (si.length || si2.length)) {
+    // if (isMount && (si.length || si2.length)) {
+    if (isMount) {
       //  "bbbb didn't hit first time coz  cat or starnum was in url will hit second time after map set"
       console.log("bbbb didn't hit first time  ");
     } else {
