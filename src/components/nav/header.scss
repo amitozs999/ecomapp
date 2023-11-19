@@ -51,12 +51,14 @@
   .flex-container {
     // max-width: 768px;
     flex-direction: column-reverse;
+    //background-color: cornsilk;
     display: flex;
     //height: 11vh;
-    height: 9rem;
+    height: 11rem;
     .logodiv {
+      // background-color: aqua;
       order: 1;
-      height: 1.5rem;
+      height: 1.4rem;
       //  background-color: rgb(244, 162, 55);
       //  height: 10vh;
       width: 100%;
@@ -65,7 +67,7 @@
       // width: 5rem;
       // height: 5rem;
       //   background-color: rgb(190, 131, 109);
-      margin-top: 0.25rem;
+      margin-top: -0.5rem;
       // margin-left: 2.688rem;
       margin-left: auto;
       margin-right: auto;
