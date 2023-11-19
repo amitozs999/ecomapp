@@ -322,10 +322,13 @@
   .flex-container {
     // max-width: 768px;
     flex-direction: row;
+    margin-top: 0.3rem;
     display: flex;
     //height: 11vh;
     height: 3.75rem;
+    // margin-top: 0.3rem;
     .logodiv {
+      margin-top: 0.15rem;
       //  background-color: darkblue;
       height: 3.75rem;
       //  background-color: rgb(244, 162, 55);
@@ -352,6 +355,7 @@
     .searchbardiv {
       width: 35%;
       height: 3.75rem;
+      margin-top: 0.3rem;
       // background-color: rgb(213, 16, 16);
       .formlay {
         width: 33%;
