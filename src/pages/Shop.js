@@ -749,68 +749,86 @@ const Shop = ({ history }) => {
 
     //history.push("/shop/?colr=blue");
 
-    switch (current) {
-      case "MostSold":
-        return loadAllProductssortandfilter(
-          "sold",
-          "desc",
-          page,
-          inTheState,
-          mycolor,
-          mybrand,
-          myshipping,
-          mystarNumbers,
-          mypricechanged,
-          myprice,
-          mytext
-        );
-      case "Latest":
-        return loadAllProductssortandfilter(
-          "createdAt",
-          "desc",
-          page,
-          inTheState,
-          mycolor,
-          mybrand,
-          myshipping,
-          mystarNumbers,
-          mypricechanged,
-          myprice,
-          mytext
-        );
-      case "PriceHigh":
-        return loadAllProductssortandfilter(
-          "price",
-          "desc",
-          page,
-          inTheState,
-          mycolor,
-          mybrand,
-          myshipping,
-          mystarNumbers,
-          mypricechanged,
-          myprice,
-          mytext
-        );
-      case "PriceLow":
-        return loadAllProductssortandfilter(
-          "price",
-          "asc",
-          page,
-          inTheState,
-          mycolor,
-          mybrand,
-          myshipping,
-          mystarNumbers,
-          mypricechanged,
-          myprice,
-          mytext
-        );
+    console.log("bbbb is mount", isMount);
+    console.log("bbbb is si .length", si.length);
+    console.log("bbbb is si2.length", si2.length);
 
-      default:
-        break;
+    if (isMount && (si.length || si2.length)) {
+      //  "bbbb didn't hit first time coz  cat or starnum was in url will hit second time after map set"
+      console.log("bbbb didn't hit first time  ");
+    } else {
+      switch (current) {
+        case "MostSold":
+          return loadAllProductssortandfilter(
+            "sold",
+            "desc",
+            page,
+            inTheState,
+            mycolor,
+            mybrand,
+            myshipping,
+            mystarNumbers,
+            mypricechanged,
+            myprice,
+            mytext
+          );
+        case "Latest":
+          return loadAllProductssortandfilter(
+            "createdAt",
+            "desc",
+            page,
+            inTheState,
+            mycolor,
+            mybrand,
+            myshipping,
+            mystarNumbers,
+            mypricechanged,
+            myprice,
+            mytext
+          );
+        case "PriceHigh":
+          return loadAllProductssortandfilter(
+            "price",
+            "desc",
+            page,
+            inTheState,
+            mycolor,
+            mybrand,
+            myshipping,
+            mystarNumbers,
+            mypricechanged,
+            myprice,
+            mytext
+          );
+        case "PriceLow":
+          return loadAllProductssortandfilter(
+            "price",
+            "asc",
+            page,
+            inTheState,
+            mycolor,
+            mybrand,
+            myshipping,
+            mystarNumbers,
+            mypricechanged,
+            myprice,
+            mytext
+          );
+
+        default:
+          break;
+      }
     }
-  }, []);
+  }, [
+    page,
+    categoryIds,
+    color,
+    brand,
+    shipping,
+    starNumbers,
+    pricechangedstopped,
+    text,
+  ]);
 
   const loadAllProductssortandfilter = (
     sort,
