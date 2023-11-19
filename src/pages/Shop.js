@@ -714,25 +714,25 @@ const Shop = ({ history }) => {
     let mypricechanged = pricechanged;
     let myprice = price;
     let mytext = text;
-    console.log("catiddd", categoryIds);
-    console.log("catiddd", color);
-    console.log("catiddd", shipping);
-    console.log("catiddd", brand);
-    console.log("catiddd", starNumbers);
-    console.log("catiddd", pricechanged);
-    console.log("catiddd", price);
-    console.log("catiddd", text);
+    console.log("catiddd1", categoryIds);
+    console.log("catiddd2", color);
+    console.log("catiddd3", shipping);
+    console.log("catiddd4", brand);
+    console.log("catiddd5", starNumbers);
+    console.log("catiddd6", pricechanged);
+    console.log("catiddd7", price);
+    console.log("catiddd8", text);
 
     console.log("catidddfwrbk");
 
-    console.log("catiddd", page);
-    console.log("catiddd", color);
-    console.log("catiddd", color);
-    console.log("catiddd", brand);
-    console.log("catiddd", shipping);
-    console.log("catiddd", starNumbers);
-    console.log("catiddd", pricechangedstopped);
-    console.log("catiddd", text);
+    console.log("catiddd11", page);
+    console.log("catiddd22", color);
+    console.log("catiddd33", color);
+    console.log("catiddd44", brand);
+    console.log("catiddd55", shipping);
+    console.log("catiddd66", starNumbers);
+    console.log("catiddd77", pricechangedstopped);
+    console.log("catiddd88", text);
 
     // page,
     // categoryIds,
