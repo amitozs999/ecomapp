@@ -181,17 +181,21 @@
   .flex-container {
     // max-width: 768px;
     flex-direction: column-reverse;
+    // background-color: darkmagenta;
     display: flex;
     //height: 11vh;
-    height: 9rem;
+    height: 11rem;
     .logodiv {
+      // background-color: aqua;
       order: 1;
       height: 1.5rem;
       //   background-color: rgb(244, 162, 55);
       //  height: 10vh;
       width: 100%;
+      margin-bottom: 1rem;
     }
     .logo {
+      // background-color: coral;
       // width: 5rem;
       // height: 5rem;
       //   background-color: rgb(190, 131, 109);
@@ -320,13 +324,17 @@
     //height: 11vh;
     height: 3.75rem;
     .logodiv {
+      //  background-color: darkblue;
       height: 3.75rem;
       //  background-color: rgb(244, 162, 55);
       //  height: 10vh;
       width: 20%;
       order: 0;
+      padding-bottom: 0.5rem;
+      padding-left: 3rem;
     }
     .logo {
+      //  background-color: bisque;
       // width: 5rem;
       // height: 5rem;
       //   background-color: rgb(190, 131, 109);

@@ -66,7 +66,7 @@ const ViewAllProd = ({ match }) => {
             // </h4>)
             // }
             <h4 className="text-center p-3 mt-5 mb-5 display-4  ">
-              All {slug} Products
+              All {slug == "popular" ? "Popular" : "New Arrival"} Products
             </h4>
           )}
         </div>

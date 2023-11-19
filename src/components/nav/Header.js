@@ -14,7 +14,7 @@ import {
 } from "@ant-design/icons";
 
 import asas from "./234.png";
-import asas2 from "./ecomlogo3.png";
+import asas3 from "./icon.svg";
 
 import "./header.scss";
 
@@ -133,7 +133,7 @@ const Header = () => {
       <div class="flex-container md:fixed   ">
         <div className="logodiv" onClick={logoclick}>
           <a>
-            <img className="logo" src={asas2} />{" "}
+            <img className="logo" src={asas3} />{" "}
           </a>{" "}
           {/* <p className="logotext"> Shop Now </p>{" "} */}{" "}
           {/* <Link to="/" onClick={logoclick}>

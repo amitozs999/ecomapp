@@ -14,7 +14,7 @@ import {
 } from "@ant-design/icons";
 
 import asas from "./234.png";
-import asas2 from "./ecomlogo3.png";
+import asas2 from "./iconblue.svg";
 
 import "./header.scss";
 
