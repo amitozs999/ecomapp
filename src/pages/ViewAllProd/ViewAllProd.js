@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getCategory } from "../../functions/category";
+import { getProductsall } from "../../functions/product";
 import ProductCard from "../../components/cards/ProductCard";
 import ProductCardNew from "../../components/cards/ProductCardnew";
 
 import LoadingCard from "../../components/cards/LoadingCard";
 
-const CategoryHome = ({ match }) => {
+const ViewAllProd = ({ match }) => {
   //show products based on this categ
 
   const [category, setCategory] = useState({});
@@ -15,16 +15,38 @@ const CategoryHome = ({ match }) => {
   const { slug } = match.params;
 
   useEffect(() => {
+    console.log("viewall slug", match);
+    console.log("viewall slug", match.params);
+    console.log("viewall slug", slug);
     setLoading(true);
+    //"sold", "desc"
+    if (slug == "popular") {
+      console.log("viewall slug popular he", slug);
+      getProductsall("sold", "desc").then((res) => {
+        //page change fetch prod again for this page
+        console.log("viewall slug popular he ka res", res);
+        console.log("bbbbbbbbb", res.data);
 
-    console.log("cat slug", slug);
+        setProducts(res.data);
+        setLoading(false);
+      });
+    } else if (slug == "newarrival") {
+      getProductsall("createdAt", "desc").then((res) => {
+        //page change fetch prod again for this page
+        console.log("viewall slug popular he ka res", res);
+        console.log("bbbbbbbbb", res.data);
 
-    getCategory(slug).then((res) => {
-      console.log(JSON.stringify(res.data, null, 4));
-      setCategory(res.data.category); //fetchd categ details and set it
-      setProducts(res.data.products); //set fetched products related to slug categ
-      setLoading(false);
-    });
+        setProducts(res.data);
+        setLoading(false);
+      });
+    }
+
+    // getCategory(slug).then((res) => {
+    //   console.log(JSON.stringify(res.data, null, 4));
+    //   setCategory(res.data.category); //fetchd categ details and set it
+    //   setProducts(res.data.products); //set fetched products related to slug categ
+    //   setLoading(false);
+    // });
   }, []);
 
   return (
@@ -36,12 +58,21 @@ const CategoryHome = ({ match }) => {
               Loading...
             </h4>
           ) : (
+            // {
+            //   (slug=="popular")?( <h4 className="text-center p-3 mt-5 mb-5 display-4  ">
+            //   All Popular Products
+            // </h4>):( <h4 className="text-center p-3 mt-5 mb-5 display-4  ">
+            //   All Popular Products
+            // </h4>)
+            // }
             <h4 className="text-center p-3 mt-5 mb-5 display-4  ">
-              {products.length} Products in {category.name} category
+              All {slug} Products
             </h4>
           )}
         </div>
       </div>
+
+      {/* <h4>fge</h4> */}
 
       {/* //show all products related to this categ */}
       {/* <div className="row">
@@ -86,4 +117,4 @@ const CategoryHome = ({ match }) => {
   );
 };
 
-export default CategoryHome;
+export default ViewAllProd;

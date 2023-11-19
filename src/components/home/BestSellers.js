@@ -4,6 +4,7 @@ import ProductCard from "../cards/ProductCard";
 import ProductCardNew from "../cards/ProductCardnew";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
+import { useHistory } from "react-router-dom";
 
 import "./index.scss";
 
@@ -13,6 +14,8 @@ const BestSellers = () => {
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
   const [mqlval, setmqlval] = useState(false);
+
+  const history = useHistory();
 
   let mql = window.matchMedia("(max-width: 762px)");
 
@@ -52,8 +55,37 @@ const BestSellers = () => {
       <div className="bestsellcontainer">
         {/* <h2 className="my-4 md:my-8 lg:mt-10 ml-10 text-2xl">   */}
 
-        <h2 className="headitemtext">Popular Products</h2>
+        {/* <p className="headitemtext">
+          Popular Products<span>This text is right.</span>
+        </p> */}
 
+        {/* <p>
+          <span className="headitemtext" style={{ float: "right" }}>
+            Text on the right
+          </span>
+          <span className="headitemtext" style={{ float: "left" }}>
+            Text on the left
+          </span>
+        </p> */}
+
+        {/* <div>
+          <p style={{ textAlign: "right", marginLeft: "100px" }}>
+            <span style={{ float: "left" }}>I'll be on the left</span>
+            I'll be on the right
+          </p>
+        </div> */}
+
+        <h2 className="headitemtext ">
+          {" "}
+          <span
+            className="headitemtextright "
+            onClick={() => history.push("/products/viewall/popular")}
+          >
+            {" "}
+            View All
+          </span>
+          Popular Products
+        </h2>
         {loading ? (
           <LoadingCard count={loadercnt} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (

@@ -51,6 +51,7 @@ import CreateCouponPage from "./pages/admin/coupon/CreateCouponPage";
 import Payment from "./pages/Payment";
 
 import "./index.css";
+import ViewAllProd from "./pages/ViewAllProd/ViewAllProd";
 const App = () => {
   const dispatch = useDispatch();
 
@@ -119,6 +120,7 @@ const App = () => {
         {/* //product/samsung-galaxy-s23-fe */}{" "}
         <Route exact path="/product/:slug" component={Product} />{" "}
         <Route exact path="/category/:slug" component={CategoryHome} />{" "}
+        <Route exact path="/products/viewall/:slug" component={ViewAllProd} />{" "}
         <Route exact path="/sub/:slug" component={SubHome} />{" "}
         <Route exact path="/shop" component={Shop} />{" "}
         <Route exact path="/cart" component={Cart} />{" "}

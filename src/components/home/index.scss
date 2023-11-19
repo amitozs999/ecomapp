@@ -21,8 +21,38 @@
     // margin-bottom: 2rem;
     font-size: 1.2rem;
     line-height: 2rem;
+    //float: right;
   }
 
+  .headitemtextright {
+    margin-right: 2.5rem;
+
+    margin-top: 0.08rem;
+    // margin-bottom: 2rem;
+    font-size: 0.6rem;
+    //line-height: 2rem;
+    float: right;
+    // left: 0;
+    // right: auto;
+    color: rgb(128, 128, 128);
+    cursor: pointer;
+  }
+
+  @media (min-width: 480px) {
+    .headitemtextright {
+      margin-right: 2.8rem;
+
+      //margin-top: 3rem;
+      // margin-bottom: 2rem;
+      font-size: 1rem;
+      //line-height: 2rem;
+      float: right;
+      // left: 0;
+      // right: auto;
+      color: rgb(128, 128, 128);
+      cursor: pointer;
+    }
+  }
   .bestsellitemdiv {
     display: flex;
     flex-direction: row;

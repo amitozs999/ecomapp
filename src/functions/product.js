@@ -36,6 +36,13 @@ export const getProducts = async (sort, order, page) =>
     page,
   });
 
+export const getProductsall = async (sort, order) =>
+  await axios.post(`${process.env.REACT_APP_API}/products/viewall`, {
+    //post bcoz passing sope body params based on which fetch data
+    sort,
+    order,
+  });
+
 export const getProductssort = async (sort, order, page) =>
   await axios.post(`${process.env.REACT_APP_API}/productssort`, {
     //post bcoz passing sope body params based on which fetch data

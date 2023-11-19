@@ -5,6 +5,10 @@ import ProductCardNew from "../cards/ProductCardnew";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
 
+import { useHistory } from "react-router-dom";
+
+import "./index.scss";
+
 const NewArrivals = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -12,7 +16,7 @@ const NewArrivals = () => {
   const [page, setPage] = useState(1);
 
   const [mqlval, setmqlval] = useState(false);
-
+  const history = useHistory();
   let mql = window.matchMedia("(max-width: 762px)");
 
   const [loadercnt, setloadercnt] = useState(4);
@@ -56,8 +60,20 @@ const NewArrivals = () => {
       <div className="bestsellcontainer">
         {/* <h2 className="my-4 md:my-8 lg:mt-10 ml-10 text-2xl">   */}
 
-        <h2 className="headitemtext">New Arrivals</h2>
+        {/* <h2 className="headitemtext">New Arrivals</h2>
+         */}
 
+        <h2 className="headitemtext ">
+          {" "}
+          <span
+            className="headitemtextright "
+            onClick={() => history.push("/products/viewall/newarrival")}
+          >
+            {" "}
+            View All
+          </span>
+          New Arrivals
+        </h2>
         {loading ? (
           <LoadingCard count={loadercnt} /> //show 3 loading cards for products jab tak loading true he he load nhi hue
         ) : (

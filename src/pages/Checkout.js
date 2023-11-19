@@ -184,7 +184,7 @@ const Checkout = ({ history }) => {
 
   return (
     <div className="row">
-      <div className="col-md-6">
+      <div className="col-md-6 pl-4">
         <h4>Delivery Address</h4>
         <br />
         <br />
@@ -199,7 +199,7 @@ const Checkout = ({ history }) => {
         {discountError && <p className="bg-danger p-2">{discountError}</p>}
       </div>
 
-      <div className="col-md-6">
+      <div className="col-md-6 pl-4">
         <h4>Order Summary</h4>
         <hr />
         <p>Products {products.length}</p>
