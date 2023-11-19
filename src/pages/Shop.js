@@ -301,7 +301,7 @@ const Shop = ({ history }) => {
       //  }, 1000);
       //  return () => clearInterval(intervalId);
     }
-  }, [price]);
+  }, [price, current]);
 
   useEffect(() => {
     console.log("useffect126");
