@@ -233,7 +233,7 @@ const Shop = ({ history }) => {
   const [price, setPrice] = useState(pf || pt ? [pf, pt] : [0, 0]);
 
   console.log("catids", categoryIds);
-  console.log("starids", starNumbers);
+  console.log("catids starids", starNumbers);
 
   const [shipping, setShipping] = useState(as == null ? "" : as);
   const [color, setColor] = useState(ac == null ? "" : ac);
@@ -703,6 +703,10 @@ const Shop = ({ history }) => {
 
   useEffect(() => {
     console.log("price change hit prod api12222222222222222 hit ", categoryIds);
+    console.log(
+      "price change hit prod api12222222222222222 hit productsCount ",
+      productsCount
+    );
 
     //getProductsCount().then((res) => setProductsCount(res.data.total));
     //let inTheState = ["650304038f2c2e4038b13fa5", "650315956293e62fec9549b6"];
